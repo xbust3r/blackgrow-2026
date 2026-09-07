@@ -1,0 +1,82 @@
+include media
+
+//- Checkout.
+//-
+//- Tampoco se pudo observar servido: sin líneas en la cesta el origen redirige
+//- al carrito. La estructura sale de sus propias reglas —el aviso de cupón
+//- arriba, `#customer_details` con su `h3` en mayúsculas, `#order_review_heading`
+//- igual, la lista de métodos de pago con el radio en posición absoluta y
+//- `.place-order` al final— y los valores, de esas mismas reglas.
+//-
+//- `action` vacío a propósito: el destino real es backend y un `action`
+//- inventado parece implementado sin estarlo.
+
+mixin checkoutForm(lines, rows, total)
+    //- Aviso de cupón. En el origen es una barra por encima de todo el
+    //- formulario; a partir de 680px se pone en fila y por debajo se apila.
+    section(class='border border-line bg-surface-alt p-4', aria-labelledby='checkout-coupon-title')
+        h2(id='checkout-coupon-title', class='sr-only') Coupon
+        div(class='flex flex-col gap-2 tablet:flex-row tablet:items-center')
+            p(class='text-ink-soft') Have a coupon?
+            a(class='text-brand underline underline-offset-2 hover:text-brand-strong', href='#') Click here to enter your code
+
+    form(class='js-form mt-10 grid gap-10 desktop:grid-cols-2', action='', method='post')
+        //- ── Datos del cliente ────────────────────────────────────────────
+        section(aria-labelledby='customer-details-title')
+            h2(id='customer-details-title', class='mb-5 text-h3 font-normal uppercase tracking-heading text-ink') Billing details
+
+            div(class='grid gap-5 tablet:grid-cols-2')
+                +field({ id: 'billing-first-name', label: 'First name', name: 'billing_first_name', autocomplete: 'given-name', filter: 'js-only-letters' })
+                +field({ id: 'billing-last-name', label: 'Last name', name: 'billing_last_name', autocomplete: 'family-name', filter: 'js-only-letters' })
+            +field({ id: 'billing-company', label: 'Company name (optional)', name: 'billing_company', autocomplete: 'organization', required: false, class: 'mt-5' })
+            +field({ id: 'billing-address-1', label: 'Street address', name: 'billing_address_1', autocomplete: 'address-line1', class: 'mt-5' })
+            +field({ id: 'billing-address-2', label: 'Apartment, suite, unit (optional)', name: 'billing_address_2', autocomplete: 'address-line2', required: false, class: 'mt-5' })
+            div(class='mt-5 grid gap-5 tablet:grid-cols-2')
+                +field({ id: 'billing-city', label: 'Town / City', name: 'billing_city', autocomplete: 'address-level2' })
+                +field({ id: 'billing-postcode', label: 'ZIP Code', name: 'billing_postcode', autocomplete: 'postal-code', inputmode: 'numeric', filter: 'js-only-numbers' })
+            div(class='mt-5 grid gap-5 tablet:grid-cols-2')
+                +field({ id: 'billing-phone', label: 'Phone', name: 'billing_phone', type: 'tel', autocomplete: 'tel', filter: 'js-only-phone' })
+                +field({ id: 'billing-email', label: 'Email address', name: 'billing_email', type: 'email', autocomplete: 'email' })
+            +field({ id: 'order-comments', label: 'Order notes (optional)', name: 'order_comments', control: 'textarea', rows: 4, required: false, class: 'mt-5' })
+
+        //- ── Resumen del pedido ───────────────────────────────────────────
+        section(aria-labelledby='order-review-title')
+            h2(id='order-review-title', class='mb-5 text-h3 font-normal uppercase tracking-heading text-ink') Your order
+
+            table(class='w-full')
+                thead
+                    tr(class='border-b border-line')
+                        th(class='py-cell pr-cell text-left text-h4 font-normal text-ink', scope='col') Product
+                        th(class='py-cell pl-cell text-right text-h4 font-normal text-ink', scope='col') Subtotal
+                tbody
+                    each line in lines
+                        tr(class='border-b border-line')
+                            td(class='py-cell pr-cell text-ink-soft') #{line.name} × #{line.quantity}
+                            td(class='py-cell pl-cell text-right text-ink')= line.subtotal
+                tfoot
+                    each row in rows
+                        tr(class='border-b border-line')
+                            th(class='py-cell pr-cell text-left text-base font-normal text-ink-soft', scope='row')= row.label
+                            td(class='py-cell pl-cell text-right text-ink')= row.value
+                    tr(class='border-b border-line')
+                        th(class='py-cell pr-cell text-left text-h4 font-normal text-ink', scope='row') Total
+                        td(class='py-cell pl-cell text-right text-h4 text-ink')= total
+
+            //- Métodos de pago. Los del origen son los de WooCommerce por
+            //- defecto; cuáles se ofrecen de verdad lo decide la pasarela, que
+            //- es backend. Queda anotado como pendiente.
+            fieldset(class='mt-7.5')
+                legend(class='sr-only') Payment method
+                ul
+                    each method, i in ['Direct bank transfer', 'Check payments', 'Cash on delivery']
+                        li(class='relative border-b border-line py-cell pl-6.25')
+                            input(id='payment-' + i, class='absolute top-4.5 left-0 m-0', name='payment_method', type='radio', checked=i === 0)
+                            label(class='cursor-pointer text-h4 font-normal text-ink', for='payment-' + i)= method
+
+                div(class='mt-3.75')
+                    label(class='flex items-start gap-2 text-ink-soft', for='terms')
+                        input(id='terms', class='mt-1', name='terms', type='checkbox', required)
+                        span I have read and agree to the website terms and conditions
+
+                div(class='mt-7.5')
+                    +shopButton('Place order', 'button')

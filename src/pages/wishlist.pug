@@ -1,0 +1,28 @@
+extends ../layouts/main-template
+
+block vars
+    - const header = true;
+    - const footer = true;
+
+block title
+    title Wishlist — Blackgrow
+
+block description
+    meta(name='description', content='Wishlist — Blackgrow.')
+
+block content
+    include ../components/wishlist-table
+
+    -
+        const wishlistImage = { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 };
+        const wishlistItems = [
+            { name: 'The Candy Baby Carriage', price: '$320.00', stock: 'In stock', image: wishlistImage },
+            { name: 'Grey Teddy Bear Toy', price: '$90.00', stock: 'In stock', image: wishlistImage }
+        ];
+        const crumb = 'Wishlist';
+
+    include ../components/breadcrumb
+
+    section(class='py-12 tablet:py-16')
+        div(class='wrapper')
+            +wishlistTable(wishlistItems)

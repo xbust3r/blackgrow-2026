@@ -1,0 +1,50 @@
+include media
+
+//- Lista de deseos. El origen la sirve entera, aunque vacía, así que las
+//- columnas están copiadas literalmente de su tabla: quitar, miniatura,
+//- «Product name», «Unit price», «Stock status» y añadir al carrito. El
+//- encabezado del origen es «My wishlist».
+//-
+//- Las celdas de la lista de deseos van en gris —el origen las fuerza a
+//- `rgb(110, 110, 110)`, que aquí es `text-body`— frente al negro de la tabla
+//- del carrito.
+
+mixin wishlistTable(items)
+    section(aria-labelledby='wishlist-title')
+        h1(id='wishlist-title', class='text-h2 font-normal uppercase tracking-heading text-ink') My wishlist
+
+        div(class='mt-7.5 overflow-x-auto')
+            table(class='w-full')
+                thead
+                    tr(class='border-b border-line')
+                        th(class='w-7.5 py-cell pr-cell text-left', scope='col')
+                            span(class='sr-only') Remove
+                        th(class='hidden w-18 py-cell pr-cell text-left tablet:table-cell', scope='col')
+                            span(class='sr-only') Image
+                        th(class='py-cell pl-cell text-left text-h3 font-normal text-ink', scope='col') Product name
+                        th(class='py-cell pl-cell text-left text-h3 font-normal text-ink', scope='col') Unit price
+                        th(class='hidden py-cell pl-cell text-left text-h3 font-normal text-ink tablet:table-cell', scope='col') Stock status
+                        th(class='py-cell pl-cell text-left', scope='col')
+                            span(class='sr-only') Add to cart
+                tbody
+                    if items && items.length
+                        each item in items
+                            tr(class='border-b border-line')
+                                td(class='py-cell pr-cell align-middle')
+                                    button(class='inline-flex size-11 items-center justify-center text-ink-faint hover:text-brand', type='button')
+                                        +svgIcon('close', 'size-4')
+                                        span(class='sr-only') Remove #{item.name} from wishlist
+                                td(class='hidden py-cell pr-cell align-middle tablet:table-cell')
+                                    if item.image
+                                        img(class='block aspect-square w-full object-cover', src=item.image.src, alt='', width=item.image.width, height=item.image.height, loading='lazy')
+                                    else
+                                        +pendingImage(item.name, 'aspect-square w-full')
+                                td(class='py-cell pl-cell align-middle')
+                                    a(class='text-h4 font-normal text-body hover:text-brand', href='./cart-index.html')= item.name
+                                td(class='py-cell pl-cell align-middle text-body')= item.price
+                                td(class='hidden py-cell pl-cell align-middle text-body tablet:table-cell')= item.stock
+                                td(class='py-cell pl-cell align-middle')
+                                    +shopButton('Add to cart', 'button')
+                    else
+                        tr
+                            td(class='py-cell text-body', colspan='6') No products added to the wishlist

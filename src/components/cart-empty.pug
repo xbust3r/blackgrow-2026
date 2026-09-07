@@ -1,0 +1,12 @@
+include media
+
+//- Carrito vacío. Es el único estado del carrito que el origen sirve de verdad,
+//- así que está copiado literalmente: el texto en mayúsculas a 28px con
+//- `letter-spacing` de 0.1em, centrado, y debajo el botón «Return to shop» a
+//- 20px.
+
+mixin cartEmpty()
+    div(class='text-center')
+        p(class='text-h2 uppercase tracking-heading text-ink') Your cart is currently empty.
+        div(class='mt-5')
+            +shopButton('Return to shop', 'a', './cart.html')

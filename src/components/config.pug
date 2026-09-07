@@ -27,6 +27,17 @@
         termsOfUse: 'https://example.com/terms-of-use/'
     }
 
+//- Resumen del carrito que muestra el panel lateral de la cabecera. Es
+//- presentación: no hay tienda detrás, y las cifras son las del listado del
+//- origen. Cuando exista carrito de verdad, esto lo rellena él.
+- var cartCount = 2;
+-
+    var cartPreview = [
+        { name: 'Wooden Baby Cribe', price: '$490.00', quantity: 1, image: { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 } },
+        { name: 'Wooden Photo Camera', price: '$60.00', quantity: 2, image: { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 } }
+    ]
+- var cartPreviewTotal = '$610.00';
+
 //- Contrato del formulario: los nombres que espera quien recibe los datos. No
 //- se renombran sin confirmarlo con ese consumidor, aunque el diseño llame de
 //- otra forma a la etiqueta visible.

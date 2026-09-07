@@ -1,0 +1,82 @@
+include media
+
+//- Tabla de líneas del carrito.
+//-
+//- El origen no se pudo observar lleno: su demo devuelve 403 al añadir a la
+//- cesta, así que la referencia son sus propias reglas de CSS, que nombran
+//- todas las columnas —`product-remove`, `product-thumbnail`, `product-name`,
+//- `product-price`, `product-quantity`, `product-subtotal`, `actions`— y sus
+//- medidas. Los productos y precios sí son del origen: están tomados de su
+//- listado de tienda.
+//-
+//- A partir de 680px el origen oculta miniatura y subtotal; aquí el corte es
+//- `tablet:` (700px), que es el breakpoint del destino.
+
+mixin cartTable(lines)
+    form(class='js-cart-form', action='', method='post')
+        div(class='overflow-x-auto')
+            table(class='w-full')
+                caption(class='sr-only') Products in your cart
+                thead
+                    tr(class='border-b border-line')
+                        th(class='w-7.5 py-cell pr-cell text-left', scope='col')
+                            span(class='sr-only') Remove
+                        th(class='hidden w-18 py-cell pr-cell text-left tablet:table-cell', scope='col')
+                            span(class='sr-only') Image
+                        th(class='py-cell pl-cell text-left text-h3 font-normal text-ink', scope='col') Product
+                        th(class='py-cell pl-cell text-left text-h3 font-normal text-ink', scope='col') Price
+                        th(class='py-cell pl-cell text-left text-h3 font-normal text-ink', scope='col') Quantity
+                        th(class='hidden py-cell pl-cell text-right text-h3 font-normal text-ink tablet:table-cell', scope='col') Subtotal
+                tbody
+                    each line, i in lines
+                        tr(class='border-b border-line')
+                            td(class='py-cell pr-cell align-middle')
+                                button(class='inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button')
+                                    +svgIcon('close', 'size-4')
+                                    span(class='sr-only') Remove #{line.name} from cart
+                            td(class='hidden py-cell pr-cell align-middle tablet:table-cell')
+                                if line.image
+                                    img(class='block aspect-square w-full object-cover', src=line.image.src, alt='', width=line.image.width, height=line.image.height, loading='lazy')
+                                else
+                                    +pendingImage(line.name, 'aspect-square w-full')
+                            td(class='py-cell pl-cell align-middle')
+                                a(class='text-h4 font-normal text-ink hover:text-brand', href='./cart-index.html')= line.name
+                            td(class='py-cell pl-cell align-middle text-ink-soft')= line.price
+                            td(class='py-cell pl-cell align-middle')
+                                +quantityField('cart-qty-' + i, line.name, line.quantity)
+                            td(class='hidden py-cell pl-cell text-right align-middle text-ink tablet:table-cell')= line.subtotal
+
+        //- La fila de acciones del origen es una celda más de la tabla; aquí es
+        //- un bloque propio, porque un cupón y un botón de actualizar no son
+        //- datos de una línea y arrastrarlos dentro del `tbody` obliga a un
+        //- `colspan` que ya no describe nada.
+        div(class='flex flex-col gap-5 pt-7.5 tablet:flex-row tablet:items-start tablet:justify-between')
+            div(class='flex flex-col gap-5 tablet:flex-row tablet:items-start')
+                label(class='sr-only', for='coupon-code') Coupon code
+                input(id='coupon-code', class='w-full rounded-field border border-line bg-white px-3.5 py-2.5 text-base text-ink transition-colors placeholder:text-ink-soft focus-visible:border-brand tablet:w-auto', name='coupon_code', type='text', placeholder='Coupon code')
+                +shopButton('Apply coupon', 'button')
+            +shopButton('Update cart', 'button')
+
+//- Selector de cantidad. Sin JavaScript en esta fase: los botones existen con
+//- su nombre accesible y el hook, y el campo numérico sigue siendo utilizable
+//- con el teclado, que es lo que tiene que seguir funcionando si el módulo no
+//- carga.
+mixin quantityField(id, productName, value = 1)
+    div(class='js-quantity inline-flex items-center whitespace-nowrap')
+        button(class='js-quantity-down inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button')
+            span(aria-hidden='true') &minus;
+            span(class='sr-only') Decrease quantity of #{productName}
+        label(class='sr-only', for=id) Quantity of #{productName}
+        input(
+            id=id,
+            class='js-only-numbers w-15 rounded-field border border-line bg-white px-2.5 py-3 text-center text-h4 font-normal text-ink',
+            name='quantity',
+            type='number',
+            inputmode='numeric',
+            min='1',
+            step='1',
+            value=value
+            )
+        button(class='js-quantity-up inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button')
+            span(aria-hidden='true') +
+            span(class='sr-only') Increase quantity of #{productName}

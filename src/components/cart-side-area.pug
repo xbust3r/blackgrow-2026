@@ -1,0 +1,69 @@
+include media
+
+//- Panel lateral del carrito.
+//-
+//- El origen lo tiene como widget: 430px fijos a la derecha, fondo blanco,
+//- borde izquierdo, 78px de aire arriba y 74px abajo, 50px a los lados. Cada
+//- línea es una miniatura de 80px con 20px de separación, título de 16px y
+//- precio de 13px; el aspa de quitar va arriba a la derecha en gris claro. El
+//- resumen queda entre dos filetes y las dos acciones abajo, la primera de
+//- marca y la segunda de acento.
+//-
+//- Sin JavaScript en esta fase: el panel se entrega cerrado con `hidden` y el
+//- botón declara `aria-expanded` y `aria-controls`, igual que el menú móvil.
+//- Quien implemente `cart-panel.js` sólo tiene que mover esos dos estados.
+
+mixin cartSideAreaOpener(count = 0)
+    button(
+        class='js-cart-panel-toggle inline-flex size-11 items-center justify-center text-accent hover:text-brand',
+        type='button',
+        aria-expanded='false',
+        aria-controls='cart-side-area'
+        )
+        +svgIcon('cart', 'size-8')
+        span(class='sr-only') Open cart, #{count} items
+
+mixin cartSideArea(lines, total)
+    //- La cubierta oscurece lo que el panel no tapa. En el origen es un
+    //- elemento aparte y no un pseudo del panel, porque tiene que poder
+    //- recibir el clic que lo cierra.
+    div(class='js-cart-panel-cover fixed inset-0 z-40 bg-body/10', hidden)
+
+    aside(
+        id='cart-side-area',
+        class='js-cart-panel fixed inset-y-0 right-0 z-50 flex w-full max-w-cart-panel flex-col border-l border-line bg-surface pt-19.5 pb-18.5',
+        aria-label='Cart',
+        hidden
+        )
+        button(class='js-cart-panel-close absolute top-7.5 right-7.5 inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button')
+            +svgIcon('close', 'size-5')
+            span(class='sr-only') Close cart
+
+        div(class='flex-1 overflow-y-auto px-12.5')
+            if lines && lines.length
+                ul(class='space-y-5')
+                    each line in lines
+                        li(class='relative flex items-start')
+                            div(class='mr-5 w-20 shrink-0')
+                                if line.image
+                                    img(class='block w-full', src=line.image.src, alt='', width=line.image.width, height=line.image.height, loading='lazy')
+                                else
+                                    +pendingImage(line.name, 'aspect-square w-full')
+                            div(class='w-full pr-5')
+                                h3(class='text-base font-normal')
+                                    a(class='text-ink hover:text-brand', href='./cart-index.html')= line.name
+                                p(class='mt-1 text-meta text-ink-soft')= line.quantity + ' × ' + line.price
+                            button(class='absolute top-0 right-0 inline-flex size-11 items-center justify-center text-ink-faint hover:text-brand', type='button')
+                                +svgIcon('close', 'size-3')
+                                span(class='sr-only') Remove #{line.name} from cart
+            else
+                p(class='text-ink-soft') Your cart is currently empty.
+
+        if lines && lines.length
+            div(class='mx-12.5 my-6.25 flex items-center justify-between border-y border-line p-4')
+                span(class='text-sm uppercase tracking-heading text-ink') Subtotal
+                span(class='text-meta text-ink')= total
+
+            div(class='flex flex-wrap items-center justify-center gap-5 px-12.5')
+                +shopButton('View cart', 'a', './cart-page.html')
+                +shopButtonAlt('Checkout', 'a', './checkout.html')

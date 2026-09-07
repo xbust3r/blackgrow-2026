@@ -1,7 +1,14 @@
+//- Miga de pan. La página que lo incluye declara su último tramo antes del
+//- `include`; sin declararlo se queda como estaba, que es lo que esperan las
+//- páginas que ya lo usaban.
+//-
+//-   - var crumb = 'Checkout';
+//-   include ../components/breadcrumb
+- var crumbLabel = typeof crumb !== 'undefined' ? crumb : 'Cart';
+
 nav(class='border-y border-line bg-surface-alt py-5 text-ink-soft', aria-label='Breadcrumb')
     ol(class='wrapper flex flex-wrap justify-center gap-3')
         li
             a(class='hover:underline', href='./index.html') Home
         li(aria-hidden='true') &gt;
-        li
-            a(class='hover:underline', href='./cart.html') Cart
+        li= crumbLabel

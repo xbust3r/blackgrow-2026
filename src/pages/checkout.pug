@@ -1,0 +1,31 @@
+extends ../layouts/main-template
+
+block vars
+    - const header = true;
+    - const footer = true;
+
+block title
+    title Checkout — Blackgrow
+
+block description
+    meta(name='description', content='Checkout — Blackgrow.')
+
+block content
+    include ../components/checkout-form
+
+    -
+        const checkoutLines = [
+            { name: 'Wooden Baby Cribe', quantity: 1, subtotal: '$490.00' },
+            { name: 'Wooden Photo Camera', quantity: 2, subtotal: '$120.00' }
+        ];
+        const checkoutRows = [{ label: 'Subtotal', value: '$610.00' }];
+        const crumb = 'Checkout';
+
+    include ../components/breadcrumb
+
+    section(class='py-12 tablet:py-16')
+        div(class='wrapper')
+            h1(class='text-h1 font-normal uppercase tracking-heading text-ink') Checkout
+
+            div(class='mt-10')
+                +checkoutForm(checkoutLines, checkoutRows, '$610.00')

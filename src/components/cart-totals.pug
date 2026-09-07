@@ -1,0 +1,26 @@
+include media
+
+//- Totales del carrito. En el origen es `.cart_totals`: 440px de ancho máximo,
+//- 85px por encima de la tabla, encabezado sin `letter-spacing` —el único
+//- titular del tema que lo pierde— y las cifras alineadas a la derecha.
+//-
+//- El desglose no lleva impuestos ni portes calculados: eso lo decide una
+//- tienda real, y aquí se declara como pendiente en lugar de inventar una cifra
+//- que parezca un cálculo.
+
+mixin cartTotals(rows, total)
+    section(class='mt-[5.3125rem] w-full max-w-110', aria-labelledby='cart-totals-title')
+        h2(id='cart-totals-title', class='text-h2 font-normal uppercase text-ink') Cart totals
+
+        table(class='mt-5 w-full')
+            tbody
+                each row in rows
+                    tr(class='border-b border-line')
+                        th(class='py-cell pr-cell text-left text-base font-normal text-ink-soft tablet:w-1/5', scope='row')= row.label
+                        td(class='py-cell pl-cell text-right text-ink')= row.value
+                tr(class='border-b border-line')
+                    th(class='py-cell pr-cell text-left text-h4 font-normal text-ink tablet:w-1/5', scope='row') Total
+                    td(class='py-cell pl-cell text-right text-h4 text-ink')= total
+
+        div(class='mt-5')
+            +shopButton('Proceed to checkout', 'a', './checkout.html')

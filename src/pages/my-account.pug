@@ -1,0 +1,22 @@
+extends ../layouts/main-template
+
+block vars
+    - const header = true;
+    - const footer = true;
+
+block title
+    title My account — Blackgrow
+
+block description
+    meta(name='description', content='My account — Blackgrow.')
+
+block content
+    include ../components/account-login
+
+    - const crumb = 'My account';
+
+    include ../components/breadcrumb
+
+    section(class='py-12 tablet:py-16')
+        div(class='wrapper')
+            +accountLogin()

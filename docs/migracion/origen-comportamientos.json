@@ -98,7 +98,7 @@
         "archivo": "src/scripts/components/cart-panel.js"
       },
       "estado": "otra-fase",
-      "nota": "El backend es una fase aparte. La apertura/cierre del panel se podrá adelantar como front puro."
+      "nota": "El maquetado del panel ya está: `src/components/cart-side-area.pug`, con el hook `js-cart-panel`, su abridor `js-cart-panel-toggle`, el cierre `js-cart-panel-close` y la cubierta `js-cart-panel-cover`, entregado cerrado con `hidden` y `aria-expanded='false'`. Falta sólo el módulo que mueva esos dos estados; el backend sigue siendo otra fase."
     },
     {
       "id": "subscribe-popup",
@@ -368,7 +368,7 @@
         "archivo": null
       },
       "estado": "otra-fase",
-      "nota": "El backend es una fase aparte."
+      "nota": "El maquetado ya está: `src/pages/cart-page.pug` con `cart-table.pug`, `cart-totals.pug` y el estado vacío en `cart-empty.pug`. Las cifras son presentación. El demo del origen devuelve 403 al añadir a la cesta, así que la tabla llena se reconstruyó desde las reglas de CSS del propio origen, que nombran todas las columnas; el estado vacío sí se pudo observar servido. Falta el carrito real, que es backend."
     }
   ]
 }

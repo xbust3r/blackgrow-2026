@@ -1,0 +1,37 @@
+extends ../layouts/main-template
+
+block vars
+    - const header = true;
+    - const footer = true;
+
+block title
+    title Cart — Blackgrow
+
+block description
+    meta(name='description', content='Cart — Blackgrow.')
+
+block content
+    include ../components/cart-table
+    include ../components/cart-totals
+
+    //- Los productos y los precios son los del listado de tienda del origen.
+    //- La imagen es el marcador de desarrollo que ya usa el resto de la
+    //- tienda: los assets definitivos siguen pendientes.
+    -
+        const cartImage = { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 };
+        const cartLines = [
+            { name: 'Wooden Baby Cribe', price: '$490.00', quantity: 1, subtotal: '$490.00', image: cartImage },
+            { name: 'Wooden Photo Camera', price: '$60.00', quantity: 2, subtotal: '$120.00', image: cartImage }
+        ];
+        const cartRows = [{ label: 'Subtotal', value: '$610.00' }];
+        const crumb = 'Cart';
+
+    include ../components/breadcrumb
+
+    section(class='py-12 tablet:py-16')
+        div(class='wrapper')
+            h1(class='text-h1 font-normal uppercase tracking-heading text-ink') Cart
+
+            div(class='mt-10')
+                +cartTable(cartLines)
+                +cartTotals(cartRows, '$610.00')

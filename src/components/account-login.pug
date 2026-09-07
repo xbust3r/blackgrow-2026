@@ -1,0 +1,26 @@
+//- Acceso a la cuenta. Es el único de los cuatro templates de tienda que el
+//- origen sí sirve entero sin sesión, así que el marcado está copiado de lo que
+//- se ve: encabezado «Login», usuario o email, contraseña, «Remember me»,
+//- «Log in» y «Lost your password?».
+//-
+//- `action` vacío: autenticar es backend. Un formulario de acceso que parece
+//- funcionar y no lo hace es peor que uno que declara que falta el destino.
+
+mixin accountLogin()
+    section(class='mx-auto w-full max-w-lg', aria-labelledby='login-title')
+        h1(id='login-title', class='text-h2 font-normal uppercase tracking-heading text-ink') Login
+
+        form(class='js-form mt-7.5', action='', method='post')
+            +field({ id: 'username', label: 'Username or email address *', name: 'username', autocomplete: 'username' })
+            +field({ id: 'password', label: 'Password *', name: 'password', type: 'password', autocomplete: 'current-password', class: 'mt-5' })
+
+            div(class='mt-5')
+                label(class='flex items-center gap-2 text-ink-soft', for='rememberme')
+                    input(id='rememberme', name='rememberme', type='checkbox', value='forever')
+                    span Remember me
+
+            div(class='mt-7.5')
+                +shopButton('Log in', 'button')
+
+            p(class='mt-5')
+                a(class='text-brand underline underline-offset-2 hover:text-brand-strong', href='#') Lost your password?

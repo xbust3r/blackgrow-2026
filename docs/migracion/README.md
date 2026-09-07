@@ -4,7 +4,16 @@ Esta carpeta es para un agente que **no estuvo** en la conversación donde se
 creó este core. Contiene todo lo necesario para migrar el maquetado ya avanzado
 sin volver a decidir lo que ya está decidido.
 
+> **«Origen» es el sitio vivo.** Cuando este documento —o cualquier encargo—
+> dice *origen*, se refiere a <https://playgrow.qodeinteractive.com/>. El clon
+> local `template-html-blackn-main` fue la referencia de la primera migración y
+> **ya no está en el disco**; además nunca tuvo el carrito, el checkout, la
+> cuenta ni la lista de deseos. Lo que quede por migrar se lee del sitio vivo,
+> servido en el navegador, no de una carpeta local. Ver
+> [La referencia es el sitio vivo](#la-referencia-es-el-sitio-vivo).
+
 - **[inventario.md](./inventario.md)** — qué hay en origen y a qué corresponde.
+  Sus rutas locales son históricas: describen el clon, que ya no existe.
 - **[tareas.md](./tareas.md)** — la migración del maquetado del clon local, ya
   completada.
 - **[tareas-html-css.md](./tareas-html-css.md)** — los componentes y páginas
@@ -26,18 +35,28 @@ Se lee esta guía entera antes de tocar la primera tarea. Después,
 [`AGENTS.md`](../../AGENTS.md) y la [tarjeta de decisión](../tarjeta-de-decision.md)
 mandan sobre cualquier cosa que aquí se dé por supuesta.
 
-## Las dos carpetas
+## La referencia es el sitio vivo
 
 | | Origen | Destino |
 | --- | --- | --- |
-| Ruta | `~/Downloads/template-html-blackn-main` | `~/servers/blackgrow 2026` |
+| Dónde | <https://playgrow.qodeinteractive.com/> | `~/Servers/blackgrow-2026` |
 | Build | Gulp 4 + Pug + Sass + Bootstrap 5 | Vite 8 + Vituum + Pug + Tailwind v4 |
 | Estilos | SCSS anidado con `&`, variables `$qode-*` | Utilidades + tokens en `@theme` |
 | Rejilla | `.container` / `.wcol` / `.col-1`…`.col-12` propias | Flex y grid de Tailwind |
 | Responsive | **Desktop first** (`@media (max-width: …)`) | **Mobile first** (`tablet:`, `desktop:`) |
 | Imágenes | Enlazadas en caliente desde `playgrow.qodeinteractive.com` | Locales en `src/assets/images/` |
 
-El origen **no se modifica**. Es la referencia visual; se lee, no se edita.
+El origen **no se modifica**. Es la referencia visual; se lee, no se edita. Y
+al ser un sitio de terceros, «no se modifica» es literal: se navega y se
+inspecciona, no se le envían formularios ni se le crean cuentas. Lo único que se
+admite tocar es la cesta de la propia sesión, y sólo cuando un template no puede
+verse vacío —el carrito y el checkout son el caso—; eso se pide antes.
+
+La fila «Build» y «Estilos» describen cómo estaba hecho el clon. El sitio vivo es
+WordPress con WooCommerce y el tema Playgrow de Qode: el marcado que se
+inspecciona lleva clases `qodef-*` y `woocommerce-*` generadas por plugins. Esas
+clases **no se copian**; lo que se copia son los valores y la estructura visible.
+
 
 ## Qué es realmente esta migración
 
@@ -144,11 +163,14 @@ El procedimiento es el mismo para todos y está detallado con un ejemplo complet
 en la [tarea 4](./tareas.md#tarea-4--migrar-los-componentes-de-contenido).
 Resumido:
 
-1. Abrir el `.pug` y el `.scss` del origen **a la vez**. El estilo dice cosas que
-   el marcado no: qué es una columna, qué se apila en móvil, qué tiene `hover`.
-2. Levantar el origen y mirar el componente de verdad. `dist/` del origen ya
-   está construido en `~/Downloads/template-html-blackn-main/html/`: se abre
-   `index.html` servido y se compara. No migrar a ciegas desde el código.
+1. Abrir el `.pug` y el `.scss` del origen **a la vez** —cuando existan; para lo
+   que sólo está en el sitio vivo, el equivalente es inspeccionar el nodo y sus
+   estilos calculados—. El estilo dice cosas que el marcado no: qué es una
+   columna, qué se apila en móvil, qué tiene `hover`.
+2. Abrir el componente en el sitio vivo y mirarlo de verdad, en móvil y en
+   escritorio. No migrar a ciegas desde el código. Para lo que ya no tiene clon
+   local, este paso es el único que hay: se leen del navegador el texto, la
+   estructura y los valores calculados.
 3. Escribir el `.pug` nuevo en `src/components/`, con las clases en `class='…'`.
 4. Los valores de marca —colores, tipografía— **no se escriben en el marcado**:
    se añaden como tokens en `src/styles/styles.css` y se usan por su nombre.

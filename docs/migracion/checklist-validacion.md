@@ -191,7 +191,10 @@ Lo que los comandos no prueban. Se comprueba en el navegador, con el teclado.
 - [ ] **I4.** Los pendientes están declarados, no resueltos inventando.
 - [ ] **I5.** Está la salida real de los cuatro comandos, no un resumen.
 - [ ] **I6.** Lo que no se pudo migrar está dicho, con dónde está para retomarlo.
-- [ ] **I7.** El origen `~/Downloads/template-html-blackn-main` está intacto.
+- [ ] **I7.** El origen está intacto. El origen es el sitio vivo
+      <https://playgrow.qodeinteractive.com/>: se navega y se inspecciona, no se
+      le envían formularios ni se le crean cuentas. El clon local
+      `template-html-blackn-main` ya no existe.
 
 ---
 

@@ -1,3 +1,5 @@
+include cart-side-area
+
 mixin socialLink(name, icon)
     a(class='inline-flex size-8 items-center justify-center text-brand', href='#')
         +svgIcon(icon, 'size-4')
@@ -20,10 +22,10 @@ header
             +socialLink('Instagram', 'instagram')
             +socialLink('TikTok', 'tiktok')
             +socialLink('Pinterest', 'pinterest')
+            +cartSideAreaOpener(cartCount)
     div(class='flex min-h-16 items-center justify-between gap-5 border-b border-line px-5 tablet:hidden')
         a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
-        a(class='text-accent', href='#', aria-label='Cart')
-            +svgIcon('cart', 'size-8')
+        +cartSideAreaOpener(cartCount)
         button(class='js-menu-toggle inline-flex size-11 items-center justify-center text-ink', type='button', aria-expanded='false', aria-controls='mobile-navigation', aria-label='Open menu')
             +svgIcon('menu', 'size-7')
     div(id='mobile-navigation', class='js-mobile-menu fixed inset-0 z-50 overflow-y-auto bg-surface p-6', role='dialog', aria-modal='true', aria-label='Main navigation', hidden)
@@ -35,3 +37,8 @@ header
                 each label in ['Home', 'About', 'Info', 'Contact']
                     li
                         a(class='text-h2 uppercase tracking-heading text-ink hover:text-brand', href='#')= label
+
+//- El panel del carrito vive fuera de la cabecera visible: es un diálogo a
+//- pantalla completa por la derecha, y anidarlo dentro de la barra lo ataría al
+//- apilado de ésta.
++cartSideArea(cartPreview, cartPreviewTotal)

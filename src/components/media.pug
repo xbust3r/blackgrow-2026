@@ -9,8 +9,18 @@ mixin heading(text, level = 'h2', classes = '')
 mixin textLink(text)
     a(class='inline-flex border-b border-brand pb-2 text-sm font-medium uppercase tracking-heading text-brand', href='#')= text
 
-mixin shopButton(text, as = 'a')
+//- Botón de tienda. `as: 'button'` lo convierte en botón; `href` sólo aplica al
+//- enlace y por defecto sigue siendo `#`, que es lo que traía el origen.
+mixin shopButton(text, as = 'a', href = '#')
     if as === 'a'
-        a(class='inline-flex items-center justify-center bg-brand px-9 py-5 text-sm font-medium uppercase tracking-heading text-white hover:bg-brand-strong', href='#')= text
+        a(class='inline-flex items-center justify-center bg-brand px-9 py-5 text-sm font-medium uppercase tracking-heading text-white hover:bg-brand-strong', href=href)= text
     else
         button(class='inline-flex items-center justify-center bg-brand px-9 py-5 text-sm font-medium uppercase tracking-heading text-white hover:bg-brand-strong', type='button')= text
+
+//- Variante secundaria: mismo botón sobre el color de acento. El panel del
+//- carrito del origen empareja así «View cart» con «Checkout».
+mixin shopButtonAlt(text, as = 'a', href = '#')
+    if as === 'a'
+        a(class='inline-flex items-center justify-center bg-accent px-9 py-5 text-sm font-medium uppercase tracking-heading text-ink hover:bg-accent-strong', href=href)= text
+    else
+        button(class='inline-flex items-center justify-center bg-accent px-9 py-5 text-sm font-medium uppercase tracking-heading text-ink hover:bg-accent-strong', type='button')= text

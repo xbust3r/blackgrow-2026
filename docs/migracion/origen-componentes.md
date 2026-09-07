@@ -34,7 +34,7 @@ pendiente es de otras fases: comportamiento (JavaScript) y tienda (backend).
 | --- | --- |
 | Maquetado | **Cerrado**, a falta de corregir el contenido inventado — ver [correcciones.md](./correcciones.md). |
 | Comportamiento (JS) | 3 de 16 dentro del alcance. `pnpm validate:origen`. |
-| Tienda / backend | Fase posterior: carrito, cuenta, lista de deseos, checkout y todo el AJAX. |
+| Tienda / backend | El **maquetado** de carrito, cuenta, lista de deseos y checkout ya está. Queda la fase posterior: el backend y todo el AJAX. |
 | Contenido | Relleno del origen y assets sin licencia; nada definitivo. |
 
 ## Páginas
@@ -65,7 +65,7 @@ pendiente es de otras fases: comportamiento (JavaScript) y tienda (backend).
 | Blog · Masonry List | Listado en mampostería | 3 / 3 / 2 / 1 columnas. El origen usa isotope; hoy `columns` de CSS o grid lo hacen sin librería. |
 | Blog Single | Artículo | Con formulario de comentarios. |
 | Shop · 3, 4, 5, 6 columnas | Variantes del listado | Sólo cambia el número de columnas: es un parámetro del componente, no cuatro páginas. |
-| My Account · Wishlist · Cart · Checkout | Tienda | **Fase de backend.** |
+| My Account · Wishlist · Cart · Checkout | Tienda | **Maquetado hecho** — `my-account.pug`, `wishlist.pug`, `cart-page.pug` y `checkout.pug`, sólo HTML y CSS. La tienda real —autenticar, persistir la cesta, cobrar— sigue siendo fase de backend. |
 
 ## Componentes reutilizables
 

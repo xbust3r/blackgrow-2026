@@ -34,9 +34,11 @@
     --color-surface-dark: #10100f; /* fondo de sección oscura */
     --color-line: #eae3de; /* bordes, separadores, campos en reposo */
     --color-brand: #db915e;
-    --color-brand-strong: #db915e; /* hover y estados presionados */
+    --color-brand-strong: #e38443; /* hover y estados presionados */
     --color-accent: #b1ceca;
+    --color-accent-strong: #91c6be; /* hover del botón secundario del carrito */
     --color-body: #6e6e6e;
+    --color-ink-faint: #b5aeae; /* iconos de descarte: quitar una línea del carrito */
     --color-rating: #d9bf8d;
     --color-danger: #b42318; /* errores de formulario */
     --color-success: #067647;
@@ -71,7 +73,21 @@
     --text-h4: 1.25rem;
     --text-h4--line-height: 1.4;
 
+    /* Cifras y contadores secundarios: el precio de una línea del panel del
+       carrito. 13px en el origen, por debajo del cuerpo. */
+    --text-meta: 0.8125rem;
+
     /* ── Formas ─────────────────────────────────────────────────────────────── */
+
+    /* Ancho del panel lateral del carrito: 430px en el origen. Aparece en cada
+       página porque el panel va en la cabecera, así que es token y no un valor
+       arbitrario repetido veintidós veces. */
+    --spacing-cart-panel: 26.875rem;
+
+    /* Relleno de celda de las tablas de tienda. 15px no cae en la escala de
+       Tailwind y se repite en cada `td` y cada `th`: es un token, no un valor
+       arbitrario escrito treinta veces. */
+    --spacing-cell: 0.9375rem;
     --aspect-hero: 1920 / 800;
     --aspect-product: 220 / 198;
     --tracking-heading: 0.1em;

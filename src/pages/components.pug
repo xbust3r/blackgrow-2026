@@ -108,3 +108,33 @@ block content
         div(class='wrapper max-w-3xl')
             include ../components/comment-form
 
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') cart-empty
+        div(class='wrapper')
+            include ../components/cart-empty
+            +cartEmpty()
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') cart-table
+        div(class='wrapper')
+            include ../components/cart-table
+            +cartTable([{ name: 'Wooden Baby Cribe', price: '$490.00', quantity: 1, subtotal: '$490.00', image: { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 } }])
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') cart-totals
+        div(class='wrapper')
+            include ../components/cart-totals
+            +cartTotals([{ label: 'Subtotal', value: '$490.00' }], '$490.00')
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') wishlist-table
+        div(class='wrapper')
+            include ../components/wishlist-table
+            +wishlistTable([{ name: 'The Candy Baby Carriage', price: '$320.00', stock: 'In stock', image: { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 } }])
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') account-login
+        div(class='wrapper')
+            include ../components/account-login
+            +accountLogin()
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') checkout-form
+        div(class='wrapper')
+            include ../components/checkout-form
+            +checkoutForm([{ name: 'Wooden Baby Cribe', quantity: 1, subtotal: '$490.00' }], [{ label: 'Subtotal', value: '$490.00' }], '$490.00')
