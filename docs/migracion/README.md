@@ -7,9 +7,11 @@ sin volver a decidir lo que ya está decidido.
 - **[inventario.md](./inventario.md)** — qué hay en origen y a qué corresponde.
 - **[tareas.md](./tareas.md)** — la migración del maquetado del clon local, ya
   completada.
-- **[tareas-html-css.md](./tareas-html-css.md)** — **el trabajo actual**: los
-  componentes y páginas del tema que faltan, sólo Pug y Tailwind. El JavaScript
-  es una fase posterior.
+- **[tareas-html-css.md](./tareas-html-css.md)** — los componentes y páginas
+  del tema que faltaban, sólo Pug y Tailwind. **Fase completada.**
+- **[correcciones.md](./correcciones.md)** — **lo que toca ahora**: lo que salió
+  de validar esa fase. La estructura está bien; lo que hay que arreglar es el
+  contenido, que se inventó en vez de copiar el relleno del origen.
 - **[playgrow-origen.md](./playgrow-origen.md)** — el validador de
   **comportamientos** contra el sitio vivo. El clon local era estático, así que
   para lo que el sitio tiene que *hacer* la referencia es
