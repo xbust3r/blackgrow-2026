@@ -5,7 +5,11 @@ creó este core. Contiene todo lo necesario para migrar el maquetado ya avanzado
 sin volver a decidir lo que ya está decidido.
 
 - **[inventario.md](./inventario.md)** — qué hay en origen y a qué corresponde.
-- **[tareas.md](./tareas.md)** — el trabajo, en orden, con criterios de cierre.
+- **[tareas.md](./tareas.md)** — la migración del maquetado del clon local, ya
+  completada.
+- **[tareas-html-css.md](./tareas-html-css.md)** — **el trabajo actual**: los
+  componentes y páginas del tema que faltan, sólo Pug y Tailwind. El JavaScript
+  es una fase posterior.
 - **[playgrow-origen.md](./playgrow-origen.md)** — el validador de
   **comportamientos** contra el sitio vivo. El clon local era estático, así que
   para lo que el sitio tiene que *hacer* la referencia es
