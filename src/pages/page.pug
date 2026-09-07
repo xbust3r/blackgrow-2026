@@ -1,0 +1,18 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+block title
+    title About Us | Blackgrow
+block description
+    meta(name='description', content='About Us — Blackgrow. Preview.')
+block preload
+    link(rel='preload', as='image', href='/src/assets/images/heros/internal/internal-hero-mobile.webp', media='(max-width: 43.749rem)', type='image/webp', fetchpriority='high')
+    link(rel='preload', as='image', href='/src/assets/images/heros/internal/internal-hero-desktop.webp', media='(min-width: 43.75rem)', type='image/webp', fetchpriority='high')
+block content
+    include ../components/heros
+    +photoHero('internal', 'h1')
+    +photoHero('photo_hero_2_button')
+    include ../components/text-with-image
+    include ../components/title-with-steps

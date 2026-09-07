@@ -1,0 +1,11 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+block title
+    title Error | Blackgrow
+block description
+    meta(name='description', content='Error — Blackgrow. Preview.')
+block content
+    include ../components/error-message

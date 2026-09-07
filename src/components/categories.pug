@@ -1,0 +1,10 @@
+include media
+
+mixin categoryCard(index)
+    a(class='block text-center text-ink', href='#')
+        img(class='mx-auto mb-4 aspect-square w-full max-w-40 rounded-full object-cover', src='/src/assets/images/categories/category.webp', alt='', width='92', height='92', loading='lazy')
+        span Category 1
+
+section(class='wrapper grid grid-cols-1 gap-6 py-10 tablet:grid-cols-6', aria-label='Categories')
+    each index in [1, 2, 3, 4, 5, 6]
+        +categoryCard(index)

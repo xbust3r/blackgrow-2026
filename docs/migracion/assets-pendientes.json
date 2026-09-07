@@ -1,0 +1,182 @@
+[
+  {
+    "component": "includes/header.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/10/subscribe-icon.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/photo_hero_2_button.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/h3-rev-slide-03.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/photo_hero.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/home-3-rev-slide-01.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/cloud-title.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/h1-rev-img-1-1.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/cloud-title.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/h1-rev-img-1-2.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/cloud-title.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/main-home-rev-img-03.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/photo-hero-featured.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/hOME-3-IMAGE-BACKGROUND.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/default.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/MAINHOME-REV-FIGURE-SLIDE-2.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/default.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/main-home-rev-img-03.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/photo_hero_2.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/h3-rev-slide-03.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "heros/square.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/main-home-rev-img-03.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/customers-reviews.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/main-img-1.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/customers-reviews.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/main-img-2.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/gallery-six.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/h1-img-10-768x768.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/gallery-six.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/main-img-22.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/gallery-six.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/main-img-24.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/gallery-six.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/main-img-27.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "pages/cart-index.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/product-single-description-image-01.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "pages/index.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/plugins/playgrow-core/assets/img/cart-empty-large.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "pages/index.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/10/subscribe-icon.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "pages/index.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/logo-main-img.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/customers/newsletter-register.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/h1-back-img-1.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/ecommerce/content-product.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/Product-Single-001-image-main.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/ecommerce/content-product.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/Shop-Single-gallery-img-04-600x450.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/ecommerce/2-collections.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/h1-img-4-800x1100.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/ecommerce/2-collections.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/h1-img-5-800x1100.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/ecommerce/shop-list.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/11/Product-Single-001-image-main-600x450.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/ecommerce/products-cards-4.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/MAIN-HOME-LIST-01-PRODUCT-01-768x690.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/ecommerce/categories.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/Product-Category-Img-07.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/content/text-with-image.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/inner-img-5.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/content/title-with-steps.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/l-img-13-3-2.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/content/title-with-steps.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/l-img-14-3-2.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/content/title-with-steps.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/l-img-15-3-2.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/content/title-with-steps.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2023/01/l-img-16-3-2.png",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/blog/latests-articles-3.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/b-m-l-img-1.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  },
+  {
+    "component": "components/blog/latests-articles-3.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/b-m-l-img-2-1024x1024.jpg",
+    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+  }
+]

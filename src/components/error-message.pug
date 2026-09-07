@@ -1,0 +1,8 @@
+include config
+include ui
+
+section(class='py-16 desktop:py-24')
+    div(class='wrapper max-w-2xl text-center')
+        h1(class='text-h1 font-semibold text-balance') Something went wrong
+        p(class='mt-4 text-lg text-ink-soft') Please return to the quote and check your details.
+        +button('Return to the quote', { as: 'a', href: './index.html', class: 'mt-8' })

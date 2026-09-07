@@ -1,0 +1,16 @@
+//- Marcadores de presentación. Las imágenes definitivas constan en el inventario.
+mixin pendingImage(label, classes = '')
+    div(class='relative flex items-center justify-center overflow-hidden border border-dashed border-line bg-surface-alt ' + classes, role='img', aria-label=label + ' — image pending')
+        span(class='px-3 py-2 text-center text-xs uppercase tracking-heading text-ink-soft')= label + ' / image pending'
+
+mixin heading(text, level = 'h2', classes = '')
+    #{level}(class='text-h2 font-normal uppercase tracking-heading text-ink ' + classes)= text
+
+mixin textLink(text)
+    a(class='inline-flex border-b border-brand pb-2 text-sm font-medium uppercase tracking-heading text-brand', href='#')= text
+
+mixin shopButton(text, as = 'a')
+    if as === 'a'
+        a(class='inline-flex items-center justify-center bg-brand px-9 py-5 text-sm font-medium uppercase tracking-heading text-white hover:bg-brand-strong', href='#')= text
+    else
+        button(class='inline-flex items-center justify-center bg-brand px-9 py-5 text-sm font-medium uppercase tracking-heading text-white hover:bg-brand-strong', type='button')= text

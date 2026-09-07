@@ -1,0 +1,115 @@
+$ npm-run-all optimize --parallel lint validate
+$ node plugins/convertWebp.js
+Start image optimization
+Skip: internal-hero-mobile@2x.jpg
+Skip: internal-hero-mobile.jpg
+Skip: internal-hero-desktop@2x.jpg
+Skip: internal-hero-desktop.jpg
+------------------------------------------------
+✅  Completed in 0.01s
+   • Processed: 0
+   • Skipped:  4
+------------------------------------------------
+$ run-p lint:pug lint:css lint:js
+$ node plugins/validate-assets.js
+[36m🔍 Iniciando validación estricta de assets...[0m
+[32m✔ Todos los assets existen. Procediendo...[0m
+
+$ markuplint "src/**/*.pug"
+$ stylelint "src/**/*.css" --fix --cache --cache-location .stylelintcache
+$ eslint "src/**/*.js" --fix --cache --cache-location .eslintcache
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/thanks.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/page.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/index.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/error.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/components.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/cart.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/cart-index.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/layouts/main-template.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/ui.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/thanks-message.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/tag-manager-head.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/tag-manager-body.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/scripts.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/media.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/hero.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/header.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/head.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/head-base.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/footer.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/favicon.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/error-message.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/config.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/square.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/photo_hero_2_button.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/photo_hero_2.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/photo_hero.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/photo-hero-featured.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/internal.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/default.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/heros/cloud-title.pug
+$ vite build
+vite v8.2.2 building client environment for production...
+[vite-plugin-svg-sprite] Sprite generated /src/assets/images/sprite.svg
+transforming...
+✓ 45 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/images/favicon/site.webmanifest                    0.48 kB
+dist/assets/images/heros/internal/internal-hero-mobile.webp    0.81 kB
+dist/assets/images/elements/arco-iris.svg                      1.37 kB │ gzip:  0.53 kB
+dist/assets/images/favicon/favicon.svg                         1.44 kB │ gzip:  0.67 kB
+dist/assets/images/favicon/favicon-96x96.png                   1.45 kB
+dist/assets/images/sprite.svg                                  2.30 kB │ gzip:  0.52 kB
+dist/assets/images/favicon/apple-touch-icon.png                2.89 kB
+dist/cart.html                                                 7.07 kB │ gzip:  1.48 kB
+dist/cart-index.html                                           7.11 kB │ gzip:  1.49 kB
+dist/error.html                                                7.60 kB │ gzip:  1.68 kB
+dist/thanks.html                                               7.62 kB │ gzip:  1.70 kB
+dist/index.html                                                7.89 kB │ gzip:  1.70 kB
+dist/page.html                                                 8.77 kB │ gzip:  1.94 kB
+dist/assets/fonts/jost-400.woff2                              12.16 kB
+dist/assets/fonts/jost-500.woff2                              13.48 kB
+dist/assets/fonts/jost-600.woff2                              13.58 kB
+dist/assets/fonts/jost-700.woff2                              13.68 kB
+dist/assets/images/favicon/favicon.ico                        15.08 kB
+dist/components.html                                          16.43 kB │ gzip:  2.81 kB
+dist/assets/images/heros/internal/internal-hero-desktop.webp  25.47 kB
+dist/assets/styles/styles.css                                 21.48 kB │ gzip:  5.23 kB
+dist/assets/scripts/main.js                                   63.35 kB │ gzip: 17.76 kB
+
+✓ built in 1.47s
+
+✨ [36m[vite-plugin-image-optimizer][39m - optimized images successfully: 
+[2mdist[22m/[94massets/images/favicon/favicon.svg[39m     [90m[32m0%[39m[90m     [39m [33m[1mskipped[22m[39m [2moriginal: 1.41 kB <= optimized: 1.41 kB[22m
+[2mdist[22m/[94massets/images/elements/arco-iris.svg[39m  [90m[32m-38%[39m[90m   [39m [2m2.14 kB ⭢  1.34 kB[22m
+
+💰 total savings = [32m0.80kB[39m/[32m2.14kB[39m ≈ [32m37%[39m
+
+
+$ pnpm verify:render
+$ node plugins/verify-render.js
+Comprobación de render
+------------------------------------------------
+AVISO preload  la plantilla del preload sigue comentada y ninguna página precarga una imagen: si hay candidata a LCP, hay que aplicarla
+AVISO page.html  `aspect-[1920/800]` aparece 8 veces: un valor repetido es un token que falta en `@theme`
+AVISO thanks.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO page.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO index.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO error.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO components.html  6 elementos comparten las mismas 13 clases (`bg-surface-alt border border-dashed border-line flex h-hero items-cent…`): eso es un componente, va en un mixin de `src/components/`
+AVISO components.html  7 elementos comparten las mismas 7 clases (`px-3 py-2 text-center text-ink-soft text-xs tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO components.html  7 elementos comparten las mismas 6 clases (`absolute flex inset-0 items-center justify-center p-5`): eso es un componente, va en un mixin de `src/components/`
+AVISO components.html  3 elementos comparten las mismas 6 clases (`font-normal mb-5 text-h1 text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO components.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO cart.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO cart-index.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+FALLO page.html  ./assets/images/heros/internal/internal-hero-mobile.webp declara 360×200 pero el archivo obliga a 180.0 de alto: 20.0px de desvío (10%). El export no corresponde al frame
+FALLO page.html  ./assets/images/heros/internal/internal-hero-desktop.webp declara 1920×200 pero el archivo obliga a 320.0 de alto: 120.0px de desvío (60%). El export no corresponde al frame
+FALLO components.html  ./assets/images/heros/internal/internal-hero-mobile.webp declara 360×200 pero el archivo obliga a 180.0 de alto: 20.0px de desvío (10%). El export no corresponde al frame
+FALLO components.html  ./assets/images/heros/internal/internal-hero-desktop.webp declara 1920×200 pero el archivo obliga a 320.0 de alto: 120.0px de desvío (60%). El export no corresponde al frame
+------------------------------------------------
+Páginas revisadas: 7  ·  assets medidos: 3
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.

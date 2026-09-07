@@ -1,0 +1,12 @@
+include config
+
+if brand.gtm
+    // Google Tag Manager (noscript)
+    noscript
+        iframe(
+            src='https://www.googletagmanager.com/ns.html?id=' + brand.gtm,
+            height='0',
+            width='0',
+            style='display: none; visibility: hidden'
+            )
+    // End Google Tag Manager (noscript)

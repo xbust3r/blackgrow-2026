@@ -1,0 +1,81 @@
+$ npm-run-all optimize --parallel lint validate
+$ node plugins/convertWebp.js
+Start image optimization
+------------------------------------------------
+✅  Completed in 0.01s
+   • Processed: 0
+   • Skipped:  0
+------------------------------------------------
+$ node plugins/validate-assets.js
+$ run-p lint:pug lint:css lint:js
+[36m🔍 Iniciando validación estricta de assets...[0m
+[32m✔ Todos los assets existen. Procediendo...[0m
+
+$ stylelint "src/**/*.css" --fix --cache --cache-location .stylelintcache
+$ markuplint "src/**/*.pug"
+$ eslint "src/**/*.js" --fix --cache --cache-location .eslintcache
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/thanks.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/page.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/index.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/error.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/cart.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/pages/cart-index.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/layouts/main-template.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/ui.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/thanks-message.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/tag-manager-head.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/tag-manager-body.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/scripts.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/hero.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/header.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/head.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/head-base.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/footer.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/favicon.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/error-message.pug
+<markuplint> passed /Users/miguel/servers/blackgrow 2026/src/components/config.pug
+$ vite build
+vite v8.2.2 building client environment for production...
+[vite-plugin-svg-sprite] Sprite generated /src/assets/images/sprite.svg
+transforming...
+✓ 44 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/images/favicon/site.webmanifest       0.48 kB
+dist/assets/images/favicon/favicon.svg            1.44 kB │ gzip:  0.67 kB
+dist/assets/images/favicon/favicon-96x96.png      1.45 kB
+dist/assets/images/sprite.svg                     2.30 kB │ gzip:  0.52 kB
+dist/assets/images/favicon/apple-touch-icon.png   2.89 kB
+dist/cart.html                                    7.07 kB │ gzip:  1.48 kB
+dist/page.html                                    7.08 kB │ gzip:  1.49 kB
+dist/cart-index.html                              7.11 kB │ gzip:  1.49 kB
+dist/error.html                                   7.60 kB │ gzip:  1.68 kB
+dist/thanks.html                                  7.62 kB │ gzip:  1.70 kB
+dist/assets/fonts/jost-400.woff2                 12.16 kB
+dist/index.html                                  12.90 kB │ gzip:  2.71 kB
+dist/assets/fonts/jost-500.woff2                 13.48 kB
+dist/assets/fonts/jost-600.woff2                 13.58 kB
+dist/assets/fonts/jost-700.woff2                 13.68 kB
+dist/assets/images/favicon/favicon.ico           15.08 kB
+dist/assets/styles/styles.css                    19.86 kB │ gzip:  4.90 kB
+dist/assets/scripts/main.js                      63.35 kB │ gzip: 17.76 kB
+
+✓ built in 861ms
+
+✨ [36m[vite-plugin-image-optimizer][39m - optimized images successfully: 
+[2mdist[22m/[94massets/images/favicon/favicon.svg[39m  [90m[32m0%[39m[90m [39m [33m[1mskipped[22m[39m [2moriginal: 1.41 kB <= optimized: 1.41 kB[22m
+
+
+$ pnpm verify:render
+$ node plugins/verify-render.js
+Comprobación de render
+------------------------------------------------
+AVISO preload  la plantilla del preload sigue comentada y ninguna página precarga una imagen: si hay candidata a LCP, hay que aplicarla
+AVISO thanks.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO page.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO index.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO error.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO cart.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+AVISO cart-index.html  4 elementos comparten las mismas 6 clases (`font-normal my-5 text-base text-ink tracking-heading uppercase`): eso es un componente, va en un mixin de `src/components/`
+------------------------------------------------
+Páginas revisadas: 6  ·  assets medidos: 0

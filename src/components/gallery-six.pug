@@ -1,0 +1,16 @@
+include media
+
+mixin galleryTile(index)
+    a(class='block', href='#', aria-label='Gallery image ' + index)
+        img(class='aspect-square w-full object-cover', src='/src/assets/images/gallery-six/tile.webp', alt='', width='768', height='768', loading='lazy')
+
+section(class='relative bg-surface-alt py-5 tablet:pt-24 tablet:pb-32')
+    img(class='absolute end-12 top-0 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/sitting-girl.webp', alt='', width='96', height='201', loading='lazy', aria-hidden='true')
+    img(class='absolute start-8 top-8 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/cloud-stars.webp', alt='', width='128', height='128', loading='lazy', aria-hidden='true')
+    img(class='absolute start-8 bottom-0 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/elephants.webp', alt='', width='89', height='160', loading='lazy', aria-hidden='true')
+    div(class='wrapper relative')
+        +heading('Gallery', 'h2', 'text-center')
+        p(class='mt-6 text-center text-lg') Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+        div(class='mt-6 grid gap-5 tablet:grid-cols-6')
+            each item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                +galleryTile(item)

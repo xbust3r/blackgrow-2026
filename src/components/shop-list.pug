@@ -1,0 +1,17 @@
+include product-card
+
+//- Los tres productos del origen usan la misma foto: se preserva esa repetición.
+- var shopImage = { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 };
+
+section(class='wrapper grid gap-10 py-10 desktop:grid-cols-4')
+    aside
+        h2(class='my-6 text-h3 font-normal text-ink') Categories
+        ul(class='space-y-3 text-lg')
+            each item in [1, 2]
+                li
+                    a(class='hover:text-ink', href='#') item
+    div(class='min-w-0 desktop:col-span-3')
+        p(class='my-6') Showing 1–12 of 50 results
+        div(class='grid gap-5 tablet:grid-cols-2 desktop:grid-cols-3')
+            each product in [{category: 'Product Category', name: 'Product Title Here', price: '$200.00', image: shopImage}, {category: 'Product Category', name: 'Product Title Here', price: '$200.00', image: shopImage}, {category: 'Product Category', name: 'Product Title Here', price: '$200.00', image: shopImage}]
+                +productCard(product, true)

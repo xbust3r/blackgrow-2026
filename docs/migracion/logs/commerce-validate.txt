@@ -1,0 +1,4 @@
+$ node plugins/validate-assets.js
+[36m🔍 Iniciando validación estricta de assets...[0m
+[32m✔ Todos los assets existen. Procediendo...[0m
+

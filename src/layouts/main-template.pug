@@ -1,0 +1,24 @@
+include ../components/config
+include ../components/ui
+block vars
+
+doctype html
+html(lang=language)
+    head
+        include ../components/head-base
+        block title
+            title= pageTitle
+        block description
+            meta(name='description', content=pageDescription)
+        block preload
+        include ../components/tag-manager-head
+    body(class='flex min-h-dvh flex-col')
+        include ../components/tag-manager-body
+        a(class='skip-link', href='#main') Skip to content
+        if header !== false
+            include ../components/header
+        main(id='main', class='flex-1', tabindex='-1')
+            block content
+        if footer !== false
+            include ../components/footer
+        include ../components/scripts

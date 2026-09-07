@@ -1,0 +1,21 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+block title
+    title Home | Blackgrow
+block description
+    meta(name='description', content='Home — Blackgrow. Preview.')
+block content
+    include ../components/heros
+    +framedHero('cloud-title', 'h1')
+    include ../components/title-with-text
+    include ../components/products-cards-4
+    include ../components/title-with-text
+    include ../components/latests-articles-3
+    include ../components/customers-reviews
+    include ../components/newsletter-register
+    include ../components/categories
+    include ../components/2-collections
+    include ../components/gallery-six

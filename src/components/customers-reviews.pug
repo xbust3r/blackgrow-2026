@@ -1,0 +1,17 @@
+include media
+
+mixin reviewCard()
+    figure(class='p-5 text-center')
+        +svgIcon('star', 'mx-auto size-6 fill-rating text-rating')
+        blockquote(class='my-6 text-h3 text-ink')
+            p "Donec pretium vulputate sapien necen sagittis aliquam hac habitass platea dictumst quisque sagit."
+        figcaption(class='text-xs uppercase tracking-heading text-ink-soft') John Doe, CEO &amp; Founder
+
+section(class='relative bg-surface-alt py-9')
+    img(class='absolute start-0 top-5 hidden size-20 tablet:block', src='/src/assets/images/customers-reviews/decoration-1.webp', alt='', width='104', height='126', loading='lazy', aria-hidden='true')
+    img(class='absolute end-5 bottom-0 hidden size-20 tablet:block', src='/src/assets/images/customers-reviews/decoration-2.webp', alt='', width='69', height='142', loading='lazy', aria-hidden='true')
+    div(class='wrapper relative')
+        +heading('Happy Customers', 'h2', 'mb-5 text-center')
+        div(class='grid gap-8 tablet:grid-cols-2 desktop:grid-cols-3')
+            each review in [0, 1, 2]
+                +reviewCard()

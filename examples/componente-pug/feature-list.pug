@@ -1,0 +1,13 @@
+//- Componente estático: no tiene comportamiento, así que no lleva JavaScript.
+//- Todo lo visual está en el marcado; no hay archivo de estilos que conectar.
+include ../../src/components/ui
+
+section(class='py-12 desktop:py-20', aria-labelledby='feature-list-title')
+    div(class='wrapper')
+        h2(class='text-h2 text-center font-semibold text-balance', id='feature-list-title') Beneficios
+
+        ul(class='mt-10 grid gap-8 tablet:grid-cols-2 desktop:grid-cols-3')
+            each beneficio in ['Uno', 'Dos', 'Tres']
+                li(class='grid gap-2')
+                    h3(class='text-h4 font-semibold')= 'Beneficio ' + beneficio
+                    p(class='text-ink-soft text-pretty') Descripción breve del beneficio.

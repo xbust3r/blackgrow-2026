@@ -1,0 +1,20 @@
+include media
+
+mixin productDetails(level = 'h1')
+    section(class='wrapper grid gap-10 py-10 tablet:grid-cols-2')
+        div(class='flex min-w-0 flex-col gap-5 tablet:flex-row')
+            div(class='order-2 flex gap-3 tablet:order-1 tablet:w-1/4 tablet:flex-col')
+                each index in [1, 2, 3]
+                    img(class='aspect-4/3 min-w-0 flex-1 rounded-card object-cover tablet:flex-none', src='/src/assets/images/content-product/gallery.webp', alt='', width='600', height='450', loading='lazy')
+            div(class='order-1 min-w-0 flex-1 tablet:order-2')
+                img(class='aspect-4/3 w-full rounded-card object-cover', src='/src/assets/images/content-product/main.webp', alt='', width='800', height='1008', fetchpriority='high')
+        div
+            #{level}(class='my-6 text-h1 font-normal uppercase tracking-heading text-ink') WOODEN BABY CRIBE
+            p(class='text-h2 text-ink') $ 1,200
+            p(class='my-5') Quidem eveniet quod veritatis non. Dolore voluptas quod cumque sunt quia facere voluptas. Omnis nihil ad quia de bitis voluptatems of unique wholesale brand quidem eveniet quod veritatis non dolore voluptas quod cumque in.
+            +shopButton('Add to cart', 'button')
+            p(class='my-5') Category:
+                a(class='ms-2 text-ink-soft hover:text-brand', href='#') Crubs
+            p(class='my-5') Tags:
+                a(class='ms-2 border border-line px-2 py-1 text-xs uppercase tracking-heading text-ink-soft', href='#') Baby
++productDetails(typeof productHeading === 'undefined' ? 'h1' : productHeading)

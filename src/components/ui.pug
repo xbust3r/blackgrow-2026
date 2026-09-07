@@ -1,0 +1,95 @@
+//- Mixins de interfaz.
+//-
+//- Con utilidades, un componente no es un archivo de CSS: es un mixin. Aquí
+//- viven las piezas que se repiten con su marcado, sus clases y —lo que de
+//- verdad importa— el cableado de accesibilidad que las une. Un campo escrito a
+//- mano pierde el `aria-describedby` una vez de cada tres; llamado desde aquí,
+//- no puede perderlo.
+//-
+//- Nota de escritura: las clases van siempre en `class='…'`, nunca en la
+//- notación de puntos de Pug. `.md:flex` o `.w-1/2` no compilan, y `.mb-1.5` se
+//- lee como dos clases.
+
+//- Botón. `as: 'a'` lo convierte en enlace conservando la apariencia.
+mixin button(texto, o = {})
+    -
+        const variantes = {
+            primary: 'bg-brand text-ink-invert hover:bg-brand-strong',
+            secondary: 'bg-transparent text-ink border border-line hover:border-ink',
+            invert: 'bg-ink-invert text-ink hover:bg-white'
+        };
+        const clases = 'inline-flex items-center justify-center gap-2 rounded-field px-6 py-3 text-base font-semibold transition-colors disabled:pointer-events-none disabled:opacity-60 '
+            + (variantes[o.variant] || variantes.primary)
+            + (o.class ? ' ' + o.class : '');
+    if o.as === 'a'
+        a(class=clases, href=o.href)&attributes(attributes)= texto
+    else
+        button(class=clases, type=o.type || 'button')&attributes(attributes)
+            span= texto
+            //- El indicador de envío lo muestra `forms.js` quitando `hidden`.
+            svg(class='hidden size-5 animate-spin js-button-loader', viewBox='0 0 24 24', fill='none', aria-hidden='true')
+                circle(class='opacity-25', cx='12', cy='12', r='10', stroke='currentColor', stroke-width='3')
+                path(class='opacity-90', fill='currentColor', d='M12 2a10 10 0 0 1 10 10h-3a7 7 0 0 0-7-7V2Z')
+
+//- Campo de formulario completo: etiqueta, control, hueco del error y la
+//- relación entre los tres. Se llama con un objeto para que el orden no importe
+//- y para poder añadir opciones sin tocar las llamadas existentes.
+//-
+//-   +field({ id: 'email', label: 'Email', name: form.email.name, type: 'email' })
+//-   +field({ id: 'gender', label: 'Gender', name: form.gender.name, control: 'select', options: form.genderOptions })
+mixin field(o)
+    -
+        const errorId = o.id + '-error';
+        const control = 'w-full rounded-field border border-line bg-white px-3.5 py-2.5 text-base text-ink transition-colors placeholder:text-ink-soft focus-visible:border-brand aria-invalid:border-danger';
+    div(class=o.class)
+        label(class='mb-1.5 block text-sm font-medium', for=o.id)= o.label
+        if o.control === 'select'
+            select(
+                id=o.id,
+                name=o.name,
+                class=control,
+                required=o.required !== false,
+                aria-describedby=errorId
+                )&attributes(o.attrs || {})
+                option(value='', disabled, selected)= o.placeholder || 'Select'
+                each texto, valor in o.options
+                    option(value=valor)= texto
+        else
+            input(
+                id=o.id,
+                name=o.name,
+                type=o.type || 'text',
+                class=control + (o.filter ? ' ' + o.filter : ''),
+                required=o.required !== false,
+                autocomplete=o.autocomplete,
+                inputmode=o.inputmode,
+                minlength=o.minlength,
+                maxlength=o.maxlength,
+                placeholder=o.placeholder,
+                aria-describedby=errorId
+                )&attributes(o.attrs || {})
+        //- El hueco existe desde el principio y vacío: si el mensaje creara el
+        //- elemento al fallar, el formulario daría un salto al validarse.
+        p(id=errorId, class='mt-1.5 hidden text-sm text-danger', role='alert')
+
+//- Icono del sprite. El mixin antepone `icon-` al nombre, y el sprite toma el id
+//- de cada símbolo del nombre del archivo en `src/assets/icons/`. Con el archivo
+//- `icon-phone.svg` la llamada correcta es `+svgIcon('phone')`, que resuelve a
+//- `#icon-phone`. Pasar `'icon-phone'` genera `#icon-icon-phone`, una referencia
+//- rota que ningún linter detecta porque el atributo es dinámico: sólo se ve
+//- como un icono que no aparece.
+mixin svgIcon(icon, clase, hidden = 'true', title)
+    //- `width` y `height` en `em` reservan la caja del icono antes de que llegue
+    //- el CSS. Sin ellos un `svg` sin `viewBox` propio cae al tamaño por defecto
+    //- de un elemento reemplazado —300 × 150— o se estira en un contenedor
+    //- flexible, y el layout salta.
+    svg(
+        class=clase,
+        width='1em',
+        height='1em',
+        aria-hidden=hidden == 'true' ? 'true' : false,
+        role='img'
+        )
+        if title
+            title= title
+        use(href='/src/assets/images/sprite.svg#icon-' + icon)

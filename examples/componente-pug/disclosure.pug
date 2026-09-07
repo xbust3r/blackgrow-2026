@@ -1,0 +1,19 @@
+//- Componente interactivo. Las clases de presentación van en `class`; el hook
+//- de JavaScript es una clase `js-` aparte y no lleva apariencia, para que
+//- cambiar el diseño no rompa el comportamiento.
+//-
+//- El estado vive en atributos que ya significan algo —`aria-expanded`,
+//- `hidden`—, no en una clase inventada: así el lector de pantalla se entera al
+//- mismo tiempo que el CSS.
+section(class='py-12')
+    div(class='wrapper max-w-2xl')
+        div(class='rounded-card border border-line p-6 js-disclosure')
+            h2(class='text-h3 font-semibold') Información adicional
+            button(
+                class='mt-2 inline-flex items-center gap-2 font-semibold text-brand js-disclosure-trigger',
+                type='button',
+                aria-expanded='false',
+                aria-controls='disclosure-panel-example'
+                ) Mostrar información
+            div#disclosure-panel-example(class='mt-4 cms-content js-disclosure-panel', hidden)
+                p Contenido controlado por el botón.

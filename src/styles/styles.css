@@ -1,0 +1,262 @@
+@import url('tailwindcss');
+
+/* Tailwind detecta las plantillas por su cuenta, pero declararlo deja por
+   escrito qué cuenta como marcado: una clase escrita en un `.pug` existe, una
+   construida a trozos en JavaScript no. Si una clase tiene que aparecer desde
+   JavaScript, se escribe entera —`is-open`, no `'is-' + estado`—. */
+@source '../**/*.pug';
+@source '../**/*.js';
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TOKENS
+   Esto es el sistema de diseño entero. No hay más sitios donde mirar y no hay
+   más sitios donde escribir un color o una medida de marca.
+   ══════════════════════════════════════════════════════════════════════════ */
+@theme {
+    /* ── Color ──────────────────────────────────────────────────────────────
+       La paleta por defecto de Tailwind se borra a propósito. Si `bg-slate-800`
+       existe, alguien la va a usar, y a partir de ahí el diseño deja de estar
+       en un solo sitio. Lo que no esté declarado aquí no se puede escribir en
+       el marcado: la clase simplemente no se genera y se ve al instante.
+
+       Los nombres son de función, no de color. `--color-brand` puede volverse
+       naranja sin que haya que tocar una sola plantilla; `--color-verde` no. */
+    --color-*: initial;
+    --color-transparent: transparent;
+    --color-current: currentcolor;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-ink: #000; /* texto principal */
+    --color-ink-soft: #8b8686; /* texto secundario, pies, leyendas */
+    --color-ink-invert: #fafaf8; /* texto sobre fondo oscuro */
+    --color-surface: #fff; /* fondo de página */
+    --color-surface-alt: #f7f3f0; /* fondo de sección alterna */
+    --color-surface-dark: #10100f; /* fondo de sección oscura */
+    --color-line: #eae3de; /* bordes, separadores, campos en reposo */
+    --color-brand: #db915e;
+    --color-brand-strong: #db915e; /* hover y estados presionados */
+    --color-accent: #b1ceca;
+    --color-body: #6e6e6e;
+    --color-rating: #d9bf8d;
+    --color-danger: #b42318; /* errores de formulario */
+    --color-success: #067647;
+
+    /* ── Breakpoints ────────────────────────────────────────────────────────
+       Los de Tailwind también se borran: cuatro nombrados por su sitio en el
+       diseño evitan la discusión de si esto era `md` o `lg`. Mobile first, así
+       que todos son `min-width` y la base se escribe sin prefijo. */
+    --breakpoint-*: initial;
+    --breakpoint-mobile: 22.5rem; /* 360px */
+    --breakpoint-tablet: 43.75rem; /* 700px */
+    --breakpoint-desktop: 62.5rem; /* 1000px */
+    --breakpoint-wide: 75rem; /* 1200px */
+
+    /* ── Tipografía ─────────────────────────────────────────────────────────
+       La pila por defecto es del sistema para que el core arranque sin fuentes.
+       Al entregar el diseño se sustituye por su familia y se declara su
+       `@font-face` más abajo: `pnpm verify:render` falla si un token nombra una
+       familia que ningún `@font-face` sirve. */
+    --font-main: 'Jost', sans-serif;
+    --font-aux: ui-serif, georgia, serif;
+
+    /* Escala de titulares. Fluida por defecto: un valor que cambia de tamaño
+       entre breakpoints se resuelve con `clamp`, no con dos declaraciones. */
+    --text-h1: clamp(1.4375rem, 4vi, 2.875rem);
+    --text-h1--line-height: 1.1304;
+    --text-h1--letter-spacing: 0.1em;
+    --text-h2: 1.75rem;
+    --text-h2--line-height: 1.4286;
+    --text-h3: 1.5rem;
+    --text-h3--line-height: 1.3333;
+    --text-h4: 1.25rem;
+    --text-h4--line-height: 1.4;
+
+    /* ── Formas ─────────────────────────────────────────────────────────────── */
+    --aspect-hero: 1920 / 800;
+    --aspect-product: 220 / 198;
+    --tracking-heading: 0.1em;
+    --spacing-hero: 25rem;
+    --container-hero-copy: 38.25rem;
+    --radius-field: 0.5rem;
+    --radius-card: 1.25rem;
+    --shadow-card: 0 1px 2px rgb(16 16 15 / 6%), 0 8px 24px rgb(16 16 15 / 8%);
+}
+
+/* Medidas del contenedor. Fuera de `@theme` porque no son un token que genere
+   utilidades: son la configuración de la utilidad `wrapper` de más abajo. */
+:root {
+    --wrapper-max: 87.5rem;
+    --wrapper-pad: 1.25rem;
+}
+
+@media (width >= 43.75rem) {
+    :root {
+        --wrapper-pad: 1.25rem;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BASE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Las fuentes del diseño van aquí, una declaración por peso y estilo, con los
+   WOFF2 que genera `pnpm font:subset` a partir de los TTF de
+   `src/assets/fonts/`. Sin `unicode-range` y sin subconjuntos partidos por
+   rango: el recorte ya lo hizo el comando.
+
+@font-face {
+    font-family: 'Jost';
+    src: url('/src/assets/fonts/jost-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+*/
+
+@layer base {
+    html {
+        text-size-adjust: 100%;
+    }
+
+    body {
+        background-color: var(--color-surface);
+        color: var(--color-body);
+        font-size: 15px;
+        font-family: var(--font-main);
+        line-height: 1.4667;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Todo el documento hereda lo de arriba. Volver a escribir `color` o
+       `font-family` en una sección no cambia nada y esconde cuál es el valor de
+       verdad. */
+
+    /* El foco se ve siempre, y sólo cuando el navegador dice que hace falta. Es
+       la regla que más veces se pierde al pasar a utilidades, porque nadie
+       escribe `focus-visible:outline` elemento por elemento. */
+    :focus-visible {
+        outline: 2px solid var(--color-brand);
+        outline-offset: 2px;
+    }
+
+    /* Un elemento que recibe el foco por programa —el resumen de errores de un
+       formulario— no debe pintar el anillo. */
+    [tabindex='-1']:focus {
+        outline: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   UTILIDADES PROPIAS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* El contenedor de siempre. Existe como utilidad y no como cuatro clases
+   sueltas porque su ancho y su respiro son una decisión del proyecto, no de
+   cada sección: cambiarla en un sitio la cambia en todas. */
+@utility wrapper {
+    margin-inline: auto;
+    inline-size: 100%;
+    max-inline-size: var(--wrapper-max);
+    padding-inline: var(--wrapper-pad);
+}
+
+/* Oculta visualmente pero deja el texto para el lector de pantalla. Tailwind ya
+   trae `sr-only`; esto es el mismo patrón con nombre propio para cuando el
+   elemento debe recuperar la visibilidad al recibir el foco. */
+@utility skip-link {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: 50;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    transform: translateY(-100%);
+
+    /* `@utility` es una raíz de anidamiento válida; stylelint aún no la conoce. */
+    /* stylelint-disable-next-line nesting-selector-no-missing-scoping-root */
+    &:focus-visible {
+        transform: translateY(0);
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SCOPE
+   Contenido que llega ya escrito —de un CMS, de un texto legal— y al que no se
+   le pueden añadir clases. Es el único sitio donde se estila por etiqueta.
+   ══════════════════════════════════════════════════════════════════════════ */
+@layer components {
+    .cms-content {
+        :where(p, ul, ol) {
+            margin-block-end: 1em;
+        }
+
+        :where(h2, h3, h4) {
+            margin-block: 1.5em 0.5em;
+            font-weight: 600;
+            text-wrap: balance;
+        }
+
+        :where(ul, ol) {
+            padding-inline-start: 1.25em;
+            list-style: revert;
+        }
+
+        :where(a) {
+            color: var(--color-brand);
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+
+        :where(strong) {
+            font-weight: 600;
+        }
+
+        > :last-child {
+            margin-block-end: 0;
+        }
+    }
+}
+
+@font-face {
+    font-family: Jost;
+    src: url('/src/assets/fonts/jost-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url('/src/assets/fonts/jost-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url('/src/assets/fonts/jost-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url('/src/assets/fonts/jost-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}

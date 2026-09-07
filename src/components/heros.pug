@@ -1,0 +1,79 @@
+include media
+
+//- Fondos reales, copiados del demo de origen como marcador temporal de
+//- desarrollo (no son assets con licencia para el proyecto: ver
+//- docs/migracion/assets-pendientes.json). `photo_hero_2` y
+//- `photo_hero_2_button` comparten archivo porque ya lo compartían en el origen.
+-
+    var heroBackgrounds = {
+        'cloud-title': { src: '/src/assets/images/heros/cloud-title/background.webp', width: 1920, height: 800 },
+        'square': { src: '/src/assets/images/heros/square/background.webp', width: 1920, height: 800 },
+        'default': { src: '/src/assets/images/heros/default/background.webp', width: 1920, height: 800 },
+        'photo_hero': { src: '/src/assets/images/heros/photo-hero/background.webp', width: 1848, height: 760 },
+        'photo_hero_2': { src: '/src/assets/images/heros/photo-hero-2/background.webp', width: 1848, height: 760 },
+        'photo_hero_2_button': { src: '/src/assets/images/heros/photo-hero-2/background.webp', width: 1848, height: 760 },
+    };
+
+//- La imagen es decorativa: el texto que importa está en el `h1`/`h2` de al
+//- lado, no en la foto. `alt=''` es correcto, no un olvido.
+mixin heroBackgroundImage(kind, classes)
+    - var bg = heroBackgrounds[kind];
+    img(
+        class='absolute inset-0 object-cover ' + classes,
+        src=bg.src,
+        alt='',
+        width=bg.width,
+        height=bg.height,
+        fetchpriority=kind === 'cloud-title' ? 'high' : undefined,
+        loading=kind === 'cloud-title' ? undefined : 'lazy'
+        )
+
+//- Los heros de foto comparten caja y contenido; cada variante conserva su composición.
+mixin photoHero(kind, level = 'h2')
+    if kind === 'internal'
+        section(class='relative my-0 tablet:my-5')
+            picture
+                source(media='(min-width: 43.75rem)', srcset='/src/assets/images/heros/internal/internal-hero-desktop.webp', width='1920', height='320')
+                img(class='h-50 w-full object-cover tablet:h-auto', src='/src/assets/images/heros/internal/internal-hero-mobile.webp', width='400', height='200', alt='', fetchpriority='high')
+            div(class='absolute inset-0 flex items-center justify-center p-5')
+                #{level}(class='text-center text-h1 font-normal uppercase tracking-heading text-white') About Us
+    else
+        section(class='relative h-hero overflow-hidden tablet:m-5 tablet:aspect-hero tablet:h-auto')
+            +heroBackgroundImage(kind, 'size-full' + (kind === 'photo_hero' ? ' brightness-75' : ''))
+            div(class='absolute inset-0 flex items-center justify-center p-5')
+                div(class='w-full max-w-hero-copy text-center')
+                    if kind === 'photo_hero'
+                        #{level}(class='mb-5 text-h1 font-normal uppercase tracking-heading text-white') Find Everything for your baby
+                        p(class='hidden text-xl text-white tablet:block') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                    else
+                        p(class='mb-3 text-xs uppercase tracking-heading text-ink-soft') Find Everything for your baby
+                        #{level}(class='mb-5 text-h1 font-normal uppercase tracking-heading text-ink') The magic place of fun &amp; Game
+                        if kind === 'photo_hero_2_button'
+                            +shopButton('Shop Now')
+
+mixin framedHero(kind, level = 'h2')
+    section(class='wrapper py-5 tablet:pt-10')
+        div(class='relative h-hero overflow-hidden rounded-card tablet:aspect-hero tablet:h-auto')
+            +heroBackgroundImage(kind, 'size-full')
+            div(class='absolute inset-0 flex items-center justify-center p-5')
+                if kind === 'cloud-title'
+                    div(class='flex min-h-48 w-72 max-w-full items-center justify-center rounded-full bg-accent p-6')
+                        #{level}(class='text-center text-h2 font-normal text-white') Your Dream Nursery
+                else
+                    div(class='relative w-full max-w-lg rounded-card bg-white p-6 text-center' + (kind === 'default' ? ' tablet:ms-[30%]' : ''))
+                        if kind === 'default'
+                            //- Figura decorativa del origen, sin texto ni función: se
+                            //- mantiene fuera del flujo de lectura.
+                            img(class='absolute -start-10 -top-10 hidden w-28 tablet:block', src='/src/assets/images/heros/default/figure.webp', alt='', width='531', height='434', loading='lazy', aria-hidden='true')
+                        +heading('prueba de titulo', level, 'mb-3 text-xl tablet:text-h2')
+                        p(class=kind === 'default' ? 'mb-3 hidden text-lg tablet:block' : 'mb-3 text-base tablet:text-lg') prueba de parrafo un poco mas largo donde se puede ver que pasa con el texto
+                        +textLink('Shop Now')
+
+mixin featuredHero(level = 'h2')
+    section(class='mt-5 grid items-center bg-surface-alt tablet:grid-cols-2')
+        img(class='aspect-square w-full object-cover', src='/src/assets/images/heros/photo-hero-featured/background.webp', alt='', width='1100', height='1089', loading='lazy')
+        div(class='mx-auto max-w-lg p-5 text-center tablet:p-10')
+            img(class='mx-auto w-40', src='/src/assets/images/elements/arco-iris.svg', alt='', width='170', height='90', loading='lazy')
+            +heading('FIND THE BEST WAY TO OUR FINE STYILISH KIDS SHOPS', level, 'my-6')
+            p(class='my-5') Cursus mattis molestie a iaculis at erat pellentesque adipiscing isu faucibus vitae aliquet nec ullamcorper sit. Tempus quam pellentesque nec nam aliquam sem et tortor. Rutrum quisque non tellus orci ac auctor augue. Habitasseno platea dictumstono vestibum rho.
+            +shopButton('Read More')

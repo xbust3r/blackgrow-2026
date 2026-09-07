@@ -1,0 +1,65 @@
+extends ../layouts/main-template
+block vars
+    - var header = true;
+    - var footer = true;
+block title
+    title Components | Blackgrow
+block description
+    meta(name='description', content='Blackgrow migration component preview.')
+block content
+    include ../components/heros
+    h1(class='wrapper py-10 text-h1 text-ink') Components
+    each variant in ['cloud-title', 'internal', 'photo_hero_2_button', 'photo_hero', 'photo_hero_2', 'square', 'default', 'photo-hero-featured']
+        div(class='border-t border-line py-5')
+            h2(class='wrapper mb-5 text-base text-ink')= variant
+            if variant === 'photo-hero-featured'
+                +featuredHero('h3')
+            else if ['cloud-title', 'square', 'default'].includes(variant)
+                +framedHero(variant, 'h3')
+            else
+                +photoHero(variant, 'h3')
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') title-with-text
+        include ../components/title-with-text
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') text-with-image
+        include ../components/text-with-image
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') title-with-steps
+        include ../components/title-with-steps
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') breadcrumb
+        include ../components/breadcrumb
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') customers-reviews
+        include ../components/customers-reviews
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') gallery-six
+        include ../components/gallery-six
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') latests-articles-3
+        h2(class='sr-only') latests-articles-3
+        include ../components/latests-articles-3
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') newsletter-register
+        include ../components/newsletter-register
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') products-cards-4
+        h2(class='sr-only') products-cards-4
+        include ../components/products-cards-4
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') categories
+        include ../components/categories
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') 2-collections
+        include ../components/2-collections
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') content-product
+        - var productHeading = 'h2';
+        include ../components/content-product
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') shop-list
+        include ../components/shop-list
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') box-description
+        include ../components/box-description

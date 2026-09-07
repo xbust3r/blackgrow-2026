@@ -1,0 +1,37 @@
+mixin socialLink(name, icon)
+    a(class='inline-flex size-8 items-center justify-center text-brand', href='#')
+        +svgIcon(icon, 'size-4')
+        span(class='sr-only')= name
+header
+    div(class='hidden min-h-17 items-center justify-between gap-5 bg-surface-alt px-5 text-ink tablet:flex')
+        span(class='flex items-center gap-2 text-sm uppercase tracking-heading')
+            +svgIcon('mail', 'size-8 text-brand')
+            | Newsletter
+        nav(aria-label='Main navigation')
+            ul(class='flex flex-wrap gap-8 wide:gap-16')
+                each label in ['Home', 'About', 'Contact']
+                    li
+                        a(class='text-sm uppercase tracking-heading hover:text-brand', href='#')= label
+        div(class='flex items-center gap-1')
+            span(class='hidden items-center gap-2 text-sm uppercase tracking-heading desktop:flex')
+                +svgIcon('search', 'size-4 text-brand')
+                | Search
+            +socialLink('Facebook', 'facebook')
+            +socialLink('Instagram', 'instagram')
+            +socialLink('TikTok', 'tiktok')
+            +socialLink('Pinterest', 'pinterest')
+    div(class='flex min-h-16 items-center justify-between gap-5 border-b border-line px-5 tablet:hidden')
+        a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
+        a(class='text-accent', href='#', aria-label='Cart')
+            +svgIcon('cart', 'size-8')
+        button(class='js-menu-toggle inline-flex size-11 items-center justify-center text-ink', type='button', aria-expanded='false', aria-controls='mobile-navigation', aria-label='Open menu')
+            +svgIcon('menu', 'size-7')
+    div(id='mobile-navigation', class='js-mobile-menu fixed inset-0 z-50 overflow-y-auto bg-surface p-6', role='dialog', aria-modal='true', aria-label='Main navigation', hidden)
+        button(class='js-menu-close mb-10 flex min-h-11 items-center gap-2 text-ink', type='button')
+            +svgIcon('close', 'size-6')
+            | Close menu
+        nav(aria-label='Mobile navigation')
+            ul(class='space-y-6')
+                each label in ['Home', 'About', 'Info', 'Contact']
+                    li
+                        a(class='text-h2 uppercase tracking-heading text-ink hover:text-brand', href='#')= label

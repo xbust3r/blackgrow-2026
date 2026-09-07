@@ -1,0 +1,8 @@
+include config
+include ui
+
+section(class='py-16 desktop:py-24')
+    div(class='wrapper max-w-2xl text-center')
+        h1(class='text-h1 font-semibold text-balance') Thank you for contacting us
+        p(class='mt-4 text-lg text-ink-soft') A representative will be in contact with you shortly.
+        +button('Go to main site', { as: 'a', href: brand.url, class: 'mt-8' })

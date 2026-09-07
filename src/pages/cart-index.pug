@@ -1,0 +1,13 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+block title
+    title Wooden baby cribe | Blackgrow
+block description
+    meta(name='description', content='Wooden baby cribe — Blackgrow. Preview.')
+block content
+    include ../components/breadcrumb
+    include ../components/content-product
+    include ../components/box-description

@@ -1,0 +1,13 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+block title
+    title Shop | Blackgrow
+block description
+    meta(name='description', content='Shop — Blackgrow. Preview.')
+block content
+    h1(class='sr-only') Shop
+    include ../components/breadcrumb
+    include ../components/shop-list

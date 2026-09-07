@@ -1,0 +1,53 @@
+//- Configuración de la campaña.
+//-
+//- Es el único archivo que se toca al cambiar de marca, idioma o destino del
+//- formulario. Todo lo que dependa de la campaña —nombres, URLs, textos legales,
+//- nombres de campo— vive aquí y llega a los componentes por variable; nada de
+//- eso se escribe suelto en una plantilla.
+
+- var language = 'en-US';
+//- en-US | es-US
+
+- var pageTitle = 'Blackgrow';
+- var pageDescription = '';
+
+//- Destino real del formulario. Hasta que exista, se deja vacío y el envío no
+//- se simula: un `action` inventado parece implementado y no lo está.
+- var actionUrl = '';
+- var buttonText = 'Get a Free Quote';
+- var phone = '';
+
+-
+    var brand = {
+        name: 'Blackgrow',
+        legalName: 'Blackgrow, Inc.',
+        url: 'https://example.com/',
+        gtm: '',
+        privacyPolicy: 'https://example.com/privacy-policy/',
+        termsOfUse: 'https://example.com/terms-of-use/'
+    }
+
+//- Contrato del formulario: los nombres que espera quien recibe los datos. No
+//- se renombran sin confirmarlo con ese consumidor, aunque el diseño llame de
+//- otra forma a la etiqueta visible.
+-
+    var form = {
+        firstName: { name: 'first_name' },
+        lastName: { name: 'last_name' },
+        email: { name: 'email' },
+        phone: { name: 'phone' },
+        zipcode: { name: 'zipcode' },
+        gender: { name: 'gender' },
+        genderOptions: {
+            male: 'Male',
+            female: 'Female',
+            nonBinary: 'Non-binary'
+        }
+    }
+
+//- El texto de consentimiento lo redacta quien corresponda; aquí sólo se compone
+//- con los enlaces de la marca. No se inventa ni se traduce por cuenta propia.
+if language == 'en-US'
+    - var communicationConsent = 'By clicking “' + buttonText + '” I agree to the ' + brand.legalName + ' <a class="underline underline-offset-2" href="' + brand.privacyPolicy + '" target="_blank" rel="noopener">Privacy Policy</a> and <a class="underline underline-offset-2" href="' + brand.termsOfUse + '" target="_blank" rel="noopener">Terms of Use</a>.';
+else
+    - var communicationConsent = 'Al hacer clic en “' + buttonText + '” acepto la <a class="underline underline-offset-2" href="' + brand.privacyPolicy + '" target="_blank" rel="noopener">Política de Privacidad</a> y las <a class="underline underline-offset-2" href="' + brand.termsOfUse + '" target="_blank" rel="noopener">Condiciones de Uso</a>.';
