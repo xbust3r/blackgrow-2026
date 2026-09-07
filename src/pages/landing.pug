@@ -1,0 +1,20 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+
+block title
+    title Landing — Blackgrow Nursery Collection
+
+block description
+    meta(name='description', content='Welcome to Blackgrow. Handcrafted with organic materials designed for peaceful nursery spaces.')
+
+block content
+    include ../components/heros
+    +featuredHero('h1')
+    include ../components/text-with-image
+    include ../components/text-marquee
+    include ../components/icon-with-text
+    include ../components/gallery-six
+    include ../components/customers-reviews

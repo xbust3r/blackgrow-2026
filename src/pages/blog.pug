@@ -1,0 +1,15 @@
+extends ../layouts/main-template
+include ../components/blog-list-template
+
+block vars
+    - const header = true;
+    - const footer = true;
+
+block title
+    title Blog — Blackgrow
+
+block description
+    meta(name='description', content='Read our latest stories, parenting advice, and nursery styling guides.')
+
+block content
+    +blogListTemplate('right')

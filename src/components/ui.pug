@@ -54,6 +54,18 @@ mixin field(o)
                 option(value='', disabled, selected)= o.placeholder || 'Select'
                 each texto, valor in o.options
                     option(value=valor)= texto
+        else if o.control === 'textarea'
+            textarea(
+                id=o.id,
+                name=o.name,
+                class=control + (o.filter ? ' ' + o.filter : ''),
+                rows=o.rows || 4,
+                required=o.required !== false,
+                minlength=o.minlength,
+                maxlength=o.maxlength,
+                placeholder=o.placeholder,
+                aria-describedby=errorId
+                )&attributes(o.attrs || {})
         else
             input(
                 id=o.id,

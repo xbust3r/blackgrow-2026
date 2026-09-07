@@ -1,0 +1,18 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+
+block title
+    title Shop Grid — Blackgrow
+
+block description
+    meta(name='description', content='Browse our full catalog of organic baby products, nursery essentials, and handmade gifts.')
+
+block content
+    include ../components/heros
+    +framedHero('square', 'h1')
+    include ../components/shop-list
+    include ../components/2-collections
+    include ../components/newsletter-register

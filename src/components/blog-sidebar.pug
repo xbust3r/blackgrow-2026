@@ -1,0 +1,35 @@
+include ui
+
+mixin blogCategories()
+    div(class='rounded-card border border-line bg-white p-6')
+        h3(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Categories
+        ul(class='space-y-2.5 text-sm')
+            each cat in [{ name: 'Baby Gear', count: 8 }, { name: 'Eco Living', count: 12 }, { name: 'Nursery Design', count: 5 }, { name: 'Parenting Tips', count: 14 }, { name: 'Toys & Play', count: 7 }]
+                li
+                    a(class='flex items-center justify-between text-ink-soft transition-colors hover:text-brand', href='#')
+                        span= cat.name
+                        span(class='rounded-full bg-surface-alt px-2 py-0.5 text-xs text-ink')= cat.count
+
+mixin blogRecentPosts()
+    div(class='rounded-card border border-line bg-white p-6')
+        h3(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Recent Posts
+        ul(class='space-y-4 text-sm')
+            each post in [{ title: 'Best Organic Mattresses for Cribs', date: 'May 10, 2026' }, { title: 'How to Build a Montessori Space', date: 'May 05, 2026' }, { title: 'Eco-Friendly Playroom Storage Ideas', date: 'Apr 28, 2026' }]
+                li
+                    a(class='group block', href='#')
+                        h4(class='font-medium text-ink transition-colors group-hover:text-brand')= post.title
+                        time(class='mt-1 block text-xs text-ink-soft')= post.date
+
+mixin blogSocial()
+    div(class='rounded-card border border-line bg-white p-6')
+        h3(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Follow Us
+        div(class='flex gap-3 text-ink')
+            each social in [{ icon: 'facebook', label: 'Facebook' }, { icon: 'instagram', label: 'Instagram' }, { icon: 'tiktok', label: 'TikTok' }, { icon: 'pinterest', label: 'Pinterest' }]
+                a(class='flex size-10 items-center justify-center rounded-full border border-line bg-surface-alt text-ink transition-colors hover:border-brand hover:text-brand', href='#', aria-label=social.label)
+                    +svgIcon(social.icon, 'size-5')
+
+mixin blogSidebar()
+    aside(class='space-y-8', aria-label='Blog Sidebar')
+        +blogCategories()
+        +blogRecentPosts()
+        +blogSocial()

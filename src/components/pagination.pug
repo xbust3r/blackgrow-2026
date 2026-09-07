@@ -1,0 +1,26 @@
+mixin pagination(current = 1, total = 3)
+    nav(class='flex items-center justify-center gap-2 py-8', aria-label='Blog Pagination')
+        a(
+            class='flex size-10 items-center justify-center rounded-field border border-line text-sm font-medium transition-colors hover:border-brand hover:text-brand disabled:pointer-events-none disabled:opacity-40',
+            href='#',
+            aria-label='Previous page'
+        )
+            span(aria-hidden='true') ←
+        each pageNum in [1, 2, 3]
+            if pageNum === current
+                span(
+                    class='flex size-10 items-center justify-center rounded-field border border-brand bg-brand text-sm font-medium text-white',
+                    aria-current='page'
+                )= pageNum
+            else
+                a(
+                    class='flex size-10 items-center justify-center rounded-field border border-line text-sm font-medium text-ink transition-colors hover:border-brand hover:text-brand',
+                    href='#',
+                    aria-label='Page ' + pageNum
+                )= pageNum
+        a(
+            class='flex size-10 items-center justify-center rounded-field border border-line text-sm font-medium transition-colors hover:border-brand hover:text-brand',
+            href='#',
+            aria-label='Next page'
+        )
+            span(aria-hidden='true') →

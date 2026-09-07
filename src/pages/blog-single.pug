@@ -1,0 +1,53 @@
+extends ../layouts/main-template
+
+block vars
+    - const header = true;
+    - const footer = true;
+
+block title
+    title Sustainable Nursery Essentials for Growing Families — Blackgrow Blog
+
+block description
+    meta(name='description', content='Discover eco-friendly materials and thoughtful design choices that make parenting simpler and spaces cozier.')
+
+block content
+    article(class='py-12 tablet:py-16')
+        div(class='wrapper max-w-4xl')
+            header(class='mb-8 text-center')
+                div(class='mb-3 flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-heading text-ink-soft')
+                    a(class='text-brand hover:underline', href='/blog') Nursery
+                    span(aria-hidden='true') •
+                    time(datetime='2026-05-12') May 12, 2026
+                    span(aria-hidden='true') •
+                    span By Emily Miller
+                h1(class='text-h1 font-medium text-ink') Sustainable Nursery Essentials for Growing Families
+
+            div(class='mb-10 overflow-hidden rounded-card border border-line bg-surface-alt')
+                img(class='aspect-16/9 w-full object-cover', src='/src/assets/images/blog/article-a.webp', alt='Modern wooden crib in a minimalist nursery', width='1300', height='1007', loading='eager')
+
+            div(class='cms-content text-base leading-relaxed text-body')
+                p When preparing a nursery, it is easy to become overwhelmed by countless gadgets and transient trends. However, creating a calming, clutter-free environment begins with mindful curation and durable natural materials.
+                p Prioritizing solid certified woods, non-toxic water-based finishes, and breathable organic textiles ensures that the room remains safe for newborn exploration while maintaining longevity.
+
+                blockquote(class='my-8 rounded-card border-l-4 border-brand bg-surface-alt p-6 italic text-ink tablet:p-8')
+                    p “A prepared environment allows the child to develop independence and tranquility from their earliest moments.”
+                    cite(class='mt-3 block text-sm font-medium not-italic text-brand') — Maria Montessori
+
+                h2 Essentials That Grow Over Time
+                p Invest in convertible furniture pieces that transition smoothly from crib to toddler bed, and changing tables that become functional bedroom dressers later on. By designing with multi-stage adaptability, you reduce environmental impact and cultivate a timeless family haven.
+
+                p Choose natural textures such as handwoven baskets, wool rugs, and linen curtains that introduce tactile warmth without unnecessary visual distraction.
+
+            div(class='mt-10 flex flex-wrap items-center justify-between gap-4 border-y border-line py-4 text-xs uppercase tracking-heading text-ink-soft')
+                div(class='flex items-center gap-2')
+                    span Tags:
+                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='#') Nursery
+                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='#') Eco Living
+                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='#') Organic
+                div(class='flex items-center gap-3')
+                    span Share:
+                    a(class='text-ink hover:text-brand', href='#', aria-label='Share on Facebook') FB
+                    a(class='text-ink hover:text-brand', href='#', aria-label='Share on Pinterest') PIN
+
+            include ../components/comment-list
+            include ../components/comment-form

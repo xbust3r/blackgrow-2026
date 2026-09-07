@@ -1,0 +1,9 @@
+include config
+include ui
+
+form(class='js-form space-y-4', action=actionUrl, method='post', novalidate)
+    +field({ id: 'contact-name', label: 'Your Name *', name: form.firstName.name, required: true, placeholder: 'Your Name' })
+    +field({ id: 'contact-email', label: 'Your Email *', name: form.email.name, type: 'email', required: true, placeholder: 'Your Email' })
+    +field({ id: 'contact-phone', label: 'Phone Number', name: form.phone.name, type: 'tel', filter: 'js-only-phone', required: false, placeholder: 'Your Phone Number' })
+    +field({ id: 'contact-message', label: 'Your Message *', name: 'message', control: 'textarea', rows: 5, required: true, placeholder: 'Write your message here...' })
+    +button('Send Message', { type: 'submit', class: 'w-full tablet:w-auto' })

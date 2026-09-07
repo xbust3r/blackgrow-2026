@@ -1,0 +1,18 @@
+include config
+include ui
+
+section(class='mt-12 rounded-card border border-line bg-white p-6 tablet:p-10', aria-label='Leave a Comment')
+    h3(class='mb-2 text-h3 font-medium text-ink') Leave a Comment
+    p(class='mb-6 text-sm text-ink-soft') Your email address will not be published. Required fields are marked *
+
+    form(class='js-form space-y-4', action=actionUrl, method='post', novalidate)
+        +field({ id: 'comment-message', label: 'Comment *', name: 'comment', control: 'textarea', rows: 5, required: true, placeholder: 'Write your comment here...' })
+        div(class='grid gap-4 tablet:grid-cols-3')
+            +field({ id: 'comment-author', label: 'Name *', name: form.firstName.name, required: true, placeholder: 'Your Name' })
+            +field({ id: 'comment-email', label: 'Email *', name: form.email.name, type: 'email', required: true, placeholder: 'Your Email' })
+            +field({ id: 'comment-website', label: 'Website', name: 'website', type: 'url', required: false, placeholder: 'https://example.com' })
+        div(class='flex items-start gap-2.5 pt-2')
+            input(id='comment-consent', class='mt-1 rounded border-line text-brand focus-visible:ring-brand', type='checkbox', name='consent', required)
+            label(class='text-xs text-ink-soft', for='comment-consent') Save my name, email, and website in this browser for the next time I comment.
+        div(class='pt-2')
+            +button('Post Comment', { type: 'submit', class: 'w-full tablet:w-auto' })

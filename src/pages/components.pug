@@ -63,3 +63,48 @@ block content
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') box-description
         include ../components/box-description
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') icon-with-text
+        include ../components/icon-with-text
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') text-marquee
+        include ../components/text-marquee
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') interactive-link-showcase
+        include ../components/interactive-link-showcase
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') contact-form
+        div(class='wrapper max-w-xl')
+            include ../components/contact-form
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') google-map
+        div(class='wrapper')
+            include ../components/google-map
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') blog-card (formats)
+        include ../components/blog-card
+        div(class='wrapper grid gap-6 tablet:grid-cols-2 desktop:grid-cols-3')
+            +blogCard({ format: 'standard', title: 'Standard Article Card' })
+            +blogCard({ format: 'quote', quote: 'Simplicity and safety are at the heart of conscious parenting.', quoteAuthor: 'Maria Montessori' })
+            +blogCard({ format: 'link', linkText: 'Explore Certified Organic GOTS Cotton Standards', linkUrl: '#' })
+            +blogCard({ format: 'gallery', title: 'Gallery Format Article' })
+            +blogCard({ format: 'audio', title: 'Audio Format Article' })
+            +blogCard({ format: 'video', title: 'Video Format Article' })
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') blog-sidebar
+        include ../components/blog-sidebar
+        div(class='wrapper max-w-sm')
+            +blogSidebar()
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') pagination
+        include ../components/pagination
+        +pagination(2, 3)
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') comment-list
+        div(class='wrapper max-w-3xl')
+            include ../components/comment-list
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') comment-form
+        div(class='wrapper max-w-3xl')
+            include ../components/comment-form
+

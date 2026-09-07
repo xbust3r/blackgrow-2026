@@ -1,0 +1,61 @@
+include ui
+
+mixin blogCard(post = {})
+    -
+        const format = post.format || 'standard';
+        const title = post.title || 'Sustainable Nursery Essentials for Growing Families';
+        const date = post.date || 'May 12, 2026';
+        const dateIso = post.dateIso || '2026-05-12';
+        const author = post.author || 'Admin';
+        const category = post.category || 'Nursery';
+        const excerpt = post.excerpt || 'Discover eco-friendly materials and thoughtful design choices that make parenting simpler and spaces cozier.';
+        const href = post.href || '/blog-single';
+
+    article(class='overflow-hidden rounded-card border border-line bg-white transition-colors hover:border-brand')
+        if format === 'quote'
+            div(class='bg-surface-alt p-6 tablet:p-8')
+                blockquote(class='text-lg italic text-ink')
+                    p= '“' + (post.quote || 'Simplicity and safety are at the heart of conscious parenting.') + '”'
+                    cite(class='mt-4 block text-sm font-medium not-italic text-brand')= '— ' + (post.quoteAuthor || author)
+        else if format === 'link'
+            div(class='bg-surface-alt p-6 tablet:p-8')
+                p(class='text-xs uppercase tracking-heading text-brand') External Link
+                h4(class='mt-2 text-h3 font-medium text-ink')
+                    a(class='hover:text-brand', href=post.linkUrl || '#', target='_blank', rel='noopener')= post.linkText || title
+        else if format === 'gallery'
+            div(class='grid grid-cols-2 gap-1 bg-surface-alt')
+                img(class='aspect-square w-full object-cover', src=post.image || '/src/assets/images/blog/article-a.webp', alt='', width='1300', height='1007', loading='lazy')
+                img(class='aspect-square w-full object-cover', src=post.imageB || '/src/assets/images/blog/article-b.webp', alt='', width='1024', height='1024', loading='lazy')
+        else if format === 'audio'
+            div(class='bg-surface-alt p-6')
+                audio(class='w-full', controls)
+                    source(src=post.audioSrc || '#', type='audio/mpeg')
+                    p Your browser does not support the audio element.
+        else if format === 'video'
+            div(class='aspect-video w-full bg-surface-dark')
+                div(class='flex h-full w-full items-center justify-center text-white')
+                    span(class='text-sm uppercase tracking-heading') Video Post
+        else
+            -
+                const imgWidth = post.width || (post.image && post.image.includes('article-b') ? 1024 : 1300);
+                const imgHeight = post.height || (post.image && post.image.includes('article-b') ? 1024 : 1007);
+            div(class='relative aspect-16/10 overflow-hidden bg-surface-alt')
+                img(class='h-full w-full object-cover transition-transform duration-300 hover:scale-105', src=post.image || '/src/assets/images/blog/article-a.webp', alt='', width=imgWidth, height=imgHeight, loading='lazy')
+
+        div(class='p-6 tablet:p-8')
+            div(class='mb-3 flex flex-wrap items-center gap-3 text-xs uppercase tracking-heading text-ink-soft')
+                a(class='text-brand hover:underline', href='#')= category
+                span(aria-hidden='true') •
+                time(datetime=dateIso)= date
+                span(aria-hidden='true') •
+                span= 'By ' + author
+
+            h3(class='text-h3 font-medium text-ink')
+                a(class='hover:text-brand', href=href)= title
+
+            p(class='mt-3 text-base text-ink-soft')= excerpt
+
+            div(class='mt-6')
+                a(class='inline-flex items-center gap-2 text-sm font-medium uppercase tracking-heading text-brand hover:underline', href=href)
+                    span Read More
+                    span(aria-hidden='true') →

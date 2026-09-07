@@ -191,6 +191,23 @@
     }
 }
 
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@utility marquee-track {
+    display: flex;
+    inline-size: max-content;
+    will-change: transform;
+    animation: marquee 25s linear infinite;
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    SCOPE
    Contenido que llega ya escrito —de un CMS, de un texto legal— y al que no se

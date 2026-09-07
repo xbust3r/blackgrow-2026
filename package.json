@@ -17,7 +17,7 @@
         "optimize": "node plugins/convertWebp.js",
         "prebuild": "npm-run-all optimize --parallel lint validate",
         "build": "vite build",
-        "postbuild": "pnpm verify:render",
+        "postbuild": "node plugins/verify-render.js",
         "preview": "vite preview",
         "prepare": "husky"
     },

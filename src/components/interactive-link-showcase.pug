@@ -1,0 +1,28 @@
+include media
+
+-
+    var showcaseCategories = [
+        { label: 'Baby Clothes', count: '18 products', image: '/src/assets/images/collections/collection-1.webp', width: 800, height: 1100 },
+        { label: 'Handmade Toys', count: '24 products', image: '/src/assets/images/collections/collection-2.webp', width: 800, height: 1100 },
+        { label: 'Nursery Decor', count: '12 products', image: '/src/assets/images/content/text-with-image.webp', width: 890, height: 649 }
+    ]
+
+section(class='js-link-showcase py-12 tablet:py-20', aria-label='Category Showcase')
+    div(class='wrapper grid items-center gap-8 tablet:grid-cols-2')
+        ul(class='space-y-4')
+            each cat, index in showcaseCategories
+                li
+                    a(class='group flex items-baseline justify-between border-b border-line pb-4 transition-colors hover:border-brand', href='#', data-showcase-index=index)
+                        span(class='text-h2 font-medium text-ink transition-colors group-hover:text-brand')= cat.label
+                        span(class='text-sm text-ink-soft')= cat.count
+        div(class='relative aspect-square overflow-hidden rounded-card border border-line bg-surface-alt')
+            each cat, index in showcaseCategories
+                img(
+                    class='absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ' + (index === 0 ? 'opacity-100 js-showcase-active' : 'opacity-0'),
+                    src=cat.image,
+                    alt=cat.label,
+                    width=cat.width,
+                    height=cat.height,
+                    loading='lazy',
+                    data-showcase-target=index
+                )

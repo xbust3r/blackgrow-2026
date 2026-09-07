@@ -1,0 +1,19 @@
+extends ../layouts/main-template
+
+block vars
+    - var header = true;
+    - var footer = true;
+
+block title
+    title Baby Shop — Blackgrow
+
+block description
+    meta(name='description', content='Discover our sustainable collection of organic essentials, toys, and nursery decor at Baby Shop.')
+
+block content
+    include ../components/heros
+    +photoHero('photo_hero_2_button', 'h1')
+    include ../components/text-marquee
+    include ../components/interactive-link-showcase
+    include ../components/products-cards-4
+    include ../components/gallery-six

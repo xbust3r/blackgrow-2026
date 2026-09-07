@@ -1,0 +1,44 @@
+extends ../layouts/main-template
+
+block vars
+    - const header = true;
+    - const footer = true;
+
+block title
+    title Contact Us — Blackgrow
+
+block description
+    meta(name='description', content='Get in touch with the Blackgrow nursery team. We are here to answer questions about orders, products, and baby gear.')
+
+block content
+    section(class='py-12 tablet:py-16')
+        div(class='wrapper')
+            header(class='mb-12 text-center')
+                h1(class='text-h1 font-normal uppercase tracking-heading text-ink') Contact Us
+                p(class='mx-auto mt-3 max-w-xl text-base text-ink-soft') We would love to hear from you. Please fill out the form below or visit our flagship studio in New York.
+
+            div(class='grid gap-12 desktop:grid-cols-[1fr_2fr]')
+                div(class='space-y-6 rounded-card border border-line bg-surface-alt p-6 tablet:p-8')
+                    h2(class='text-h3 font-medium text-ink') Store Information
+                    p(class='text-sm leading-relaxed text-ink-soft') For customer care, bulk orders, or product advice, reach out to our team directly.
+
+                    div(class='space-y-4 border-t border-line pt-6 text-sm')
+                        div
+                            h3(class='font-semibold uppercase tracking-heading text-ink') Address
+                            p(class='mt-1 text-ink-soft') 123 Nursery Boulevard, Suite 400, New York, NY 10001
+                        div
+                            h3(class='font-semibold uppercase tracking-heading text-ink') Phone
+                            p(class='mt-1 text-ink-soft') +1 (555) 234-5678
+                        div
+                            h3(class='font-semibold uppercase tracking-heading text-ink') Email
+                            p(class='mt-1 text-ink-soft') support@example.com
+                        div
+                            h3(class='font-semibold uppercase tracking-heading text-ink') Hours
+                            p(class='mt-1 text-ink-soft') Mon – Fri: 9:00 AM – 6:00 PM EST
+
+                div(class='rounded-card border border-line bg-white p-6 tablet:p-8')
+                    h2(class='mb-6 text-h3 font-medium text-ink') Send Us a Message
+                    include ../components/contact-form
+
+            div(class='mt-16')
+                include ../components/google-map
