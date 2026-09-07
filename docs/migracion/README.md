@@ -11,6 +11,10 @@ sin volver a decidir lo que ya está decidido.
   para lo que el sitio tiene que *hacer* la referencia es
   <https://playgrow.qodeinteractive.com/>. Se ejecuta con
   `pnpm validate:origen`.
+- **[origen-componentes.md](./origen-componentes.md)** — el tema **entero**
+  explorado (23 páginas), comparado contra lo que hay en el proyecto. El clon
+  local era un subconjunto pequeño; aquí está lo que falta, empezando por el
+  blog.
 
 Se lee esta guía entera antes de tocar la primera tarea. Después,
 [`AGENTS.md`](../../AGENTS.md) y la [tarjeta de decisión](../tarjeta-de-decision.md)

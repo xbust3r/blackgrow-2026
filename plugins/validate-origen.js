@@ -91,6 +91,7 @@ const SIMBOLO = {
     mejorado: pc.green('★'),
     pendiente: pc.yellow('○'),
     'requiere-backend': pc.blue('◑'),
+    'otra-fase': pc.blue('◑'),
     descartado: pc.dim('–'),
 };
 
@@ -127,13 +128,20 @@ const total = manifiesto.comportamientos.length;
 const listos = cuenta('hecho') + cuenta('mejorado');
 
 console.log('\n' + pc.gray('------------------------------------------------'));
+const fuera = cuenta('otra-fase') + cuenta('requiere-backend') + cuenta('descartado');
+
 console.log(
     `${pc.green(listos + ' listos')}  ·  ${pc.yellow(cuenta('pendiente') + ' pendientes')}  ·  `
-    + `${pc.blue(cuenta('requiere-backend') + ' dependen de backend')}  ·  ${total} en total`,
+    + `${pc.blue(cuenta('otra-fase') + cuenta('requiere-backend') + ' en otra fase')}  ·  `
+    + `${pc.dim(cuenta('descartado') + ' descartados')}  ·  ${total} en total`,
 );
 
-const porcentaje = Math.round((listos / total) * 100);
-console.log(pc.dim(`Cobertura de comportamiento frente al origen: ${porcentaje}%`));
+// El porcentaje se mide contra lo que este proyecto sí quiere hacer: contar
+// contra el total castigaría por decisiones deliberadas —no queremos sliders—
+// y daría una cifra que no significa nada.
+const enAlcance = total - fuera;
+const porcentaje = Math.round((listos / enAlcance) * 100);
+console.log(pc.dim(`Cobertura dentro del alcance actual: ${porcentaje}% (${listos}/${enAlcance})`));
 
 if (regresiones.length) {
     console.log('\n' + pc.red(pc.bold(`${regresiones.length} regresión(es): algo declarado como hecho ya no lo está.`)));
