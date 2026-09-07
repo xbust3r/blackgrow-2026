@@ -1,7 +1,7 @@
 ---
 tipo: TASK
 id: TASK-001
-titulo: Fase de comportamientos — los 13 módulos de JavaScript pendientes
+titulo: Fase de comportamientos — los módulos de JavaScript pendientes
 de: claude
 para: antigravity
 cc: [codex]
@@ -9,7 +9,7 @@ prioridad: P0
 estado: ABIERTA
 area: scripts
 criticidad: "🟡"
-relacionado: [origen-comportamientos.json, playgrow-origen.md]
+relacionado: [origen-comportamientos.json, playgrow-origen.md, TASK-002, TASK-003]
 creado: 2026-09-07
 actualizado: 2026-09-07
 ---
@@ -26,12 +26,11 @@ La referencia de comportamiento **no es el código del origen, es el origen serv
 
 ## Pedido
 
-Implementar los 13 comportamientos pendientes. Son **9 archivos nuevos** en `src/scripts/components/`, porque `lightbox.js` cubre dos:
+Implementar los comportamientos pendientes. Son **8 archivos nuevos** en `src/scripts/components/`, porque `lightbox.js` cubre dos:
 
 | Archivo | Hook | Comportamiento |
 | --- | --- | --- |
 | `sticky-header.js` | `js-sticky-header` | Cabecera que entra deslizándose al bajar |
-| `search.js` | `js-search-toggle` | Buscador que cubre la cabecera |
 | `subscribe-popup.js` | `js-subscribe-popup` | Modal de newsletter |
 | `back-to-top.js` | `js-back-to-top` | Volver arriba con desplazamiento suave |
 | `reveal.js` | `js-reveal` | Aparición al hacer scroll |
@@ -54,7 +53,7 @@ Y tres pendientes que **no llevan módulo**:
 
 - **`src/scripts/components/go-to-element.js`** — está sin usar y el propio catálogo apunta que probablemente sirve tal cual para `back-to-top`. Mirarlo antes de escribir nada.
 - **`src/tools/slide-toggle.js`** — sin ningún import. Candidato si algún panel lo necesita.
-- **`src/tools/trap-focus.js`** — sí se usa, desde `menu.js`. Es lo que van a necesitar `search.js`, `subscribe-popup.js` y `lightbox.js`.
+- **`src/tools/trap-focus.js`** — sí se usa, desde `menu.js`. Es lo que van a necesitar `subscribe-popup.js` y `lightbox.js` — y `search.js`, en TASK-002.
 
 ### Un cabo suelto que hay que decidir
 
@@ -63,21 +62,21 @@ Y tres pendientes que **no llevan módulo**:
 ### Orden sugerido
 
 1. **Bloque global** — `back-to-top`, `sticky-header`, `reveal`. Tocan las 22 páginas.
-2. **Cabecera** — `search`, `subscribe-popup`.
+2. **Cabecera** — `subscribe-popup`.
 3. **Ficha de producto** — `product-gallery`, `quantity`, `tabs`, `lightbox`.
 
 No es obligatorio; si Codex propone otro orden en el hilo, se discute ahí.
 
 ## Criterios de aceptación
 
-- [ ] Los 9 módulos escritos, con su hook en el Pug y su `import` en `main.js`
+- [ ] Los 8 módulos escritos, con su hook en el Pug y su `import` en `main.js`
 - [ ] `jump-animation` resuelto en CSS, sin JavaScript
 - [ ] Clases para múltiples instancias con estado; objetos literales para controladores únicos
 - [ ] Las clases que JavaScript añade o quita, **escritas enteras** en el código (`'hidden'`), nunca compuestas a trozos — Tailwind lee el fuente como texto
 - [ ] El estado en atributos que ya significan algo: `aria-expanded`, `hidden`, `aria-invalid`. Nada de clases de estado inventadas
 - [ ] Las clases `js-` **no llevan apariencia**
 - [ ] `prefers-reduced-motion` respetado en `reveal` y en cualquier animación
-- [ ] Foco atrapado y cierre con `Escape` en `search`, `subscribe-popup` y `lightbox` — el origen **no** los tiene y copiarlo fiel sería un error
+- [ ] Foco atrapado y cierre con `Escape` en `subscribe-popup` y `lightbox` — el origen **no** los tiene y copiarlo fiel sería un error
 - [ ] `tabs` con el patrón ARIA completo: `role=tablist/tab/tabpanel` y flechas del teclado
 - [ ] Cada pieza sigue siendo utilizable si su módulo no carga
 - [ ] Comprobado servido a 375px y en escritorio
@@ -89,9 +88,12 @@ No es obligatorio; si Codex propone otro orden en el hilo, se discute ahí.
 ## Fuera de alcance
 
 - Todo lo `otra-fase`: `cart-side-area` (el módulo; el marcado ya está), `shop-sorting`, `shop-pagination`, `ajax-add-to-cart`, `cart-page`. Dependen de una tienda real.
-- Los `descartado`: `hero-slider`, `product-carousel`, `parallax-cursor`.
+- Los `descartado`: `hero-slider` y `parallax-cursor`.
+- `search-overlay` → [TASK-002](TASK-002-buscador-pantalla-completa.md). `product-carousel` → [TASK-003](TASK-003-carrusel-de-categorias.md), tras DECISION-002.
 - Añadir dependencias. Si algún comportamiento parece necesitar una, se abre un RFC antes de instalarla.
 
 ## 💬 Hilo
 
 > **[2026-09-07 00:00] claude:** creo la TASK como primer mensaje del canal. P0 porque es la fase que sigue al maquetado, y 🟡 porque toca mixins compartidos y `main.js`, pero no `@theme` ni `config.pug`. Si algún módulo necesitara un token nuevo, eso sí es 🔴 y va por RFC aparte: se declara en el hilo antes de tocarlo.
+>
+> **[2026-09-07 00:00] claude:** **`search-overlay` sale de esta TASK** y pasa a [TASK-002](TASK-002-buscador-pantalla-completa.md): Miguel cambió su especificación —pantalla completa en vez de sólo la cabecera— y deja de ser una migración fiel. Quedan 8 módulos aquí. El carrusel de categorías de [TASK-003](TASK-003-carrusel-de-categorias.md) tampoco entra: es otra pieza, nacida de DECISION-002.

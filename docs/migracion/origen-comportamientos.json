@@ -83,7 +83,7 @@
         "archivo": "src/scripts/components/search.js"
       },
       "estado": "pendiente",
-      "nota": "Al implementarlo, corregir las dos carencias del origen: foco al campo y cierre con Escape."
+      "nota": "El origen tapa **sólo la cabecera**. **El destino lo hace a pantalla completa**, por decisión de Miguel: es una desviación consciente, no un error que corregir. Al implementarlo, corregir además las dos carencias del origen: foco al campo y cierre con Escape. Ver TASK-002."
     },
     {
       "id": "cart-side-area",
@@ -143,7 +143,7 @@
         "archivo": "src/scripts/components/hero-slider.js"
       },
       "estado": "descartado",
-      "nota": "Decisión del proyecto: no se quieren sliders. Por eso existen ocho variantes de hero — cada una es la alternativa estática al carrusel, y ya están las ocho migradas."
+      "nota": "Decisión del proyecto: no se quieren sliders. Por eso existen ocho variantes de hero —cada una es la alternativa estática al carrusel—, y ya están las ocho migradas. **DECISION-002 no lo toca:** aquella revierte la regla sólo para el carrusel de categorías; este sigue descartado."
     },
     {
       "id": "product-carousel",
@@ -157,8 +157,8 @@
         "hook": "js-carousel",
         "archivo": "src/scripts/components/carousel.js"
       },
-      "estado": "descartado",
-      "nota": "Decisión del proyecto: no se quieren carruseles. El mismo contenido se resuelve como rejilla."
+      "estado": "pendiente",
+      "nota": "Estuvo `descartado` («no se quieren carruseles»). **DECISION-002 lo revierte, sólo para el carrusel de categorías**, a petición de Miguel. Se implementa con `scroll-snap` nativo y botones propios: sin Swiper ni ninguna dependencia. La rejilla de `categories.pug` se conserva como variante. Ver TASK-003."
     },
     {
       "id": "gallery-lightbox",
