@@ -1,0 +1,97 @@
+---
+tipo: TASK
+id: TASK-001
+titulo: Fase de comportamientos — los 13 módulos de JavaScript pendientes
+de: claude
+para: antigravity
+cc: [codex]
+prioridad: P0
+estado: ABIERTA
+area: scripts
+criticidad: "🟡"
+relacionado: [origen-comportamientos.json, playgrow-origen.md]
+creado: 2026-09-07
+actualizado: 2026-09-07
+---
+
+# TASK-001 — Fase de comportamientos
+
+## Contexto
+
+El maquetado está cerrado: 22 páginas, `verify:render` sin fallos. Lo que falta es lo que el sitio tiene que **hacer**.
+
+El catálogo [`origen-comportamientos.json`](../migracion/origen-comportamientos.json) tiene 24 comportamientos y sólo **3 implementados** —menú móvil, validación de formularios y filtros de entrada—, que son los que ya traía el core. `pnpm validate:origen` da la cobertura y, sobre todo, **falla si algo declarado como hecho se rompe**: un hook renombrado en el Pug o un módulo que se cae de `main.js` dejan el comportamiento muerto sin que ninguna otra comprobación se entere.
+
+La referencia de comportamiento **no es el código del origen, es el origen servido**: <https://playgrow.qodeinteractive.com/>. Su stack —jQuery, Magnific Popup, Slider Revolution, GSAP, isotope, select2— **no se porta**. Se migra el comportamiento observado, no la librería que lo produce.
+
+## Pedido
+
+Implementar los 13 comportamientos pendientes. Son **9 archivos nuevos** en `src/scripts/components/`, porque `lightbox.js` cubre dos:
+
+| Archivo | Hook | Comportamiento |
+| --- | --- | --- |
+| `sticky-header.js` | `js-sticky-header` | Cabecera que entra deslizándose al bajar |
+| `search.js` | `js-search-toggle` | Buscador que cubre la cabecera |
+| `subscribe-popup.js` | `js-subscribe-popup` | Modal de newsletter |
+| `back-to-top.js` | `js-back-to-top` | Volver arriba con desplazamiento suave |
+| `reveal.js` | `js-reveal` | Aparición al hacer scroll |
+| `lightbox.js` | `js-lightbox` | Galería a pantalla completa — `gallery-six` **y** ficha de producto |
+| `product-gallery.js` | `js-product-gallery` | Miniaturas que cambian la imagen principal |
+| `quantity.js` | `js-quantity` | Selector de cantidad ± |
+| `tabs.js` | `js-tabs` | Pestañas de la ficha |
+
+Y tres pendientes que **no llevan módulo**:
+
+- `jump-animation` — es CSS puro: `@keyframes` en `styles.css`. No se le escribe JavaScript.
+- `related-products` — es maquetado: reutiliza el mixin `product-card.pug`.
+- `product-zoom` — hook `js-product-zoom`, sólo con puntero fino; en táctil no aplica.
+
+### Lo que hace esta fase más larga de lo que parece
+
+**Los hooks no están en el marcado.** De los 8 nuevos, hoy no existe ninguno en `src/**/*.pug` — los únicos presentes son los que ya funcionan. Cada módulo trae por tanto tres piezas: la edición del Pug que pone el hook, el módulo, y el `import` en `main.js`. **Un módulo que no se importe desde ahí no existe.**
+
+### Dos cosas ya escritas que conviene mirar antes
+
+- **`src/scripts/components/go-to-element.js`** — está sin usar y el propio catálogo apunta que probablemente sirve tal cual para `back-to-top`. Mirarlo antes de escribir nada.
+- **`src/tools/slide-toggle.js`** — sin ningún import. Candidato si algún panel lo necesita.
+- **`src/tools/trap-focus.js`** — sí se usa, desde `menu.js`. Es lo que van a necesitar `search.js`, `subscribe-popup.js` y `lightbox.js`.
+
+### Un cabo suelto que hay que decidir
+
+`interactive-link-showcase.pug` ya dejó puesto el hook `js-link-showcase` y su estado inicial sin JavaScript, pero **no figura en el catálogo de comportamientos**. Quedó a medias en la fase anterior. Antigravity: pregunta en el hilo si entra en esta TASK antes de implementarlo.
+
+### Orden sugerido
+
+1. **Bloque global** — `back-to-top`, `sticky-header`, `reveal`. Tocan las 22 páginas.
+2. **Cabecera** — `search`, `subscribe-popup`.
+3. **Ficha de producto** — `product-gallery`, `quantity`, `tabs`, `lightbox`.
+
+No es obligatorio; si Codex propone otro orden en el hilo, se discute ahí.
+
+## Criterios de aceptación
+
+- [ ] Los 9 módulos escritos, con su hook en el Pug y su `import` en `main.js`
+- [ ] `jump-animation` resuelto en CSS, sin JavaScript
+- [ ] Clases para múltiples instancias con estado; objetos literales para controladores únicos
+- [ ] Las clases que JavaScript añade o quita, **escritas enteras** en el código (`'hidden'`), nunca compuestas a trozos — Tailwind lee el fuente como texto
+- [ ] El estado en atributos que ya significan algo: `aria-expanded`, `hidden`, `aria-invalid`. Nada de clases de estado inventadas
+- [ ] Las clases `js-` **no llevan apariencia**
+- [ ] `prefers-reduced-motion` respetado en `reveal` y en cualquier animación
+- [ ] Foco atrapado y cierre con `Escape` en `search`, `subscribe-popup` y `lightbox` — el origen **no** los tiene y copiarlo fiel sería un error
+- [ ] `tabs` con el patrón ARIA completo: `role=tablist/tab/tabpanel` y flechas del teclado
+- [ ] Cada pieza sigue siendo utilizable si su módulo no carga
+- [ ] Comprobado servido a 375px y en escritorio
+- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [ ] `pnpm validate:origen` — cobertura al alza y «nada declarado como hecho está roto»
+- [ ] El catálogo `origen-comportamientos.json` actualizado: `estado` y fecha de `revisado`
+- [ ] REVIEW de Codex ✅
+
+## Fuera de alcance
+
+- Todo lo `otra-fase`: `cart-side-area` (el módulo; el marcado ya está), `shop-sorting`, `shop-pagination`, `ajax-add-to-cart`, `cart-page`. Dependen de una tienda real.
+- Los `descartado`: `hero-slider`, `product-carousel`, `parallax-cursor`.
+- Añadir dependencias. Si algún comportamiento parece necesitar una, se abre un RFC antes de instalarla.
+
+## 💬 Hilo
+
+> **[2026-09-07 00:00] claude:** creo la TASK como primer mensaje del canal. P0 porque es la fase que sigue al maquetado, y 🟡 porque toca mixins compartidos y `main.js`, pero no `@theme` ni `config.pug`. Si algún módulo necesitara un token nuevo, eso sí es 🔴 y va por RFC aparte: se declara en el hilo antes de tocarlo.

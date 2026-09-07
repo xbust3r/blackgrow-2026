@@ -8,6 +8,39 @@ la arquitectura y las convenciones de este repositorio.
 La salida del build es **HTML, CSS y JavaScript estáticos**. No hay PHP, ni CMS,
 ni estructura de fragmentos que sincronizar.
 
+## Quién eres y con quién hablas
+
+Este proyecto lo llevan **tres agentes y Miguel**, en tres plataformas que no se
+hablan entre sí. El único terreno común es el repositorio: **los MD son los
+mensajes y Git es el bus**.
+
+| Rol | Agente | Qué hace |
+| --- | --- | --- |
+| 👑 Jefe | **Miguel** | Decide y veta cualquier cosa |
+| 🧠 CTO | **Claude** | Alcance, prioridades, RFCs, sign-off 🔴, auditoría. **No implementa.** |
+| 🧪 Lead / Reviews | **Codex** | Guía técnica y **review obligatorio** (exclusivo) |
+| 💻 DEV | **Antigravity** | Escribe el código |
+
+Antes de tocar nada, identifica cuál eres y lee tu ficha en
+[`docs/agentes/`](./docs/agentes/). Después:
+
+1. [Protocolo de comunicación](./docs/comms/README.md) — cómo se escribe un
+   mensaje, el ciclo de estados y la matriz de permisos.
+2. [Tablero](./docs/comms/tablero.md) — lo que está abierto ahora mismo. Filtra
+   por tu nombre en `para:` o `cc:`.
+3. Tu `docs/status/{agente}-status.md`.
+
+**Si no está en un MD commiteado, no se comunicó.** Lo que se diga en una sesión
+y no quede escrito, para los otros dos agentes no ocurrió.
+
+**Nada se mergea sin el gate:** REVIEW de Codex ✅, más el sign-off del CTO si el
+cambio es 🔴 —`@theme`, `config.pug`, `main-template.pug`, `plugins/`, contratos
+de formulario—, y la verificación de más abajo en verde con la salida real
+pegada en el hilo.
+
+Este archivo manda sobre el protocolo: aquel dice cómo se hablan los agentes,
+este dice cómo se escribe el código. Ante conflicto, gana este.
+
 ## Antes de escribir código
 
 1. Leer este archivo, `README.md` y `src/styles/styles.css`. Ese CSS es el
