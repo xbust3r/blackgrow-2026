@@ -136,6 +136,12 @@ token; no se escribe el hex en el marcado.
 - Las clases que JavaScript añade o quita se escriben enteras en el código
   (`'hidden'`), nunca construidas a trozos: Tailwind lee el fuente como texto y
   una clase compuesta en tiempo de ejecución no se genera.
+- **El marcado va en Pug; JavaScript sólo lo mueve.** Un diálogo o un panel que
+  se construye con `innerHTML` **escapa a `pnpm verify:render`**, que sólo lee
+  el HTML del build: los colores y los valores arbitrarios que lleve dentro no
+  los ve nadie. Que el verificador calle ahí no quiere decir que esté bien. Lo
+  que se pinta se escribe en un componente y se entrega con `hidden`; el módulo
+  lo abre, lo cierra y le cambia el contenido.
 
 ### Contenido e integraciones
 
