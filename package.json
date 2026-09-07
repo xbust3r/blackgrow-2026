@@ -12,6 +12,7 @@
         "lint:js": "eslint \"src/**/*.js\" --fix --cache --cache-location .eslintcache",
         "lint": "run-p lint:pug lint:css lint:js",
         "validate": "node plugins/validate-assets.js",
+        "validate:origen": "node plugins/validate-origen.js",
         "verify:render": "node plugins/verify-render.js",
         "optimize": "node plugins/convertWebp.js",
         "prebuild": "npm-run-all optimize --parallel lint validate",

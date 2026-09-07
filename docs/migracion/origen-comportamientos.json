@@ -1,0 +1,294 @@
+{
+  "origen": "https://playgrow.qodeinteractive.com/",
+  "revisado": "2026-09-07",
+  "nota": "Fuente de la verdad de COMPORTAMIENTOS. El clon local del que se migró el marcado (template-html-blackn-main) era estático: no traía ni uno de estos. Se catalogaron inspeccionando el sitio vivo. `estado` lo mantiene una persona; `pnpm validate:origen` comprueba que lo declarado como hecho siga funcionando.",
+  "estados": {
+    "hecho": "implementado y conectado",
+    "mejorado": "implementado, y resuelto mejor que en el origen",
+    "pendiente": "el origen lo tiene, el destino no",
+    "requiere-backend": "no es sólo front: depende de un carrito/tienda real",
+    "descartado": "el origen lo tiene y se decidió no llevarlo"
+  },
+  "comportamientos": [
+    {
+      "id": "mobile-menu",
+      "grupo": "cabecera",
+      "nombre": "Menú móvil",
+      "origen": {
+        "marcador": "a.qodef-mobile-header-opener",
+        "descripcion": "Un enlace abre la navegación móvil. No es un botón, no declara aria-expanded y no atrapa el foco."
+      },
+      "destino": { "hook": "js-menu-toggle", "archivo": "src/scripts/components/menu.js" },
+      "estado": "mejorado",
+      "nota": "Botón real con aria-expanded, foco atrapado, cierre con Escape y devolución del foco. El origen no hace nada de eso."
+    },
+    {
+      "id": "form-validation",
+      "grupo": "formularios",
+      "nombre": "Validación de formularios",
+      "origen": { "marcador": null, "descripcion": "El origen no valida en cliente: deja el mensaje nativo del navegador." },
+      "destino": { "hook": "js-form", "archivo": "src/scripts/components/forms.js" },
+      "estado": "mejorado",
+      "nota": "Validación con la API nativa, mensajes propios anunciados por lector de pantalla, guardia de doble envío."
+    },
+    {
+      "id": "input-masks",
+      "grupo": "formularios",
+      "nombre": "Filtros de entrada",
+      "origen": { "marcador": null, "descripcion": "Sin equivalente en el origen." },
+      "destino": { "hook": "js-only-", "archivo": "src/scripts/components/input-filters.js" },
+      "estado": "hecho",
+      "nota": "IMask por tipo de campo: letras, dígitos, teléfono, fecha."
+    },
+
+    {
+      "id": "header-sticky",
+      "grupo": "cabecera",
+      "nombre": "Cabecera fija al hacer scroll",
+      "origen": {
+        "marcador": "body.sticky-display + .qodef-header-sticky",
+        "descripcion": "Al bajar, el body recibe las clases `sticky` y `sticky-display`, y una segunda cabecera —más baja— entra deslizándose desde arriba. Al volver arriba del todo, se retira."
+      },
+      "destino": { "hook": "js-sticky-header", "archivo": "src/scripts/components/sticky-header.js" },
+      "estado": "pendiente"
+    },
+    {
+      "id": "search-overlay",
+      "grupo": "cabecera",
+      "nombre": "Buscador que cubre la cabecera",
+      "origen": {
+        "marcador": "body.qodef-covers-search--opened",
+        "descripcion": "El icono de lupa despliega un formulario que tapa la cabecera con un fundido. Se cierra con su propia aspa. Ojo: el origen NO lleva el foco al campo al abrir, ni cierra con Escape."
+      },
+      "destino": { "hook": "js-search-toggle", "archivo": "src/scripts/components/search.js" },
+      "estado": "pendiente",
+      "nota": "Al implementarlo, corregir las dos carencias del origen: foco al campo y cierre con Escape."
+    },
+    {
+      "id": "cart-side-area",
+      "grupo": "cabecera",
+      "nombre": "Panel lateral del carrito",
+      "origen": {
+        "marcador": ".qodef-widget-side-area-cart-content",
+        "descripcion": "El icono de carrito de la cabecera navega a /cart/. Además existe un panel lateral con el contenido del carrito y su contador."
+      },
+      "destino": { "hook": "js-cart-panel", "archivo": "src/scripts/components/cart-panel.js" },
+      "estado": "requiere-backend",
+      "nota": "La apertura/cierre del panel sí es front; el contenido y el contador dependen de una tienda real."
+    },
+    {
+      "id": "subscribe-popup",
+      "grupo": "cabecera",
+      "nombre": "Modal de suscripción",
+      "origen": {
+        "marcador": ".qodef-subscribe-popup-opener",
+        "descripcion": "Un enlace de la cabecera abre un modal con el formulario de newsletter."
+      },
+      "destino": { "hook": "js-subscribe-popup", "archivo": "src/scripts/components/subscribe-popup.js" },
+      "estado": "pendiente",
+      "nota": "Con <dialog> nativo se resuelve el foco y el Escape sin librería."
+    },
+    {
+      "id": "back-to-top",
+      "grupo": "global",
+      "nombre": "Botón volver arriba",
+      "origen": {
+        "marcador": "#qodef-back-to-top.qodef--on",
+        "descripcion": "Aparece (opacidad 0 → 1) al pasar cierto scroll y desaparece al volver arriba. Al pulsarlo sube con desplazamiento suave."
+      },
+      "destino": { "hook": "js-back-to-top", "archivo": "src/scripts/components/back-to-top.js" },
+      "estado": "pendiente",
+      "nota": "El core ya trae `src/scripts/components/go-to-element.js` sin usar; probablemente sirve tal cual."
+    },
+
+    {
+      "id": "hero-slider",
+      "grupo": "home",
+      "nombre": "Slider del hero",
+      "origen": {
+        "marcador": "rs-module (Slider Revolution)",
+        "descripcion": "3 diapositivas con texto e imagen superpuestos. Sin autoavance visible en el demo."
+      },
+      "destino": { "hook": "js-hero-slider", "archivo": "src/scripts/components/hero-slider.js" },
+      "estado": "pendiente",
+      "nota": "Slider Revolution es un plugin de pago de WordPress. Reimplementar con scroll-snap nativo o Swiper, no portarlo."
+    },
+    {
+      "id": "product-carousel",
+      "grupo": "home",
+      "nombre": "Carrusel horizontal",
+      "origen": {
+        "marcador": ".qodef-swiper-container (Swiper)",
+        "descripcion": "10 diapositivas con flechas anterior/siguiente, sin paginación."
+      },
+      "destino": { "hook": "js-carousel", "archivo": "src/scripts/components/carousel.js" },
+      "estado": "pendiente"
+    },
+    {
+      "id": "gallery-lightbox",
+      "grupo": "home",
+      "nombre": "Galería con lightbox",
+      "origen": {
+        "marcador": ".qodef-popup-gallery / .qodef-popup-item (Magnific Popup)",
+        "descripcion": "12 fotos; al pulsar una se abre a pantalla completa con navegación entre ellas."
+      },
+      "destino": { "hook": "js-lightbox", "archivo": "src/scripts/components/lightbox.js" },
+      "estado": "pendiente",
+      "nota": "El componente `gallery-six` ya está migrado con sus 12 fotos; le falta sólo este comportamiento."
+    },
+    {
+      "id": "scroll-reveal",
+      "grupo": "home",
+      "nombre": "Aparición al hacer scroll",
+      "origen": {
+        "marcador": "GSAP + ScrollTrigger",
+        "descripcion": "Bloques que entran con desplazamiento/fundido conforme se acercan al viewport."
+      },
+      "destino": { "hook": "js-reveal", "archivo": "src/scripts/components/reveal.js" },
+      "estado": "pendiente",
+      "nota": "IntersectionObserver basta; no hace falta GSAP. Respetar prefers-reduced-motion."
+    },
+    {
+      "id": "jump-animation",
+      "grupo": "home",
+      "nombre": "Animación de rebote",
+      "origen": {
+        "marcador": ".qodef-jump-animation",
+        "descripcion": "8 elementos decorativos (nubes, estrellas) con un rebote continuo."
+      },
+      "destino": { "hook": null, "archivo": null },
+      "estado": "pendiente",
+      "nota": "Es CSS puro: @keyframes en styles.css, sin JavaScript."
+    },
+    {
+      "id": "parallax-cursor",
+      "grupo": "home",
+      "nombre": "Parallax con el cursor",
+      "origen": {
+        "marcador": ".qodef-parallax-cursor",
+        "descripcion": "5 elementos decorativos que se desplazan levemente siguiendo el ratón."
+      },
+      "destino": { "hook": "js-parallax-cursor", "archivo": "src/scripts/components/parallax-cursor.js" },
+      "estado": "pendiente",
+      "nota": "Sólo con puntero fino (@media (pointer: fine)) y desactivado con prefers-reduced-motion."
+    },
+
+    {
+      "id": "shop-sorting",
+      "grupo": "tienda",
+      "nombre": "Selector de orden",
+      "origen": {
+        "marcador": ".woocommerce-ordering select (select2)",
+        "descripcion": "6 opciones: por defecto, popularidad, valoración, novedad, precio ascendente y descendente. Recarga la página al cambiar."
+      },
+      "destino": { "hook": "js-shop-sorting", "archivo": null },
+      "estado": "requiere-backend"
+    },
+    {
+      "id": "shop-pagination",
+      "grupo": "tienda",
+      "nombre": "Paginación",
+      "origen": {
+        "marcador": ".woocommerce-pagination",
+        "descripcion": "12 productos por página de 50 en total, con contador «Showing 1–12 of 50 results»."
+      },
+      "destino": { "hook": null, "archivo": null },
+      "estado": "requiere-backend",
+      "nota": "El marcado de la paginación sí se puede maquetar; los números salen del backend."
+    },
+    {
+      "id": "ajax-add-to-cart",
+      "grupo": "tienda",
+      "nombre": "Añadir al carrito sin recargar",
+      "origen": {
+        "marcador": "a.ajax_add_to_cart[data-product_id]",
+        "descripcion": "Desde el listado, el botón añade por AJAX y actualiza el contador de la cabecera sin recargar."
+      },
+      "destino": { "hook": "js-add-to-cart", "archivo": null },
+      "estado": "requiere-backend"
+    },
+
+    {
+      "id": "product-gallery",
+      "grupo": "ficha-producto",
+      "nombre": "Galería de la ficha",
+      "origen": {
+        "marcador": ".flex-control-thumbs",
+        "descripcion": "5 miniaturas en columna; al pulsar una, cambia la imagen principal."
+      },
+      "destino": { "hook": "js-product-gallery", "archivo": "src/scripts/components/product-gallery.js" },
+      "estado": "pendiente",
+      "nota": "El marcado ya está en `content-product.pug` con 3 miniaturas; falta el cambio de imagen."
+    },
+    {
+      "id": "product-zoom",
+      "grupo": "ficha-producto",
+      "nombre": "Zoom de la imagen",
+      "origen": {
+        "marcador": ".zoomImg",
+        "descripcion": "Al pasar el cursor sobre la imagen principal, se amplía siguiendo el puntero."
+      },
+      "destino": { "hook": "js-product-zoom", "archivo": null },
+      "estado": "pendiente",
+      "nota": "Sólo con puntero fino; en táctil no aplica."
+    },
+    {
+      "id": "product-lightbox",
+      "grupo": "ficha-producto",
+      "nombre": "Lightbox de la ficha",
+      "origen": {
+        "marcador": ".woocommerce-product-gallery__trigger",
+        "descripcion": "Una lupa abre la imagen a pantalla completa."
+      },
+      "destino": { "hook": "js-lightbox", "archivo": "src/scripts/components/lightbox.js" },
+      "estado": "pendiente",
+      "nota": "Comparte implementación con `gallery-lightbox`."
+    },
+    {
+      "id": "quantity-stepper",
+      "grupo": "ficha-producto",
+      "nombre": "Selector de cantidad",
+      "origen": {
+        "marcador": "input.qty + botones +/-",
+        "descripcion": "Campo numérico con botones de más y menos a los lados."
+      },
+      "destino": { "hook": "js-quantity", "archivo": "src/scripts/components/quantity.js" },
+      "estado": "pendiente",
+      "nota": "Los botones deben ser <button type='button'> y el campo mantener su input numérico para teclado."
+    },
+    {
+      "id": "product-tabs",
+      "grupo": "ficha-producto",
+      "nombre": "Pestañas de la ficha",
+      "origen": {
+        "marcador": ".wc-tabs",
+        "descripcion": "Tres pestañas —Description, Additional information, Reviews (3)— que intercambian el panel inferior."
+      },
+      "destino": { "hook": "js-tabs", "archivo": "src/scripts/components/tabs.js" },
+      "estado": "pendiente",
+      "nota": "En `box-description.pug` las tres pestañas ya están maquetadas como enlaces href='#' sin comportamiento. Implementar con el patrón ARIA de tabs (role=tablist/tab/tabpanel, flechas del teclado)."
+    },
+    {
+      "id": "related-products",
+      "grupo": "ficha-producto",
+      "nombre": "Productos relacionados",
+      "origen": { "marcador": ".related.products", "descripcion": "4 productos relacionados al pie de la ficha." },
+      "destino": { "hook": null, "archivo": null },
+      "estado": "pendiente",
+      "nota": "Es maquetado, no comportamiento: reutiliza el mixin `product-card.pug` que ya existe."
+    },
+
+    {
+      "id": "cart-page",
+      "grupo": "carrito",
+      "nombre": "Página de carrito",
+      "origen": {
+        "marcador": "/cart/",
+        "descripcion": "Tabla de líneas con cantidad editable, cupón, botón de actualizar, totales y cálculo de envío. En el demo está vacía: muestra «Your cart is currently empty»."
+      },
+      "destino": { "hook": null, "archivo": null },
+      "estado": "requiere-backend",
+      "nota": "Esta página NO existía en el clon local. Ojo con los nombres: en el clon, `cart.pug` es el listado de tienda y `cart-index.pug` la ficha de producto. El carrito de verdad no estaba."
+    }
+  ]
+}

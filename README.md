@@ -42,6 +42,7 @@ python -m pip install -r requirements-fonts.txt
 | `pnpm dev`           | Servidor de desarrollo.                                          |
 | `pnpm lint`          | Revisa Pug, CSS y JavaScript.                                    |
 | `pnpm validate`      | Comprueba que los assets y fuentes referenciados existan.         |
+| `pnpm validate:origen` | Cobertura de comportamiento frente al sitio de origen.         |
 | `pnpm optimize`      | Genera los WebP configurados.                                    |
 | `pnpm font:subset`   | Convierte y reduce fuentes a WOFF2.                              |
 | `pnpm figma:assets`  | Descarga y limpia los assets declarados en `figma-assets.json`.  |

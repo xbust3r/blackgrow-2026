@@ -6,6 +6,11 @@ sin volver a decidir lo que ya está decidido.
 
 - **[inventario.md](./inventario.md)** — qué hay en origen y a qué corresponde.
 - **[tareas.md](./tareas.md)** — el trabajo, en orden, con criterios de cierre.
+- **[playgrow-origen.md](./playgrow-origen.md)** — el validador de
+  **comportamientos** contra el sitio vivo. El clon local era estático, así que
+  para lo que el sitio tiene que *hacer* la referencia es
+  <https://playgrow.qodeinteractive.com/>. Se ejecuta con
+  `pnpm validate:origen`.
 
 Se lee esta guía entera antes de tocar la primera tarea. Después,
 [`AGENTS.md`](../../AGENTS.md) y la [tarjeta de decisión](../tarjeta-de-decision.md)
