@@ -15,7 +15,10 @@ class ProductGallery {
     }
 
     setActive(selectedThumb) {
-        const newSrc = selectedThumb.dataset.fullSrc || selectedThumb.getAttribute('src');
+        const newSrc =
+            selectedThumb.dataset.fullSrc ||
+            selectedThumb.querySelector('img')?.getAttribute('src') ||
+            selectedThumb.getAttribute('src');
         if (!newSrc) return;
 
         this.mainImage.src = newSrc;

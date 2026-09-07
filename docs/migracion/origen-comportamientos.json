@@ -128,7 +128,7 @@
         "archivo": "src/scripts/components/back-to-top.js"
       },
       "estado": "hecho",
-      "nota": "El core ya trae `src/scripts/components/go-to-element.js` sin usar; probablemente sirve tal cual."
+      "nota": "Implementado con botón flotante accesible y scroll suave nativo."
     },
     {
       "id": "hero-slider",
@@ -219,6 +219,21 @@
       },
       "estado": "descartado",
       "nota": "Decisión del proyecto: no se quiere parallax."
+    },
+    {
+      "id": "interactive-link-showcase",
+      "grupo": "home",
+      "nombre": "Showcase interactivo de enlaces",
+      "origen": {
+        "marcador": ".qodef-interactive-link-showcase",
+        "descripcion": "Lista de enlaces que cambian la imagen mostrada al pasar el cursor o recibir foco."
+      },
+      "destino": {
+        "hook": "js-link-showcase",
+        "archivo": "src/scripts/components/interactive-link-showcase.js"
+      },
+      "estado": "hecho",
+      "nota": "Implementado con soporte para eventos mouseenter y focus por teclado."
     },
     {
       "id": "shop-sorting",

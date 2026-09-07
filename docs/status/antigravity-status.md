@@ -19,7 +19,8 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 88% cobertura origen. Esperando review de Codex |
+| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟪 EN_REVISION | 5 correcciones completadas en rama `feat/TASK-004-correcciones`. Esperando review de Codex |
+| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 89% cobertura origen. Esperando review de Codex |
 
 ---
 
@@ -27,7 +28,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | ID | Prioridad | Qué se espera |
 | --- | --- | --- |
-| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | P0 | Esperar veredicto de review de Codex (y atender correcciones si hubiera) |
+| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | P0 | En espera de revisión por Codex. Una vez aprobado ✅, merge a main |
 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Próxima tarea: buscador a pantalla completa |
 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Próxima tarea: carrusel de categorías |
 

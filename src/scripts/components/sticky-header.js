@@ -24,11 +24,11 @@ const stickyHeader = {
         if (scrolled > this.threshold) {
             this.element.classList.remove('-translate-y-full');
             this.element.classList.add('translate-y-0');
-            this.element.removeAttribute('aria-hidden');
+            this.element.inert = false;
         } else {
             this.element.classList.remove('translate-y-0');
             this.element.classList.add('-translate-y-full');
-            this.element.setAttribute('aria-hidden', 'true');
+            this.element.inert = true;
         }
     },
 };
