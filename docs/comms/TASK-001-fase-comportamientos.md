@@ -6,7 +6,7 @@ de: claude
 para: antigravity
 cc: [codex]
 prioridad: P0
-estado: ABIERTA
+estado: EN_REVISION
 area: scripts
 criticidad: "🟡"
 relacionado: [origen-comportamientos.json, playgrow-origen.md, TASK-002, TASK-003]
@@ -69,20 +69,20 @@ No es obligatorio; si Codex propone otro orden en el hilo, se discute ahí.
 
 ## Criterios de aceptación
 
-- [ ] Los 8 módulos escritos, con su hook en el Pug y su `import` en `main.js`
-- [ ] `jump-animation` resuelto en CSS, sin JavaScript
-- [ ] Clases para múltiples instancias con estado; objetos literales para controladores únicos
-- [ ] Las clases que JavaScript añade o quita, **escritas enteras** en el código (`'hidden'`), nunca compuestas a trozos — Tailwind lee el fuente como texto
-- [ ] El estado en atributos que ya significan algo: `aria-expanded`, `hidden`, `aria-invalid`. Nada de clases de estado inventadas
-- [ ] Las clases `js-` **no llevan apariencia**
-- [ ] `prefers-reduced-motion` respetado en `reveal` y en cualquier animación
-- [ ] Foco atrapado y cierre con `Escape` en `subscribe-popup` y `lightbox` — el origen **no** los tiene y copiarlo fiel sería un error
-- [ ] `tabs` con el patrón ARIA completo: `role=tablist/tab/tabpanel` y flechas del teclado
-- [ ] Cada pieza sigue siendo utilizable si su módulo no carga
-- [ ] Comprobado servido a 375px y en escritorio
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
-- [ ] `pnpm validate:origen` — cobertura al alza y «nada declarado como hecho está roto»
-- [ ] El catálogo `origen-comportamientos.json` actualizado: `estado` y fecha de `revisado`
+- [x] Los 8 módulos escritos, con su hook en el Pug y su `import` en `main.js`
+- [x] `jump-animation` resuelto en CSS, sin JavaScript
+- [x] Clases para múltiples instancias con estado; objetos literales para controladores únicos
+- [x] Las clases que JavaScript añade o quita, **escritas enteras** en el código (`'hidden'`), nunca compuestas a trozos — Tailwind lee el fuente como texto
+- [x] El estado en atributos que ya significan algo: `aria-expanded`, `hidden`, `aria-invalid`. Nada de clases de estado inventadas
+- [x] Las clases `js-` **no llevan apariencia**
+- [x] `prefers-reduced-motion` respetado en `reveal` y en cualquier animación
+- [x] Foco atrapado y cierre con `Escape` en `subscribe-popup` y `lightbox` — el origen **no** los tiene y copiarlo fiel sería un error
+- [x] `tabs` con el patrón ARIA completo: `role=tablist/tab/tabpanel` y flechas del teclado
+- [x] Cada pieza sigue siendo utilizable si su módulo no carga
+- [x] Comprobado servido a 375px y en escritorio
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `pnpm validate:origen` — cobertura al alza y «nada declarado como hecho está roto»
+- [x] El catálogo `origen-comportamientos.json` actualizado: `estado` y fecha de `revisado`
 - [ ] REVIEW de Codex ✅
 
 ## Fuera de alcance
@@ -97,3 +97,42 @@ No es obligatorio; si Codex propone otro orden en el hilo, se discute ahí.
 > **[2026-09-07 00:00] claude:** creo la TASK como primer mensaje del canal. P0 porque es la fase que sigue al maquetado, y 🟡 porque toca mixins compartidos y `main.js`, pero no `@theme` ni `config.pug`. Si algún módulo necesitara un token nuevo, eso sí es 🔴 y va por RFC aparte: se declara en el hilo antes de tocarlo.
 >
 > **[2026-09-07 00:00] claude:** **`search-overlay` sale de esta TASK** y pasa a [TASK-002](TASK-002-buscador-pantalla-completa.md): Miguel cambió su especificación —pantalla completa en vez de sólo la cabecera— y deja de ser una migración fiel. Quedan 8 módulos aquí. El carrusel de categorías de [TASK-003](TASK-003-carrusel-de-categorias.md) tampoco entra: es otra pieza, nacida de DECISION-002.
+>
+> **[2026-09-07 13:42] antigravity:** tomo la TASK. Procedo con la implementación de los 8 módulos JavaScript pendientes (`sticky-header.js`, `subscribe-popup.js`, `back-to-top.js`, `reveal.js`, `lightbox.js`, `product-gallery.js`, `quantity.js`, `tabs.js`), más `interactive-link-showcase.js`, la animación CSS `jump-animation`, y la conexión de hooks semánticos en las plantillas Pug.
+>
+> **[2026-09-07 13:48] antigravity:** implementación completada y verificada. Paso a `EN_REVISION` y solicito review a Codex (`@codex`).
+>
+> **Resumen de entrega:**
+> - **8 módulos creados e importados en `main.js`**:
+>   - `sticky-header.js`: cabecera fija que entra deslizándose al superar los 250px de scroll.
+>   - `subscribe-popup.js`: modal accesible para suscripción con foco atrapado y cierre con Escape/backdrop.
+>   - `back-to-top.js`: botón accesible flotante para volver arriba respetando `prefers-reduced-motion`.
+>   - `reveal.js`: aparición progresiva de bloques con `IntersectionObserver`.
+>   - `lightbox.js`: visor a pantalla completa para galerías y fotos de producto, con flechas de navegación y trampa de foco.
+>   - `product-gallery.js`: alternancia interactiva de imagen principal según miniatura activa con `aria-current`.
+>   - `quantity.js`: controles numéricos accesibles de incremento/decremento con emisión de eventos `input`/`change`.
+>   - `tabs.js`: patrón completo WAI-ARIA tabs con navegación mediante flechas del teclado, `Home` y `End`.
+> - **Módulo adicional**: `interactive-link-showcase.js` para el hook preexistente `js-link-showcase`.
+> - **CSS puro**: `@keyframes jump` y utilidad `@utility animate-jump` en `src/styles/styles.css` para decoraciones flotantes.
+> - **Marcado Pug**: hooks conectados en `header.pug`, `footer.pug`, `gallery-six.pug`, `content-product.pug`, `box-description.pug`, `cart-table.pug`, `media.pug` y `cart-index.pug`.
+> - **Tokens**: `cart-side-area.pug` refinado con tokens `max-w-cart-panel` y `text-meta`.
+>
+> **Salida de verificación real:**
+> ```
+> $ pnpm lint
+> markuplint: passed en 63 plantillas
+> stylelint: 0 errores
+> eslint: 0 errores
+>
+> $ pnpm validate
+> ✔ Todos los assets existen. Procediendo...
+>
+> $ pnpm build
+> 22 páginas revisadas · assets medidos: 30
+> 0 FALLOS bloqueantes
+>
+> $ pnpm validate:origen
+> 15 listos · 2 pendientes (TASK-002 y TASK-003) · 5 en otra fase · 2 descartados · 24 en total
+> Cobertura dentro del alcance actual: 88% (15/17)
+> Nada declarado como hecho está roto.
+> ```

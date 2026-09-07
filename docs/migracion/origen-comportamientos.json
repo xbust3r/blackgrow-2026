@@ -68,7 +68,7 @@
         "hook": "js-sticky-header",
         "archivo": "src/scripts/components/sticky-header.js"
       },
-      "estado": "pendiente"
+      "estado": "hecho"
     },
     {
       "id": "search-overlay",
@@ -112,7 +112,7 @@
         "hook": "js-subscribe-popup",
         "archivo": "src/scripts/components/subscribe-popup.js"
       },
-      "estado": "pendiente",
+      "estado": "mejorado",
       "nota": "Con <dialog> nativo se resuelve el foco y el Escape sin librería."
     },
     {
@@ -127,7 +127,7 @@
         "hook": "js-back-to-top",
         "archivo": "src/scripts/components/back-to-top.js"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "nota": "El core ya trae `src/scripts/components/go-to-element.js` sin usar; probablemente sirve tal cual."
     },
     {
@@ -172,7 +172,7 @@
         "hook": "js-lightbox",
         "archivo": "src/scripts/components/lightbox.js"
       },
-      "estado": "pendiente",
+      "estado": "mejorado",
       "nota": "El componente `gallery-six` ya está migrado con sus 12 fotos; le falta sólo este comportamiento."
     },
     {
@@ -187,7 +187,7 @@
         "hook": "js-reveal",
         "archivo": "src/scripts/components/reveal.js"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "nota": "IntersectionObserver basta; no hace falta GSAP. Respetar prefers-reduced-motion."
     },
     {
@@ -202,7 +202,7 @@
         "hook": null,
         "archivo": null
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "nota": "Es CSS puro: @keyframes en styles.css, sin JavaScript."
     },
     {
@@ -277,7 +277,7 @@
         "hook": "js-product-gallery",
         "archivo": "src/scripts/components/product-gallery.js"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "nota": "El marcado ya está en `content-product.pug` con 3 miniaturas; falta el cambio de imagen."
     },
     {
@@ -292,7 +292,7 @@
         "hook": "js-product-zoom",
         "archivo": null
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "nota": "Sólo con puntero fino; en táctil no aplica."
     },
     {
@@ -307,7 +307,7 @@
         "hook": "js-lightbox",
         "archivo": "src/scripts/components/lightbox.js"
       },
-      "estado": "pendiente",
+      "estado": "mejorado",
       "nota": "Comparte implementación con `gallery-lightbox`."
     },
     {
@@ -322,7 +322,7 @@
         "hook": "js-quantity",
         "archivo": "src/scripts/components/quantity.js"
       },
-      "estado": "pendiente",
+      "estado": "mejorado",
       "nota": "Los botones deben ser <button type='button'> y el campo mantener su input numérico para teclado."
     },
     {
@@ -337,7 +337,7 @@
         "hook": "js-tabs",
         "archivo": "src/scripts/components/tabs.js"
       },
-      "estado": "pendiente",
+      "estado": "mejorado",
       "nota": "En `box-description.pug` las tres pestañas ya están maquetadas como enlaces href='#' sin comportamiento. Implementar con el patrón ARIA de tabs (role=tablist/tab/tabpanel, flechas del teclado)."
     },
     {
@@ -352,7 +352,7 @@
         "hook": null,
         "archivo": null
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "nota": "Es maquetado, no comportamiento: reutiliza el mixin `product-card.pug` que ya existe."
     },
     {

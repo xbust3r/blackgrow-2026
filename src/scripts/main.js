@@ -5,5 +5,13 @@ import './components/input-filters';
 import './components/forms';
 
 import './components/menu.js';
-
 import './components/newsletter.js';
+import './components/sticky-header.js';
+import './components/subscribe-popup.js';
+import './components/back-to-top.js';
+import './components/reveal.js';
+import './components/lightbox.js';
+import './components/product-gallery.js';
+import './components/quantity.js';
+import './components/tabs.js';
+import './components/interactive-link-showcase.js';

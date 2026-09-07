@@ -4,20 +4,70 @@ mixin specList()
     dl(class='space-y-5')
         each row in [1, 2, 3]
             div(class='flex justify-between gap-5 border-b border-line pb-5 text-lg')
-                dt(class='font-medium text-ink') title
-                dd value
+                dt(class='font-medium text-ink') Weight
+                dd 12 kg
 
-section(class='wrapper py-10')
-    nav(aria-label='Product information')
-        ul(class='flex flex-col justify-around gap-5 py-5 text-center text-h3 text-ink tablet:flex-row')
-            each label in ['Description', 'Additional Information', 'Reviews (0)']
-                li
-                    a(href='#')= label
-    div(class='grid items-center gap-10 rounded-card border border-line p-5 tablet:grid-cols-2 tablet:p-12')
+section(class='js-tabs wrapper py-10')
+    div(class='flex flex-col justify-around gap-5 border-b border-line py-5 text-center text-h3 tablet:flex-row', role='tablist', aria-label='Product details')
+        button(
+            id='tab-description',
+            class='border-b-2 border-brand pb-2 text-brand transition-colors hover:text-brand',
+            type='button',
+            role='tab',
+            aria-selected='true',
+            aria-controls='panel-description',
+            tabindex='0'
+        ) Description
+        button(
+            id='tab-additional',
+            class='border-b-2 border-transparent pb-2 text-ink transition-colors hover:text-brand',
+            type='button',
+            role='tab',
+            aria-selected='false',
+            aria-controls='panel-additional',
+            tabindex='-1'
+        ) Additional Information
+        button(
+            id='tab-reviews',
+            class='border-b-2 border-transparent pb-2 text-ink transition-colors hover:text-brand',
+            type='button',
+            role='tab',
+            aria-selected='false',
+            aria-controls='panel-reviews',
+            tabindex='-1'
+        ) Reviews (0)
+
+    div(
+        id='panel-description',
+        class='mt-7 grid items-center gap-10 rounded-card border border-line p-5 tablet:grid-cols-2 tablet:p-12',
+        role='tabpanel',
+        aria-labelledby='tab-description',
+        tabindex='0'
+    )
         div
             h2(class='mb-5 text-h3 font-normal text-ink') Description
             p Quidem eveniet quod veritatis non. Dolore voluptas quod cumque sunt quia facere voluptas. Omnis nihil ad quia de bitis voluptatems of unique wholesale brand quidem eveniet quod veritatis non dolore voluptas quod cumque in.
         img(class='aspect-4/3 w-full rounded-card object-cover', src='/src/assets/images/box-description/description.webp', alt='', width='940', height='736', loading='lazy')
-    div(class='mt-7 grid gap-10 rounded-card border border-line p-5 tablet:grid-cols-2 tablet:p-12')
+
+    div(
+        id='panel-additional',
+        class='mt-7 grid gap-10 rounded-card border border-line p-5 tablet:grid-cols-2 tablet:p-12',
+        role='tabpanel',
+        aria-labelledby='tab-additional',
+        tabindex='0',
+        hidden
+    )
         +specList()
         +specList()
+
+    div(
+        id='panel-reviews',
+        class='mt-7 rounded-card border border-line p-5 tablet:p-12',
+        role='tabpanel',
+        aria-labelledby='tab-reviews',
+        tabindex='0',
+        hidden
+    )
+        h2(class='mb-5 text-h3 font-normal text-ink') Customer Reviews
+        p(class='text-ink-soft') There are no reviews yet for this product.
+

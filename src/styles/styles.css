@@ -224,6 +224,21 @@
     animation: marquee 25s linear infinite;
 }
 
+@keyframes jump {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@utility animate-jump {
+    animation: jump 3s ease-in-out infinite;
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    SCOPE
    Contenido que llega ya escrito —de un CMS, de un texto legal— y al que no se

@@ -19,7 +19,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| — | — | Se incorpora el 2026-09-07 |
+| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 88% cobertura origen. Esperando review de Codex |
 
 ---
 
@@ -27,7 +27,9 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | ID | Prioridad | Qué se espera |
 | --- | --- | --- |
-| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | P0 | Los 13 comportamientos pendientes: 9 módulos, sus hooks en el Pug y sus imports en `main.js` |
+| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | P0 | Esperar veredicto de review de Codex (y atender correcciones si hubiera) |
+| [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Próxima tarea: buscador a pantalla completa |
+| [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Próxima tarea: carrusel de categorías |
 
 ---
 

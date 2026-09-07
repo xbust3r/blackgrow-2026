@@ -57,26 +57,3 @@ mixin cartTable(lines)
                 +shopButton('Apply coupon', 'button')
             +shopButton('Update cart', 'button')
 
-//- Selector de cantidad. Sin JavaScript en esta fase: los botones existen con
-//- su nombre accesible y el hook, y el campo numérico sigue siendo utilizable
-//- con el teclado, que es lo que tiene que seguir funcionando si el módulo no
-//- carga.
-mixin quantityField(id, productName, value = 1)
-    div(class='js-quantity inline-flex items-center whitespace-nowrap')
-        button(class='js-quantity-down inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button')
-            span(aria-hidden='true') &minus;
-            span(class='sr-only') Decrease quantity of #{productName}
-        label(class='sr-only', for=id) Quantity of #{productName}
-        input(
-            id=id,
-            class='js-only-numbers w-15 rounded-field border border-line bg-white px-2.5 py-3 text-center text-h4 font-normal text-ink',
-            name='quantity',
-            type='number',
-            inputmode='numeric',
-            min='1',
-            step='1',
-            value=value
-            )
-        button(class='js-quantity-up inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button')
-            span(aria-hidden='true') +
-            span(class='sr-only') Increase quantity of #{productName}

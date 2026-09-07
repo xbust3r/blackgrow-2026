@@ -1,13 +1,13 @@
 include media
 
 mixin galleryTile(index)
-    a(class='block', href='#', aria-label='Gallery image ' + index)
+    a(class='js-lightbox block overflow-hidden rounded-card transition-transform duration-300 hover:scale-105', href='/src/assets/images/gallery-six/tile.webp', aria-label='Gallery image ' + index, data-lightbox-gallery='gallery-six')
         img(class='aspect-square w-full object-cover', src='/src/assets/images/gallery-six/tile.webp', alt='', width='768', height='768', loading='lazy')
 
-section(class='relative bg-surface-alt py-5 tablet:pt-24 tablet:pb-32')
-    img(class='absolute end-12 top-0 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/sitting-girl.webp', alt='', width='96', height='201', loading='lazy', aria-hidden='true')
-    img(class='absolute start-8 top-8 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/cloud-stars.webp', alt='', width='128', height='128', loading='lazy', aria-hidden='true')
-    img(class='absolute start-8 bottom-0 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/elephants.webp', alt='', width='89', height='160', loading='lazy', aria-hidden='true')
+section(class='js-reveal relative bg-surface-alt py-5 tablet:pt-24 tablet:pb-32')
+    img(class='animate-jump absolute end-12 top-0 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/sitting-girl.webp', alt='', width='96', height='201', loading='lazy', aria-hidden='true')
+    img(class='animate-jump absolute start-8 top-8 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/cloud-stars.webp', alt='', width='128', height='128', loading='lazy', aria-hidden='true')
+    img(class='animate-jump absolute start-8 bottom-0 hidden size-20 tablet:block', src='/src/assets/images/gallery-six/elephants.webp', alt='', width='89', height='160', loading='lazy', aria-hidden='true')
     div(class='wrapper relative')
         +heading('Gallery', 'h2', 'text-center')
         p(class='mt-6 text-center text-lg') Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.

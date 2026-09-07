@@ -1,18 +1,42 @@
 include media
 
 mixin productDetails(level = 'h1')
-    section(class='wrapper grid gap-10 py-10 tablet:grid-cols-2')
+    section(class='js-product-gallery wrapper grid gap-10 py-10 tablet:grid-cols-2')
         div(class='flex min-w-0 flex-col gap-5 tablet:flex-row')
             div(class='order-2 flex gap-3 tablet:order-1 tablet:w-1/4 tablet:flex-col')
                 each index in [1, 2, 3]
-                    img(class='aspect-4/3 min-w-0 flex-1 rounded-card object-cover tablet:flex-none', src='/src/assets/images/content-product/gallery.webp', alt='', width='600', height='450', loading='lazy')
-            div(class='order-1 min-w-0 flex-1 tablet:order-2')
-                img(class='aspect-4/3 w-full rounded-card object-cover', src='/src/assets/images/content-product/main.webp', alt='', width='800', height='1008', fetchpriority='high')
+                    img(
+                        class='js-product-thumb aspect-4/3 min-w-0 flex-1 cursor-pointer rounded-card border-2 object-cover transition-colors tablet:flex-none ' + (index === 1 ? 'border-brand' : 'border-transparent'),
+                        src='/src/assets/images/content-product/gallery.webp',
+                        alt='Product thumbnail ' + index,
+                        width='600',
+                        height='450',
+                        loading='lazy',
+                        aria-current=index === 1 ? 'true' : 'false'
+                    )
+            div(class='js-product-zoom relative order-1 min-w-0 flex-1 overflow-hidden rounded-card tablet:order-2')
+                img(
+                    class='js-product-main aspect-4/3 w-full rounded-card object-cover',
+                    src='/src/assets/images/content-product/main.webp',
+                    alt='Wooden baby cribe',
+                    width='800',
+                    height='1008',
+                    fetchpriority='high'
+                )
+                a(
+                    class='js-lightbox absolute right-4 bottom-4 inline-flex size-10 items-center justify-center rounded-full bg-surface/90 text-ink shadow-sm transition-transform hover:scale-110 hover:text-brand',
+                    href='/src/assets/images/content-product/main.webp',
+                    aria-label='View full size image',
+                    data-lightbox-gallery='product'
+                )
+                    +svgIcon('search', 'size-4')
         div
             #{level}(class='my-6 text-h1 font-normal uppercase tracking-heading text-ink') WOODEN BABY CRIBE
             p(class='text-h2 text-ink') $ 1,200
             p(class='my-5') Quidem eveniet quod veritatis non. Dolore voluptas quod cumque sunt quia facere voluptas. Omnis nihil ad quia de bitis voluptatems of unique wholesale brand quidem eveniet quod veritatis non dolore voluptas quod cumque in.
-            +shopButton('Add to cart', 'button')
+            div(class='flex flex-wrap items-center gap-4')
+                +quantityField('product-qty', 'Wooden baby cribe', 1)
+                +shopButton('Add to cart', 'button')
             p(class='my-5') Category:
                 a(class='ms-2 text-ink-soft hover:text-brand', href='#') Crubs
             p(class='my-5') Tags:

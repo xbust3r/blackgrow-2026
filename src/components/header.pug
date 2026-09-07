@@ -5,8 +5,17 @@ mixin socialLink(name, icon)
         +svgIcon(icon, 'size-4')
         span(class='sr-only')= name
 header
+    div(class='js-sticky-header fixed inset-x-0 top-0 z-40 hidden min-h-16 -translate-y-full items-center justify-between border-b border-line bg-surface/95 px-5 shadow-sm backdrop-blur transition-transform duration-300 tablet:flex', aria-hidden='true')
+        a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
+        nav(aria-label='Sticky navigation')
+            ul(class='flex flex-wrap gap-8')
+                each label in ['Home', 'About', 'Contact']
+                    li
+                        a(class='text-sm uppercase tracking-heading hover:text-brand', href='#')= label
+        div(class='flex items-center gap-1')
+            +cartSideAreaOpener(cartCount)
     div(class='hidden min-h-17 items-center justify-between gap-5 bg-surface-alt px-5 text-ink tablet:flex')
-        span(class='flex items-center gap-2 text-sm uppercase tracking-heading')
+        button(class='js-subscribe-popup inline-flex items-center gap-2 text-sm uppercase tracking-heading hover:text-brand', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='subscribe-dialog')
             +svgIcon('mail', 'size-8 text-brand')
             | Newsletter
         nav(aria-label='Main navigation')
@@ -42,3 +51,16 @@ header
 //- pantalla completa por la derecha, y anidarlo dentro de la barra lo ataría al
 //- apilado de ésta.
 +cartSideArea(cartPreview, cartPreviewTotal)
+
+div(id='subscribe-dialog', class='js-subscribe-dialog fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4', role='dialog', aria-modal='true', aria-labelledby='subscribe-title', hidden)
+    div(class='relative w-full max-w-lg rounded-card border border-line bg-surface p-8 shadow-card')
+        button(class='js-subscribe-close absolute top-5 right-5 inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button', aria-label='Close newsletter')
+            +svgIcon('close', 'size-5')
+        h2(id='subscribe-title', class='text-center text-h2 font-normal uppercase tracking-heading text-ink') Newsletter
+        p(class='mt-3 text-center text-ink-soft') Subscribe to our newsletter and get 10% off your first purchase
+        form(class='js-form js-newsletter mt-6 space-y-5', aria-label='Newsletter subscription')
+            +field({id: 'popup-newsletter-name', label: 'Your Name', name: form.firstName.name, autocomplete: 'given-name', placeholder: 'Your Name', filter: 'js-only-letters'})
+            +field({id: 'popup-newsletter-email', label: 'Your Email', name: form.email.name, type: 'email', autocomplete: 'email', placeholder: 'Your Email'})
+            +button('Subscribe', {type: 'submit', class: 'w-full rounded-none py-4 text-sm font-medium uppercase tracking-heading'})
+            p(class='js-newsletter-status text-sm', role='status')
+
