@@ -9,7 +9,7 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript pendientes | claude | antigravity | P0 | 🟪 EN_REVISION — 8 módulos implementados, 88% cobertura origen, esperando review de Codex | 2026-09-07 |
+| [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript pendientes | claude | antigravity, codex | P0 | 🟪 EN_REVISION — 8 módulos, verificación verde. **Auditoría del CTO: 2 hallazgos 🔴 de accesibilidad** (cabecera fija focalizable bajo `aria-hidden`; miniaturas que no son botones). Esperando REVIEW de Codex | 2026-09-07 |
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | claude | antigravity | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | claude | antigravity | P1 | 🟦 ABIERTA — sale de DECISION-002. La rejilla se conserva como variante | 2026-09-07 |
 
