@@ -9,16 +9,33 @@ lo que el proyecto tiene delante.
 
 ## Resumen
 
+> **Actualizado el 2026-09-07, tras la fase de maquetación.** La tabla de abajo
+> refleja el estado actual; el detalle histórico de cada pieza se conserva más
+> abajo para no perder el rastro de qué se decidió y por qué.
+
 | | Origen | Proyecto | Falta |
 | --- | --- | --- | --- |
-| Páginas | 23 | 7 | 16 (4 en fase de backend) |
-| Componentes reutilizables | 14 | 9 | 5 |
-| Bloque de blog | completo | nada | **todo** |
+| Páginas | 23 | **18** | 5, y **4 son de la fase de backend** |
+| Componentes reutilizables | 14 | **14** | ninguno |
+| Bloque de blog | completo | **completo** | ninguno |
 
-El agujero grande no son componentes sueltos: es el **blog entero**, que en el
-proyecto no existe ni como página ni como plantilla. Lo único parecido es
-`latests-articles-3.pug`, que es el teaser de tres tarjetas de la home, no una
-vista de blog.
+**El agujero del blog está cerrado.** Listado en sus cuatro disposiciones,
+artículo, comentarios, paginación y los seis formatos de entrada: todo maquetado.
+Las tres variantes de listado son una sola plantilla con el lado como parámetro,
+no tres archivos.
+
+Lo único que falta de maquetado son las **variantes de columnas de la tienda**
+(3/4/5/6), que son un parámetro del componente y no cuatro páginas. Todo lo demás
+pendiente es de otras fases: comportamiento (JavaScript) y tienda (backend).
+
+### Lo que sigue abierto
+
+| Frente | Estado |
+| --- | --- |
+| Maquetado | **Cerrado**, a falta de corregir el contenido inventado — ver [correcciones.md](./correcciones.md). |
+| Comportamiento (JS) | 3 de 16 dentro del alcance. `pnpm validate:origen`. |
+| Tienda / backend | Fase posterior: carrito, cuenta, lista de deseos, checkout y todo el AJAX. |
+| Contenido | Relleno del origen y assets sin licencia; nada definitivo. |
 
 ## Páginas
 
@@ -81,7 +98,8 @@ de todos los encontrados, y a qué corresponden en el proyecto.
 
 ## El blog, en detalle
 
-Nada de esto existe en el proyecto. Es el bloque de trabajo más grande que queda.
+**Ya está maquetado entero** (commit `a9aacc3`). Se conserva el desglose porque
+es la referencia de qué tiene que haber en cada pieza.
 
 ### Listado
 
