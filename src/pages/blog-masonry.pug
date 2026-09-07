@@ -10,24 +10,24 @@ block title
     title Blog Masonry — Blackgrow
 
 block description
-    meta(name='description', content='Explore our blog articles in a dynamic responsive masonry grid.')
+    meta(name='description', content='Blog Masonry — Blackgrow.')
 
 block content
     -
         const masonryPosts = [
-            { format: 'standard', title: 'Sustainable Nursery Essentials for Growing Families', date: 'May 12, 2026', dateIso: '2026-05-12', author: 'Emily Miller', category: 'Nursery', image: '/src/assets/images/blog/article-a.webp', excerpt: 'Discover eco-friendly materials and thoughtful design choices that make parenting simpler and spaces cozier.' },
-            { format: 'quote', quote: 'Simplicity and safety are at the heart of conscious parenting.', quoteAuthor: 'Maria Montessori', date: 'May 09, 2026', dateIso: '2026-05-09', author: 'Team', category: 'Inspiration' },
-            { format: 'standard', title: 'Natural Wooden Toys That Grow With Your Child', date: 'May 07, 2026', dateIso: '2026-05-07', author: 'Sarah Jenkins', category: 'Playtime', image: '/src/assets/images/blog/article-b.webp', excerpt: 'Why open-ended wooden toys inspire richer creativity and last across multiple siblings.' },
-            { format: 'link', linkText: 'Explore Certified Organic GOTS Cotton Standards', linkUrl: '#', date: 'May 02, 2026', dateIso: '2026-05-02', author: 'Research Team', category: 'Materials' },
-            { format: 'gallery', title: 'Curating a Calm and Clutter-Free Baby Space', date: 'Apr 28, 2026', dateIso: '2026-04-28', author: 'David Chen', category: 'Design', image: '/src/assets/images/blog/article-a.webp', imageB: '/src/assets/images/blog/article-b.webp', excerpt: 'A visual walkthrough of modern wooden cribs, soft pastel textiles, and functional storage setups.' },
-            { format: 'audio', title: 'Parenting Podcast: Mindful Mornings with Toddlers', date: 'Apr 20, 2026', dateIso: '2026-04-20', author: 'Admin', category: 'Audio', excerpt: 'Listen to practical strategies for establishing peaceful morning routines without rushing.' }
+            { format: 'standard', title: 'A guide to packing travel clothes and necesetys for a family vacation', date: 'May 12, 2026', dateIso: '2026-05-12', author: 'by Saira Bishon', category: 'Care', image: '/src/assets/images/blog/article-a.webp', excerpt: 'Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…' },
+            { format: 'quote', quote: 'Tellus pellentesque eu tincidunt tortor an nua ali qu am facilisia crasoned ferment.', quoteAuthor: 'JULY, CALIFORNIA', date: 'May 09, 2026', dateIso: '2026-05-09', author: 'by Saira Bishon', category: 'Nurturing' },
+            { format: 'standard', title: 'Must have toys to carry with you to the seaside for a successful creative playtime', date: 'May 07, 2026', dateIso: '2026-05-07', author: 'by Saira Bishon', category: 'Play', image: '/src/assets/images/blog/article-b.webp', width: 1024, height: 1024, excerpt: 'Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…' },
+            { format: 'standard', title: 'Create a safe space environment for your children to play in and be fulfilled inside', date: 'May 02, 2026', dateIso: '2026-05-02', author: 'by Saira Bishon', category: 'Nursery', image: '/src/assets/images/blog/article-a.webp', excerpt: 'Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…' },
+            { format: 'standard', title: 'Toys that bring kids joy and become their playful buddies for pretend play time', date: 'Apr 28, 2026', dateIso: '2026-04-28', author: 'by Saira Bishon', category: 'Toys', image: '/src/assets/images/blog/article-b.webp', width: 1024, height: 1024, excerpt: 'Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…' },
+            { format: 'standard', title: 'Unique spoon set nowadays', date: 'Apr 20, 2026', dateIso: '2026-04-20', author: 'by Saira Bishon', category: 'Care', image: '/src/assets/images/blog/article-a.webp', excerpt: 'Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…' }
         ];
 
     section(class='py-12 tablet:py-16')
         div(class='wrapper')
             header(class='mb-10 text-center')
                 h1(class='text-h1 font-normal uppercase tracking-heading text-ink') Blog Masonry
-                p(class='mt-2 text-base text-ink-soft') Visual stories and inspiration arranged in pure CSS masonry
+                p(class='mt-2 text-base text-ink-soft') Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc.
 
             div(class='columns-1 gap-6 tablet:columns-2 desktop:columns-3')
                 each post in masonryPosts

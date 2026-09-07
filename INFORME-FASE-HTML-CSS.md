@@ -1,6 +1,6 @@
 # Informe de Cierre — Fase HTML + CSS (Maquetación)
 
-Cierra la fase documentada en [`docs/migracion/tareas-html-css.md`](./docs/migracion/tareas-html-css.md).
+Cierra la fase documentada en [`docs/migracion/tareas-html-css.md`](./docs/migracion/tareas-html-css.md) y [`docs/migracion/correcciones.md`](./docs/migracion/correcciones.md).
 El objetivo fue completar el 100% de los componentes y páginas faltantes del tema utilizando **únicamente Pug y Tailwind CSS v4**, sin agregar dependencias ni JavaScript nuevo en esta fase.
 
 ---
@@ -58,7 +58,32 @@ El objetivo fue completar el 100% de los componentes y páginas faltantes del te
 
 ---
 
-## 3. Elementos Pendientes Declarados
+## 3. Correcciones de Contenido del Origen (Checklist correcciones.md)
+
+Siguiendo la regla de `AGENTS.md` (*no inventar contenido final, copiar el relleno del origen tal cual con typos incluidos*), se realizaron las siguientes correcciones de contenido:
+
+1. **FAQ (`src/pages/faq.pug`)**:
+   - Reemplazadas las preguntas inventadas por las 7 preguntas reales del origen, conservando los typos originales `PURCASE` y `MATRACES`.
+   - Respuestas uniformadas con el texto lorem ipsum del origen (`Cursus mattis molestie a iaculis...`).
+2. **Blog (`blog.pug`, `blog-single.pug`, `blog-masonry.pug`, `blog-list-template.pug`, `blog-card.pug`, `blog-sidebar.pug`)**:
+   - Títulos de artículos sustituidos por los del origen (incluyendo el typo `necesetys`).
+   - Autor unificado a `by Saira Bishon`.
+   - Extracto común del origen: `Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…`.
+   - Cita: Eliminada la atribución ficticia a Maria Montessori. Se restauró la cita del origen (*«Tellus pellentesque eu tincidunt tortor an nua ali qu am facilisia crasoned ferment.»* firmada `JULY, CALIFORNIA`).
+   - Categorías de barra lateral: `Care`, `Nursery`, `Nurturing`, `Play`, `Toys`.
+3. **Contacto (`contact.pug`, `google-map.pug`, `contact-form.pug`)**:
+   - Eliminada la dirección inventada de Nueva York de `google-map.pug`.
+   - Encabezados actualizados a los del origen: `HAPPY TO ANSWER ALL YOUR QUESTIONS` y `WHERE TO FIND US?`.
+   - Botón del formulario ajustado a `Send message`.
+4. **Homes y general (`icon-with-text.pug`, `text-marquee.pug`, meta descriptions)**:
+   - Limpieza de textos de marketing inventados en `icon-with-text` y `text-marquee`.
+   - Meta descriptions simplificadas y estandarizadas en todas las páginas.
+5. **Revisión de avisos de `verify-render.js`**:
+   - 0 FALLOS. Todos los avisos corresponden a falsos positivos por mixins compartidos en el marcado.
+
+---
+
+## 4. Elementos Pendientes Declarados
 
 - **Destinos de formulario (`actionUrl`)**: Los formularios de contacto, comentarios y newsletter mantienen `action=''` intencionalmente, hasta que se defina la integración de backend.
 - **Integración de Google Maps**: `google-map.pug` contiene el diseño estático y accesible con marcador, a la espera de credenciales API oficiales.
@@ -66,7 +91,7 @@ El objetivo fue completar el 100% de los componentes y páginas faltantes del te
 
 ---
 
-## 4. Resultados de Verificación
+## 5. Resultados de Verificación
 
 * **Linter general (`npm run lint`):**
   * `markuplint` (Pug): **0 errores** en 63 plantillas.

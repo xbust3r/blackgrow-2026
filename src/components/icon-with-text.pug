@@ -4,14 +4,14 @@ mixin iconWithText(item)
     div(class='flex flex-col items-center text-center' + (item.class ? ' ' + item.class : ''))
         div(class='mb-4 flex size-16 items-center justify-center rounded-full bg-surface-alt text-brand')
             +svgIcon(item.icon || 'star', 'size-8')
-        h3(class='mb-2 text-h4 font-medium text-ink')= item.title
+        h3(class='mb-2 text-h4 font-medium uppercase tracking-heading text-ink')= item.title
         p(class='max-w-xs text-sm text-ink-soft')= item.text
 
 -
     var defaultFeatures = [
-        { icon: 'star', title: 'Quality Materials', text: 'Safe and certified organic cotton fabrics crafted for newborns and toddlers.' },
-        { icon: 'cart', title: 'Free Delivery', text: 'Free standard shipping on all domestic orders over $50 with live tracking.' },
-        { icon: 'mail', title: '24/7 Support', text: 'Dedicated support team ready to assist with sizing, orders, and inquiries.' }
+        { icon: 'star', title: 'Title', text: 'Cursus mattis molestie a iaculis at erat pellentesque adipiscing isu faucibus vitae aliquet.' },
+        { icon: 'cart', title: 'Free delivery', text: 'Cursus mattis molestie a iaculis at erat pellentesque adipiscing isu faucibus vitae aliquet.' },
+        { icon: 'mail', title: 'Support', text: 'Cursus mattis molestie a iaculis at erat pellentesque adipiscing isu faucibus vitae aliquet.' }
     ]
 
 section(class='py-12 tablet:py-16', aria-label='Features')

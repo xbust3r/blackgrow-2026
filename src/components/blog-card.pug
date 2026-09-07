@@ -3,20 +3,20 @@ include ui
 mixin blogCard(post = {})
     -
         const format = post.format || 'standard';
-        const title = post.title || 'Sustainable Nursery Essentials for Growing Families';
+        const title = post.title || 'A guide to packing travel clothes and necesetys for a family vacation';
         const date = post.date || 'May 12, 2026';
         const dateIso = post.dateIso || '2026-05-12';
-        const author = post.author || 'Admin';
+        const author = post.author || 'by Saira Bishon';
         const category = post.category || 'Nursery';
-        const excerpt = post.excerpt || 'Discover eco-friendly materials and thoughtful design choices that make parenting simpler and spaces cozier.';
+        const excerpt = post.excerpt || 'Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…';
         const href = post.href || '/blog-single';
 
     article(class='overflow-hidden rounded-card border border-line bg-white transition-colors hover:border-brand')
         if format === 'quote'
             div(class='bg-surface-alt p-6 tablet:p-8')
                 blockquote(class='text-lg italic text-ink')
-                    p= '“' + (post.quote || 'Simplicity and safety are at the heart of conscious parenting.') + '”'
-                    cite(class='mt-4 block text-sm font-medium not-italic text-brand')= '— ' + (post.quoteAuthor || author)
+                    p= '“' + (post.quote || 'Tellus pellentesque eu tincidunt tortor an nua ali qu am facilisia crasoned ferment.') + '”'
+                    cite(class='mt-4 block text-sm font-medium uppercase tracking-heading not-italic text-brand')= post.quoteAuthor || 'JULY, CALIFORNIA'
         else if format === 'link'
             div(class='bg-surface-alt p-6 tablet:p-8')
                 p(class='text-xs uppercase tracking-heading text-brand') External Link
@@ -48,7 +48,7 @@ mixin blogCard(post = {})
                 span(aria-hidden='true') •
                 time(datetime=dateIso)= date
                 span(aria-hidden='true') •
-                span= 'By ' + author
+                span= author.startsWith('by ') ? author : 'by ' + author
 
             h3(class='text-h3 font-medium text-ink')
                 a(class='hover:text-brand', href=href)= title

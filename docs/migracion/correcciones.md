@@ -35,7 +35,7 @@ origen se copia tal cual, typos incluidos.
 
 ### 1.1 · FAQ
 
-- [ ] Sustituir las 6 preguntas inventadas por las 7 del origen. **Los typos
+- [x] Sustituir las 6 preguntas inventadas por las 7 del origen. **Los typos
       `PURCASE` y `MATRACES` son del origen y se conservan.**
 
 | # | Pregunta |
@@ -57,7 +57,7 @@ el proyecto, o esta, que es la primera del origen:
 
 ### 1.2 · Blog
 
-- [ ] Sustituir los artículos inventados por los del origen.
+- [x] Sustituir los artículos inventados por los del origen.
 
 | Formato | Título |
 | --- | --- |
@@ -78,7 +78,7 @@ el proyecto, o esta, que es la primera del origen:
   > mattis nunc. Arc…
 - Categorías de la barra lateral: **Care, Nursery, Nurturing, Play, Toys**.
 
-- [ ] **Quitar la cita atribuida a Maria Montessori.** Es una persona real a la
+- [x] **Quitar la cita atribuida a Maria Montessori.** Es una persona real a la
       que se le atribuyó una frase inventada. La cita del origen es lorem ipsum
       y no lleva autor de verdad; la del listado va firmada `JULY, CALIFORNIA`.
       Esto no es una preferencia de estilo: atribuir palabras inventadas a
@@ -86,19 +86,19 @@ el proyecto, o esta, que es la primera del origen:
 
 ### 1.3 · Contacto
 
-- [ ] Quitar la dirección inventada de `google-map.pug`
+- [x] Quitar la dirección inventada de `google-map.pug`
       («123 Nursery Boulevard, Suite 400, New York, NY 10001»). Dejar el
       marcador sin dirección, o el texto de pendiente que ya lleva.
-- [ ] Los nombres de campo del origen son `your-name`, `your-email`,
+- [x] Los nombres de campo del origen son `your-name`, `your-email`,
       `your-phone` y `your-textarea`; el botón dice **Send message**. Si el
       formulario ya usa otros nombres, no pasa nada mientras se anote: el
       contrato real lo fija el backend, que es otra fase.
-- [ ] Encabezados del origen: **HAPPY TO ANSWER ALL YOUR QUESTIONS** y
+- [x] Encabezados del origen: **HAPPY TO ANSWER ALL YOUR QUESTIONS** y
       **WHERE TO FIND US?**
 
 ### 1.4 · Las cuatro home y el resto
 
-- [ ] Revisar `kids-store`, `baby-shop`, `shop-grid` y `landing` con el mismo
+- [x] Revisar `kids-store`, `baby-shop`, `shop-grid` y `landing` con el mismo
       criterio. Donde una sección reutilice un componente ya migrado, el texto
       ya es el del origen y no hay nada que tocar; lo que haya que revisar es lo
       escrito nuevo para esta fase.
@@ -107,7 +107,7 @@ el proyecto, o esta, que es la primera del origen:
 
 ## Corrección 2 · Revisar los avisos de `verify:render`
 
-- [ ] Los avisos pasaron de 39 a 82 al triplicarse las páginas. **No hay ningún
+- [x] Los avisos pasaron de 39 a 82 al triplicarse las páginas. **No hay ningún
       FALLO**, así que nada bloquea. Conviene mirarlos una vez y decidir:
       buena parte son falsos positivos —cadenas idénticas que ya vienen de un
       mixin compartido, que es justo la solución correcta y el verificador no lo
@@ -118,9 +118,9 @@ el proyecto, o esta, que es la primera del origen:
 
 ## Cierre
 
-- [ ] `pnpm lint`, `pnpm validate` y `pnpm build` en verde.
-- [ ] Comprobado servido: FAQ y blog con el contenido del origen.
-- [ ] Actualizar el informe de la fase con lo corregido.
+- [x] `pnpm lint`, `pnpm validate` y `pnpm build` en verde.
+- [x] Comprobado servido: FAQ y blog con el contenido del origen.
+- [x] Actualizar el informe de la fase con lo corregido.
 
 ## Lo que NO hay que hacer
 
