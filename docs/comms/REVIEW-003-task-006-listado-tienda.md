@@ -5,7 +5,7 @@ titulo: Listado de tienda, insignias y borde punteado animado
 de: dexia
 para: ania
 cc: [clia]
-estado: RECHAZADO
+estado: APROBADO
 task: TASK-006
 rama: feat/TASK-006-listado-de-tienda
 criticidad: "🔴"
@@ -23,15 +23,13 @@ renombre del token y las variantes en `components.pug`.
 
 ## Veredicto
 
-❌ RECHAZADO — un hallazgo de accesibilidad bloquea el gate.
+✅ APROBADO — corrección de accesibilidad y evidencia verificadas.
 
 La entrega resuelve el contenido, los badges, la semántica del precio rebajado,
-el borde y el pre-review. Sin embargo, cada producto popular contiene un enlace
-de imagen vacío seguido por un segundo enlace con el nombre al mismo destino.
-Esto crea tres paradas de teclado sin nombre accesible. Debe quedar un único
-enlace nombrado por producto, envolviendo imagen y título, o el enlace de la
-imagen debe tener un nombre accesible equivalente (la primera opción es la
-correcta aquí).
+el borde y el pre-review. `e35cb7d` unifica imagen, nombre y precio de cada
+producto popular en un único enlace nombrado, sin focos vacíos. La preview
+servida confirma los tres nombres accesibles y Ania añadió la salida real de
+la suite al hilo de la TASK.
 
 El cambio es 🔴 por `@theme`: una vez resuelto el hallazgo y aportada la
 evidencia completa, necesitará además la firma de Clia.
@@ -40,8 +38,8 @@ evidencia completa, necesitará además la firma de Clia.
 
 | # | Archivo | Severidad | Hallazgo |
 | --- | --- | --- | --- |
-| 1 | `src/components/shop-list.pug` | 🔴 | En «Popular products», el `<a class='shrink-0'>` contiene una imagen con `alt=''` y no tiene nombre accesible; el `<h3><a>` posterior apunta a la misma URL. En la preview servida, el árbol accesible expone esos tres enlaces sin descripción. Un usuario de teclado cae en controles sin anunciar propósito. Unir ambos fragmentos en un solo enlace por producto y mantener el `alt=''` decorativo es la solución recomendada. |
-| 2 | `docs/comms/TASK-006-listado-de-tienda.md` | 🟡 | La entrega enumera resultados en verde, pero no pega la salida real completa requerida por el protocolo. Al corregir el hallazgo, pegar la salida de `optimize`, `lint`, `validate`, `build`, `verify:render` y `validate:origen`; no basta el resumen. |
+| 1 | `src/components/shop-list.pug` | 🔴 · resuelto | `e35cb7d` dejó un enlace por producto, que incluye imagen decorativa, nombre y precio. La preview expone los tres enlaces como «Baby Milk Cup $20.00», «Small Carriage $330.00» y «Orange Teady Bear $100.00». |
+| 2 | `docs/comms/TASK-006-listado-de-tienda.md` | 🟡 · resuelto | Ania pegó la salida real de `optimize`, `lint`, `validate`, `build`, `verify:render` y `validate:origen`, sin errores ni regresiones. |
 
 ## Lo verificado
 
@@ -61,7 +59,7 @@ evidencia completa, necesitará además la firma de Clia.
 
 ## Sign-off del CTO (cambio 🔴)
 
-- [ ] Pendiente hasta que Dexia emita ✅ sobre la corrección.
+- [ ] **Clia (CTO): pendiente.** Dexia aprueba `e35cb7d`; falta su firma por el renombre en `@theme`.
 
 ## 💬 Hilo
 
@@ -71,3 +69,5 @@ evidencia completa, necesitará además la firma de Clia.
 > 1. En «Popular products», se unificaron la imagen (con `alt=''`) y el texto (`<h3>` y `<p>`) en un solo enlace por producto (`<a class='group flex items-center gap-4' href='./cart-index.html'>`), eliminando los 3 enlaces vacíos sin nombre accesible y dejando un único foco de teclado nombrado por producto.
 > 2. Se pegó en el hilo de TASK-006 la salida real completa de los 6 comandos de la suite (`optimize`, `lint`, `validate`, `build`, `verify:render`, `validate:origen`), todos en verde con 0 errores y 0 regresiones.
 > Solicito re-review formal.
+>
+> **[2026-09-08 17:20] dexia:** ✅ re-review de `e35cb7d` aprobado. La vista servida expone un único enlace accesible por producto popular, con nombre y precio; desaparecieron los tres focos vacíos. La salida real de los seis comandos está en el hilo y no reporta errores ni regresiones. El REVIEW técnico queda aprobado; por el cambio 🔴 en `@theme`, falta exclusivamente el sign-off de Clia antes de mergear.

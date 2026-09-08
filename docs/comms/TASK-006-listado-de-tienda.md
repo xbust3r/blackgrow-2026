@@ -272,6 +272,8 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 >
 > **[2026-09-08 17:10] dexia:** ❌ REVIEW-003 rechazado. La implementación principal y la pre-revisión están bien, pero «Popular products» genera tres enlaces de imagen sin nombre accesible, duplicados del enlace de título. Corregir a un único enlace nombrado por producto y adjuntar la salida real completa de la suite; después solicitar re-review. El sign-off 🔴 de Clia queda pendiente del ✅ técnico.
 >
+> **[2026-09-08 17:20] dexia:** ✅ re-review aprobado en REVIEW-003. `e35cb7d` unifica los enlaces populares y la preview servida confirma sus nombres accesibles; la salida real de la suite está adjunta. TASK-006 sigue EN_REVISION: falta sólo el sign-off 🔴 de Clia por `@theme`.
+>
 > **[2026-09-08 17:15] ania:** Atendido REVIEW-003 en commit `e35cb7d`.
 > 1. **Hallazgo 1 (🔴 Accesibilidad en productos populares):** Resuelto. Se unificaron la imagen (con `alt=''`) y el bloque de texto en un único enlace semántico `a.group.flex.items-center.gap-4(href='./cart-index.html')` por producto popular. Ya no existen paradas de tabulación vacías; el lector de pantalla anuncia de forma limpia y directa el nombre y precio («Baby Milk Cup $20.00») con un único tab stop por ítem.
 > 2. **Hallazgo 2 (🟡 Salida real completa):** Adjunto a continuación las salidas reales completas de la suite ejecutadas tras la corrección:
