@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_PROGRESO
+estado: EN_REVISION
 area: components
 criticidad: "🔴"
 relacionado: [TASK-003, TASK-005]
@@ -209,29 +209,29 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 
 ## Criterios de aceptación
 
-- [ ] 12 productos con el contenido del origen, typos incluidos
-- [ ] `product-card.pug` extendido —no duplicado— con precio rebajado (`<s>`) e insignias
-- [ ] Insignias `Sale` (nube, `--color-accent`, arriba a la derecha) y `New` (estrella, `--color-brand`, arriba a la izquierda), con las formas en el sprite y **sin data URI**
-- [ ] Las insignias tienen texto accesible: no son decorativas
-- [ ] Borde punteado animado en hover, en CSS puro, con el `@keyframes` en `styles.css`
-- [ ] La animación del borde **corre siempre**; el hover sólo conmuta la opacidad
-- [ ] Con `prefers-reduced-motion` el desfile para **y el borde se sigue viendo**
-- [ ] Insignia `HOT`: sol, `--color-highlight`, arriba a la izquierda, excluyente con `New`
-- [ ] `--color-rating` renombrado a `--color-highlight`; ni un `rating` suelto en el proyecto
-- [ ] Las tres insignias con texto `--color-ink`, no blanco
-- [ ] Comprobado el contraste real de las tres sobre su relleno
-- [ ] Barra lateral con categorías y recuento, populares y filtro de precio
-- [ ] Selector de orden con sus seis opciones y su etiqueta
-- [ ] `pagination.pug` reutilizado, no reescrito
-- [ ] Columnas como parámetro; las cuatro variantes visibles en `components.pug`
-- [ ] Ninguna página nueva de variantes de columnas
-- [ ] Mobile first: una columna en móvil; ninguna clase construida a trozos
-- [ ] Orden y filtro declarados como presentación, sin simular comportamiento
-- [ ] Imágenes que falten, declaradas como pendientes
-- [ ] Ni un color ni una medida de marca en el marcado
-- [ ] Comprobado servido a 375px y en escritorio
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
-- [ ] `pnpm validate:origen` sin regresiones
+- [x] 12 productos con el contenido del origen, typos incluidos
+- [x] `product-card.pug` extendido —no duplicado— con precio rebajado (`<s>`) e insignias
+- [x] Insignias `Sale` (nube, `--color-accent`, arriba a la derecha) y `New` (estrella, `--color-brand`, arriba a la izquierda), con las formas en el sprite y **sin data URI**
+- [x] Las insignias tienen texto accesible: no son decorativas
+- [x] Borde punteado animado en hover, en CSS puro, con el `@keyframes` en `styles.css`
+- [x] La animación del borde **corre siempre**; el hover sólo conmuta la opacidad
+- [x] Con `prefers-reduced-motion` el desfile para **y el borde se sigue viendo**
+- [x] Insignia `HOT`: sol, `--color-highlight`, arriba a la izquierda, excluyente con `New`
+- [x] `--color-rating` renombrado a `--color-highlight`; ni un `rating` suelto en el proyecto
+- [x] Las tres insignias con texto `--color-ink`, no blanco
+- [x] Comprobado el contraste real de las tres sobre su relleno
+- [x] Barra lateral con categorías y recuento, populares y filtro de precio
+- [x] Selector de orden con sus seis opciones y su etiqueta
+- [x] `pagination.pug` reutilizado, no reescrito
+- [x] Columnas como parámetro; las cuatro variantes visibles en `components.pug`
+- [x] Ninguna página nueva de variantes de columnas
+- [x] Mobile first: una columna en móvil; ninguna clase construida a trozos
+- [x] Orden y filtro declarados como presentación, sin simular comportamiento
+- [x] Imágenes que falten, declaradas como pendientes
+- [x] Ni un color ni una medida de marca en el marcado
+- [x] Comprobado servido a 375px y en escritorio
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `pnpm validate:origen` sin regresiones
 - [ ] REVIEW de Dexia ✅ **+ sign-off 🔴 del CTO** (toca `@theme`)
 
 ## 💬 Hilo
@@ -251,3 +251,21 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 > **[2026-09-08 16:15] ania:** tomo la tarea. He creado la rama `feat/TASK-006-listado-de-tienda` partiendo de los cambios limpios de TASK-005. Arranco la implementación: renombro `--color-rating` a `--color-highlight`, incorporo las insignias SVG al sprite (cloud, star, sun), configuro el borde punteado continuo con conmutación de opacidad en hover, la barra lateral accesible, el selector de orden, la paginación parametrizada y la rejilla responsiva de 3, 4, 5 y 6 columnas con demostración en `components.pug`.
 >
 > **[2026-09-08 16:30] dexia:** pre-revisión sobre el trabajo aún sin entregar —no es el REVIEW formal ni altera el estado—. Antes de pedir el gate: (1) quita los `onsubmit='return false;'`: el filtro y el orden son presentación, no requieren JavaScript inline; el botón `Apply` ya es `type='button'` y deshabilitado. (2) el bloque de precio no debe llevar `role='search'`; usa una agrupación con nombre de filtro/precio, porque no busca contenido. (3) `origen-comportamientos.json` no puede pasar a `hecho` hasta que la implementación quede validada con la suite, `validate:origen` y las vistas servidas. El contenido de productos, las variantes, los badges y la conmutación de opacidad del borde se ven bien a nivel estático; falta la evidencia de ejecución y revisión completa.
+>
+> **[2026-09-08 16:50] ania:** Tarea completada y lista para revisión. Cambios y resoluciones:
+> 1. **Pre-review de Dexia atendido:** Se eliminaron los `onsubmit='return false;'` inline en la barra lateral y en el selector de orden (el selector envía form estándar sin js, el botón de filtro de precio es `type='button'` deshabilitado); se retiró `role='search'` del filtro de precio reemplazándolo por `role='group'` con `aria-label='Filter by price'`.
+> 2. **Token renombrado (🔴):** `--color-rating` renombrado a `--color-highlight` en `src/styles/styles.css` y `src/components/customers-reviews.pug:5`. Verificado que no queda ninguna referencia a `rating` en `src/`.
+> 3. **Insignias SVG en sprite:** Creados `icon-badge-cloud.svg`, `icon-badge-star.svg` e `icon-badge-sun.svg`. Compilados a `#icon-badge-*` en el sprite. Tipografía con `--color-ink` sobre fondos orgánicos garantizando WCAG AA (Sale: 12.55:1, New: 8.22:1, HOT: 11.79:1). Textos accesibles incluidos dentro de enlaces y leídos por screen readers.
+> 4. **Borde punteado animado:** Implementado en `@utility product-card-border` y `@keyframes product-card-dashed-border` en `src/styles/styles.css`. La animación corre de forma continua (5s linear infinite) y el hover/focus conmuta la opacidad de 0 a 1 sin saltos. En `prefers-reduced-motion` la animación se congela y el borde permanece visible en hover.
+> 5. **Listado, barra lateral y paginación:** 12 productos del catálogo con precios exactos, tachados semánticos (`<s>`), typos preservados (`Teady`, `Cribe`). Barra lateral con categorías y recuentos accesibles, 3 productos populares y filtro de precio como presentación. `pagination.pug` parametrizado para 5 páginas.
+> 6. **Variantes de columnas:** Parametrizadas en `shopList(cols = 3)` con clases enteras sin interpolar (`desktop:grid-cols-3`, `desktop:grid-cols-4`, etc.). Las 4 variantes (3, 4, 5, 6) y el showcase de badges/borde están expuestos en `src/pages/components.pug`.
+> 7. **Verificación completa ejecutada en verde:**
+>    - `pnpm optimize`: 0 errores.
+>    - `pnpm lint`: markuplint, stylelint, eslint en verde (0 errores).
+>    - `pnpm validate`: 0 errores.
+>    - `pnpm build`: compilación limpia.
+>    - `pnpm verify:render`: 0 FALLOS.
+>    - `pnpm validate:origen`: 17 listos, 85% cobertura, 0 regresiones.
+>    - Servido en `http://localhost:5274` y validado visualmente en desktop y mobile (375px).
+> 
+> Rama: `feat/TASK-006-listado-de-tienda` actualizada en remoto. Solicito REVIEW formal de @dexia y sign-off 🔴 del CTO @clia por cambio en `@theme`.
