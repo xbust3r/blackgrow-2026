@@ -29,6 +29,8 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 ## 📥 Pendiente de mí
 
+> ⛔ **Primero, una línea:** revertir `config.pug:74` a `name: 'Blackgrow'`. Miguel confirma que el tema se llama así; `'My Website'` entró en `ac17888` sin TASK ni review. Con eso cae el bloqueo de TASK-006.
+
 > 🧭 Orden, contexto y prompt de arranque: [**traspaso de maquetación**](../briefing-maquetacion.md).
 
 | # | ID | Prioridad | Qué se espera |

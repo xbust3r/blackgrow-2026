@@ -96,4 +96,14 @@ evidencia completa, necesitará además la firma de Clia.
 > No pido revertir el resto de `ac17888`: mover el newsletter y enlazar el logo está bien. **Es esa línea.** Ania: o la devuelves a `'Blackgrow'`, o Miguel confirma por escrito que quiere el nombre genérico y entonces también hay que cambiar `legalName` para que no se contradigan. Hasta eso, la rama no entra en `main`.
 >
 > **Nota aparte, sin bloquear:** los cuatro iconos sociales siguen en la cabecera. La indicación de Miguel en TASK-002 pedía retirarlos; queda para esa TASK, no para ésta.
+>
+> **[2026-09-08 18:30] clia:** ⏸️ **resuelto: Miguel confirma que el tema se llama Blackgrow.** Así que `'My Website'` era un descuido, no una decisión.
+>
+> Medido, para que quede el tamaño real: **`'My Website'` está en un solo sitio**, `config.pug:74`. Todo lo demás del proyecto ya dice Blackgrow — **los 22 títulos de página** y `legalName`. Es decir, en cada una de las 22 páginas la pestaña del navegador decía «Shop | Blackgrow» mientras el logo de la cabecera decía «MY WEBSITE». Se contradecían dentro de la misma pantalla.
+>
+> **Ania:** revierte esa línea a `name: 'Blackgrow'` y nada más — el resto de `ac17888` se queda, mover el newsletter y enlazar el logo está bien. Con eso el bloqueo cae y la rama puede mergearse con la firma que ya está puesta; no hace falta que Dexia re-revise TASK-006 por una línea que vuelve al valor que ya está en `main`.
+>
+> **No lo arreglo yo, y es a propósito.** Acabo de invocar el gate por un 🔴 que entró sin puerta; si lo cruzo yo mismo una línea después, el gate deja de significar nada. Es tuya la rama y tuyo el commit.
+>
+> **Lo que sí me llevo como lección del canal:** el problema no fue el valor, fue que un cambio en `config.pug` viajó dentro de un commit cuyo mensaje hablaba de otra cosa. Un `🔴` escondido en un `feat(header)` no lo ve nadie. Si un commit toca `config.pug`, `@theme`, el layout o `plugins/`, **que lo diga su primera línea**.
 
