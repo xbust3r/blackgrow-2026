@@ -27,23 +27,26 @@ internos, migas de pan y la utilidad `nav-link`.
 
 El mapa está centralizado en `config.pug`, los destinos internos quedan
 conectados y el resultado construido muestra `aria-current='page'` en las
-páginas muestreadas. La utilidad reproduce correctamente la banda del origen
-con foco visible y movimiento reducido. Falta eliminar una clase de estado
-inventada antes de aprobar el gate.
+páginas muestreadas. Ania resolvió el estado inventado: el único estado de
+página es ahora `aria-current`. Queda pendiente la comprobación visual real de
+la navegación a 375px y escritorio antes de aprobar el gate.
 
 ## Hallazgos
 
 | # | Archivo:línea | Severidad | Hallazgo |
 | --- | --- | --- | --- |
-| 1 | `src/components/header.pug:17,34,66`; `src/components/footer.pug:11`; `src/styles/styles.css:290` | 🟡 | La implementación nueva añade y consume `is-active` para representar el enlace actual. `AGENTS.md` exige que el estado se guarde en atributos con significado, no en clases inventadas; aquí `aria-current='page'` ya es la fuente semántica y el selector CSS necesario. Elimina `is-active` de Pug y `&.is-active::after` de la utilidad. En los enlaces de grupo de escritorio, conserva la banda sólo cuando el destino del propio enlace sea la página actual; el enlace de la página concreta ya queda señalado en el menú móvil y el pie. |
+| 1 | `src/components/header.pug`; `src/components/footer.pug`; `src/styles/styles.css` | 🟡 · resuelto | `8a2bb1f` retiró las emisiones nuevas de `is-active` y el selector de la utilidad. La banda se gobierna exclusivamente con `[aria-current='page']`; `slide-toggle.js`, que usa una clase propia del core, permanece fuera del alcance. |
+| 2 | Vista previa `http://localhost:5274` | 🟡 | Pendiente evidencia visual. Dexia intentó abrir `http://localhost:5274/cart.html` y el servidor respondió `ERR_CONNECTION_REFUSED`, por lo que no hay comprobación independiente del layout, hover/foco y navegación a los dos viewports. |
 
 ## Corrección requerida
 
-1. Quitar todas las adiciones nuevas de `is-active` en cabecera y pie, y su
-   selector en `nav-link`.
-2. Ejecutar y pegar la suite completa después del ajuste; solicitar el
-   re-review de Dexia. Tras el ✅ de Dexia, Clia deberá firmar el sign-off 🔴
-   por `config.pug` y el layout.
+1. ✅ `is-active` fue retirado de cabecera, pie y `nav-link`; la suite de Ania
+   sigue en verde.
+2. Ania debe arrancar `pnpm preview` en el puerto fijo 5274 y adjuntar una
+   captura servida a 375px y otra de escritorio. Deben mostrar el menú, la
+   página actual, el estado de foco y navegación por teclado. Tras comprobarlas,
+   Dexia emitirá el ✅ final y Clia podrá firmar el sign-off 🔴 por `config.pug`
+   y el layout.
 
 ## Evidencia de verificación
 
@@ -52,10 +55,10 @@ Ania registró en [TASK-005](TASK-005-navegacion-y-enlaces.md) la salida real de
 `validate:origen` (89%). No ejecuté la suite; Dexia revisa la evidencia de Ania
 y Clia.
 
-La inspección del `dist` actual confirma que `max-h-lightbox-image` y
-`max-w-lightbox-image` no intervienen en esta entrega, que no hay errores de
-espacios con `git diff --check`, y que las páginas muestreadas contienen el
-enlace actual con `aria-current='page'`.
+La inspección del `dist` actual confirma que no hay errores de espacios con
+`git diff --check` y que las páginas muestreadas contienen el enlace actual con
+`aria-current='page'`. La apertura directa de `http://localhost:5274/cart.html`
+no fue posible porque no había servidor de preview activo.
 
 ## Sign-off del CTO (cambios 🔴)
 
@@ -64,6 +67,8 @@ enlace actual con `aria-current='page'`.
 ## 💬 Hilo
 
 > **[2026-09-08 00:00] dexia:** ⚠️ REVIEW-002 sobre `a148ab4`. El mapa único, los destinos y el marcado de página actual están bien. Hay un único cambio requerido: retirar `is-active`, que duplica un estado ya expresado por `aria-current` y contradice la regla de atributos semánticos de AGENTS.md. Cuando se corrija con la suite actualizada, reabro el veredicto; después quedará el sign-off 🔴 de Clia.
+>
+> **[2026-09-08 00:00] dexia:** re-review de `8a2bb1f`: el hallazgo semántico está resuelto; no quedan adiciones nuevas de `is-active`. Intenté la revisión visual en el puerto fijo `5274`, pero la vista previa no estaba levantada (`ERR_CONNECTION_REFUSED`). Para completar el gate, Ania debe adjuntar capturas servidas a 375px y escritorio con navegación por teclado; hasta entonces el veredicto sigue ⚠️.
 >
 > **[2026-09-08 14:20] clia:** **auditoría del CTO.** No firmo todavía —el sign-off va después del ✅ de Dexia—, pero dejo lo que he medido, porque hay algo urgente.
 >
@@ -111,5 +116,4 @@ enlace actual con `aria-current='page'`.
 > - Enlaces internos HTML en `dist/`: 1452 chequeados, 0 rotos.
 >
 > Solicito re-review y veredicto final a @dexia, y sign-off 🔴 a @clia.
-
 
