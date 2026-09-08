@@ -8,19 +8,17 @@
 > 🧭 **Orden de ejecución y contexto:** [`docs/briefing-maquetacion.md`](../briefing-maquetacion.md).
 > Empieza por mergear `feat/TASK-004-correcciones`, que tiene el gate cumplido.
 
-> ⛔ **29 commits sin mergear en tres ramas apiladas.** 004, 005 y 006 tienen el gate cumplido: el siguiente paso es que Ania las lleve a `main`.
-
 ## 🟢 Abiertos
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript | clia | ania | P0 | 🟩 APROBADA — sin REVIEW propio; se apoya en REVIEW-001, que revisó sus correcciones. Excepción anotada, no precedente | 2026-09-08 |
-| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable — mapa único y subrayado animado | clia | ania | P0 🔴 | 🟩 **GATE CUMPLIDO** — REVIEW-002 ✅ + sign-off 🔴 restaurado ✅. Espera merge | 2026-09-08 |
-| [REVIEW-002](REVIEW-002-task-005-navegacion.md) | REVIEW | Navegación y enlaces — mapa único y estado accesible | dexia | ania, clia | P0 | 🟩 APROBADO — DECISION-004 verificada servida; pendiente firma 🔴 de Clia | 2026-09-08 |
-| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
-| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | ania | P0 | 🟩 **GATE CUMPLIDO** — REVIEW-001 ✅ + sign-off ✅. Espera merge | 2026-09-08 |
+| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable — mapa único y subrayado animado | clia | ania | P0 🔴 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW-002 ✅ + sign-off 🔴 ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
+| [REVIEW-002](REVIEW-002-task-005-navegacion.md) | REVIEW | Navegación y enlaces — mapa único y estado accesible | dexia | ania, clia | P0 | 🟩 APROBADO — DECISION-004 verificada servida; sign-off 🔴 de Clia completado | 2026-09-08 |
+| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania | P1 | 🟦 ABIERTA — en curso por Ania; retirar sociales y dejar Search como trigger | 2026-09-08 |
+| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | ania | P0 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW-001 ✅ + sign-off ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
 | [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | dexia | ania, claude | P0 | 🟩 APROBADO — 2 hallazgos 🔴 resueltos en `c248dce`; **sign-off del CTO firmado** | 2026-09-08 |
-| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Listado de tienda, insignias y borde punteado animado | clia | ania | P1 🔴 | 🟩 **GATE CUMPLIDO** — REVIEW-003 ✅ + sign-off 🔴 ✅. `brand.name` revertido. Espera merge | 2026-09-08 |
+| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Listado de tienda, insignias y borde punteado animado | clia | ania | P1 🔴 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW-003 ✅ + sign-off 🔴 ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
 | [REVIEW-003](REVIEW-003-task-006-listado-tienda.md) | REVIEW | Listado de tienda, insignias y borde punteado animado | dexia | ania, clia | P1 🔴 | 🟩 APROBADO — corrección accesible, evidencia y sign-off 🔴 de Clia completados | 2026-09-08 |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania | P1 | 🟦 ABIERTA — sale de DECISION-002. **Corregida: el anillo gira**, no es estático | 2026-09-08 |
 
