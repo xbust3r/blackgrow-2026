@@ -62,13 +62,13 @@ El menú del origen —leído del sitio vivo— encaja casi uno a uno con lo que
 
 **Fuera de la navegación pública:** `components.html` (catálogo interno), `error.html` (404) y `thanks.html` (destino de formulario). Se llega a ellas por otro camino, no por el menú.
 
-## ⚠️ Decisión previa: los dos nombres heredados
+## Los dos nombres heredados: se quedan
 
-`cart.html` **es el listado de tienda** y `cart-index.html` **es la ficha de producto**. Es un lío heredado del clon que [`playgrow-origen.md`](../migracion/playgrow-origen.md) ya advertía, y hasta hoy daba igual porque nadie los enlazaba. En cuanto exista un menú que diga «Shop List → cart.html», el lío pasa a ser visible y permanente.
+`cart.html` **es el listado de tienda** y `cart-index.html` **es la ficha de producto**. Es un lío heredado del clon que [`playgrow-origen.md`](../migracion/playgrow-origen.md) ya advertía.
 
-Renombrarlos a `shop.html` y `shop-single.html` cuesta **casi nada hoy** —hay 6 enlaces internos en todo el proyecto— y cuesta cada vez más a partir de mañana. No hay sitio en producción, así que no se rompe ninguna URL.
+Propuse renombrarlos. **Miguel decide que no**: esto es una maqueta para integrar después, así que los nombres de archivo los va a fijar la integración y renombrarlos ahora sería trabajo que se tira. **No se renombra nada**; el mapa usa los nombres actuales.
 
-**Miguel decide.** Hasta que lo haga, **no renombres nada**: pregunta en el hilo y espera. Si dice que sí, va como primer paso, antes de escribir el mapa; si dice que no, el mapa usa los nombres actuales y se acabó.
+Lo que sí hace falta es que el mapa **no herede la confusión**: la etiqueta visible de `cart.html` es «Shop List» y la de `cart-index.html` es «Shop Single», como en el origen. El nombre del archivo miente; el del menú, no.
 
 ## Pedido
 
@@ -111,6 +111,56 @@ Cada página declara su identidad en su `block vars` —hay 22 y todas tienen es
 
 Las cuatro columnas de `item 1` pasan a ser el mapa: los grupos reales con sus enlaces. En un sitio de 22 páginas el pie **es** el mapa del sitio, y además resuelve el acceso a todo sin depender de ningún desplegable.
 
+### 6 · El subrayado animado de la navegación
+
+Miguel quiere replicar el hover de los enlaces del origen. Está medido en el sitio vivo y **no es un `underline`**: es una banda de 5px bajo el elemento, con un degradado que se desplaza en horizontal mientras el puntero está encima.
+
+Cómo lo hace el origen, exactamente:
+
+```css
+/* el contenedor del texto */
+.qodef-menu-item-text {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding: 9px 0;
+}
+
+/* la banda */
+::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-image: linear-gradient(to right, #db915e 25%, transparent 50%, #db915e 75%);
+    background-size: 300% 100%;
+    background-repeat: repeat;
+    opacity: 0;                              /* estado por defecto */
+    transition: opacity .2s ease-out;
+    animation: qode-background-position-x 1.5s linear infinite;
+    animation-play-state: paused;            /* estado por defecto */
+}
+
+@keyframes qode-background-position-x {
+    0%   { background-position-x: 0; }
+    100% { background-position-x: 100%; }
+}
+```
+
+En reposo la banda existe pero está a `opacity: 0` y su animación **pausada**. Al pasar el cursor —y en la página actual— pasa a `opacity: 1` y `animation-play-state: running`, y las franjas empiezan a desfilar. Ese es todo el truco: la animación no se enciende y se apaga, se pausa y se reanuda, así que no salta.
+
+Cómo se traduce aquí:
+
+- **`#db915e` es `--color-brand`.** Va por su nombre; el hex en el marcado es FALLO del verificador.
+- Los 5px y el `300%` se repiten en cada enlace del menú, así que **es una `@utility` en `styles.css`**, junto a `marquee` y `animate-jump`, no una cadena de clases copiada en cada `<a>`.
+- **También en foco, no sólo en hover.** El origen sólo responde al cursor; quien navega con el teclado no ve nada. Se activa igual con `:focus-visible` — es la misma corrección que ya se hizo en el menú móvil y en el buscador.
+- **`prefers-reduced-motion`:** el `@media` global de `styles.css:165` ya deja la animación en una iteración, así que las franjas se paran solas. Compruébalo, no lo des por hecho: lo que **no** debe perderse es que la banda siga apareciendo, porque es la señal de dónde estás.
+- La página actual lleva la banda visible de forma permanente, que es la contraparte visual del `aria-current='page'` del punto 3.
+
+Se aplica a **los enlaces de navegación** —cabecera, cabecera fija, menú móvil y los del pie—. El resto de enlaces del sitio conservan el hover que ya tienen; si Miguel lo quiere en más sitios, se dice y se extiende.
+
 ## Fuera de alcance
 
 - **Los desplegables de escritorio.** El origen abre submenús al pasar el cursor; hacerlo bien es el patrón ARIA de *disclosure* con `aria-expanded`, teclado y `Escape` — o sea, un módulo más. **Sale en su propia TASK**, porque es comportamiento y merece su propio review. Con esta TASK cerrada el sitio ya es navegable entero desde el menú móvil y el pie.
@@ -125,6 +175,10 @@ Las cuatro columnas de `item 1` pasan a ser el mapa: los grupos reales con sus e
 - [ ] Los 33 `href='#'` resueltos o declarados con su motivo en el hilo
 - [ ] Ninguna URL externa inventada
 - [ ] `aria-current='page'` en el enlace de la página actual, sin JavaScript
+- [ ] El subrayado animado, resuelto como `@utility` y no como clases copiadas
+- [ ] La banda usa `--color-brand`; ni un hex en el marcado
+- [ ] Se activa también con `:focus-visible`, no sólo con el cursor
+- [ ] Con `prefers-reduced-motion` las franjas se paran **y la banda se sigue viendo**
 - [ ] Las migas declaran su tramo correcto donde se usen
 - [ ] `components.html`, `error.html` y `thanks.html` **no** están en la navegación pública
 - [ ] Ni un color ni una medida de marca en el marcado
@@ -142,3 +196,8 @@ Las cuatro columnas de `item 1` pasan a ser el mapa: los grupos reales con sus e
 > **[2026-09-08 11:00] claude:** ⏸️ **bloqueante antes de empezar:** el renombrado de `cart.html` y `cart-index.html`. Pregunta en el hilo y espera respuesta de Miguel; no renombres por tu cuenta. Todo lo demás de la TASK puede prepararse mientras tanto, pero el mapa se escribe **después** de saberlo, para no escribirlo dos veces.
 >
 > **[2026-09-08 11:00] claude:** el mayor valor de esta TASK no son los enlaces, es el **mapa único**. Hoy las etiquetas de navegación están escritas en cuatro sitios y ya no coinciden entre sí —el menú móvil tiene un `Info` que no existe en ningún otro—. Si sales de aquí con cuatro listas sincronizadas a mano, la TASK no está hecha aunque todos los enlaces funcionen.
+>
+> **[2026-09-08 11:40] claude:** ⏸️ **desbloqueado.** Miguel: es una maqueta para integrar después, así que **no se renombra** `cart.html` ni `cart-index.html` — los nombres los fijará la integración. Empieza cuando quieras. Lo único que traslado: que las **etiquetas del menú** digan «Shop List» y «Shop Single», para que el mapa no herede la confusión del nombre de archivo.
+>
+> **[2026-09-08 11:40] claude:** añadido el punto 6 con el hover que pide Miguel, medido en el sitio vivo. Ojo a lo que parece un detalle y es el truco entero: la animación **no se enciende al pasar el cursor, se reanuda** —está siempre declarada y `paused`—. Si la añades al hacer hover, salta desde el fotograma cero y se nota.
+
