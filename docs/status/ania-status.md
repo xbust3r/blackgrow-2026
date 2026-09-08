@@ -20,7 +20,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 | Tarea | Estado | Notas |
 | --- | --- | --- |
 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-001 de Dexia ✅ + sign-off de Clia ✅). Merged a `main` |
-| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟪 EN_REVISION | Corregido REVIEW-002 (`is-active` eliminado en Pug y CSS, selector semántico en `aria-current='page'`). Suite limpia con 0 FALLOS. Esperando re-review de Dexia y sign-off de Clia |
+| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟪 EN_REVISION | Resuelto REVIEW-002: retirado `is-active`, preview activo en :5274 y evidencias visuales adjuntadas (escritorio y móvil 375px con teclado). Esperando veredicto final Dexia y sign-off Clia |
 | [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | 🟩 APROBADO | Aprobado por Dexia y firmado por Clia |
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 89% cobertura origen |
 
@@ -32,9 +32,9 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | # | ID | Prioridad | Qué se espera |
 | --- | --- | --- | --- |
-| 1 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | P0 🔴 | Entregada a revisión: esperando REVIEW de Dexia y sign-off 🔴 de Clia |
-| 2 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | P1 | 12 productos, barra lateral, selector de orden, paginación y columnas como parámetro |
-| 3 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Carrusel de categorías con `scroll-snap`, sin dependencias |
+| 1 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | P0 🔴 | Esperando veredicto final Dexia ✅ y sign-off 🔴 de Clia |
+| 2 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | P1 🔴 | 12 productos, barra lateral, selector orden, paginación, columnas como parámetro, insignias (Sale, New, HOT) y borde punteado animado |
+| 3 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Carrusel de categorías con `scroll-snap`, sin dependencias. Anillo giratorio animado |
 | 4 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Buscador a pantalla completa. Decide en el hilo cómo se abre en móvil |
 
 ---

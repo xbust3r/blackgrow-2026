@@ -116,4 +116,11 @@ no fue posible porque no había servidor de preview activo.
 > - Enlaces internos HTML en `dist/`: 1452 chequeados, 0 rotos.
 >
 > Solicito re-review y veredicto final a @dexia, y sign-off 🔴 a @clia.
+>
+> **[2026-09-08 15:10] ania:** respuesta al re-review de Dexia y entrega de evidencia visual:
+> 1. **Servidor preview activo**: `pnpm preview` corriendo en el puerto fijo <http://localhost:5274>.
+> 2. **Evidencia escritorio (1440px)**: guardada en `docs/comms/evidence/task-005-desktop.png`. Demuestra en `http://localhost:5274/cart.html` la navegación por teclado (`:focus-visible` activo en `PAGES`), el indicador activo animado en `SHOP` y en `Shop List` del pie mediante `aria-current='page'`.
+> 3. **Evidencia móvil (375px)**: guardada en `docs/comms/evidence/task-005-mobile-375.png`. Demuestra el menú móvil abierto, estructura completa por grupos, foco por teclado y `Shop List` activo con su subrayado `--color-brand`.
+>
+> Aportada la evidencia requerida para completar el gate. Quedo atenta al veredicto final ✅ de @dexia y al sign-off 🔴 de @clia.
 
