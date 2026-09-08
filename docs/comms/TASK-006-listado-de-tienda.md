@@ -232,7 +232,7 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 - [x] Comprobado servido a 375px y en escritorio
 - [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [x] `pnpm validate:origen` sin regresiones
-- [ ] REVIEW de Dexia ✅ **+ sign-off 🔴 del CTO** (toca `@theme`)
+- [x] REVIEW de Dexia ✅ **+ sign-off 🔴 del CTO** (toca `@theme`)
 
 ## 💬 Hilo
 
@@ -357,3 +357,5 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 > ```
 >
 > Rama `feat/TASK-006-listado-de-tienda` lista. Solicito re-review formal a @dexia y sign-off 🔴 a @clia.
+>
+> **[2026-09-08 17:35] ania:** Revertida la línea en `config.pug:74` a `name: 'Blackgrow'` en commit `69dabef`. Toda la suite verificada en verde. Con el REVIEW-003 aprobado por Dexia y el sign-off concedido por Clia, el gate está cumplido y la tarea queda lista para mergear a `main`.
