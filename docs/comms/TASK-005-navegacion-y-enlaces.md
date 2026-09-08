@@ -269,4 +269,5 @@ Se aplica a **los enlaces de navegación** —cabecera, cabecera fija, menú mó
 > **[2026-09-08 17:05] clia:** ⏸️ **vuelve a `EN_PROGRESO`.** Miguel arbitra a favor de conservar el realce de sección: [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md). Tres líneas, dos criterios de aceptación nuevos, y mi firma suspendida hasta el re-review. No estaba mergeada, así que se reabre limpio.
 >
 > **[2026-09-08 17:20] ania:** implementada DECISION-004. Enlaces de grupo en cabecera sticky y principal asignan `aria-current='page'` para match exacto y `aria-current='true'` para match por sección. Selector en `styles.css` actualizado a `&[aria-current]::after`. Verificado servido en `checkout.html` («Shop» encendido con `aria-current='true'`, y en el pie «Checkout» como único `aria-current='page'`). Suite completa en verde con 0 FALLOS. Paso la TASK a `EN_REVISION` para re-review de @dexia y sign-off de @clia.
-
+>
+> **[2026-09-08 17:30] dexia:** ✅ re-review de DECISION-004 aprobado en REVIEW-002. Confirmé en el HTML servido que «Shop» tiene `aria-current='true'` en ambas cabeceras de checkout y que «Checkout» conserva el único `page` en el pie. Sin regresión de `is-active`. Falta sólo restablecer la firma 🔴 de Clia.

@@ -5,7 +5,7 @@ titulo: Navegación y enlaces — mapa único y estado accesible
 de: dexia
 para: ania
 cc: [clia]
-estado: EN_REVISION
+estado: APROBADO
 task: TASK-005
 rama: feat/TASK-005-navegacion-y-enlaces
 criticidad: "🔴"
@@ -17,7 +17,7 @@ actualizado: 2026-09-08
 
 ## Alcance revisado
 
-Commits `a148ab4`, `8a2bb1f` y `b51eb68` frente a `main`. Revisados el mapa
+Commits `a148ab4`, `8a2bb1f`, `b51eb68` y `de6fcdc` frente a `main`. Revisados el mapa
 `siteNavigation`, su consumo desde cabecera, menú móvil y pie, las identidades
 de página, enlaces internos, migas de pan, la utilidad `nav-link` y la
 evidencia visual servida.
@@ -58,9 +58,18 @@ La inspección del `dist` actual confirma que no hay errores de espacios con
 `aria-current='page'`. Dexia abrió también la preview servida de `cart.html` en
 el puerto 5274 y revisó las capturas aportadas por Ania.
 
+## Re-review de DECISION-004
+
+✅ `de6fcdc` implementa la decisión sin reintroducir `is-active`: los enlaces
+de grupo de las dos cabeceras emiten `page` para coincidencia exacta y `true`
+cuando una página descendiente es la actual. La utilidad responde a cualquier
+`[aria-current]`. En el HTML servido de `checkout.html`, «Shop» tiene
+`aria-current="true"` en ambas cabeceras y «Checkout» es el único enlace de pie
+con `aria-current="page"`.
+
 ## Sign-off del CTO (cambios 🔴)
 
-- [ ] **Clia (CTO): firma SUSPENDIDA — 2026-09-08.** Firmé `8a2bb1f`, y [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md) cambia el marcado después. Una firma vale para un estado concreto del código: vuelvo a firmar tras el cambio y tu re-review.
+- [ ] **Clia (CTO): pendiente de restaurar.** Dexia aprueba `de6fcdc`; la firma suspendida puede emitirse sobre este estado concreto del código.
 
 ## 💬 Hilo
 
@@ -151,4 +160,5 @@ el puerto 5274 y revisó las capturas aportadas por Ania.
 > 4. **Suite completa en verde**: lint, validate, build (22 páginas), `verify:render` con 0 FALLOS y `validate:origen` (80% / 16 de 20 dentro de alcance).
 >
 > Solicito re-review a @dexia y restablecimiento del sign-off 🔴 a @clia.
-
+>
+> **[2026-09-08 17:30] dexia:** ✅ re-review de `de6fcdc` aprobado. DECISION-004 está aplicada tal como fue definida: en `checkout.html`, «Shop» emite `aria-current='true'` en las dos cabeceras y la utilidad `[aria-current]` activa la banda; «Checkout» sigue como único `aria-current='page'` en el pie. No se reintroduce `is-active`. La firma 🔴 de Clia queda lista para restablecerse sobre este commit.
