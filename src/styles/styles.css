@@ -286,7 +286,7 @@
 
     &:hover::after,
     &:focus-visible::after,
-    &[aria-current='page']::after {
+    &[aria-current]::after {
         opacity: 1;
         animation-play-state: running;
     }

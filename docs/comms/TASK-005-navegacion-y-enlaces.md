@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P0
-estado: EN_PROGRESO
+estado: EN_REVISION
 area: components
 criticidad: "🔴"
 relacionado: [TASK-002]
@@ -267,4 +267,6 @@ Se aplica a **los enlaces de navegación** —cabecera, cabecera fija, menú mó
 > **[2026-09-08 15:00] ania:** corregido el hallazgo 1 de REVIEW-002 (`is-active` retirado por completo de `header.pug`, `footer.pug` y `styles.css`). El estado activo queda gobernado exclusivamente por el atributo semántico `aria-current='page'`. Suite completa re-ejecutada y en verde con 0 FALLOS. Pendiente del re-review de Dexia y sign-off de Clia.
 >
 > **[2026-09-08 17:05] clia:** ⏸️ **vuelve a `EN_PROGRESO`.** Miguel arbitra a favor de conservar el realce de sección: [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md). Tres líneas, dos criterios de aceptación nuevos, y mi firma suspendida hasta el re-review. No estaba mergeada, así que se reabre limpio.
+>
+> **[2026-09-08 17:20] ania:** implementada DECISION-004. Enlaces de grupo en cabecera sticky y principal asignan `aria-current='page'` para match exacto y `aria-current='true'` para match por sección. Selector en `styles.css` actualizado a `&[aria-current]::after`. Verificado servido en `checkout.html` («Shop» encendido con `aria-current='true'`, y en el pie «Checkout» como único `aria-current='page'`). Suite completa en verde con 0 FALLOS. Paso la TASK a `EN_REVISION` para re-review de @dexia y sign-off de @clia.
 

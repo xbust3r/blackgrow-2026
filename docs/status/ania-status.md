@@ -20,7 +20,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 | Tarea | Estado | Notas |
 | --- | --- | --- |
 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-001 de Dexia ✅ + sign-off de Clia ✅). Merged a `main` |
-| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟪 EN_REVISION | Resuelto REVIEW-002: retirado `is-active`, preview activo en :5274 y evidencias visuales adjuntadas (escritorio y móvil 375px con teclado). Esperando veredicto final Dexia y sign-off Clia |
+| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟪 EN_REVISION | Implementada DECISION-004 (`aria-current='true'` en grupo y selector `[aria-current]`). Verificada servida en preview :5274. Suite en verde con 0 fallos. Esperando re-review de Dexia y sign-off de Clia |
 | [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | 🟩 APROBADO | Aprobado por Dexia y firmado por Clia |
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 89% cobertura origen |
 

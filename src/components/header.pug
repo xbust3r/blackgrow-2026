@@ -10,11 +10,14 @@ header
         nav(aria-label='Sticky navigation')
             ul(class='flex flex-wrap gap-8')
                 each group in siteNavigation
+                    - var isExact = currentUrl === group.file;
+                    - var isSection = group.items && group.items.some(function(item) { return item.file === currentUrl; });
+                    - var groupAriaCurrent = isExact ? 'page' : (isSection ? 'true' : false);
                     li
                         a(
                             class='nav-link text-sm uppercase tracking-heading hover:text-brand',
                             href=group.url,
-                            aria-current=(currentUrl === group.file ? 'page' : false)
+                            aria-current=groupAriaCurrent
                         )= group.title
         div(class='flex items-center gap-1')
             +cartSideAreaOpener(cartCount)
@@ -23,11 +26,14 @@ header
         nav(aria-label='Main navigation')
             ul(class='flex flex-wrap gap-8 wide:gap-16')
                 each group in siteNavigation
+                    - var isExact = currentUrl === group.file;
+                    - var isSection = group.items && group.items.some(function(item) { return item.file === currentUrl; });
+                    - var groupAriaCurrent = isExact ? 'page' : (isSection ? 'true' : false);
                     li
                         a(
                             class='nav-link text-sm uppercase tracking-heading hover:text-brand',
                             href=group.url,
-                            aria-current=(currentUrl === group.file ? 'page' : false)
+                            aria-current=groupAriaCurrent
                         )= group.title
         div(class='flex items-center gap-4')
             div(class='hidden items-center gap-4 desktop:flex')

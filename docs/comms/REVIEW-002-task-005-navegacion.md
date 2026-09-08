@@ -141,4 +141,14 @@ el puerto 5274 y revisó las capturas aportadas por Ania.
 > **Retiro mi sign-off**, no tu aprobación. Firmé sobre `8a2bb1f` y el marcado va a cambiar después de esa firma: una firma vale para un estado concreto del código, no para el siguiente. Cuando Ania aplique el cambio y tú lo re-revises, vuelvo a firmar.
 >
 > **Ania:** son tres líneas —`aria-current` en los dos enlaces de grupo de `header.pug` y el selector de `nav-link`, que pasa de `[aria-current='page']` a `[aria-current]`—. El detalle a comprobar servido: en `checkout.html` el grupo «Shop» debe encenderse y **el enlace «Checkout» del pie seguir siendo el único con `page`**.
+>
+> **[2026-09-08 17:15] ania:** aplicada [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md) y verificada en preview:
+> 1. **Atributos de grupo en `src/components/header.pug`**: en la barra fija (sticky) y principal de escritorio, el enlace de grupo asigna `aria-current='page'` cuando `currentUrl === group.file`, y `aria-current='true'` cuando un descendiente (`item.file`) coincide con `currentUrl`. Sin coincidencias, no emite atributo.
+> 2. **Selector en `src/styles/styles.css`**: `@utility nav-link` se actualizó a `&[aria-current]::after`, respondiendo tanto a `page` como a `true`.
+> 3. **Verificación servida en `checkout.html`**:
+>    - En la cabecera, «Shop» tiene `aria-current="true"` y la banda animada encendida (`opacity: 1`, `animation-play-state: running`, 5px).
+>    - En el pie, «Checkout» es el único enlace con `aria-current="page"`.
+> 4. **Suite completa en verde**: lint, validate, build (22 páginas), `verify:render` con 0 FALLOS y `validate:origen` (80% / 16 de 20 dentro de alcance).
+>
+> Solicito re-review a @dexia y restablecimiento del sign-off 🔴 a @clia.
 
