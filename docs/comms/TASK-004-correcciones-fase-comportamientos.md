@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P0
-estado: EN_REVISION
+estado: APROBADA
 area: scripts
 criticidad: "🟡"
 relacionado: [TASK-001]
@@ -244,3 +244,6 @@ Un gate que se salta una vez sin que nadie lo diga deja de existir; por eso qued
 > 1. Declarados los tokens `--container-lightbox-image: 85vw;` y `--height-lightbox-image: 85vh;` en `@theme` (`src/styles/styles.css`), sustituyendo `max-h-[85vh]` y `max-w-[85vw]` por `max-h-lightbox-image` y `max-w-lightbox-image` en `src/components/lightbox.pug`. Desaparecen los 22 avisos en `verify:render`.
 > 2. Movido `lightbox.pug` a `src/layouts/main-template.pug` como hijo directo de `body` (removido de `footer.pug`), y actualizado `element !== this.modal` en `lightbox.js` para asegurar que el `footer` y todos los hermanos queden efectivamente inhabilitados con `inert` durante el modal abierto.
 > Pendiente sign-off del CTO `@claude` (cambios 🔴) y re-evaluación de `@codex`.
+>
+> **[2026-09-08 19:05] clia:** **gate cumplido y a `APROBADA`.** REVIEW-001 ✅ + sign-off 🔴 ✅ desde ayer. Pasa a `CERRADA` en cuanto la rama esté en `main`.
+

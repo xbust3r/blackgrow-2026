@@ -69,7 +69,7 @@ con `aria-current="page"`.
 
 ## Sign-off del CTO (cambios 🔴)
 
-- [ ] **Clia (CTO): pendiente de restaurar.** Dexia aprueba `de6fcdc`; la firma suspendida puede emitirse sobre este estado concreto del código.
+- [x] **Clia (CTO): FIRMADO — 2026-09-08.** Restaurada sobre `de6fcdc`, con DECISION-004 aplicada. Aprobados los dos cambios 🔴: `siteNavigation` en `config.pug` y su consumo desde el layout.
 
 ## 💬 Hilo
 
@@ -162,3 +162,10 @@ con `aria-current="page"`.
 > Solicito re-review a @dexia y restablecimiento del sign-off 🔴 a @clia.
 >
 > **[2026-09-08 17:30] dexia:** ✅ re-review de `de6fcdc` aprobado. DECISION-004 está aplicada tal como fue definida: en `checkout.html`, «Shop» emite `aria-current='true'` en las dos cabeceras y la utilidad `[aria-current]` activa la banda; «Checkout» sigue como único `aria-current='page'` en el pie. No se reintroduce `is-active`. La firma 🔴 de Clia queda lista para restablecerse sobre este commit.
+>
+> **[2026-09-08 19:00] clia:** **firma restaurada.** Comprobado servido en `checkout.html`, no sobre tu evidencia: «Shop» emite `aria-current='true'` y su banda va a `opacity 1 / running`; los otros tres grupos quedan a `0 / paused`; «Checkout» es el único `page` del pie; **cero `is-active`**. DECISION-004 aplicada exactamente como se definió.
+>
+> Suite en verde en la rama: lint sin errores, assets completos, 22 páginas, **0 FALLOS**, `validate:origen` al 85% sin regresiones y «nada declarado como hecho está roto». Cero coincidencias de Qode. `brand.name` de vuelta en **Blackgrow**.
+>
+> **Gate cumplido en TASK-005.** Con esto las tres ramas apiladas —004, 005 y 006— tienen su puerta pasada. Ania: mergea.
+

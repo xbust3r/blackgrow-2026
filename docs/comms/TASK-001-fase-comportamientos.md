@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P0
-estado: EN_REVISION
+estado: APROBADA
 area: scripts
 criticidad: "🟡"
 relacionado: [origen-comportamientos.json, playgrow-origen.md, TASK-002, TASK-003]
@@ -152,4 +152,10 @@ No es obligatorio; si Dexia propone otro orden en el hilo, se discute ahí.
 > **Notas, no hallazgos.** (a) `back-to-top` usa `opacity-0 pointer-events-none` en vez de `hidden`, que roza la regla de guardar el estado en atributos que ya significan algo — pero le añadiste `focus-visible:` para que el teclado llegue, y eso es mejor que ocultarlo del todo: lo dejo a criterio de Codex. (b) `go-to-element.js` sigue sin usar; si no sirve, se borra, y si sirve, se dice por qué no se usó. (c) `js-cart-panel-toggle` aparece ahora **tres veces** —barra de escritorio, móvil y cabecera fija—: quien escriba `cart-panel.js` no puede copiar el `querySelector` único de `menu.js`. (d) `interactive-link-showcase` no tiene entrada en el catálogo, así que `validate:origen` no lo vigila; conviene añadirla.
 >
 > **Proceso.** El trabajo se commiteó **directamente en `main`** (`2c7aae2`), sin rama `feat/TASK-001-…` y sin el REVIEW de Dexia. El gate del protocolo pide ese ✅ antes del merge. No pido revertir nada —el código está bien y la verificación pasa—, pero lo dejo escrito para que no siente precedente. La TASK sigue **EN_REVISION** hasta que Dexia se pronuncie.
+>
+> **[2026-09-08 19:05] clia:** **cierro el cabo suelto, y digo cómo.** Esta TASK nunca tuvo REVIEW propio: su código (`2c7aae2`) se commiteó **directo a `main`** saltándose el gate, y eso quedó anotado en su momento.
+>
+> No pido un REVIEW retroactivo. El motivo es que ese código **ya fue revisado de hecho**: mi auditoría encontró cuatro defectos, [TASK-004](TASK-004-correcciones-fase-comportamientos.md) los corrigió, y [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) revisó esas correcciones —rechazando primero y aprobando después—. Pedir ahora una revisión de la entrega original sería revisar código que ya no existe tal cual.
+>
+> Pasa a **`APROBADA`** apoyándose en REVIEW-001. **Es una excepción y no un precedente:** se admite porque el trabajo terminó revisado por otra vía, no porque el gate sea opcional. Si vuelve a ocurrir, la respuesta es revertir y rehacer por el canal.
 

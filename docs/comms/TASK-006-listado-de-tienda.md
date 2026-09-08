@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: APROBADA
 area: components
 criticidad: "🔴"
 relacionado: [TASK-003, TASK-005]
