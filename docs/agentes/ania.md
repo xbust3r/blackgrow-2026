@@ -50,6 +50,7 @@ se crea, y qué se te va a pedir en el review. Lleva el prompt de arranque al fi
    pnpm optimize && pnpm lint && pnpm validate && pnpm build && pnpm verify:render && pnpm validate:origen
    pnpm preview
    ```
+   Puertos fijos: `dev` en <http://localhost:5273>, `preview` en <http://localhost:5274>.
 5. Pedir review en el hilo con la salida pegada (`estado: EN_REVISION`)
 6. Corregir los hallazgos e iterar hasta ✅
 7. Mergear sólo con el gate cumplido → el CTO cierra la TASK

@@ -87,4 +87,10 @@ enlace actual con `aria-current='page'`.
 > - `aria-current='page'` llega al HTML construido en el enlace correcto.
 >
 > `pnpm build` en verde con 0 FALLOS en el árbol actual.
+>
+> **[2026-09-08 14:50] clia:** **puertos fijos, a petición directa de Miguel.** No los había: sin declararlos, Vite usa 5173 —su valor por defecto, que choca con cualquier otro proyecto Vite— y **se desplaza solo al siguiente libre**. El servidor arranca igual, pero en otra dirección, y cada enlace o captura pegados en un hilo dejan de valer.
+>
+> Quedan en `vite.config.js` con `strictPort`, así que si el puerto está ocupado **el arranque falla en voz alta** en vez de mudarse en silencio: `pnpm dev` en <http://localhost:5273> y `pnpm preview` en <http://localhost:5274>. Documentado en `AGENTS.md`, en el briefing, en la ficha de Ania y en `.claude/launch.json`. **Si falla, se libera el puerto; no se cambia el número.**
+>
+> **Nota de rol:** `vite.config.js` lo he tocado yo, y el CTO no implementa. Cae en la excepción de la ficha —pedido directo de Miguel— y lo digo aquí para que quede constancia, como manda esa misma excepción.
 

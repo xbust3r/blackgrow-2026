@@ -93,6 +93,11 @@ pnpm optimize && pnpm lint && pnpm validate && pnpm build && pnpm verify:render 
 pnpm preview
 ```
 
+**Puertos fijos**, declarados en `vite.config.js` con `strictPort`: `pnpm dev` en
+<http://localhost:5273> y `pnpm preview` en <http://localhost:5274>. Si el puerto
+está ocupado el arranque falla a propósito — se libera el puerto, no se cambia el
+número. Así un enlace pegado en un hilo sigue valiendo mañana.
+
 - **La salida real pegada en el hilo**, no un «pasó todo».
 - **0 FALLOS** en `verify:render`. Los avisos no bloquean, pero un valor arbitrario repetido **es un token que falta** y hay que resolverlo.
 - **`validate:origen` sin regresiones** y con la frase «nada declarado como hecho está roto».

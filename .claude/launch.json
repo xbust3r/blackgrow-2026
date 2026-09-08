@@ -5,7 +5,7 @@
             "name": "blackgrow-dev",
             "runtimeExecutable": "node_modules/.bin/vite",
             "runtimeArgs": [],
-            "port": 5173
+            "port": 5273
         }
     ]
 }

@@ -206,5 +206,18 @@ corrido.
 `pnpm preview` sirve `dist/` por HTTP, que es como hay que comprobarlo: es el
 mismo protocolo que en producción, y el sprite SVG no carga bajo `file://`.
 
+**Los puertos son fijos y no se cambian:**
+
+| Comando | URL |
+| --- | --- |
+| `pnpm dev` | <http://localhost:5273> |
+| `pnpm preview` | <http://localhost:5274> |
+
+Están declarados en `vite.config.js` con `strictPort`, así que si el puerto está
+ocupado el arranque **falla en voz alta** en vez de saltar al siguiente libre.
+Eso es a propósito: un servidor que se muda solo invalida cada enlace y cada
+captura que alguien haya pegado en un hilo. Si falla, se libera el puerto; no se
+cambia el número.
+
 No afirmar que un navegador o una integración fueron verificados si no se tuvo
 acceso real para comprobarlos.

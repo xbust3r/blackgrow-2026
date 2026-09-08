@@ -11,8 +11,25 @@ import htmlAutonomo from './plugins/htmlAutonomo.js';
 // el `dist/` funciona tanto servido desde cualquier subcarpeta como abierto con
 // doble clic. Lo segundo pide además el formato `iife` y el plugin
 // `htmlAutonomo`: ver su cabecera.
+// Puertos fijos y `strictPort`. Sin declararlos, Vite usa 5173 —su valor por
+// defecto, que colisiona con cualquier otro proyecto Vite— y **se desplaza solo
+// al siguiente libre**: el servidor sigue arrancando, pero en otra dirección, y
+// los enlaces y capturas que alguien pegó en un hilo dejan de valer. Con
+// `strictPort` el arranque falla en voz alta si el puerto está ocupado, que es
+// lo que se quiere: enterarse.
+const DEV_PORT = 5273;
+const PREVIEW_PORT = 5274;
+
 export default {
     base: './',
+    server: {
+        port: DEV_PORT,
+        strictPort: true
+    },
+    preview: {
+        port: PREVIEW_PORT,
+        strictPort: true
+    },
     plugins: [
         devWebpProxy(),
         vituum({
