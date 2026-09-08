@@ -12,14 +12,7 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript | clia | ania | P0 | 🟩 APROBADA — sin REVIEW propio; se apoya en REVIEW-001, que revisó sus correcciones. Excepción anotada, no precedente | 2026-09-08 |
-| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable — mapa único y subrayado animado | clia | ania | P0 🔴 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW-002 ✅ + sign-off 🔴 ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
-| [REVIEW-002](REVIEW-002-task-005-navegacion.md) | REVIEW | Navegación y enlaces — mapa único y estado accesible | dexia | ania, clia | P0 | 🟩 APROBADO — DECISION-004 verificada servida; sign-off 🔴 de Clia completado | 2026-09-08 |
-| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania | P1 | 🟦 ABIERTA — en curso por Ania; retirar sociales y dejar Search como trigger | 2026-09-08 |
-| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | ania | P0 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW-001 ✅ + sign-off ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
-| [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | dexia | ania, claude | P0 | 🟩 APROBADO — 2 hallazgos 🔴 resueltos en `c248dce`; **sign-off del CTO firmado** | 2026-09-08 |
-| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Listado de tienda, insignias y borde punteado animado | clia | ania | P1 🔴 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW-003 ✅ + sign-off 🔴 ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
-| [REVIEW-003](REVIEW-003-task-006-listado-tienda.md) | REVIEW | Listado de tienda, insignias y borde punteado animado | dexia | ania, clia | P1 🔴 | 🟩 APROBADO — corrección accesible, evidencia y sign-off 🔴 de Clia completados | 2026-09-08 |
+| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania | P1 | 🟨 EN_PROGRESO — En implementación por Ania en rama `feat/TASK-002-buscador-pantalla-completa` | 2026-09-08 |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania | P1 | 🟦 ABIERTA — sale de DECISION-002. **Corregida: el anillo gira**, no es estático | 2026-09-08 |
 
 ---
@@ -28,6 +21,13 @@
 
 | ID | Tipo | Título | Cerrado por | Fecha | Resultado |
 | --- | --- | --- | --- | --- | --- |
+| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Listado de tienda, insignias y borde punteado | clia | 2026-09-08 | ✅ En `main`. 12 productos, Sale/New/HOT, borde animado, `--color-highlight` |
+| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable | clia | 2026-09-08 | ✅ En `main`. Mapa único, 33→7 enlaces, subrayado animado y realce de sección |
+| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | 2026-09-08 | ✅ En `main`. Las 5 correcciones, 2 de ellas 🔴 de accesibilidad |
+| [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos | clia | 2026-09-08 | ✅ En `main`. 8 módulos. Sin REVIEW propio: excepción apoyada en REVIEW-001 |
+| [REVIEW-003](REVIEW-003-task-006-listado-tienda.md) | REVIEW | Listado de tienda | dexia | 2026-09-08 | ✅ Aprobado + sign-off 🔴 |
+| [REVIEW-002](REVIEW-002-task-005-navegacion.md) | REVIEW | Navegación y enlaces | dexia | 2026-09-08 | ✅ Aprobado + sign-off 🔴 restaurado tras DECISION-004 |
+| [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Lightbox y accesibilidad | dexia | 2026-09-08 | ✅ Aprobado + sign-off 🔴 |
 | [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md) | DECISION | El realce de sección se conserva con `aria-current='true'` | miguel | 2026-09-08 | ✅ Efectiva — arbitraje de Miguel sobre el desacuerdo Clia/Dexia. Coste anotado: el lector anuncia «current» también en el grupo |
 | [DECISION-003](DECISION-003-nombres-de-los-agentes.md) | DECISION | Los agentes reciben nombre propio — Clia, Dexia y Ania | miguel | 2026-09-08 | ✅ Efectiva — el nombre es la identidad, la plataforma sigue siendo la plataforma. Historial reescrito y canal sincronizado |
 | [DECISION-002](DECISION-002-carrusel-de-categorias.md) | DECISION | Se revierte «no se quieren carruseles» para el carrusel de categorías | miguel | 2026-09-07 | ✅ Efectiva — alcance mínimo: sólo esa pieza, `hero-slider` sigue descartado, y sin dependencia nueva |

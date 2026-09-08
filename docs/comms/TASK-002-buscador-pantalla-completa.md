@@ -6,12 +6,12 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: ABIERTA
+estado: EN_PROGRESO
 area: components
 criticidad: "🟡"
 relacionado: [TASK-001, origen-comportamientos.json]
 creado: 2026-09-07
-actualizado: 2026-09-07
+actualizado: 2026-09-08
 ---
 
 # TASK-002 — Buscador a pantalla completa
@@ -132,3 +132,11 @@ El nombre del campo del origen es `s`, que es de WordPress. Consérvalo si quier
 > **[2026-09-07 00:00] clia:** Miguel señala también «un marcador de top» en el origen. Es `back-to-top`, y **ya está en [TASK-001](TASK-001-fase-comportamientos.md)** con su hook `js-back-to-top`. No se duplica aquí.
 >
 > **[2026-09-08 00:00] dexia:** **indicación directa de Miguel, con referencia visual adjunta:** en la barra de acciones de escritorio se retiran los cuatro iconos sociales —Facebook, Instagram, TikTok y Pinterest—. El único control de esa zona será el botón **Search**, que sustituye al `span` actual y abre el modal de búsqueda de esta TASK. Debe ser `button type='button'`, llevar `js-search-toggle`, `aria-expanded='false'` y `aria-controls` del diálogo; el hook no aporta apariencia. Se conserva el control del carrito, que es una función distinta y queda fuera de esta indicación. En móvil, la decisión de disparador sigue siendo obligatoria y debe quedar razonada en este hilo.
+>
+> **[2026-09-08 17:40] ania:** Tomo la tarea y paso a `EN_PROGRESO`. Resoluciones y diseño acordado:
+> 1. **Disparador en móvil y escritorio:**
+>    - **Escritorio / Tablet:** Retiro los cuatro enlaces sociales de la barra de acciones conforme a la indicación de Miguel registrada por Dexia. El botón «Search» pasa a `<button type='button' class='js-search-toggle inline-flex items-center gap-2 text-sm uppercase tracking-heading hover:text-brand' aria-haspopup='dialog' aria-expanded='false' aria-controls='search-overlay'>`, conservando el carrito a su lado.
+>    - **Móvil (375px):** Se añade un botón de búsqueda `button.js-search-toggle` con icono de lupa (touch target accesible `min-h-11 min-w-11`) en la cabecera móvil junto al carrito y al botón de menú. A 375px caben holgadamente el logo y los 3 iconos (ocupan ~270px de los 375px disponibles), garantizando acceso directo a la búsqueda en 1 tap sin obligar a abrir el menú lateral.
+> 2. **Origen de la línea del campo:** Comprobado directamente en el CSS del origen (`playgrow-core.min.css`). La línea no es un `border-bottom` del input ni del form, sino un pseudo-elemento `:after` en `.qodef-input-holder` (`height: 1px`, `background-color: #000`, `width: 100%`). En nuestra arquitectura se maquetará limpiamente usando el token `--color-ink` en el contenedor del input (`border-b border-ink`).
+> 3. **Orden DOM y foco inicial:** Para que `focus.trap()` enfoque de inmediato el campo `<input>` al abrir (como exige el criterio 1) sin parches en el módulo, el formulario y su input irán primeros en el DOM dentro del modal. El botón de cerrar irá después en el DOM y se posicionará en la esquina superior derecha mediante maquetación flex/absoluta.
+> 4. **Módulo `search.js`:** Implementado con `js-search-toggle`, soporte `Escape`, `inert` en los hermanos de `body`, `focus.trap()` y `focus.untrap()`.

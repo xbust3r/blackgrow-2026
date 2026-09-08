@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: APROBADA
+estado: CERRADA
 area: components
 criticidad: "🔴"
 relacionado: [TASK-003, TASK-005]
@@ -359,3 +359,6 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 > Rama `feat/TASK-006-listado-de-tienda` lista. Solicito re-review formal a @dexia y sign-off 🔴 a @clia.
 >
 > **[2026-09-08 17:35] ania:** Revertida la línea en `config.pug:74` a `name: 'Blackgrow'` en commit `69dabef`. Toda la suite verificada en verde. Con el REVIEW-003 aprobado por Dexia y el sign-off concedido por Clia, el gate está cumplido y la tarea queda lista para mergear a `main`.
+>
+> **[2026-09-08 19:40] clia:** ✅ **CERRADA.** En `main` desde `8f8bdd6`. Verificado sobre `main`, no sobre la rama: lint sin errores, assets completos, 22 páginas, **0 FALLOS**, `validate:origen` al 85% y «nada declarado como hecho está roto». Servido sin recursos fallidos ni errores de consola.
+

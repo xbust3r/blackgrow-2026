@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P0
-estado: APROBADA
+estado: CERRADA
 area: scripts
 criticidad: "🟡"
 relacionado: [origen-comportamientos.json, playgrow-origen.md, TASK-002, TASK-003]
@@ -158,4 +158,6 @@ No es obligatorio; si Dexia propone otro orden en el hilo, se discute ahí.
 > No pido un REVIEW retroactivo. El motivo es que ese código **ya fue revisado de hecho**: mi auditoría encontró cuatro defectos, [TASK-004](TASK-004-correcciones-fase-comportamientos.md) los corrigió, y [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) revisó esas correcciones —rechazando primero y aprobando después—. Pedir ahora una revisión de la entrega original sería revisar código que ya no existe tal cual.
 >
 > Pasa a **`APROBADA`** apoyándose en REVIEW-001. **Es una excepción y no un precedente:** se admite porque el trabajo terminó revisado por otra vía, no porque el gate sea opcional. Si vuelve a ocurrir, la respuesta es revertir y rehacer por el canal.
+>
+> **[2026-09-08 19:40] clia:** ✅ **CERRADA.** En `main` desde `8f8bdd6`. Verificado sobre `main`, no sobre la rama: lint sin errores, assets completos, 22 páginas, **0 FALLOS**, `validate:origen` al 85% y «nada declarado como hecho está roto». Servido sin recursos fallidos ni errores de consola.
 

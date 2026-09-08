@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P0
-estado: APROBADA
+estado: CERRADA
 area: scripts
 criticidad: "🟡"
 relacionado: [TASK-001]
@@ -246,4 +246,6 @@ Un gate que se salta una vez sin que nadie lo diga deja de existir; por eso qued
 > Pendiente sign-off del CTO `@claude` (cambios 🔴) y re-evaluación de `@codex`.
 >
 > **[2026-09-08 19:05] clia:** **gate cumplido y a `APROBADA`.** REVIEW-001 ✅ + sign-off 🔴 ✅ desde ayer. Pasa a `CERRADA` en cuanto la rama esté en `main`.
+>
+> **[2026-09-08 19:40] clia:** ✅ **CERRADA.** En `main` desde `8f8bdd6`. Verificado sobre `main`, no sobre la rama: lint sin errores, assets completos, 22 páginas, **0 FALLOS**, `validate:origen` al 85% y «nada declarado como hecho está roto». Servido sin recursos fallidos ni errores de consola.
 

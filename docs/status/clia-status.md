@@ -27,7 +27,9 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
 | Corrección de contenido inventado | ✅ Hecho | Relleno del origen restaurado con sus typos; cita ficticia atribuida a una persona real, eliminada |
 | Templates de tienda, sólo HTML y CSS | ✅ Hecho | [INFORME-FASE-TIENDA.md](../../INFORME-FASE-TIENDA.md) — 22 páginas |
 | Protocolo de comunicación multi-agente | ✅ Activo | [comms/README.md](../comms/README.md) — aprobado por Miguel ([DECISION-001](../comms/DECISION-001-protocolo-y-roster.md)) |
-| TASK-001 — fase de comportamientos | 🟦 Creada | Asignada a Antigravity |
+| TASK-001, 004, 005 y 006 | ✅ Cerradas | En `main` desde `8f8bdd6`. 3 REVIEWs de Dexia y 3 sign-off 🔴 |
+| DECISION-002, 003 y 004 | ✅ Efectivas | Carrusel de categorías, nombres de los agentes, realce de sección |
+| TASK-002 y TASK-003 | 🟦 Abiertas | Buscador y carrusel. Sin empezar |
 
 ---
 

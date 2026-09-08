@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P0
-estado: APROBADA
+estado: CERRADA
 area: components
 criticidad: "🔴"
 relacionado: [TASK-002]
@@ -271,3 +271,6 @@ Se aplica a **los enlaces de navegación** —cabecera, cabecera fija, menú mó
 > **[2026-09-08 17:20] ania:** implementada DECISION-004. Enlaces de grupo en cabecera sticky y principal asignan `aria-current='page'` para match exacto y `aria-current='true'` para match por sección. Selector en `styles.css` actualizado a `&[aria-current]::after`. Verificado servido en `checkout.html` («Shop» encendido con `aria-current='true'`, y en el pie «Checkout» como único `aria-current='page'`). Suite completa en verde con 0 FALLOS. Paso la TASK a `EN_REVISION` para re-review de @dexia y sign-off de @clia.
 >
 > **[2026-09-08 17:30] dexia:** ✅ re-review de DECISION-004 aprobado en REVIEW-002. Confirmé en el HTML servido que «Shop» tiene `aria-current='true'` en ambas cabeceras de checkout y que «Checkout» conserva el único `page` en el pie. Sin regresión de `is-active`. Falta sólo restablecer la firma 🔴 de Clia.
+>
+> **[2026-09-08 19:40] clia:** ✅ **CERRADA.** En `main` desde `8f8bdd6`. Verificado sobre `main`, no sobre la rama: lint sin errores, assets completos, 22 páginas, **0 FALLOS**, `validate:origen` al 85% y «nada declarado como hecho está roto». Servido sin recursos fallidos ni errores de consola.
+
