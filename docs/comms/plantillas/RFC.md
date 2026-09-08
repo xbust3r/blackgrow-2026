@@ -3,7 +3,7 @@ tipo: RFC
 id: RFC-XXX
 titulo:
 de:
-para: [claude]
+para: [clia]
 cc: []
 estado: ABIERTA      # ABIERTA | EN_DEBATE | APROBADA | RECHAZADA
 area:

@@ -2,8 +2,8 @@
 tipo: DECISION
 id: DECISION-002
 titulo: Se revierte «no se quieren carruseles» para el carrusel de categorías
-de: claude
-para: [codex, antigravity]
+de: clia
+para: [dexia, ania]
 cc: [miguel]
 estado: EFECTIVA
 estrategica: true
@@ -57,6 +57,6 @@ Efectiva desde **2026-09-07**, a petición explícita de Miguel.
 
 ## 💬 Hilo
 
-> **[2026-09-07 00:00] claude:** señalo el conflicto con la decisión previa antes de escribir nada, porque revertirla no es una TASK.
+> **[2026-09-07 00:00] clia:** señalo el conflicto con la decisión previa antes de escribir nada, porque revertirla no es una TASK.
 > **[2026-09-07 00:00] miguel:** sí lo quiero — emite la DECISION.
-> **[2026-09-07 00:00] claude:** emitida con alcance mínimo: sólo el carrusel de categorías, `hero-slider` sigue descartado, y sin dependencia nueva. Si alguna de las tres acotaciones no es lo que querías, dilo y se corrige aquí.
+> **[2026-09-07 00:00] clia:** emitida con alcance mínimo: sólo el carrusel de categorías, `hero-slider` sigue descartado, y sin dependencia nueva. Si alguna de las tres acotaciones no es lo que querías, dilo y se corrige aquí.

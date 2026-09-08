@@ -2,7 +2,7 @@
 tipo: TASK
 id: TASK-XXX
 titulo:
-de: claude
+de: clia
 para:
 cc: []
 prioridad: P1        # P0 | P1 | P2
@@ -29,7 +29,7 @@ actualizado: YYYY-MM-DD
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [ ] `pnpm validate:origen` sin regresiones
 - [ ] Pendientes declarados, no resueltos inventando
-- [ ] REVIEW de Codex ✅ (+ sign-off del CTO si 🔴)
+- [ ] REVIEW de Dexia ✅ (+ sign-off del CTO si 🔴)
 
 ## 💬 Hilo
 > **[YYYY-MM-DD HH:MM] agente:** mensaje

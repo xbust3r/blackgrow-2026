@@ -1,6 +1,6 @@
-# Traspaso a Antigravity — cierre de la maquetación
+# Traspaso a Ania — cierre de la maquetación
 
-> **De:** Claude (CTO) · **Para:** Antigravity · **Fecha:** 2026-09-08
+> **De:** Clia (CTO) · **Para:** Ania · **Fecha:** 2026-09-08
 > Este documento no sustituye a las TASKs: las **ordena** y da el contexto que ninguna de ellas repite. Lo que hay que hacer está en cada TASK; esto dice en qué orden, por qué, y qué no hacer.
 
 ---
@@ -18,7 +18,7 @@
 | Assets | Marcadores de la demo del origen, sin licencia |
 | Backend | Nada. Los formularios llevan `action=''` a propósito |
 
-**Lo primero, antes de escribir una línea:** `feat/TASK-004-correcciones` tiene el gate cumplido —REVIEW de Codex ✅ y sign-off del CTO ✅— y **sigue sin mergear**. Mergéala a `main` y arranca desde ahí; si no, trabajarás sobre una base vieja.
+**Lo primero, antes de escribir una línea:** `feat/TASK-004-correcciones` tiene el gate cumplido —REVIEW de Dexia ✅ y sign-off del CTO ✅— y **sigue sin mergear**. Mergéala a `main` y arranca desde ahí; si no, trabajarás sobre una base vieja.
 
 ---
 
@@ -44,7 +44,7 @@ Su valor no son los 33 enlaces: es el **mapa único en `config.pug`**. Hoy las e
 
 Incluye el **subrayado animado** que pidió Miguel, medido en el origen.
 
-> Es 🔴: toca `config.pug` y `main-template.pug`. Necesita REVIEW de Codex **y** sign-off del CTO.
+> Es 🔴: toca `config.pug` y `main-template.pug`. Necesita REVIEW de Dexia **y** sign-off del CTO.
 
 ### 2.º — [TASK-006](comms/TASK-006-listado-de-tienda.md) · Listado de tienda 🟡 P1
 
@@ -86,7 +86,7 @@ La ley completa está en [`AGENTS.md`](../AGENTS.md) y se lee entera. Estas cinc
 
 ## 6 · Qué se te va a pedir en el review
 
-Codex revisa mirando esto. El CTO audita ejecutando y probando en el navegador.
+Dexia revisa mirando esto. El CTO audita ejecutando y probando en el navegador.
 
 ```bash
 pnpm optimize && pnpm lint && pnpm validate && pnpm build && pnpm verify:render && pnpm validate:origen
@@ -97,7 +97,7 @@ pnpm preview
 - **0 FALLOS** en `verify:render`. Los avisos no bloquean, pero un valor arbitrario repetido **es un token que falta** y hay que resolverlo.
 - **`validate:origen` sin regresiones** y con la frase «nada declarado como hecho está roto».
 - **Servido a 375px y en escritorio**, y **navegando con el teclado**. Las dos correcciones 🔴 de TASK-004 fueron de teclado; se miran.
-- **Rama `feat/TASK-XXX-slug`, REVIEW de Codex antes del merge.** La primera vez se commiteó directo a `main` y quedó anotado.
+- **Rama `feat/TASK-XXX-slug`, REVIEW de Dexia antes del merge.** La primera vez se commiteó directo a `main` y quedó anotado.
 
 ---
 
@@ -130,19 +130,19 @@ No es tuyo hoy, pero conviene que lo sepas porque aparece al mirar cualquier pá
 ## 9 · Cómo arrancar
 
 ```text
-Soy Antigravity, DEV de blackgrow-2026.
+Soy Ania, la DEV de blackgrow-2026.
 
 1. git pull && git checkout main
 2. Mergeo feat/TASK-004-correcciones (gate cumplido: REVIEW-001 ✅ + sign-off CTO ✅)
 3. Leo, en este orden:
    - AGENTS.md
    - docs/briefing-maquetacion.md (este documento)
-   - docs/agentes/antigravity.md (mi ficha y mis límites)
+   - docs/agentes/ania.md (mi ficha y mis límites)
    - docs/comms/README.md (protocolo) y docs/comms/tablero.md
    - src/styles/styles.css entero, y docs/tarjeta-de-decision.md a mano mientras escribo
 4. pnpm install && pnpm build  → compruebo que la base está verde ANTES de tocar nada
 5. Tomo TASK-005 en su hilo (estado EN_PROGRESO), rama feat/TASK-005-navegacion
-6. Al terminar: verificación completa, salida pegada en el hilo, EN_REVISION, aviso a Codex
+6. Al terminar: verificación completa, salida pegada en el hilo, EN_REVISION, aviso a Dexia
 ```
 
 **Si algo de una TASK no se entiende o contradice lo que ves en el código, pregunta en el hilo antes de implementar.** Una duda escrita cuesta un mensaje; una suposición cuesta una iteración de review.

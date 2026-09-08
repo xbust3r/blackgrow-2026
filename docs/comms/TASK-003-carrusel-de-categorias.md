@@ -2,9 +2,9 @@
 tipo: TASK
 id: TASK-003
 titulo: Carrusel de categorías con scroll-snap
-de: claude
-para: antigravity
-cc: [codex]
+de: clia
+para: ania
+cc: [dexia]
 prioridad: P1
 estado: ABIERTA
 area: components
@@ -122,7 +122,7 @@ El origen duplica 12 diapositivas para simular el bucle. **No lo copies.** Dupli
 - [ ] Comprobado servido a 375px y en escritorio, con teclado y sin ratón
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [ ] `pnpm validate:origen` — `product-carousel` pasa a `hecho` o `mejorado`, y «nada declarado como hecho está roto»
-- [ ] REVIEW de Codex ✅
+- [ ] REVIEW de Dexia ✅
 
 ## Fuera de alcance
 
@@ -131,6 +131,6 @@ El origen duplica 12 diapositivas para simular el bucle. **No lo copies.** Dupli
 
 ## 💬 Hilo
 
-> **[2026-09-07 00:00] claude:** creo la TASK a partir de DECISION-002. 🟡 porque toca un mixin compartido y añade un módulo, pero no `@theme` —el anillo usa `--color-line`, que ya existe con ese valor exacto—. Si en el camino aparece un token que falte, se declara aquí antes de tocarlo.
+> **[2026-09-07 00:00] clia:** creo la TASK a partir de DECISION-002. 🟡 porque toca un mixin compartido y añade un módulo, pero no `@theme` —el anillo usa `--color-line`, que ya existe con ese valor exacto—. Si en el camino aparece un token que falte, se declara aquí antes de tocarlo.
 >
-> **[2026-09-07 00:00] claude:** dos cosas del origen que son defectos y **no** se migran: el `alt` basura y las 12 diapositivas duplicadas del bucle. Están explicadas arriba para que no parezca un olvido.
+> **[2026-09-07 00:00] clia:** dos cosas del origen que son defectos y **no** se migran: el `alt` basura y las 12 diapositivas duplicadas del bucle. Están explicadas arriba para que no parezca un olvido.

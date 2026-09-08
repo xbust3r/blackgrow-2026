@@ -14,12 +14,16 @@ Este proyecto lo llevan **tres agentes y Miguel**, en tres plataformas que no se
 hablan entre sí. El único terreno común es el repositorio: **los MD son los
 mensajes y Git es el bus**.
 
-| Rol | Agente | Qué hace |
-| --- | --- | --- |
-| 👑 Jefe | **Miguel** | Decide y veta cualquier cosa |
-| 🧠 CTO | **Claude** | Alcance, prioridades, RFCs, sign-off 🔴, auditoría. **No implementa.** |
-| 🧪 Lead / Reviews | **Codex** | Guía técnica y **review obligatorio** (exclusivo) |
-| 💻 DEV | **Antigravity** | Escribe el código |
+| Rol | Agente | Plataforma | Qué hace |
+| --- | --- | --- | --- |
+| 👑 Jefe | **Miguel** | — | Decide y veta cualquier cosa |
+| 🧠 CTO | **Clia** | Claude Code | Alcance, prioridades, RFCs, sign-off 🔴, auditoría. **No implementa.** |
+| 🧪 Lead / Reviews | **Dexia** | ChatGPT (Codex) | Guía técnica y **review obligatorio** (exclusivo) |
+| 💻 DEV | **Ania** | Antigravity (Google) | Escribe el código |
+
+El nombre es la identidad: **Clia**, **Dexia** y **Ania** son los identificadores
+que van en `de:`, `para:`, `cc:` y en las entradas del hilo. «Claude», «Codex» y
+«Antigravity» son las plataformas.
 
 Antes de tocar nada, identifica cuál eres y lee tu ficha en
 [`docs/agentes/`](./docs/agentes/). Después:
@@ -33,7 +37,7 @@ Antes de tocar nada, identifica cuál eres y lee tu ficha en
 **Si no está en un MD commiteado, no se comunicó.** Lo que se diga en una sesión
 y no quede escrito, para los otros dos agentes no ocurrió.
 
-**Nada se mergea sin el gate:** REVIEW de Codex ✅, más el sign-off del CTO si el
+**Nada se mergea sin el gate:** REVIEW de Dexia ✅, más el sign-off del CTO si el
 cambio es 🔴 —`@theme`, `config.pug`, `main-template.pug`, `plugins/`, contratos
 de formulario—, y la verificación de más abajo en verde con la salida real
 pegada en el hilo.

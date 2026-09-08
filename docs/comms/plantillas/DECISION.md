@@ -2,8 +2,8 @@
 tipo: DECISION
 id: DECISION-XXX
 titulo:
-de: claude
-para: [codex, antigravity]
+de: clia
+para: [dexia, ania]
 cc: [miguel]
 estado: PROPUESTA    # PROPUESTA | EFECTIVA | VETADA | REVERTIDA
 estrategica: false   # true → requiere ✅ explícito de Miguel, sin regla de 48h

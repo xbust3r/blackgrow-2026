@@ -1,4 +1,4 @@
-# 📋 Status: Antigravity (DEV principal)
+# 📋 Status: Ania (DEV principal)
 
 > **Proyecto:** Blackgrow 2026
 > **Última actualización:** 2026-09-08
@@ -7,10 +7,10 @@
 
 ## 📝 Forma de trabajo
 
-Antigravity opera desde Antigravity, con el repositorio en ejecución.
+Ania opera desde Antigravity, con el repositorio en ejecución.
 Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
-**Canal de activación:** mensajes dirigidos a `antigravity` en
+**Canal de activación:** mensajes dirigidos a `ania` en
 [`comms/tablero.md`](../comms/tablero.md).
 
 ---
@@ -68,4 +68,5 @@ Antes de la primera línea de código:
 
 | Versión | Fecha | Autor | Acción |
 | --- | --- | --- | --- |
-| v1.0 | 2026-09-07 | Claude | Creación del status |
+| v1.0 | 2026-09-07 | Clia | Creación del status |
+| v1.1 | 2026-09-08 | Clia | Nombre propio: **Ania** |

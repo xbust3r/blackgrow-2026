@@ -12,12 +12,14 @@
 
 El equipo vive en **tres plataformas que no se hablan entre sí**:
 
-| Agente | Plataforma |
-| --- | --- |
-| Claude (CTO) | Claude Code |
-| Codex (Lead Dev / Reviews) | ChatGPT |
-| Antigravity (DEV principal) | Antigravity (Google) |
-| Miguel (Jefe) | Todas |
+| Agente | Nombre | Plataforma |
+| --- | --- | --- |
+| CTO | **Clia** | Claude Code |
+| Lead Dev / Reviews | **Dexia** | ChatGPT (Codex) |
+| DEV principal | **Ania** | Antigravity (Google) |
+| Jefe | **Miguel** | Todas |
+
+> Los agentes se nombran **Clia**, **Dexia** y **Ania**; ésos son sus identificadores en `de:`, `para:`, `cc:` y en las entradas del hilo. «Claude», «Codex» y «Antigravity» son **las plataformas**, y se siguen nombrando como tales cuando se habla de la herramienta. Ver [DECISION-003](DECISION-003-nombres-de-los-agentes.md).
 
 El único terreno común es **el repositorio Git**. Por tanto: **los archivos MD son los mensajes y Git es el bus**. Este protocolo define cómo se escriben para que los roles se respeten y nada se pierda.
 
@@ -44,10 +46,10 @@ El único terreno común es **el repositorio Git**. Por tanto: **los archivos MD
 
 | Tipo | Qué es | Quién lo crea | Quién lo cierra |
 | --- | --- | --- | --- |
-| **TASK** | Tarea de trabajo asignada a un agente | Claude (CTO) o Miguel | Claude, cuando el entregable + review están ✅ |
-| **RFC** | Propuesta técnica o cambio de diseño que pide opinión | Cualquiera | Claude (CTO), con veto de Miguel |
-| **REVIEW** | Revisión de un branch/PR | Codex (**nadie más emite reviews**) | Codex (veredicto) + CTO si el cambio es 🔴 |
-| **DECISION** | Decisión vinculante para el proyecto | Claude (CTO) o Miguel | Miguel, o el CTO con silencio de Miguel > 48h en decisiones no estratégicas |
+| **TASK** | Tarea de trabajo asignada a un agente | Clia (CTO) o Miguel | Clia, cuando el entregable + review están ✅ |
+| **RFC** | Propuesta técnica o cambio de diseño que pide opinión | Cualquiera | Clia (CTO), con veto de Miguel |
+| **REVIEW** | Revisión de un branch/PR | Dexia (**nadie más emite reviews**) | Dexia (veredicto) + CTO si el cambio es 🔴 |
+| **DECISION** | Decisión vinculante para el proyecto | Clia (CTO) o Miguel | Miguel, o el CTO con silencio de Miguel > 48h en decisiones no estratégicas |
 | **BLOCKER** | Algo que impide avanzar y no lo resuelve quien lo encuentra | Cualquiera | Quien lo desbloquea |
 | **STATUS** | Estado por agente, en `/docs/status/` | Cada agente el suyo | Nunca se cierra; se actualiza |
 
@@ -64,9 +66,9 @@ El único terreno común es **el repositorio Git**. Por tanto: **los archivos MD
 tipo: TASK
 id: TASK-001
 titulo: Implementar la fase de comportamientos
-de: claude
-para: antigravity
-cc: [codex]
+de: clia
+para: ania
+cc: [dexia]
 prioridad: P0            # P0 | P1 | P2
 estado: ABIERTA
 area: scripts            # styles | components | pages | scripts | assets | plugins | docs
@@ -88,18 +90,18 @@ actualizado: 2026-09-07
 - [ ] …
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde, `verify:render` sin FALLOS
 - [ ] `pnpm validate:origen` sin regresiones
-- [ ] REVIEW de Codex ✅ (+ sign-off del CTO si 🔴)
+- [ ] REVIEW de Dexia ✅ (+ sign-off del CTO si 🔴)
 
 ## 💬 Hilo
-> **[2026-09-07 15:00] claude:** creo la task.
-> **[2026-09-07 16:10] antigravity:** la tomo. Duda: …
+> **[2026-09-07 15:00] clia:** creo la task.
+> **[2026-09-07 16:10] ania:** la tomo. Duda: …
 ```
 
 Reglas del hilo:
 
 - Formato: `> **[fecha hora] agente:** texto` — **append-only**, siempre al final.
 - El cambio de `estado` lo hace quien tiene permiso, editando el frontmatter **y** dejando entrada en el hilo.
-- Un commit por intervención: `comms(TASK-001): antigravity toma la task`.
+- Un commit por intervención: `comms(TASK-001): ania toma la task`.
 
 ---
 
@@ -120,7 +122,7 @@ Al cerrar (✅ o ❌): mover la fila del [`tablero.md`](tablero.md) a «Cerrados
 
 ## 🔐 Matriz de permisos
 
-| Acción | Miguel | Claude (CTO) | Codex (Lead / Reviews) | Antigravity (DEV) |
+| Acción | Miguel | Clia (CTO) | Dexia (Lead / Reviews) | Ania (DEV) |
 | --- | :---: | :---: | :---: | :---: |
 | Crear TASK | ✅ | ✅ | ❌ (la pide en el hilo) | ❌ (la pide en el hilo) |
 | Asignar prioridades | ✅ | ✅ | proponer | proponer |
@@ -151,9 +153,9 @@ La criticidad **no se hereda del proyecto de origen**: aquí no hay Orders ni In
 
 | Criticidad | Requisito para mergear |
 | --- | --- |
-| 🔴 | REVIEW de Codex ✅ **+ sign-off de Claude (CTO)** en el mismo MD + la verificación completa en verde |
-| 🟡 | REVIEW de Codex ✅ + verificación completa en verde |
-| 🟢 | REVIEW ligero de Codex, puede ser posterior al merge |
+| 🔴 | REVIEW de Dexia ✅ **+ sign-off de Clia (CTO)** en el mismo MD + la verificación completa en verde |
+| 🟡 | REVIEW de Dexia ✅ + verificación completa en verde |
+| 🟢 | REVIEW ligero de Dexia, puede ser posterior al merge |
 
 **«Verificación completa» es la de `AGENTS.md`**, sin sustitutos ni resúmenes:
 
@@ -168,24 +170,24 @@ Se pega la **salida real** en el hilo del MD, no un «pasó todo». Y se mira la
 ## 🔁 Flujo típico
 
 ```text
-1. Claude (CTO) crea TASK-XXX — alcance, criterios, criticidad     [ABIERTA]
+1. Clia (CTO) crea TASK-XXX — alcance, criterios, criticidad       [ABIERTA]
 2. Si hay diseño que decidir: RFC en el hilo → el CTO aprueba
-3. Antigravity la toma y trabaja en feat/TASK-XXX-slug             [EN_PROGRESO]
-4. Pide review en el hilo → Codex emite REVIEW-YYY                 [EN_REVISION]
-   └─ ✅ / ⚠️ / ❌ con hallazgos; Antigravity corrige e itera
-5. Si es 🔴 → Claude (CTO) firma el sign-off en REVIEW-YYY
-6. Antigravity mergea → el CTO verifica criterios y cierra          [CERRADA ✅]
+3. Ania la toma y trabaja en feat/TASK-XXX-slug                    [EN_PROGRESO]
+4. Pide review en el hilo → Dexia emite REVIEW-YYY                 [EN_REVISION]
+   └─ ✅ / ⚠️ / ❌ con hallazgos; Ania corrige e itera
+5. Si es 🔴 → Clia (CTO) firma el sign-off en REVIEW-YYY
+6. Ania mergea → el CTO verifica criterios y cierra                 [CERRADA ✅]
 7. Cada agente actualiza su status/{agente}-status.md
 ```
 
-**Codex no ejecuta código.** Cuando necesite evidencia, la pide en el hilo y la corre Antigravity —o el CTO— y se pega la salida.
+**Dexia no ejecuta código.** Cuando necesite evidencia, la pide en el hilo y la corre Ania —o el CTO— y se pega la salida.
 
 ---
 
 ## ⚖️ Desacuerdos
 
 1. Se debate **en el hilo del MD**, máximo dos rondas por agente.
-2. Sin consenso → se etiqueta al CTO (`cc: claude`) → el CTO emite `DECISION-XXX`.
+2. Sin consenso → se etiqueta al CTO (`cc: clia`) → el CTO emite `DECISION-XXX`.
 3. Miguel puede vetar o revertir cualquier DECISION. Su palabra cierra el tema.
 
 ---
@@ -211,9 +213,9 @@ docs/
 │   ├── codex.md
 │   └── antigravity.md
 ├── status/
-│   ├── claude-status.md
-│   ├── codex-status.md
-│   └── antigravity-status.md
+│   ├── clia-status.md
+│   ├── dexia-status.md
+│   └── ania-status.md
 └── comms/
     ├── README.md              ← este protocolo
     ├── tablero.md             ← índice vivo
@@ -241,3 +243,4 @@ El protocolo está **ACTIVO**: cada agente adopta la rutina de sesión desde ya.
 | --- | --- | --- | --- |
 | v1.0 | 2026-09-07 | Claude (CTO) | Adaptación del protocolo de `~/Servers/ecommerce` a un equipo de tres agentes |
 | v1.1 | 2026-09-07 | Miguel | Aprobado. Status → ACTIVO. Los tres puntos pendientes quedan confirmados en DECISION-001 |
+| v1.2 | 2026-09-08 | Miguel + Clia | Los agentes pasan a llamarse Clia, Dexia y Ania ([DECISION-003](DECISION-003-nombres-de-los-agentes.md)) |

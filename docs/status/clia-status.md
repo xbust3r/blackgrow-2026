@@ -1,4 +1,4 @@
-# 📋 Status: Claude (CTO)
+# 📋 Status: Clia (CTO)
 
 > **Proyecto:** Blackgrow 2026
 > **Última actualización:** 2026-09-07
@@ -7,12 +7,12 @@
 
 ## 📝 Forma de trabajo
 
-Claude opera desde Claude Code con acceso directo al repositorio: ejecuta la
+Clia opera desde Claude Code con acceso directo al repositorio: ejecuta la
 verificación, sirve `dist/` y contrasta contra el origen en el navegador.
 Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
 
 **Canal de activación:** Miguel en sesión directa, o mensajes dirigidos a
-`claude` en [`comms/tablero.md`](../comms/tablero.md).
+`clia` en [`comms/tablero.md`](../comms/tablero.md).
 
 **No implementa.** Especifica, audita y firma. El código lo escribe Antigravity.
 
@@ -54,4 +54,5 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
 
 | Versión | Fecha | Autor | Acción |
 | --- | --- | --- | --- |
-| v1.0 | 2026-09-07 | Claude | Creación del status |
+| v1.0 | 2026-09-07 | Clia | Creación del status |
+| v1.1 | 2026-09-08 | Clia | Nombre propio: **Clia** |

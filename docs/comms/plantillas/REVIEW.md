@@ -2,9 +2,9 @@
 tipo: REVIEW
 id: REVIEW-XXX
 titulo:
-de: codex
+de: dexia
 para:
-cc: [claude]
+cc: [clia]
 estado: EN_REVISION  # EN_REVISION | APROBADO | APROBADO_CON_CAMBIOS | RECHAZADO
 task: TASK-XXX
 rama:
@@ -27,13 +27,13 @@ actualizado: YYYY-MM-DD
 | 1 | | 🔴 / 🟡 / 🟢 | |
 
 ## Evidencia de verificación
-(salida real pegada por quien la ejecutó; Codex no corre nada)
+(salida real pegada por quien la ejecutó; Dexia no corre nada)
 
 ```
 ```
 
 ## Sign-off del CTO (sólo cambios 🔴)
-- [ ] Claude (CTO): firmado — fecha y comentario en el hilo
+- [ ] Clia (CTO): firmado — fecha y comentario en el hilo
 
 ## 💬 Hilo
 > **[YYYY-MM-DD HH:MM] agente:** mensaje

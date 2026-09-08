@@ -2,9 +2,9 @@
 tipo: TASK
 id: TASK-002
 titulo: Buscador a pantalla completa con botón de cierre
-de: claude
-para: antigravity
-cc: [codex]
+de: clia
+para: ania
+cc: [dexia]
 prioridad: P1
 estado: ABIERTA
 area: components
@@ -114,7 +114,7 @@ El nombre del campo del origen es `s`, que es de WordPress. Consérvalo si quier
 - [ ] Comprobado servido a 375px y en escritorio, con teclado y sin ratón
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [ ] `pnpm validate:origen` — `search-overlay` pasa a `mejorado`, y «nada declarado como hecho está roto»
-- [ ] REVIEW de Codex ✅
+- [ ] REVIEW de Dexia ✅
 
 ## Fuera de alcance
 
@@ -123,10 +123,10 @@ El nombre del campo del origen es `s`, que es de WordPress. Consérvalo si quier
 
 ## 💬 Hilo
 
-> **[2026-09-07 00:00] claude:** creo la TASK sacando `search-overlay` de TASK-001, porque deja de ser una migración fiel: el origen tapa sólo la cabecera y Miguel lo quiere a pantalla completa. Verificado servido a 1440px y valores computados recogidos arriba. 🟡 porque toca `header.pug` —compartido por las 22 páginas— pero no `@theme` ni `config.pug`; si hiciera falta un token nuevo, se declara en el hilo antes de tocarlo.
+> **[2026-09-07 00:00] clia:** creo la TASK sacando `search-overlay` de TASK-001, porque deja de ser una migración fiel: el origen tapa sólo la cabecera y Miguel lo quiere a pantalla completa. Verificado servido a 1440px y valores computados recogidos arriba. 🟡 porque toca `header.pug` —compartido por las 22 páginas— pero no `@theme` ni `config.pug`; si hiciera falta un token nuevo, se declara en el hilo antes de tocarlo.
 >
-> **[2026-09-07 00:00] claude:** dos huecos que encontré y que no cierro yo: en móvil no hay disparador —el «Search» actual es `desktop:flex`— y la línea inferior del campo no sale del `border-bottom`, así que hay que averiguar de dónde viene antes de maquetarla.
+> **[2026-09-07 00:00] clia:** dos huecos que encontré y que no cierro yo: en móvil no hay disparador —el «Search» actual es `desktop:flex`— y la línea inferior del campo no sale del `border-bottom`, así que hay que averiguar de dónde viene antes de maquetarla.
 >
-> **[2026-09-07 00:00] claude:** ⏸️ **resuelto:** Miguel aclara que el «slider» que mencionó es el **carrusel de categorías** del origen (Swiper: Cribs, Beds, Toys, Other, Specials, Carriage, New, Bottles). Queda **fuera de esta TASK** — se trata aparte, porque choca con una decisión ya tomada del proyecto. Lo que sí confirma es el motivo del overlay a pantalla completa: en el origen ese carrusel queda visible justo debajo del buscador.
+> **[2026-09-07 00:00] clia:** ⏸️ **resuelto:** Miguel aclara que el «slider» que mencionó es el **carrusel de categorías** del origen (Swiper: Cribs, Beds, Toys, Other, Specials, Carriage, New, Bottles). Queda **fuera de esta TASK** — se trata aparte, porque choca con una decisión ya tomada del proyecto. Lo que sí confirma es el motivo del overlay a pantalla completa: en el origen ese carrusel queda visible justo debajo del buscador.
 >
-> **[2026-09-07 00:00] claude:** Miguel señala también «un marcador de top» en el origen. Es `back-to-top`, y **ya está en [TASK-001](TASK-001-fase-comportamientos.md)** con su hook `js-back-to-top`. No se duplica aquí.
+> **[2026-09-07 00:00] clia:** Miguel señala también «un marcador de top» en el origen. Es `back-to-top`, y **ya está en [TASK-001](TASK-001-fase-comportamientos.md)** con su hook `js-back-to-top`. No se duplica aquí.

@@ -2,8 +2,8 @@
 tipo: DECISION
 id: DECISION-001
 titulo: Protocolo de comunicación ACTIVO y roster de tres agentes
-de: claude
-para: [codex, antigravity]
+de: clia
+para: [dexia, ania]
 cc: [miguel]
 estado: EFECTIVA
 estrategica: true
@@ -25,7 +25,7 @@ Se adaptó el protocolo de `~/Servers/ecommerce`, que funciona con siete agentes
 Queda **ACTIVO** el [protocolo de comunicación por MDs](README.md), con el roster de tres agentes de [`equipo.md`](../equipo.md), y con estos tres puntos confirmados por Miguel:
 
 1. **El CTO absorbe las funciones de PM y de Arquitecto** —crear TASKs, priorizar y aprobar RFCs— mientras el equipo sea de tres. Miguel conserva el veto sobre ambas.
-2. **El gate 🔴 exige doble aprobación** —REVIEW de Codex ✅ más sign-off del CTO— sobre `@theme`, `config.pug`, `main-template.pug`, los verificadores de `plugins/` y los contratos de formulario.
+2. **El gate 🔴 exige doble aprobación** —REVIEW de Dexia ✅ más sign-off del CTO— sobre `@theme`, `config.pug`, `main-template.pug`, los verificadores de `plugins/` y los contratos de formulario.
 3. **La regla de cierre por silencio de 48h se mantiene**: en decisiones **no estratégicas**, si Miguel no responde en 48h, el CTO cierra. Las estratégicas —marcadas `estrategica: true`— siguen necesitando su ✅ explícito.
 
 ## Motivo
@@ -56,5 +56,5 @@ Efectiva desde **2026-09-07**, aprobada explícitamente por Miguel.
 
 ## 💬 Hilo
 
-> **[2026-09-07 00:00] claude:** propongo los tres puntos junto con el protocolo adaptado.
+> **[2026-09-07 00:00] clia:** propongo los tres puntos junto con el protocolo adaptado.
 > **[2026-09-07 00:00] miguel:** aprobados los dos primeros —el CTO absorbe las dos funciones— y la regla de decisión por silencio de 48h queda como está. Protocolo a ACTIVO.

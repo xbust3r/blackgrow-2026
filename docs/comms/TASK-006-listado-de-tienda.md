@@ -2,9 +2,9 @@
 tipo: TASK
 id: TASK-006
 titulo: Completar el listado de tienda y sus variantes de columnas
-de: claude
-para: antigravity
-cc: [codex]
+de: clia
+para: ania
+cc: [dexia]
 prioridad: P1
 estado: ABIERTA
 area: components
@@ -113,10 +113,10 @@ Ojo al mobile first: el parámetro describe **escritorio**. En móvil es una col
 - [ ] Comprobado servido a 375px y en escritorio
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [ ] `pnpm validate:origen` sin regresiones
-- [ ] REVIEW de Codex ✅
+- [ ] REVIEW de Dexia ✅
 
 ## 💬 Hilo
 
-> **[2026-09-08 12:10] claude:** creo la TASK. Este hueco no estaba planificado: salió al revisar qué quedaba de maquetación y encontrar que el listado dice 12 y pinta 3. El contenido está leído del origen servido. 🟡 porque toca mixins compartidos, no `@theme` ni `config.pug`.
+> **[2026-09-08 12:10] clia:** creo la TASK. Este hueco no estaba planificado: salió al revisar qué quedaba de maquetación y encontrar que el listado dice 12 y pinta 3. El contenido está leído del origen servido. 🟡 porque toca mixins compartidos, no `@theme` ni `config.pug`.
 >
-> **[2026-09-08 12:10] claude:** hay una sola imagen de producto en `src/assets/images/shop/`. Doce tarjetas con la misma foto es lo que hay hoy y es aceptable **si se declara**; lo que no vale es bajar doce del origen sin pasarlas por `figma-assets.json` y `assets-pendientes.json`.
+> **[2026-09-08 12:10] clia:** hay una sola imagen de producto en `src/assets/images/shop/`. Doce tarjetas con la misma foto es lo que hay hoy y es aceptable **si se declara**; lo que no vale es bajar doce del origen sin pasarlas por `figma-assets.json` y `assets-pendientes.json`.

@@ -12,13 +12,13 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript pendientes | claude | antigravity, codex | P0 | 🟪 EN_REVISION — 8 módulos, verificación verde. **Auditoría del CTO: 2 hallazgos 🔴 de accesibilidad** (cabecera fija focalizable bajo `aria-hidden`; miniaturas que no son botones). Esperando REVIEW de Codex | 2026-09-07 |
-| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable — mapa único, enlaces reales y subrayado animado | claude | antigravity | P0 | 🟦 ABIERTA — 33 `href='#'` en 17 archivos y sólo 6 enlaces internos reales. 🔴 toca `config.pug` y el layout. **Desbloqueada: no se renombra nada** | 2026-09-08 |
-| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | claude | antigravity | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
-| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | claude | antigravity, codex | P0 | 🟩 **GATE CUMPLIDO** — REVIEW-001 de Codex ✅ + sign-off 🔴 del CTO ✅ + suite en verde. Lista para mergear desde `feat/TASK-004-correcciones` | 2026-09-08 |
-| [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | codex | antigravity, claude | P0 | 🟩 APROBADO — 2 hallazgos 🔴 resueltos en `c248dce`; **sign-off del CTO firmado** | 2026-09-08 |
-| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Completar el listado de tienda y sus variantes de columnas | claude | antigravity | P1 | 🟦 ABIERTA — hoy dice «Showing 1–12 of 50» y pinta 3 productos «Product Title Here». 12 productos del origen, barra lateral, orden y paginación | 2026-09-08 |
-| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | claude | antigravity | P1 | 🟦 ABIERTA — sale de DECISION-002. La rejilla se conserva como variante | 2026-09-07 |
+| [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript pendientes | clia | ania, codex | P0 | 🟪 EN_REVISION — 8 módulos, verificación verde. **Auditoría del CTO: 2 hallazgos 🔴 de accesibilidad** (cabecera fija focalizable bajo `aria-hidden`; miniaturas que no son botones). Esperando REVIEW de Dexia | 2026-09-07 |
+| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable — mapa único, enlaces reales y subrayado animado | clia | ania | P0 | 🟦 ABIERTA — 33 `href='#'` en 17 archivos y sólo 6 enlaces internos reales. 🔴 toca `config.pug` y el layout. **Desbloqueada: no se renombra nada** | 2026-09-08 |
+| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
+| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | ania, codex | P0 | 🟩 **GATE CUMPLIDO** — REVIEW-001 de Codex ✅ + sign-off 🔴 del CTO ✅ + suite en verde. Lista para mergear desde `feat/TASK-004-correcciones` | 2026-09-08 |
+| [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | dexia | ania, claude | P0 | 🟩 APROBADO — 2 hallazgos 🔴 resueltos en `c248dce`; **sign-off del CTO firmado** | 2026-09-08 |
+| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Completar el listado de tienda y sus variantes de columnas | clia | ania | P1 | 🟦 ABIERTA — hoy dice «Showing 1–12 of 50» y pinta 3 productos «Product Title Here». 12 productos del origen, barra lateral, orden y paginación | 2026-09-08 |
+| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania | P1 | 🟦 ABIERTA — sale de DECISION-002. La rejilla se conserva como variante | 2026-09-07 |
 
 ---
 
@@ -26,6 +26,7 @@
 
 | ID | Tipo | Título | Cerrado por | Fecha | Resultado |
 | --- | --- | --- | --- | --- | --- |
+| [DECISION-003](DECISION-003-nombres-de-los-agentes.md) | DECISION | Los agentes reciben nombre propio — Clia, Dexia y Ania | miguel | 2026-09-08 | ✅ Efectiva — el nombre es la identidad, la plataforma sigue siendo la plataforma. Historial reescrito y canal sincronizado |
 | [DECISION-002](DECISION-002-carrusel-de-categorias.md) | DECISION | Se revierte «no se quieren carruseles» para el carrusel de categorías | miguel | 2026-09-07 | ✅ Efectiva — alcance mínimo: sólo esa pieza, `hero-slider` sigue descartado, y sin dependencia nueva |
 | [DECISION-001](DECISION-001-protocolo-y-roster.md) | DECISION | Protocolo de comunicación ACTIVO y roster de tres agentes | miguel | 2026-09-07 | ✅ Efectiva — el CTO absorbe PM y Arquitecto; gate 🔴 con doble aprobación; regla de 48h vigente |
 

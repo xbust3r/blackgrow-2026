@@ -2,9 +2,9 @@
 tipo: TASK
 id: TASK-005
 titulo: Hacer el sitio navegable — mapa único y enlaces reales
-de: claude
-para: antigravity
-cc: [codex]
+de: clia
+para: ania
+cc: [dexia]
 prioridad: P0
 estado: ABIERTA
 area: components
@@ -27,7 +27,7 @@ Hay **22 páginas construidas y no se puede llegar a casi ninguna**. Auditado ho
 
 Esto era correcto hasta ahora: la migración declaró *«todos son `href="#"`. Se quedan así y se anotan»*, porque los del origen también lo eran y no había páginas a las que apuntar. **Ya las hay**, y Miguel pide que se navegue. Esta TASK resuelve ese pendiente declarado; hay que actualizar esa línea en [`docs/migracion/README.md`](../migracion/README.md) para que los documentos no se contradigan.
 
-Es **🔴** porque toca `config.pug` y `main-template.pug`: pide sign-off del CTO además del REVIEW de Codex.
+Es **🔴** porque toca `config.pug` y `main-template.pug`: pide sign-off del CTO además del REVIEW de Dexia.
 
 ## El mapa, tomado del origen
 
@@ -187,17 +187,17 @@ Se aplica a **los enlaces de navegación** —cabecera, cabecera fija, menú mó
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [ ] `pnpm validate:origen` sin regresiones
 - [ ] Salida real pegada en el hilo
-- [ ] REVIEW de Codex ✅ **+ sign-off 🔴 del CTO** (toca `config.pug` y el layout)
+- [ ] REVIEW de Dexia ✅ **+ sign-off 🔴 del CTO** (toca `config.pug` y el layout)
 
 ## 💬 Hilo
 
-> **[2026-09-08 11:00] claude:** creo la TASK. Auditado hoy: 33 `href='#'` en 17 archivos y sólo 6 enlaces internos reales en las 22 páginas. El mapa está tomado del menú del sitio vivo, no inventado; lo que el origen tiene y nosotros no —variantes de columnas y formatos de entrada— se declara en vez de crearse.
+> **[2026-09-08 11:00] clia:** creo la TASK. Auditado hoy: 33 `href='#'` en 17 archivos y sólo 6 enlaces internos reales en las 22 páginas. El mapa está tomado del menú del sitio vivo, no inventado; lo que el origen tiene y nosotros no —variantes de columnas y formatos de entrada— se declara en vez de crearse.
 >
-> **[2026-09-08 11:00] claude:** ⏸️ **bloqueante antes de empezar:** el renombrado de `cart.html` y `cart-index.html`. Pregunta en el hilo y espera respuesta de Miguel; no renombres por tu cuenta. Todo lo demás de la TASK puede prepararse mientras tanto, pero el mapa se escribe **después** de saberlo, para no escribirlo dos veces.
+> **[2026-09-08 11:00] clia:** ⏸️ **bloqueante antes de empezar:** el renombrado de `cart.html` y `cart-index.html`. Pregunta en el hilo y espera respuesta de Miguel; no renombres por tu cuenta. Todo lo demás de la TASK puede prepararse mientras tanto, pero el mapa se escribe **después** de saberlo, para no escribirlo dos veces.
 >
-> **[2026-09-08 11:00] claude:** el mayor valor de esta TASK no son los enlaces, es el **mapa único**. Hoy las etiquetas de navegación están escritas en cuatro sitios y ya no coinciden entre sí —el menú móvil tiene un `Info` que no existe en ningún otro—. Si sales de aquí con cuatro listas sincronizadas a mano, la TASK no está hecha aunque todos los enlaces funcionen.
+> **[2026-09-08 11:00] clia:** el mayor valor de esta TASK no son los enlaces, es el **mapa único**. Hoy las etiquetas de navegación están escritas en cuatro sitios y ya no coinciden entre sí —el menú móvil tiene un `Info` que no existe en ningún otro—. Si sales de aquí con cuatro listas sincronizadas a mano, la TASK no está hecha aunque todos los enlaces funcionen.
 >
-> **[2026-09-08 11:40] claude:** ⏸️ **desbloqueado.** Miguel: es una maqueta para integrar después, así que **no se renombra** `cart.html` ni `cart-index.html` — los nombres los fijará la integración. Empieza cuando quieras. Lo único que traslado: que las **etiquetas del menú** digan «Shop List» y «Shop Single», para que el mapa no herede la confusión del nombre de archivo.
+> **[2026-09-08 11:40] clia:** ⏸️ **desbloqueado.** Miguel: es una maqueta para integrar después, así que **no se renombra** `cart.html` ni `cart-index.html` — los nombres los fijará la integración. Empieza cuando quieras. Lo único que traslado: que las **etiquetas del menú** digan «Shop List» y «Shop Single», para que el mapa no herede la confusión del nombre de archivo.
 >
-> **[2026-09-08 11:40] claude:** añadido el punto 6 con el hover que pide Miguel, medido en el sitio vivo. Ojo a lo que parece un detalle y es el truco entero: la animación **no se enciende al pasar el cursor, se reanuda** —está siempre declarada y `paused`—. Si la añades al hacer hover, salta desde el fotograma cero y se nota.
+> **[2026-09-08 11:40] clia:** añadido el punto 6 con el hover que pide Miguel, medido en el sitio vivo. Ojo a lo que parece un detalle y es el truco entero: la animación **no se enciende al pasar el cursor, se reanuda** —está siempre declarada y `paused`—. Si la añades al hacer hover, salta desde el fotograma cero y se nota.
 
