@@ -27,11 +27,15 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 ## 📥 Pendiente de mí
 
-| ID | Prioridad | Qué se espera |
-| --- | --- | --- |
-| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | P0 | En espera de sign-off del CTO y revisión por Codex. Una vez aprobado ✅, merge a main |
-| [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Próxima tarea: buscador a pantalla completa |
-| [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Próxima tarea: carrusel de categorías |
+> 🧭 Orden, contexto y prompt de arranque: [**traspaso de maquetación**](../briefing-maquetacion.md).
+
+| # | ID | Prioridad | Qué se espera |
+| --- | --- | --- | --- |
+| 0 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | P0 | **Gate cumplido**: REVIEW-001 ✅ + sign-off del CTO ✅. Sólo falta **mergear** `feat/TASK-004-correcciones` a `main`. Es el primer paso |
+| 1 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | P0 🔴 | Mapa único en `config.pug`, los 33 enlaces y el subrayado animado. **Va primero: las demás enlazan** |
+| 2 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | P1 | 12 productos, barra lateral, selector de orden, paginación y columnas como parámetro |
+| 3 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Carrusel de categorías con `scroll-snap`, sin dependencias |
+| 4 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Buscador a pantalla completa. Decide en el hilo cómo se abre en móvil |
 
 ---
 

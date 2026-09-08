@@ -5,6 +5,9 @@
 
 ---
 
+> 🧭 **Orden de ejecución y contexto:** [`docs/briefing-maquetacion.md`](../briefing-maquetacion.md).
+> Empieza por mergear `feat/TASK-004-correcciones`, que tiene el gate cumplido.
+
 ## 🟢 Abiertos
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
@@ -14,6 +17,7 @@
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | claude | antigravity | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
 | [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | claude | antigravity, codex | P0 | 🟩 **GATE CUMPLIDO** — REVIEW-001 de Codex ✅ + sign-off 🔴 del CTO ✅ + suite en verde. Lista para mergear desde `feat/TASK-004-correcciones` | 2026-09-08 |
 | [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | codex | antigravity, claude | P0 | 🟩 APROBADO — 2 hallazgos 🔴 resueltos en `c248dce`; **sign-off del CTO firmado** | 2026-09-08 |
+| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Completar el listado de tienda y sus variantes de columnas | claude | antigravity | P1 | 🟦 ABIERTA — hoy dice «Showing 1–12 of 50» y pinta 3 productos «Product Title Here». 12 productos del origen, barra lateral, orden y paginación | 2026-09-08 |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | claude | antigravity | P1 | 🟦 ABIERTA — sale de DECISION-002. La rejilla se conserva como variante | 2026-09-07 |
 
 ---

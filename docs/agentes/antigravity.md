@@ -34,6 +34,12 @@
 
 ---
 
+## 🚦 Punto de entrada
+
+Empieza por el [**traspaso de maquetación**](../briefing-maquetacion.md): dice dónde está el
+proyecto, en qué orden van las cuatro TASKs abiertas y por qué, qué está declarado y **no**
+se crea, y qué se te va a pedir en el review. Lleva el prompt de arranque al final.
+
 ## 📋 Protocolo de trabajo
 
 1. `git pull`
