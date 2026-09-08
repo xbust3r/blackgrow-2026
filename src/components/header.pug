@@ -10,13 +10,11 @@ header
         nav(aria-label='Sticky navigation')
             ul(class='flex flex-wrap gap-8')
                 each group in siteNavigation
-                    - var isExact = currentUrl === group.file;
-                    - var isSection = group.items && group.items.some(function(item) { return item.file === currentUrl; });
                     li
                         a(
-                            class=['nav-link text-sm uppercase tracking-heading hover:text-brand', (isExact || isSection) ? 'is-active' : ''],
+                            class='nav-link text-sm uppercase tracking-heading hover:text-brand',
                             href=group.url,
-                            aria-current=(isExact ? 'page' : false)
+                            aria-current=(currentUrl === group.file ? 'page' : false)
                         )= group.title
         div(class='flex items-center gap-1')
             +cartSideAreaOpener(cartCount)
@@ -27,13 +25,11 @@ header
         nav(aria-label='Main navigation')
             ul(class='flex flex-wrap gap-8 wide:gap-16')
                 each group in siteNavigation
-                    - var isExact = currentUrl === group.file;
-                    - var isSection = group.items && group.items.some(function(item) { return item.file === currentUrl; });
                     li
                         a(
-                            class=['nav-link text-sm uppercase tracking-heading hover:text-brand', (isExact || isSection) ? 'is-active' : ''],
+                            class='nav-link text-sm uppercase tracking-heading hover:text-brand',
                             href=group.url,
-                            aria-current=(isExact ? 'page' : false)
+                            aria-current=(currentUrl === group.file ? 'page' : false)
                         )= group.title
         div(class='flex items-center gap-1')
             span(class='hidden items-center gap-2 text-sm uppercase tracking-heading desktop:flex')
@@ -60,12 +56,11 @@ header
                         p(class='text-xs font-semibold uppercase tracking-wider text-ink-soft')= group.title
                         ul(class='space-y-2')
                             each item in group.items
-                                - var isCurrent = currentUrl === item.file;
                                 li
                                     a(
-                                        class=['nav-link text-lg uppercase tracking-heading text-ink hover:text-brand', isCurrent ? 'is-active' : ''],
+                                        class='nav-link text-lg uppercase tracking-heading text-ink hover:text-brand',
                                         href=item.url,
-                                        aria-current=(isCurrent ? 'page' : false)
+                                        aria-current=(currentUrl === item.file ? 'page' : false)
                                     )= item.label
 
 //- El panel del carrito vive fuera de la cabecera visible: es un diálogo a

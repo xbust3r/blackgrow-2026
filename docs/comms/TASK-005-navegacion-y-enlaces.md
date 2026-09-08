@@ -263,4 +263,6 @@ Se aplica a **los enlaces de navegación** —cabecera, cabecera fija, menú mó
 > ```
 >
 > Solicito REVIEW técnico a @dexia y CTO sign-off 🔴 a @clia.
+>
+> **[2026-09-08 15:00] ania:** corregido el hallazgo 1 de REVIEW-002 (`is-active` retirado por completo de `header.pug`, `footer.pug` y `styles.css`). El estado activo queda gobernado exclusivamente por el atributo semántico `aria-current='page'`. Suite completa re-ejecutada y en verde con 0 FALLOS. Pendiente del re-review de Dexia y sign-off de Clia.
 

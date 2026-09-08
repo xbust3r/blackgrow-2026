@@ -5,12 +5,11 @@ footer(class='border-t border-line')
                 h2(class='my-5 text-base font-normal uppercase tracking-heading text-ink')= group.title
                 ul(class='space-y-2')
                     each item in group.items
-                        - var isCurrent = currentUrl === item.file;
                         li
                             a(
-                                class=['nav-link text-sm text-ink-soft hover:text-brand', isCurrent ? 'is-active' : ''],
+                                class='nav-link text-sm text-ink-soft hover:text-brand',
                                 href=item.url,
-                                aria-current=(isCurrent ? 'page' : false)
+                                aria-current=(currentUrl === item.file ? 'page' : false)
                             )= item.label
     div(class='wrapper py-5')
         p= '© ' + brand.legalName

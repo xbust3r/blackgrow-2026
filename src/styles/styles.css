@@ -255,7 +255,7 @@
 
 /* Subrayado animado de navegación del origen.
    En reposo la banda de 5px existe con opacidad 0 y animación pausada.
-   En hover, focus-visible o página activa (aria-current/is-active),
+   En hover, focus-visible o página activa (aria-current='page'),
    se visibiliza y reanuda la animación sin saltos. */
 /* stylelint-disable nesting-selector-no-missing-scoping-root */
 @utility nav-link {
@@ -286,8 +286,7 @@
 
     &:hover::after,
     &:focus-visible::after,
-    &[aria-current='page']::after,
-    &.is-active::after {
+    &[aria-current='page']::after {
         opacity: 1;
         animation-play-state: running;
     }

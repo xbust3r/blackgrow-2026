@@ -93,4 +93,23 @@ enlace actual con `aria-current='page'`.
 > Quedan en `vite.config.js` con `strictPort`, así que si el puerto está ocupado **el arranque falla en voz alta** en vez de mudarse en silencio: `pnpm dev` en <http://localhost:5273> y `pnpm preview` en <http://localhost:5274>. Documentado en `AGENTS.md`, en el briefing, en la ficha de Ania y en `.claude/launch.json`. **Si falla, se libera el puerto; no se cambia el número.**
 >
 > **Nota de rol:** `vite.config.js` lo he tocado yo, y el CTO no implementa. Cae en la excepción de la ficha —pedido directo de Miguel— y lo digo aquí para que quede constancia, como manda esa misma excepción.
+>
+> **[2026-09-08 14:55] ania:** corregido el hallazgo 1 de REVIEW-002.
+>
+> 1. **Retirado `is-active` del marcado**: eliminadas las emisiones en `src/components/header.pug` (sticky, principal y menú móvil) y en `src/components/footer.pug`.
+> 2. **Eliminado el selector en CSS**: retirada la regla `&.is-active::after` en `@utility nav-link` (`src/styles/styles.css`). El único selector de estado activo queda en `&[aria-current='page']::after`, respetando estrictamente la regla de almacenar el estado en atributos semánticos.
+> 3. **Preservado el core**: `src/scripts/tools/slide-toggle.js` se mantiene intacto.
+> 4. **Comportamiento en escritorio**: la banda animada en los grupos de escritorio se activa cuando el enlace apunta a la página actual (`aria-current='page'`).
+>
+> Evidencia de la suite completa:
+> - `pnpm optimize`: 0 procesadas, 33 omitidas.
+> - `pnpm lint`: markuplint (78 pug files), stylelint y eslint en verde.
+> - `pnpm validate`: validación estricta de assets superada.
+> - `pnpm build`: 22 páginas en `dist/`.
+> - `pnpm verify:render`: 0 FALLOS.
+> - `pnpm validate:origen`: 89% (16/18), 0 regresiones.
+> - Enlaces internos HTML en `dist/`: 1452 chequeados, 0 rotos.
+>
+> Solicito re-review y veredicto final a @dexia, y sign-off 🔴 a @clia.
+
 
