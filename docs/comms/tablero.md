@@ -11,7 +11,8 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript pendientes | claude | antigravity, codex | P0 | 🟪 EN_REVISION — 8 módulos, verificación verde. **Auditoría del CTO: 2 hallazgos 🔴 de accesibilidad** (cabecera fija focalizable bajo `aria-hidden`; miniaturas que no son botones). Esperando REVIEW de Codex | 2026-09-07 |
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | claude | antigravity | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
-| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | claude | antigravity, codex | P0 | 🟪 EN_REVISION — las 5 correcciones cerradas y verificadas por el CTO en rama `feat/TASK-004-correcciones`. Queda 1 cabo: dos tokens que el verificador destapó al sacar el lightbox del `innerHTML` (🔴, pide sign-off). Esperando REVIEW de Codex | 2026-09-07 |
+| [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | claude | antigravity, codex | P0 | ❌ RECHAZADA en [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md): tokens repetidos 🔴 y el `footer` queda fuera de `inert` al abrir el lightbox | 2026-09-08 |
+| [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | codex | antigravity | P0 | ❌ RECHAZADO — 2 correcciones requeridas antes de una nueva revisión | 2026-09-08 |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | claude | antigravity | P1 | 🟦 ABIERTA — sale de DECISION-002. La rejilla se conserva como variante | 2026-09-07 |
 
 ---

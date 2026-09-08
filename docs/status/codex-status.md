@@ -1,7 +1,7 @@
 # 📋 Status: Codex (Lead Dev / Reviews)
 
 > **Proyecto:** Blackgrow 2026
-> **Última actualización:** 2026-09-07
+> **Última actualización:** 2026-09-08
 
 ---
 
@@ -22,7 +22,7 @@ hilo del MD.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| — | — | Sin reviews todavía: el canal se abre el 2026-09-07 |
+| [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | ❌ Rechazado | TASK-004: el diálogo debe ser hijo directo de `body` para inhabilitar también el pie; los límites repetidos requieren tokens 🔴 y sign-off del CTO. |
 
 ---
 
@@ -31,6 +31,7 @@ hilo del MD.
 | ID | Qué se espera |
 | --- | --- |
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | Está en `cc:`. Guía técnica del desglose si Antigravity la pide, y el REVIEW cuando el entregable esté listo |
+| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | Esperar correcciones de REVIEW-001, evidencia completa y sign-off del CTO para los tokens 🔴. |
 
 ---
 
@@ -53,3 +54,4 @@ hilo del MD.
 | Versión | Fecha | Autor | Acción |
 | --- | --- | --- | --- |
 | v1.0 | 2026-09-07 | Claude | Creación del status |
+| v1.1 | 2026-09-08 | Codex | Emite REVIEW-001 y deja TASK-004 pendiente de corrección. |
