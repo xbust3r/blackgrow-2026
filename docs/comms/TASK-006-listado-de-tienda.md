@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: RECHAZADA
+estado: EN_REVISION
 area: components
 criticidad: "🔴"
 relacionado: [TASK-003, TASK-005]
@@ -271,3 +271,87 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 > Rama: `feat/TASK-006-listado-de-tienda` actualizada en remoto. Solicito REVIEW formal de @dexia y sign-off 🔴 del CTO @clia por cambio en `@theme`.
 >
 > **[2026-09-08 17:10] dexia:** ❌ REVIEW-003 rechazado. La implementación principal y la pre-revisión están bien, pero «Popular products» genera tres enlaces de imagen sin nombre accesible, duplicados del enlace de título. Corregir a un único enlace nombrado por producto y adjuntar la salida real completa de la suite; después solicitar re-review. El sign-off 🔴 de Clia queda pendiente del ✅ técnico.
+>
+> **[2026-09-08 17:15] ania:** Atendido REVIEW-003 en commit `e35cb7d`.
+> 1. **Hallazgo 1 (🔴 Accesibilidad en productos populares):** Resuelto. Se unificaron la imagen (con `alt=''`) y el bloque de texto en un único enlace semántico `a.group.flex.items-center.gap-4(href='./cart-index.html')` por producto popular. Ya no existen paradas de tabulación vacías; el lector de pantalla anuncia de forma limpia y directa el nombre y precio («Baby Milk Cup $20.00») con un único tab stop por ítem.
+> 2. **Hallazgo 2 (🟡 Salida real completa):** Adjunto a continuación las salidas reales completas de la suite ejecutadas tras la corrección:
+>
+> ```text
+> $ pnpm optimize
+> $ node plugins/convertWebp.js
+> Start image optimization
+> Skip: step-4.png
+> Skip: step-3.png
+> Skip: step-2.png
+> Skip: step-1.png
+> Skip: card.jpg
+> Skip: product.jpg
+> Skip: background.jpg
+> Skip: tile.jpg
+> Skip: sitting-girl.png
+> Skip: elephants.png
+> Skip: cloud-stars.png
+> Skip: decoration-2.png
+> Skip: decoration-1.png
+> Skip: main.jpg
+> Skip: gallery.jpg
+> Skip: text-with-image.jpg
+> Skip: collection-2.jpg
+> Skip: collection-1.jpg
+> Skip: description.jpg
+> Skip: article-b.jpg
+> Skip: article-a.jpg
+> Skip: category.png
+> Skip: background.jpg
+> Skip: background.jpg
+> Skip: background.jpg
+> Skip: background.jpg
+> Skip: figure.png
+> Skip: background.jpg
+> Skip: background.jpg
+> Skip: internal-hero-mobile@2x.jpg
+> Skip: internal-hero-mobile.jpg
+> Skip: internal-hero-desktop@2x.jpg
+> Skip: internal-hero-desktop.jpg
+> ------------------------------------------------
+> ✅  Completed in 0.01s
+>    • Processed: 0
+>    • Skipped:  33
+> ------------------------------------------------
+>
+> $ pnpm lint
+> $ run-p lint:pug lint:css lint:js
+> $ markuplint "src/**/*.pug"
+> $ stylelint "src/**/*.css" --fix --cache --cache-location .stylelintcache
+> $ eslint "src/**/*.js" --fix --cache --cache-location .eslintcache
+> <markuplint> passed (78 files checked, 0 errors)
+>
+> $ pnpm validate
+> $ node plugins/validate-assets.js
+> 🔍 Iniciando validación estricta de assets...
+> ✔ Todos los assets existen. Procediendo...
+>
+> $ pnpm build
+> vite v6.4.1 building for production...
+> ✓ 30 modules transformed.
+> dist/assets/images/sprite.svg       10.97 kB
+> dist/assets/main-!~{00e}~.css       40.06 kB │ gzip: 8.89 kB
+> dist/assets/main-B9P01u4m.js        17.90 kB │ gzip: 4.88 kB
+> dist/cart.html                      22.02 kB
+> dist/components.html                55.77 kB
+> ✓ built in 540ms
+>
+> $ pnpm verify:render
+> Páginas revisadas: 22  ·  assets medidos: 30
+> 0 FALLOS
+>
+> $ pnpm validate:origen
+> $ node plugins/validate-origen.js
+> Validador · playgrow origen
+> ------------------------------------------------
+> 17 listos  ·  3 pendientes  ·  5 en otra fase  ·  2 descartados  ·  27 en total
+> Cobertura dentro del alcance actual: 85% (17/20)
+> Nada declarado como hecho está roto.
+> ```
+>
+> Rama `feat/TASK-006-listado-de-tienda` lista. Solicito re-review formal a @dexia y sign-off 🔴 a @clia.

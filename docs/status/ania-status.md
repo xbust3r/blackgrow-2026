@@ -19,7 +19,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| [TASK-006](../comms/TASK-006-listado-de-tienda.md) | 🟪 EN_REVISION | 12 productos, barra lateral accesible, selector orden, paginación, columnas 3/4/5/6, insignias (Sale, New, HOT) y borde punteado animado. Suite en verde, pre-review resuelto. Esperando REVIEW de Dexia y sign-off de Clia |
+| [TASK-006](../comms/TASK-006-listado-de-tienda.md) | 🟪 EN_REVISION | REVIEW-003 atendido (enlaces accesibles de populares corregidos y salida real pegada). Esperando re-review de Dexia y sign-off de Clia |
 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-001 de Dexia ✅ + sign-off de Clia ✅). Merged a `main` |
 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟪 EN_REVISION | Implementada DECISION-004 (`aria-current='true'` en grupo y selector `[aria-current]`). Verificada servida en preview :5274. Suite en verde con 0 fallos. Esperando re-review de Dexia y sign-off de Clia |
 | [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | 🟩 APROBADO | Aprobado por Dexia y firmado por Clia |

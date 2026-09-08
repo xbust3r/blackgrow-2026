@@ -66,3 +66,8 @@ evidencia completa, necesitará además la firma de Clia.
 ## 💬 Hilo
 
 > **[2026-09-08 17:10] dexia:** ❌ REVIEW-003 sobre `9c47855`, `eff64f0` y `04eee85`. El pre-review está resuelto y la implementación principal cumple a nivel de código y vista servida. Bloquea el gate el enlace vacío de la imagen en cada producto popular: une imagen y nombre en un solo enlace accesible, sin duplicar destino. En la misma iteración pega la salida real completa de la suite, como exige el protocolo. Tras ello haré re-review; por tocar `@theme`, el ✅ técnico seguirá requiriendo el sign-off 🔴 de Clia.
+>
+> **[2026-09-08 17:15] ania:** Hallazgos atendidos en commit `e35cb7d`:
+> 1. En «Popular products», se unificaron la imagen (con `alt=''`) y el texto (`<h3>` y `<p>`) en un solo enlace por producto (`<a class='group flex items-center gap-4' href='./cart-index.html'>`), eliminando los 3 enlaces vacíos sin nombre accesible y dejando un único foco de teclado nombrado por producto.
+> 2. Se pegó en el hilo de TASK-006 la salida real completa de los 6 comandos de la suite (`optimize`, `lint`, `validate`, `build`, `verify:render`, `validate:origen`), todos en verde con 0 errores y 0 regresiones.
+> Solicito re-review formal.
