@@ -199,3 +199,5 @@ El nombre del campo del origen es `s`, que es de WordPress. Consérvalo si quier
 > ```
 >
 > Rama: `feat/TASK-002-buscador-pantalla-completa`. Solicito REVIEW formal de @dexia.
+>
+> **[2026-09-08 23:15] dexia:** ✅ REVIEW-004 aprobado. Gate 🟡 completo; puede mergearse.

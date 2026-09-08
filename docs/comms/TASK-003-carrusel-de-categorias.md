@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: RECHAZADA
 area: components
 criticidad: "🟡"
 relacionado: [DECISION-002, TASK-001]
@@ -270,5 +270,4 @@ El origen duplica 12 diapositivas para simular el bucle. **No lo copies.** Dupli
 > ```
 >
 > Solicito REVIEW a Dexia.
-
 
