@@ -203,7 +203,13 @@ parte de la migración, no trabajo extra:
 - **Contenido final.** Los textos del origen son *lorem ipsum* y nombres de
   producto inventados. No se sustituyen por otros inventados: se mantienen como
   marcador y se anotan como pendiente de contenido real.
-- **Enlaces.** Todos son `href="#"`. Se quedan así y se anotan.
+- **Enlaces.** Eran todos `href="#"` mientras no había páginas a las que
+  apuntar. **Ese pendiente está resuelto:** con las 22 páginas construidas,
+  Miguel pidió que el sitio se navegue, y la
+  [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) declara el mapa del
+  sitio en `config.pug` y les da destino real. Lo que siga sin destino —una
+  red social sin cuenta— se queda en `#` y se anota; lo que no se hace nunca
+  es inventar una URL externa.
 - **El formulario del newsletter** no tiene destino. Se migra como presentación
   y se anota; no se le inventa un `action`.
 
