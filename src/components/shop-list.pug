@@ -78,7 +78,7 @@ mixin shopList(cols = 3, showSidebar = (cols === 3))
 
                 div
                     h2(class='mb-6 text-h3 font-normal text-ink') Filter by price
-                    form(class='space-y-4', onsubmit='return false;', role='search', aria-label='Filter by price')
+                    div(class='space-y-4', role='group', aria-label='Filter by price')
                         div(class='relative h-1.5 w-full rounded-full bg-line')
                             div(class='absolute inset-y-0 start-0 w-full rounded-full bg-brand')
                         div(class='flex items-center justify-between text-sm')
@@ -91,7 +91,7 @@ mixin shopList(cols = 3, showSidebar = (cols === 3))
         div(class='min-w-0' + (showSidebar ? ' desktop:col-span-3' : ''))
             div(class='mb-8 flex flex-col gap-4 tablet:flex-row tablet:items-center tablet:justify-between')
                 p(class='text-base text-ink-soft') Showing 1–12 of 50 results
-                form(class='flex items-center gap-2', onsubmit='return false;')
+                form(class='flex items-center gap-2', action='#', method='get')
                     label(class='sr-only', for='shop-order-' + cols) Shop order
                     select(id='shop-order-' + cols, name='orderby', class='rounded-field border border-line bg-surface px-3 py-2 text-sm text-ink focus-visible:border-brand', aria-label='Shop order')
                         option(value='menu_order', selected) Default sorting
