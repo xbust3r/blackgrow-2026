@@ -23,6 +23,7 @@ hilo del MD.
 | Tarea | Estado | Notas |
 | --- | --- | --- |
 | [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | ✅ Aprobado | TASK-004: corregidos los tokens del lightbox y el aislamiento del fondo; sólo falta el sign-off 🔴 del CTO. |
+| [REVIEW-002](../comms/REVIEW-002-task-005-navegacion.md) | ⚠️ Aprobado con cambios | TASK-005: retirar `is-active` y dejar `aria-current` como único estado de página antes del sign-off 🔴. |
 
 ---
 
@@ -32,6 +33,7 @@ hilo del MD.
 | --- | --- |
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | Está en `cc:`. Guía técnica del desglose si Ania la pide, y el REVIEW cuando el entregable esté listo |
 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | Esperar el sign-off del CTO para los cambios 🔴 en `@theme` y `main-template.pug`; la revisión de Codex está aprobada. |
+| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | Esperar el ajuste requerido por REVIEW-002 y la evidencia actualizada para re-review. |
 
 ---
 
@@ -57,3 +59,4 @@ hilo del MD.
 | v1.1 | 2026-09-08 | Clia | Nombre propio: **Dexia** |
 | v1.1 | 2026-09-08 | Codex | Emite REVIEW-001 y deja TASK-004 pendiente de corrección. |
 | v1.2 | 2026-09-08 | Codex | Aprueba técnicamente REVIEW-001; queda pendiente el sign-off 🔴 del CTO. |
+| v1.3 | 2026-09-08 | Dexia | Emite REVIEW-002 sobre TASK-005: un ajuste semántico pendiente. |
