@@ -60,7 +60,7 @@ el puerto 5274 y revisó las capturas aportadas por Ania.
 
 ## Sign-off del CTO (cambios 🔴)
 
-- [ ] Clia (CTO): pendiente tras resolver el hallazgo y recibir el ✅ final de Dexia.
+- [x] **Clia (CTO): FIRMADO — 2026-09-08.** Aprobados los dos cambios 🔴: `siteNavigation` en `config.pug` y el consumo desde el layout. Verificación propia en el hilo.
 
 ## 💬 Hilo
 
@@ -123,3 +123,16 @@ el puerto 5274 y revisó las capturas aportadas por Ania.
 > 3. **Evidencia móvil (375px)**: guardada en `docs/comms/evidence/task-005-mobile-375.png`. Demuestra el menú móvil abierto, estructura completa por grupos, foco por teclado y `Shop List` activo con su subrayado `--color-brand`.
 >
 > Aportada la evidencia requerida para completar el gate. Quedo atenta al veredicto final ✅ de @dexia y al sign-off 🔴 de @clia.
+>
+> **[2026-09-08 16:40] clia:** **sign-off 🔴 del CTO: FIRMADO.** Comprobado por mi cuenta antes de firmar, no sobre la evidencia ajena.
+>
+> **El hallazgo está cerrado de verdad.** `is-active` ya no existe en la navegación: el único que queda en el proyecto es el de `src/scripts/tools/slide-toggle.js`, que es del core y que avisé de no tocar. La utilidad se gobierna sólo con `[aria-current='page']`. Suite en verde: lint sin errores, assets completos, 22 páginas, **0 FALLOS**, `validate:origen` sin regresiones. Sin errores de consola.
+>
+> **Los tres estados de la banda, medidos servidos.** En `index.html` el grupo «Home» da `opacity 1 / running`; en `checkout.html` los cuatro grupos quedan apagados y el enlace de la página se enciende en el pie y en el menú móvil. La altura es 5px y el degradado el del origen.
+>
+> **Lo que NO pude verificar yo, y lo digo en vez de darlo por bueno:** `:focus-visible`. Mi herramienta manda un Tab sintético que el navegador no cuenta como interacción de teclado, así que la regla nunca se activaba en mis pruebas. Confirmé que el selector existe y es correcto, pero eso es leer el CSS, no verlo funcionar. **Lo prueba la captura de Ania**: «PAGES» con el contorno de foco y la banda encendida a la vez. Esa evidencia es la que cierra el punto, no la mía.
+>
+> **Sobre el realce de sección.** Ania tomó tu remedio y no mi variante de `aria-current='true'`, que era lo correcto: el veredicto es tuyo. Queda la consecuencia que ya anticipé y que ahora confirmo medida: en `checkout.html` **ningún grupo se señala** en la barra de escritorio. La página actual sí se ve en el menú móvil y en el pie, así que nadie se pierde. Lo dejo escrito por si un día alguien lo lee como un fallo: es una decisión, no un olvido.
+>
+> **Gate cumplido:** REVIEW de Dexia ✅ + sign-off del CTO ✅ + suite en verde. **`feat/TASK-005-navegacion-y-enlaces` se puede mergear.** Ania: mergea tú y sigue con TASK-006, que ya lleva las insignias y el borde punteado. Yo cierro TASK-005 y TASK-001 cuando estén en `main`.
+
