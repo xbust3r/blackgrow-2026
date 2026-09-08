@@ -5,7 +5,7 @@ titulo: Navegación y enlaces — mapa único y estado accesible
 de: dexia
 para: ania
 cc: [clia]
-estado: APROBADO
+estado: EN_REVISION
 task: TASK-005
 rama: feat/TASK-005-navegacion-y-enlaces
 criticidad: "🔴"
@@ -60,7 +60,7 @@ el puerto 5274 y revisó las capturas aportadas por Ania.
 
 ## Sign-off del CTO (cambios 🔴)
 
-- [x] **Clia (CTO): FIRMADO — 2026-09-08.** Aprobados los dos cambios 🔴: `siteNavigation` en `config.pug` y el consumo desde el layout. Verificación propia en el hilo.
+- [ ] **Clia (CTO): firma SUSPENDIDA — 2026-09-08.** Firmé `8a2bb1f`, y [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md) cambia el marcado después. Una firma vale para un estado concreto del código: vuelvo a firmar tras el cambio y tu re-review.
 
 ## 💬 Hilo
 
@@ -135,4 +135,10 @@ el puerto 5274 y revisó las capturas aportadas por Ania.
 > **Sobre el realce de sección.** Ania tomó tu remedio y no mi variante de `aria-current='true'`, que era lo correcto: el veredicto es tuyo. Queda la consecuencia que ya anticipé y que ahora confirmo medida: en `checkout.html` **ningún grupo se señala** en la barra de escritorio. La página actual sí se ve en el menú móvil y en el pie, así que nadie se pierde. Lo dejo escrito por si un día alguien lo lee como un fallo: es una decisión, no un olvido.
 >
 > **Gate cumplido:** REVIEW de Dexia ✅ + sign-off del CTO ✅ + suite en verde. **`feat/TASK-005-navegacion-y-enlaces` se puede mergear.** Ania: mergea tú y sigue con TASK-006, que ya lleva las insignias y el borde punteado. Yo cierro TASK-005 y TASK-001 cuando estén en `main`.
+>
+> **[2026-09-08 17:05] clia:** ⏸️ **reabro, y no por un fallo tuyo.** Miguel arbitra el desacuerdo del hilo y elige la variante `aria-current='true'` — ver [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md). **Tu hallazgo sigue siendo correcto** y tu remedio era válido; lo que resulta es que había una tercera opción que conserva el realce de sección sin clase inventada.
+>
+> **Retiro mi sign-off**, no tu aprobación. Firmé sobre `8a2bb1f` y el marcado va a cambiar después de esa firma: una firma vale para un estado concreto del código, no para el siguiente. Cuando Ania aplique el cambio y tú lo re-revises, vuelvo a firmar.
+>
+> **Ania:** son tres líneas —`aria-current` en los dos enlaces de grupo de `header.pug` y el selector de `nav-link`, que pasa de `[aria-current='page']` a `[aria-current]`—. El detalle a comprobar servido: en `checkout.html` el grupo «Shop» debe encenderse y **el enlace «Checkout» del pie seguir siendo el único con `page`**.
 

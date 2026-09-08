@@ -13,8 +13,8 @@
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [TASK-001](TASK-001-fase-comportamientos.md) | TASK | Fase de comportamientos — módulos de JavaScript pendientes | clia | ania, codex | P0 | 🟪 EN_REVISION — 8 módulos, verificación verde. **Auditoría del CTO: 2 hallazgos 🔴 de accesibilidad** (cabecera fija focalizable bajo `aria-hidden`; miniaturas que no son botones). Esperando REVIEW de Dexia | 2026-09-07 |
-| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable — mapa único, enlaces reales y subrayado animado | clia | ania, dexia | P0 🔴 | 🟩 **GATE CUMPLIDO** — REVIEW-002 ✅ + sign-off 🔴 del CTO ✅ + suite en verde. Lista para mergear | 2026-09-08 |
-| [REVIEW-002](REVIEW-002-task-005-navegacion.md) | REVIEW | Navegación y enlaces — mapa único y estado accesible | dexia | ania, clia | P0 | 🟩 APROBADO — `is-active` retirado y evidencia visual aportada; **sign-off del CTO firmado** | 2026-09-08 |
+| [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable — mapa único, enlaces reales y subrayado animado | clia | ania, dexia | P0 🔴 | 🟦 **REABIERTA** — DECISION-004: se conserva el realce de sección con `aria-current='true'`. 3 líneas. Sign-off del CTO suspendido | 2026-09-08 |
+| [REVIEW-002](REVIEW-002-task-005-navegacion.md) | REVIEW | Navegación y enlaces — mapa único y estado accesible | dexia | ania, clia | P0 | 🟪 REABIERTO — el hallazgo era correcto; DECISION-004 añade el realce de sección. Pendiente de re-review y nueva firma | 2026-09-08 |
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
 | [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | ania, dexia | P0 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW de Dexia ✅ + sign-off del CTO ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
 | [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | dexia | ania, claude | P0 | 🟩 APROBADO — 2 hallazgos 🔴 resueltos en `c248dce`; **sign-off del CTO firmado** | 2026-09-08 |
@@ -27,6 +27,7 @@
 
 | ID | Tipo | Título | Cerrado por | Fecha | Resultado |
 | --- | --- | --- | --- | --- | --- |
+| [DECISION-004](DECISION-004-realce-de-seccion-en-la-navegacion.md) | DECISION | El realce de sección se conserva con `aria-current='true'` | miguel | 2026-09-08 | ✅ Efectiva — arbitraje de Miguel sobre el desacuerdo Clia/Dexia. Coste anotado: el lector anuncia «current» también en el grupo |
 | [DECISION-003](DECISION-003-nombres-de-los-agentes.md) | DECISION | Los agentes reciben nombre propio — Clia, Dexia y Ania | miguel | 2026-09-08 | ✅ Efectiva — el nombre es la identidad, la plataforma sigue siendo la plataforma. Historial reescrito y canal sincronizado |
 | [DECISION-002](DECISION-002-carrusel-de-categorias.md) | DECISION | Se revierte «no se quieren carruseles» para el carrusel de categorías | miguel | 2026-09-07 | ✅ Efectiva — alcance mínimo: sólo esa pieza, `hero-slider` sigue descartado, y sin dependencia nueva |
 | [DECISION-001](DECISION-001-protocolo-y-roster.md) | DECISION | Protocolo de comunicación ACTIVO y roster de tres agentes | miguel | 2026-09-07 | ✅ Efectiva — el CTO absorbe PM y Arquitecto; gate 🔴 con doble aprobación; regla de 48h vigente |
