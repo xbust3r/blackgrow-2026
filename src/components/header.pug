@@ -1,9 +1,5 @@
 include cart-side-area
 
-mixin socialLink(name, icon)
-    a(class='inline-flex size-8 items-center justify-center text-brand', href='#')
-        +svgIcon(icon, 'size-4')
-        span(class='sr-only')= name
 header
     div(class='js-sticky-header fixed inset-x-0 top-0 z-40 hidden min-h-16 -translate-y-full items-center justify-between border-b border-line bg-surface/95 px-5 shadow-sm backdrop-blur transition-transform duration-300 tablet:flex', inert)
         a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
@@ -20,6 +16,8 @@ header
                             aria-current=groupAriaCurrent
                         )= group.title
         div(class='flex items-center gap-1')
+            button(class='js-search-toggle inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='search-overlay', aria-label='Open search')
+                +svgIcon('search', 'size-4 text-brand')
             +cartSideAreaOpener(cartCount)
     div(class='hidden min-h-17 items-center justify-between gap-5 bg-surface-alt px-5 text-ink tablet:flex')
         a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
@@ -36,24 +34,21 @@ header
                             aria-current=groupAriaCurrent
                         )= group.title
         div(class='flex items-center gap-4')
-            div(class='hidden items-center gap-4 desktop:flex')
-                button(class='js-subscribe-popup inline-flex items-center gap-2 text-sm uppercase tracking-heading hover:text-brand', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='subscribe-dialog')
-                    +svgIcon('mail', 'size-4 text-brand')
-                    | Newsletter
-                span(class='inline-flex items-center gap-2 text-sm uppercase tracking-heading')
-                    +svgIcon('search', 'size-4 text-brand')
-                    | Search
-            div(class='flex items-center gap-1')
-                +socialLink('Facebook', 'facebook')
-                +socialLink('Instagram', 'instagram')
-                +socialLink('TikTok', 'tiktok')
-                +socialLink('Pinterest', 'pinterest')
-                +cartSideAreaOpener(cartCount)
+            button(class='js-subscribe-popup hidden items-center gap-2 text-sm uppercase tracking-heading hover:text-brand desktop:inline-flex', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='subscribe-dialog')
+                +svgIcon('mail', 'size-4 text-brand')
+                | Newsletter
+            button(class='js-search-toggle inline-flex items-center gap-2 text-sm uppercase tracking-heading hover:text-brand', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='search-overlay', aria-label='Open search')
+                +svgIcon('search', 'size-4 text-brand')
+                | Search
+            +cartSideAreaOpener(cartCount)
     div(class='flex min-h-16 items-center justify-between gap-5 border-b border-line px-5 tablet:hidden')
         a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
-        +cartSideAreaOpener(cartCount)
-        button(class='js-menu-toggle inline-flex size-11 items-center justify-center text-ink', type='button', aria-expanded='false', aria-controls='mobile-navigation', aria-label='Open menu')
-            +svgIcon('menu', 'size-7')
+        div(class='flex items-center gap-1')
+            button(class='js-search-toggle inline-flex size-11 items-center justify-center text-ink hover:text-brand', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='search-overlay', aria-label='Open search')
+                +svgIcon('search', 'size-5')
+            +cartSideAreaOpener(cartCount)
+            button(class='js-menu-toggle inline-flex size-11 items-center justify-center text-ink', type='button', aria-expanded='false', aria-controls='mobile-navigation', aria-label='Open menu')
+                +svgIcon('menu', 'size-7')
     div(id='mobile-navigation', class='js-mobile-menu fixed inset-0 z-50 overflow-y-auto bg-surface p-6', role='dialog', aria-modal='true', aria-label='Main navigation', hidden)
         button(class='js-menu-close mb-10 flex min-h-11 items-center gap-2 text-ink', type='button')
             +svgIcon('close', 'size-6')
@@ -76,6 +71,8 @@ header
 //- pantalla completa por la derecha, y anidarlo dentro de la barra lo ataría al
 //- apilado de ésta.
 +cartSideArea(cartPreview, cartPreviewTotal)
+
+include search-overlay
 
 div(id='subscribe-dialog', class='js-subscribe-dialog fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4', role='dialog', aria-modal='true', aria-labelledby='subscribe-title', hidden)
     div(class='relative w-full max-w-lg rounded-card border border-line bg-surface p-8 shadow-card')

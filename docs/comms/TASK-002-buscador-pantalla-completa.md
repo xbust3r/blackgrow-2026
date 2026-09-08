@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_PROGRESO
+estado: EN_REVISION
 area: components
 criticidad: "🟡"
 relacionado: [TASK-001, origen-comportamientos.json]
@@ -100,20 +100,20 @@ El nombre del campo del origen es `s`, que es de WordPress. Consérvalo si quier
 
 ## Criterios de aceptación
 
-- [ ] «Search» es un `<button type='button'>` con `aria-expanded` y `aria-controls`
-- [ ] Hay forma de abrirlo en móvil, con la decisión razonada en el hilo
-- [ ] El overlay ocupa la ventana entera y detrás no se lee nada
-- [ ] Se entrega cerrado con `hidden`; el estado vive en `hidden` y `aria-expanded`, no en clases inventadas
-- [ ] `search.js` sigue el patrón de `menu.js`: `inert` en el fondo, `focus.trap`/`untrap`
-- [ ] Al abrir, el foco cae en el campo
-- [ ] `Escape` cierra y el foco vuelve al botón que abrió
-- [ ] `action=''`, declarado como pendiente
-- [ ] La línea del campo se maquetó **después** de averiguar de dónde sale en el origen
-- [ ] Ni un color ni una medida de marca en el marcado
-- [ ] La clase `js-search-toggle` no lleva apariencia
-- [ ] Comprobado servido a 375px y en escritorio, con teclado y sin ratón
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
-- [ ] `pnpm validate:origen` — `search-overlay` pasa a `mejorado`, y «nada declarado como hecho está roto»
+- [x] «Search» es un `<button type='button'>` con `aria-expanded` y `aria-controls`
+- [x] Hay forma de abrirlo en móvil, con la decisión razonada en el hilo
+- [x] El overlay ocupa la ventana entera y detrás no se lee nada
+- [x] Se entrega cerrado con `hidden`; el estado vive en `hidden` y `aria-expanded`, no en clases inventadas
+- [x] `search.js` sigue el patrón de `menu.js`: `inert` en el fondo, `focus.trap`/`untrap`
+- [x] Al abrir, el foco cae en el campo
+- [x] `Escape` cierra y el foco vuelve al botón que abrió
+- [x] `action=''`, declarado como pendiente
+- [x] La línea del campo se maquetó **después** de averiguar de dónde sale en el origen
+- [x] Ni un color ni una medida de marca en el marcado
+- [x] La clase `js-search-toggle` no lleva apariencia
+- [x] Comprobado servido a 375px y en escritorio, con teclado y sin ratón
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `pnpm validate:origen` — `search-overlay` pasa a `mejorado`, y «nada declarado como hecho está roto»
 - [ ] REVIEW de Dexia ✅
 
 ## Fuera de alcance
@@ -140,3 +140,62 @@ El nombre del campo del origen es `s`, que es de WordPress. Consérvalo si quier
 > 2. **Origen de la línea del campo:** Comprobado directamente en el CSS del origen (`playgrow-core.min.css`). La línea no es un `border-bottom` del input ni del form, sino un pseudo-elemento `:after` en `.qodef-input-holder` (`height: 1px`, `background-color: #000`, `width: 100%`). En nuestra arquitectura se maquetará limpiamente usando el token `--color-ink` en el contenedor del input (`border-b border-ink`).
 > 3. **Orden DOM y foco inicial:** Para que `focus.trap()` enfoque de inmediato el campo `<input>` al abrir (como exige el criterio 1) sin parches en el módulo, el formulario y su input irán primeros en el DOM dentro del modal. El botón de cerrar irá después en el DOM y se posicionará en la esquina superior derecha mediante maquetación flex/absoluta.
 > 4. **Módulo `search.js`:** Implementado con `js-search-toggle`, soporte `Escape`, `inert` en los hermanos de `body`, `focus.trap()` y `focus.untrap()`.
+>
+> **[2026-09-08 17:50] ania:** Entrega completada y lista para revisión. Estado a `EN_REVISION`.
+> 1. **Implementación:**
+>    - Creado `src/components/search-overlay.pug` e incluido en `src/components/header.pug`.
+>    - En `header.pug`: eliminados los cuatro enlaces sociales de escritorio/tablet; «Search» transformado en botón interactivo con `js-search-toggle`, `aria-expanded='false'` y `aria-controls='search-overlay'`; añadido botón de búsqueda accesible en cabecera móvil y sticky.
+>    - Creado módulo `src/scripts/components/search.js` e importado en `main.js`. Atrapa el foco en el overlay, aplica `inert` sobre el resto de elementos, enfoca directamente el `<input>` al abrir, cicla el foco con Tab y devuelve el foco al trigger al cerrar con Escape, botón Close o clic fuera.
+>    - `action=''` en el formulario declarado como presentación (pendiente de backend); nombre de campo `name='s'` documentado.
+>    - `docs/migracion/origen-comportamientos.json`: `search-overlay` pasa a `mejorado`.
+> 2. **Evidencia visual servida:**
+>    - Escritorio con modal abierto: `docs/comms/evidence/task-002-desktop-search.png`
+>    - Cabecera móvil a 375px: `docs/comms/evidence/task-002-mobile-header.png`
+>    - Modal móvil a 375px: `docs/comms/evidence/task-002-mobile-search.png`
+> 3. **Salida real completa de la suite:**
+>
+> ```text
+> $ pnpm optimize
+> $ node plugins/convertWebp.js
+> Start image optimization
+> ------------------------------------------------
+> ✅  Completed in 0.02s
+>    • Processed: 0
+>    • Skipped:  33
+> ------------------------------------------------
+>
+> $ pnpm lint
+> $ run-p lint:pug lint:css lint:js
+> $ eslint "src/**/*.js" --fix --cache --cache-location .eslintcache
+> $ markuplint "src/**/*.pug"
+> $ stylelint "src/**/*.css" --fix --cache --cache-location .stylelintcache
+> <markuplint> passed (79 files checked, 0 errors)
+>
+> $ pnpm validate
+> $ node plugins/validate-assets.js
+> 🔍 Iniciando validación estricta de assets...
+> ✔ Todos los assets existen. Procediendo...
+>
+> $ pnpm build
+> vite v6.4.1 building for production...
+> ✓ 31 modules transformed.
+> dist/assets/images/sprite.svg       10.97 kB
+> dist/assets/main-!~{00e}~.css       40.06 kB │ gzip: 8.89 kB
+> dist/assets/main-D5J31_Wz.js        18.66 kB │ gzip: 5.09 kB
+> dist/cart.html                      23.16 kB
+> ✓ built in 590ms
+>
+> $ pnpm verify:render
+> Páginas revisadas: 22  ·  assets medidos: 30
+> 0 FALLOS
+>
+> $ pnpm validate:origen
+> $ node plugins/validate-origen.js
+> Validador · playgrow origen
+> ------------------------------------------------
+> 18 listos  ·  2 pendientes  ·  5 en otra fase  ·  2 descartados  ·  27 en total
+> Cobertura dentro del alcance actual: 90% (18/20)
+> Nada declarado como hecho está roto.
+> ```
+>
+> Rama: `feat/TASK-002-buscador-pantalla-completa`. Solicito REVIEW formal de @dexia.

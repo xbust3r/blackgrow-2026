@@ -1,0 +1,34 @@
+div(
+    id='search-overlay',
+    class='js-search-overlay fixed inset-0 z-50 flex items-center justify-center bg-surface p-6',
+    role='dialog',
+    aria-modal='true',
+    aria-label='Search',
+    hidden
+)
+    div(class='w-full max-w-4xl')
+        form(class='w-full', action='', method='get', role='search')
+            div(class='relative flex items-center border-b border-ink pb-3')
+                label(class='sr-only', for='search-input') Search
+                input(
+                    id='search-input',
+                    class='w-full bg-transparent text-2xl font-normal text-ink placeholder:text-ink-faint focus:outline-none tablet:text-3xl desktop:text-4xl',
+                    type='search',
+                    name='s',
+                    placeholder='Search...',
+                    autocomplete='off',
+                    required
+                )
+                button(
+                    class='inline-flex size-11 shrink-0 items-center justify-center text-ink-soft hover:text-brand',
+                    type='submit',
+                    aria-label='Submit search'
+                )
+                    +svgIcon('search', 'size-7')
+    button(
+        class='js-search-close absolute top-6 right-6 inline-flex min-h-11 items-center gap-2 text-sm uppercase tracking-heading text-ink hover:text-brand tablet:top-10 tablet:right-10',
+        type='button',
+        aria-label='Close search'
+    )
+        +svgIcon('close', 'size-5')
+        span Close

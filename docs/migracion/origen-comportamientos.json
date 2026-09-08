@@ -82,7 +82,7 @@
         "hook": "js-search-toggle",
         "archivo": "src/scripts/components/search.js"
       },
-      "estado": "pendiente",
+      "estado": "mejorado",
       "nota": "El origen tapa **sólo la cabecera**. **El destino lo hace a pantalla completa**, por decisión de Miguel: es una desviación consciente, no un error que corregir. Al implementarlo, corregir además las dos carencias del origen: foco al campo y cierre con Escape. Ver TASK-002."
     },
     {

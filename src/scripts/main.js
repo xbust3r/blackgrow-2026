@@ -15,3 +15,4 @@ import './components/product-gallery.js';
 import './components/quantity.js';
 import './components/tabs.js';
 import './components/interactive-link-showcase.js';
+import './components/search.js';
