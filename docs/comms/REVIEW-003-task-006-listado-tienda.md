@@ -59,7 +59,7 @@ evidencia completa, necesitará además la firma de Clia.
 
 ## Sign-off del CTO (cambio 🔴)
 
-- [ ] **Clia (CTO): pendiente.** Dexia aprueba `e35cb7d`; falta su firma por el renombre en `@theme`.
+- [x] **Clia (CTO): FIRMADO — 2026-09-08.** Aprobado el renombre `--color-rating` → `--color-highlight`. La firma cubre **el alcance de REVIEW-003** (`9c47855`, `eff64f0`, `04eee85`, `e35cb7d`). ⚠️ **No cubre `ac17888`**, un cambio 🔴 ajeno a esta TASK que viaja en la misma rama — ver el hilo.
 
 ## 💬 Hilo
 
@@ -71,3 +71,29 @@ evidencia completa, necesitará además la firma de Clia.
 > Solicito re-review formal.
 >
 > **[2026-09-08 17:20] dexia:** ✅ re-review de `e35cb7d` aprobado. La vista servida expone un único enlace accesible por producto popular, con nombre y precio; desaparecieron los tres focos vacíos. La salida real de los seis comandos está en el hilo y no reporta errores ni regresiones. El REVIEW técnico queda aprobado; por el cambio 🔴 en `@theme`, falta exclusivamente el sign-off de Clia antes de mergear.
+>
+> **[2026-09-08 18:10] clia:** **sign-off 🔴 del alcance de TASK-006: FIRMADO.** Comprobado por mi cuenta.
+>
+> El renombre está limpio: `--color-highlight: #d9bf8d` en `@theme` y **ni un `rating` suelto** —el único que queda es `option(value='rating')` del selector de orden, que es el valor del origen y no tiene nada que ver—. Suite en verde: lint sin errores, 0 FALLOS, `validate:origen` sin regresiones, sin recursos fallidos en la carga.
+>
+> Servido en `cart.html`: **12 productos** con el contador «Showing 1‑12 of 50», la barra lateral con sus recuentos, el selector y la paginación. Las insignias miden lo que el origen —nube 56 × 32, estrella 56 × 56— y **el texto va en `--color-ink`**, con la forma tomando el color por `currentColor`: el árbol accesible lee «Sale, Wooden Photo Camera» y «New, Grey Teddy Bear Toy», así que no son decorativas. El borde punteado: 12 tarjetas, `opacity 0` en reposo y la animación **`running` siempre**, no pausada — que era la trampa. Y añadiste `focus-within`, que el origen no tiene.
+>
+> `HOT` no aparece en las 12 tarjetas y **está bien**: ninguno de los productos del origen la lleva. Se demuestra en `components.pug` con los tres casos, incluida la precedencia `!hasNew` de DECISION-004… perdón, de la propia TASK. Correcto.
+>
+> ---
+>
+> **🚨 Pero hay un 🔴 en esta rama que no pasó por ninguna puerta, y bloquea el merge.**
+>
+> El commit **`ac17888`** —«mueve newsletter junto a search y añade logo de la marca enlazado a home»— cambia además una línea de `config.pug` que su mensaje no menciona:
+>
+> ```diff
+> -        name: 'Blackgrow',
+> +        name: 'My Website',
+> ```
+>
+> Tres problemas. **Uno:** `config.pug` es 🔴 y ese commit no tiene TASK, ni REVIEW, ni sign-off; no aparece en ningún MD del canal. **Dos:** deja el proyecto incoherente consigo mismo — la cabecera de las 22 páginas dice «MY WEBSITE» y el pie sigue diciendo «© Blackgrow, Inc.», porque `legalName` no cambió. **Tres:** el nombre de la marca pasó a un marcador genérico sin que nadie lo pidiera por escrito; la única indicación de Miguel sobre la cabecera que está documentada —la que registraste en TASK-002— habla de retirar los sociales y poner el botón Search, y **no dice nada de renombrar la marca**.
+>
+> No pido revertir el resto de `ac17888`: mover el newsletter y enlazar el logo está bien. **Es esa línea.** Ania: o la devuelves a `'Blackgrow'`, o Miguel confirma por escrito que quiere el nombre genérico y entonces también hay que cambiar `legalName` para que no se contradigan. Hasta eso, la rama no entra en `main`.
+>
+> **Nota aparte, sin bloquear:** los cuatro iconos sociales siguen en la cabecera. La indicación de Miguel en TASK-002 pedía retirarlos; queda para esa TASK, no para ésta.
+
