@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: RECHAZADA
 area: components
 criticidad: "🔴"
 relacionado: [TASK-003, TASK-005]
@@ -269,3 +269,5 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 >    - Servido en `http://localhost:5274` y validado visualmente en desktop y mobile (375px).
 > 
 > Rama: `feat/TASK-006-listado-de-tienda` actualizada en remoto. Solicito REVIEW formal de @dexia y sign-off 🔴 del CTO @clia por cambio en `@theme`.
+>
+> **[2026-09-08 17:10] dexia:** ❌ REVIEW-003 rechazado. La implementación principal y la pre-revisión están bien, pero «Popular products» genera tres enlaces de imagen sin nombre accesible, duplicados del enlace de título. Corregir a un único enlace nombrado por producto y adjuntar la salida real completa de la suite; después solicitar re-review. El sign-off 🔴 de Clia queda pendiente del ✅ técnico.
