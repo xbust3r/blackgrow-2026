@@ -19,9 +19,7 @@ header
         div(class='flex items-center gap-1')
             +cartSideAreaOpener(cartCount)
     div(class='hidden min-h-17 items-center justify-between gap-5 bg-surface-alt px-5 text-ink tablet:flex')
-        button(class='js-subscribe-popup inline-flex items-center gap-2 text-sm uppercase tracking-heading hover:text-brand', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='subscribe-dialog')
-            +svgIcon('mail', 'size-8 text-brand')
-            | Newsletter
+        a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
         nav(aria-label='Main navigation')
             ul(class='flex flex-wrap gap-8 wide:gap-16')
                 each group in siteNavigation
@@ -31,15 +29,20 @@ header
                             href=group.url,
                             aria-current=(currentUrl === group.file ? 'page' : false)
                         )= group.title
-        div(class='flex items-center gap-1')
-            span(class='hidden items-center gap-2 text-sm uppercase tracking-heading desktop:flex')
-                +svgIcon('search', 'size-4 text-brand')
-                | Search
-            +socialLink('Facebook', 'facebook')
-            +socialLink('Instagram', 'instagram')
-            +socialLink('TikTok', 'tiktok')
-            +socialLink('Pinterest', 'pinterest')
-            +cartSideAreaOpener(cartCount)
+        div(class='flex items-center gap-4')
+            div(class='hidden items-center gap-4 desktop:flex')
+                button(class='js-subscribe-popup inline-flex items-center gap-2 text-sm uppercase tracking-heading hover:text-brand', type='button', aria-haspopup='dialog', aria-expanded='false', aria-controls='subscribe-dialog')
+                    +svgIcon('mail', 'size-4 text-brand')
+                    | Newsletter
+                span(class='inline-flex items-center gap-2 text-sm uppercase tracking-heading')
+                    +svgIcon('search', 'size-4 text-brand')
+                    | Search
+            div(class='flex items-center gap-1')
+                +socialLink('Facebook', 'facebook')
+                +socialLink('Instagram', 'instagram')
+                +socialLink('TikTok', 'tiktok')
+                +socialLink('Pinterest', 'pinterest')
+                +cartSideAreaOpener(cartCount)
     div(class='flex min-h-16 items-center justify-between gap-5 border-b border-line px-5 tablet:hidden')
         a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
         +cartSideAreaOpener(cartCount)
