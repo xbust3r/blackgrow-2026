@@ -59,7 +59,7 @@ const lightbox = {
 
         this.modal.hidden = false;
         this.background = [...document.body.children].filter(
-            (element) => !element.contains(this.modal),
+            (element) => element !== this.modal,
         );
         this.background.forEach((element) => {
             element.inert = true;

@@ -96,6 +96,10 @@
     --radius-field: 0.5rem;
     --radius-card: 1.25rem;
     --shadow-card: 0 1px 2px rgb(16 16 15 / 6%), 0 8px 24px rgb(16 16 15 / 8%);
+
+    /* Dimensiones máximas de la imagen del lightbox modal */
+    --container-lightbox-image: 85vw;
+    --height-lightbox-image: 85vh;
 }
 
 /* Medidas del contenedor. Fuera de `@theme` porque no son un token que genere

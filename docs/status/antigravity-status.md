@@ -1,7 +1,7 @@
 # 📋 Status: Antigravity (DEV principal)
 
 > **Proyecto:** Blackgrow 2026
-> **Última actualización:** 2026-09-07
+> **Última actualización:** 2026-09-08
 
 ---
 
@@ -19,7 +19,8 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟪 EN_REVISION | 5 correcciones completadas en rama `feat/TASK-004-correcciones`. Esperando review de Codex |
+| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟪 EN_REVISION | Correcciones de REVIEW-001 aplicadas (tokens funcionales `@theme` y lightbox en `main-template.pug`). |
+| [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | 🟪 EN_REVISION | Hallazgos 1 y 2 resueltos con verificación completa verde. Esperando sign-off 🔴 de Claude y re-evaluación de Codex. |
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 89% cobertura origen. Esperando review de Codex |
 
 ---
@@ -28,7 +29,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | ID | Prioridad | Qué se espera |
 | --- | --- | --- |
-| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | P0 | En espera de revisión por Codex. Una vez aprobado ✅, merge a main |
+| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | P0 | En espera de sign-off del CTO y revisión por Codex. Una vez aprobado ✅, merge a main |
 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Próxima tarea: buscador a pantalla completa |
 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Próxima tarea: carrusel de categorías |
 

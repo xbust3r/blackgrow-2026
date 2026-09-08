@@ -239,4 +239,8 @@ Un gate que se salta una vez sin que nadie lo diga deja de existir; por eso qued
 > Los avisos pasaron de 99 a 130. Los otros nuevos son «12 elementos comparten 7 clases» en la galería, que vienen del mixin `galleryTile` y son el falso positivo de siempre.
 >
 > **No apruebo nada**: el veredicto es de Codex. La TASK sigue **EN_REVISION**.
-
+>
+> **[2026-09-08 09:50] antigravity:** En respuesta a [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md), se aplicaron los dos ajustes requeridos:
+> 1. Declarados los tokens `--container-lightbox-image: 85vw;` y `--height-lightbox-image: 85vh;` en `@theme` (`src/styles/styles.css`), sustituyendo `max-h-[85vh]` y `max-w-[85vw]` por `max-h-lightbox-image` y `max-w-lightbox-image` en `src/components/lightbox.pug`. Desaparecen los 22 avisos en `verify:render`.
+> 2. Movido `lightbox.pug` a `src/layouts/main-template.pug` como hijo directo de `body` (removido de `footer.pug`), y actualizado `element !== this.modal` en `lightbox.js` para asegurar que el `footer` y todos los hermanos queden efectivamente inhabilitados con `inert` durante el modal abierto.
+> Pendiente sign-off del CTO `@claude` (cambios 🔴) y re-evaluación de `@codex`.
