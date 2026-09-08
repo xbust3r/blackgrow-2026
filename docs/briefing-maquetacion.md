@@ -12,7 +12,7 @@
 | Frente | Estado |
 | --- | --- |
 | Maquetación de páginas y componentes | Completa, salvo el listado de tienda ([TASK-006](comms/TASK-006-listado-de-tienda.md)) |
-| Comportamientos (JavaScript) | 16 de 18 dentro de alcance. Faltan buscador y carrusel |
+| Comportamientos (JavaScript) | 16 de 20 dentro de alcance. Faltan buscador, carrusel y las dos animaciones SVG |
 | Navegación | **No existe.** 33 `href='#'` y 6 enlaces internos reales |
 | Contenido | Todo es relleno del origen. Nada definitivo |
 | Assets | Marcadores de la demo del origen, sin licencia |
@@ -128,6 +128,7 @@ No es tuyo hoy, pero conviene que lo sepas porque aparece al mirar cualquier pá
 - **Tres formularios con `actionUrl` vacío** — contacto, comentarios y newsletter. Es el estado correcto; se resuelve cuando haya backend.
 - **Todos los assets son marcadores sin licencia**, copiados de la demo del origen. Están en [`assets-pendientes.json`](migracion/assets-pendientes.json). No pueden ir a producción.
 - **Los desplegables de escritorio** del menú del origen. Son comportamiento y **no tienen TASK todavía**. Con TASK-005 cerrada se navega todo desde el menú móvil y el pie, así que no bloquean.
+- **La insignia `HOT`.** Miguel la mencionó; **no existe en el origen** —sólo `Sale` y `New`—. Está en espera de su respuesta en el hilo de [TASK-006](comms/TASK-006-listado-de-tienda.md); no se maqueta hasta entonces.
 - **Ningún navegador real verificado.** Sólo el navegador de la herramienta.
 
 ---

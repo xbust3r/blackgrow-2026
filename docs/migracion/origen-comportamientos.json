@@ -1,6 +1,6 @@
 {
   "origen": "https://playgrow.qodeinteractive.com/",
-  "revisado": "2026-09-07",
+  "revisado": "2026-09-08",
   "nota": "Fuente de la verdad de COMPORTAMIENTOS. El clon local del que se migró el marcado (template-html-blackn-main) era estático: no traía ni uno de estos. Se catalogaron inspeccionando el sitio vivo. `estado` lo mantiene una persona; `pnpm validate:origen` comprueba que lo declarado como hecho siga funcionando. Decisiones de alcance (2026-09-07): sin sliders ni carruseles, sin parallax, sin jQuery, y todo lo que dependa de tienda/backend queda para una fase posterior.",
   "estados": {
     "hecho": "implementado y conectado",
@@ -384,6 +384,36 @@
       },
       "estado": "otra-fase",
       "nota": "El maquetado ya está: `src/pages/cart-page.pug` con `cart-table.pug`, `cart-totals.pug` y el estado vacío en `cart-empty.pug`. Las cifras son presentación. El demo del origen devuelve 403 al añadir a la cesta, así que la tabla llena se reconstruyó desde las reglas de CSS del propio origen, que nombran todas las columnas; el estado vacío sí se pudo observar servido. Falta el carrito real, que es backend."
+    },
+    {
+      "id": "product-card-dashed-border",
+      "grupo": "tienda",
+      "nombre": "Borde punteado animado de la tarjeta de producto",
+      "origen": {
+        "marcador": ".qodef-woo-product-list li .qodef-woo-svg > rect",
+        "descripcion": "Un <rect> SVG de trazo discontinuo rodea la tarjeta. El envoltorio está a opacity 0 y aparece al pasar el cursor (transition .2s); el rect anima stroke-dashoffset de 0 a 100% en 5s lineales infinitas, así que los guiones desfilan por el perímetro. La animación corre siempre: el hover sólo cambia la opacidad. Valores: stroke #EAE3DE, stroke-width 4, stroke-dasharray 10, stroke-linecap square, rx/ry 20."
+      },
+      "destino": {
+        "hook": null,
+        "archivo": null
+      },
+      "estado": "pendiente",
+      "nota": "CSS puro: @keyframes en styles.css y un <rect> en el marcado, sin JavaScript. #EAE3DE es --color-line. Ojo: **no** sigue el patrón del subrayado de navegación —allí la animación se pausa y se reanuda—; aquí corre siempre y sólo se conmuta la opacidad. Va en TASK-006."
+    },
+    {
+      "id": "category-ring-rotation",
+      "grupo": "home",
+      "nombre": "Anillo punteado giratorio de las categorías",
+      "origen": {
+        "marcador": ".product-category .qodef-image-holder .qodef-woo-svg > rect",
+        "descripcion": "El anillo punteado de cada categoría gira sobre su centro: transform de 0 a 360deg en 5s lineales infinitas, con transform-origin center center. A diferencia del borde de la tarjeta, el envoltorio está a opacity 1: se ve y gira siempre, sin depender del hover."
+      },
+      "destino": {
+        "hook": null,
+        "archivo": null
+      },
+      "estado": "pendiente",
+      "nota": "CSS puro. Corrige lo que TASK-003 daba por estático: el anillo del origen gira. Va en TASK-003."
     }
   ]
 }

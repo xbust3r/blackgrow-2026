@@ -18,8 +18,8 @@
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania | P1 | 🟦 ABIERTA — desviación consciente del origen, que sólo tapa la cabecera. Falta decidir el disparador en móvil | 2026-09-07 |
 | [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | ania, dexia | P0 | 🟩 MERGEADA — mergeada a `main` tras gate cumplido (REVIEW de Dexia ✅ + sign-off del CTO ✅). Pendiente de cierre formal por Clia | 2026-09-08 |
 | [REVIEW-001](REVIEW-001-task-004-lightbox-y-accesibilidad.md) | REVIEW | Correcciones de comportamientos — accesibilidad y lightbox | dexia | ania, claude | P0 | 🟩 APROBADO — 2 hallazgos 🔴 resueltos en `c248dce`; **sign-off del CTO firmado** | 2026-09-08 |
-| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Completar el listado de tienda y sus variantes de columnas | clia | ania | P1 | 🟦 ABIERTA — hoy dice «Showing 1–12 of 50» y pinta 3 productos «Product Title Here». 12 productos del origen, barra lateral, orden y paginación | 2026-09-08 |
-| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania | P1 | 🟦 ABIERTA — sale de DECISION-002. La rejilla se conserva como variante | 2026-09-07 |
+| [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Listado de tienda, insignias y borde punteado animado | clia | ania | P1 | 🟦 ABIERTA — 12 productos, barra lateral, orden y paginación. **+ insignias Sale/New y borde punteado en hover.** ⏸️ `HOT` no existe en el origen: pendiente de Miguel | 2026-09-08 |
+| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania | P1 | 🟦 ABIERTA — sale de DECISION-002. **Corregida: el anillo gira**, no es estático | 2026-09-08 |
 
 ---
 

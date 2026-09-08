@@ -58,7 +58,7 @@ Valores computados:
 
 | Pieza | Valor |
 | --- | --- |
-| Anillo | `stroke #EAE3DE`, ancho 4, `dasharray 10`, `linecap square`, círculo (`rx/ry 50%`) |
+| Anillo | `stroke #EAE3DE`, ancho 4, `dasharray 10`, `linecap square`, círculo (`rx/ry 50%`) · **gira, ver abajo** |
 | Imagen | 92 × 92 |
 | Título | Jost 15px, peso 400, negro, **sin mayúsculas**, `margin: 10px 0` |
 | Ancho de diapositiva | 183.33px a 1440px de ventana |
@@ -100,6 +100,31 @@ Una fila con `overflow-x: auto` y `scroll-snap-type: x mandatory`, cada tarjeta 
 - **Los `alt="s"` y `alt="f"` del origen no se copian.** Son texto alternativo basura —y el motivo de que al copiar la página aparezcan letras sueltas—. La imagen es decorativa y el nombre lo da el título: `alt=''`.
 - Ocho imágenes distintas no existen en `src/assets/images/categories/` — sólo hay `category.webp`. Repítela y **anótalo como pendiente**, o usa `+pendingImage`. No descargues las del origen sin declararlas en `figma-assets.json` y en `assets-pendientes.json`.
 - El anillo punteado va en SVG, con `currentColor` o el token; no un `border-dashed`, que no da el mismo trazo.
+
+### 6 · ⚠️ El anillo gira — corrijo esta TASK
+
+La primera versión lo daba por **estático**. Lo volví a medir en el origen y **rota sobre su centro, siempre**:
+
+```css
+.qodef-woo-svg { opacity: 1; }          /* visible siempre, no depende del hover */
+
+rect {
+    transform-origin: center center;
+    animation: woo-qodef-svg-rotation-animation 5s linear infinite;
+}
+
+@keyframes woo-qodef-svg-rotation-animation {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+```
+
+Ojo a la diferencia con el borde de la tarjeta de producto de [TASK-006](TASK-006-listado-de-tienda.md), que **parece** la misma animación y no lo es: allí los guiones desfilan (`stroke-dashoffset`) y sólo se ven en hover; aquí el anillo entero **gira** (`transform`) y se ve siempre. Comparten duración —5s lineales infinitas— y poco más.
+
+- El `@keyframes` va en `styles.css`, con los demás.
+- Sin JavaScript.
+- `prefers-reduced-motion`: el `@media` global ya lo para. **El anillo tiene que seguir viéndose**: lo que sobra es el giro, no el anillo.
+- Registrado en el catálogo como `category-ring-rotation`.
 - La fila desplazable lleva nombre accesible y es alcanzable con el teclado.
 
 ### 5 · Sin bucle infinito
@@ -118,6 +143,8 @@ El origen duplica 12 diapositivas para simular el bucle. **No lo copies.** Dupli
 - [ ] `prefers-reduced-motion` respetado
 - [ ] `alt=''` en las imágenes; ni un `alt="s"`
 - [ ] Anillo con `--color-line`; ni un hex en el marcado
+- [ ] El anillo **gira** (`transform`, 5s lineal infinita), visible siempre y no sólo en hover
+- [ ] Con `prefers-reduced-motion` el giro para **y el anillo se sigue viendo**
 - [ ] Imágenes que faltan, declaradas como pendientes
 - [ ] Comprobado servido a 375px y en escritorio, con teclado y sin ratón
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
@@ -134,3 +161,6 @@ El origen duplica 12 diapositivas para simular el bucle. **No lo copies.** Dupli
 > **[2026-09-07 00:00] clia:** creo la TASK a partir de DECISION-002. 🟡 porque toca un mixin compartido y añade un módulo, pero no `@theme` —el anillo usa `--color-line`, que ya existe con ese valor exacto—. Si en el camino aparece un token que falte, se declara aquí antes de tocarlo.
 >
 > **[2026-09-07 00:00] clia:** dos cosas del origen que son defectos y **no** se migran: el `alt` basura y las 12 diapositivas duplicadas del bucle. Están explicadas arriba para que no parezca un olvido.
+>
+> **[2026-09-08 15:35] clia:** ⚠️ **corrijo la TASK**: el anillo del origen **no es estático, gira** —`transform: rotate(0→360deg)`, 5s lineales infinitas, siempre visible—. Está en el punto 6 con sus valores. Cuidado con confundirla con el borde punteado de la tarjeta de producto de TASK-006: se parecen y son distintas —allí desfilan los guiones y sólo en hover; aquí gira el anillo entero y siempre—.
+
