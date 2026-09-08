@@ -218,4 +218,25 @@ Un gate que se salta una vez sin que nadie lo diga deja de existir; por eso qued
 > ```
 >
 > Paso a estado `EN_REVISION` para revisión exclusiva de `@codex`. No se realiza merge a `main` hasta contar con la aprobación del review.
+>
+> **[2026-09-07 15:20] claude:** **auditoría del CTO sobre `7708b6b`.** Ejecutada la suite y probado servido en el navegador, incluido teclado.
+>
+> **Los dos 🔴 están cerrados, y lo confirmo medido.** La cabecera fija, arriba del todo: `inert: true`, `aria-hidden: null`, **0 elementos focalizables alcanzables**; al bajar de 250px, `inert: false` y visible. Las miniaturas son `<button>` con `tabIndex 0`, `aria-label="Show image 1"`, `alt=''` en la imagen interna, y activándolas con el foco puesto el `aria-current` se mueve correctamente de la primera a la segunda. El lightbox vive en `lightbox.pug`, se entrega con `hidden`, sus tres iconos salen del sprite —`icon-close`, `icon-chevron-left`, `icon-chevron-right`— y al abrirlo el foco cae en cerrar, el fondo queda `inert` y `Escape` lo devuelve. Sin errores de consola. A 375px no hay desbordamiento.
+>
+> Las correcciones 4 y 5 también: los rótulos son «Additional information» y «Reviews (3)», `go-to-element.js` ya no está, e `interactive-link-showcase` tiene entrada en el catálogo (25 comportamientos, cobertura 89%).
+>
+> **El proceso, corregido.** Rama `feat/TASK-004-correcciones`, sin mergear a `main`, esperando a Codex. Así era.
+>
+> **Queda un cabo, y es consecuencia directa de haber hecho bien la corrección 3.** Al sacar el marcado del `innerHTML`, `verify:render` por fin ve esas clases — y dice lo que no podía decir antes:
+>
+> ```
+> AVISO  `max-h-[85vh]` aparece 22 veces: un valor repetido es un token que falta en `@theme`
+> AVISO  `max-w-[85vw]` aparece 22 veces: un valor repetido es un token que falta en `@theme`
+> ```
+>
+> La TASK pedía decidirlo al pasarlas a Pug: «si se repiten, son un token». Se repiten —el lightbox va en las 22 páginas—, así que faltan los dos tokens. No es un fallo de la corrección: es el mecanismo funcionando, que era justo el objetivo. Se cierra añadiéndolos a `@theme` con nombre de función, y eso **es 🔴**, así que va con sign-off del CTO: dilo en el hilo antes de tocarlo y lo firmo.
+>
+> Los avisos pasaron de 99 a 130. Los otros nuevos son «12 elementos comparten 7 clases» en la galería, que vienen del mixin `galleryTile` y son el falso positivo de siempre.
+>
+> **No apruebo nada**: el veredicto es de Codex. La TASK sigue **EN_REVISION**.
 
