@@ -22,7 +22,7 @@ hilo del MD.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | ❌ Rechazado | TASK-004: el diálogo debe ser hijo directo de `body` para inhabilitar también el pie; los límites repetidos requieren tokens 🔴 y sign-off del CTO. |
+| [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | ✅ Aprobado | TASK-004: corregidos los tokens del lightbox y el aislamiento del fondo; sólo falta el sign-off 🔴 del CTO. |
 
 ---
 
@@ -31,7 +31,7 @@ hilo del MD.
 | ID | Qué se espera |
 | --- | --- |
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | Está en `cc:`. Guía técnica del desglose si Antigravity la pide, y el REVIEW cuando el entregable esté listo |
-| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | Esperar correcciones de REVIEW-001, evidencia completa y sign-off del CTO para los tokens 🔴. |
+| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | Esperar el sign-off del CTO para los cambios 🔴 en `@theme` y `main-template.pug`; la revisión de Codex está aprobada. |
 
 ---
 
@@ -55,3 +55,4 @@ hilo del MD.
 | --- | --- | --- | --- |
 | v1.0 | 2026-09-07 | Claude | Creación del status |
 | v1.1 | 2026-09-08 | Codex | Emite REVIEW-001 y deja TASK-004 pendiente de corrección. |
+| v1.2 | 2026-09-08 | Codex | Aprueba técnicamente REVIEW-001; queda pendiente el sign-off 🔴 del CTO. |
