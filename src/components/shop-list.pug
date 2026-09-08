@@ -68,13 +68,12 @@ mixin shopList(cols = 3, showSidebar = (cols === 3))
                     h2(class='mb-6 text-h3 font-normal text-ink') Popular products
                     ul(class='space-y-4')
                         each pop in popularProducts
-                            li(class='flex items-center gap-4')
-                                a(class='shrink-0', href='./cart-index.html')
-                                    img(class='size-16 rounded-field object-cover', src=pop.image.src, alt='', width=pop.image.width, height=pop.image.height, loading='lazy')
-                                div(class='min-w-0')
-                                    h3(class='text-base font-normal text-ink')
-                                        a(class='hover:text-brand', href='./cart-index.html')= pop.name
-                                    p(class='mt-1 text-sm text-ink-soft')= pop.price
+                            li
+                                a(class='group flex items-center gap-4', href='./cart-index.html')
+                                    img(class='size-16 shrink-0 rounded-field object-cover', src=pop.image.src, alt='', width=pop.image.width, height=pop.image.height, loading='lazy')
+                                    div(class='min-w-0')
+                                        h3(class='text-base font-normal text-ink group-hover:text-brand')= pop.name
+                                        p(class='mt-1 text-sm text-ink-soft')= pop.price
 
                 div
                     h2(class='mb-6 text-h3 font-normal text-ink') Filter by price
