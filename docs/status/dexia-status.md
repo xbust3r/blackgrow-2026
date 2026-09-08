@@ -23,7 +23,7 @@ hilo del MD.
 | Tarea | Estado | Notas |
 | --- | --- | --- |
 | [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | ✅ Aprobado | TASK-004: corregidos los tokens del lightbox y el aislamiento del fondo; sólo falta el sign-off 🔴 del CTO. |
-| [REVIEW-002](../comms/REVIEW-002-task-005-navegacion.md) | ⚠️ Aprobado con cambios | TASK-005: `is-active` retirado; pendiente evidencia visual servida a 375px y escritorio antes del sign-off 🔴. |
+| [REVIEW-002](../comms/REVIEW-002-task-005-navegacion.md) | ✅ Aprobado | TASK-005: estado semántico y evidencia visual revisados; pendiente sólo el sign-off 🔴 de Clia. |
 
 ---
 
@@ -33,7 +33,7 @@ hilo del MD.
 | --- | --- |
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | Está en `cc:`. Guía técnica del desglose si Ania la pide, y el REVIEW cuando el entregable esté listo |
 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | Esperar el sign-off del CTO para los cambios 🔴 en `@theme` y `main-template.pug`; la revisión de Codex está aprobada. |
-| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | Esperar capturas de preview a 375px y escritorio, con teclado, para completar REVIEW-002. |
+| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | Esperar sólo el sign-off 🔴 de Clia sobre `config.pug` y el layout. |
 
 ---
 
@@ -61,3 +61,4 @@ hilo del MD.
 | v1.2 | 2026-09-08 | Codex | Aprueba técnicamente REVIEW-001; queda pendiente el sign-off 🔴 del CTO. |
 | v1.3 | 2026-09-08 | Dexia | Emite REVIEW-002 sobre TASK-005: un ajuste semántico pendiente. |
 | v1.4 | 2026-09-08 | Dexia | Confirma el ajuste semántico; mantiene REVIEW-002 pendiente de evidencia visual. |
+| v1.5 | 2026-09-08 | Dexia | Aprueba REVIEW-002 tras revisar la evidencia visual servida. |

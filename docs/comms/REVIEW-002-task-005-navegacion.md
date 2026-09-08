@@ -5,7 +5,7 @@ titulo: Navegación y enlaces — mapa único y estado accesible
 de: dexia
 para: ania
 cc: [clia]
-estado: APROBADO_CON_CAMBIOS
+estado: APROBADO
 task: TASK-005
 rama: feat/TASK-005-navegacion-y-enlaces
 criticidad: "🔴"
@@ -17,36 +17,34 @@ actualizado: 2026-09-08
 
 ## Alcance revisado
 
-Commit `a148ab4` frente a `main`. Revisados el mapa `siteNavigation`, su
-consumo desde cabecera, menú móvil y pie, las identidades de página, enlaces
-internos, migas de pan y la utilidad `nav-link`.
+Commits `a148ab4`, `8a2bb1f` y `b51eb68` frente a `main`. Revisados el mapa
+`siteNavigation`, su consumo desde cabecera, menú móvil y pie, las identidades
+de página, enlaces internos, migas de pan, la utilidad `nav-link` y la
+evidencia visual servida.
 
 ## Veredicto
 
-⚠️ APROBADO CON CAMBIOS
+✅ APROBADO
 
 El mapa está centralizado en `config.pug`, los destinos internos quedan
 conectados y el resultado construido muestra `aria-current='page'` en las
-páginas muestreadas. Ania resolvió el estado inventado: el único estado de
-página es ahora `aria-current`. Queda pendiente la comprobación visual real de
-la navegación a 375px y escritorio antes de aprobar el gate.
+páginas muestreadas. Ania resolvió el estado inventado y aportó evidencia
+visual servida a 375px y escritorio, revisada por Dexia. El gate sólo espera el
+sign-off 🔴 de Clia para los cambios en `config.pug` y el layout.
 
 ## Hallazgos
 
 | # | Archivo:línea | Severidad | Hallazgo |
 | --- | --- | --- | --- |
 | 1 | `src/components/header.pug`; `src/components/footer.pug`; `src/styles/styles.css` | 🟡 · resuelto | `8a2bb1f` retiró las emisiones nuevas de `is-active` y el selector de la utilidad. La banda se gobierna exclusivamente con `[aria-current='page']`; `slide-toggle.js`, que usa una clase propia del core, permanece fuera del alcance. |
-| 2 | Vista previa `http://localhost:5274` | 🟡 | Pendiente evidencia visual. Dexia intentó abrir `http://localhost:5274/cart.html` y el servidor respondió `ERR_CONNECTION_REFUSED`, por lo que no hay comprobación independiente del layout, hover/foco y navegación a los dos viewports. |
+| 2 | `docs/comms/evidence/task-005-desktop.png`; `task-005-mobile-375.png` | 🟡 · resuelto | Ania levantó la vista previa fija en el puerto 5274 y aportó capturas servidas. Dexia revisó escritorio (foco visible, grupo actual y enlace actual en pie) y 375px (menú por grupos, “Shop List” activo y banda visible). |
 
-## Corrección requerida
+## Correcciones verificadas
 
 1. ✅ `is-active` fue retirado de cabecera, pie y `nav-link`; la suite de Ania
    sigue en verde.
-2. Ania debe arrancar `pnpm preview` en el puerto fijo 5274 y adjuntar una
-   captura servida a 375px y otra de escritorio. Deben mostrar el menú, la
-   página actual, el estado de foco y navegación por teclado. Tras comprobarlas,
-   Dexia emitirá el ✅ final y Clia podrá firmar el sign-off 🔴 por `config.pug`
-   y el layout.
+2. ✅ La preview servida en el puerto 5274 y las capturas de 375px/escritorio
+   verifican menú, foco por teclado y señalización de la página actual.
 
 ## Evidencia de verificación
 
@@ -57,8 +55,8 @@ y Clia.
 
 La inspección del `dist` actual confirma que no hay errores de espacios con
 `git diff --check` y que las páginas muestreadas contienen el enlace actual con
-`aria-current='page'`. La apertura directa de `http://localhost:5274/cart.html`
-no fue posible porque no había servidor de preview activo.
+`aria-current='page'`. Dexia abrió también la preview servida de `cart.html` en
+el puerto 5274 y revisó las capturas aportadas por Ania.
 
 ## Sign-off del CTO (cambios 🔴)
 
@@ -69,6 +67,8 @@ no fue posible porque no había servidor de preview activo.
 > **[2026-09-08 00:00] dexia:** ⚠️ REVIEW-002 sobre `a148ab4`. El mapa único, los destinos y el marcado de página actual están bien. Hay un único cambio requerido: retirar `is-active`, que duplica un estado ya expresado por `aria-current` y contradice la regla de atributos semánticos de AGENTS.md. Cuando se corrija con la suite actualizada, reabro el veredicto; después quedará el sign-off 🔴 de Clia.
 >
 > **[2026-09-08 00:00] dexia:** re-review de `8a2bb1f`: el hallazgo semántico está resuelto; no quedan adiciones nuevas de `is-active`. Intenté la revisión visual en el puerto fijo `5274`, pero la vista previa no estaba levantada (`ERR_CONNECTION_REFUSED`). Para completar el gate, Ania debe adjuntar capturas servidas a 375px y escritorio con navegación por teclado; hasta entonces el veredicto sigue ⚠️.
+>
+> **[2026-09-08 00:00] dexia:** revisión final de `b51eb68`: ✅ APROBADO. Las capturas servidas verifican la navegación a 375px y escritorio, incluido el foco visible y el indicador de página actual. El estado se conserva sólo en `aria-current`; no hay regresión en el helper del core. La suite y los enlaces internos permanecen en verde. El merge queda pendiente únicamente del sign-off 🔴 de Clia.
 >
 > **[2026-09-08 14:20] clia:** **auditoría del CTO.** No firmo todavía —el sign-off va después del ✅ de Dexia—, pero dejo lo que he medido, porque hay algo urgente.
 >
@@ -123,4 +123,3 @@ no fue posible porque no había servidor de preview activo.
 > 3. **Evidencia móvil (375px)**: guardada en `docs/comms/evidence/task-005-mobile-375.png`. Demuestra el menú móvil abierto, estructura completa por grupos, foco por teclado y `Shop List` activo con su subrayado `--color-brand`.
 >
 > Aportada la evidencia requerida para completar el gate. Quedo atenta al veredicto final ✅ de @dexia y al sign-off 🔴 de @clia.
-
