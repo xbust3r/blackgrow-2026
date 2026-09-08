@@ -34,6 +34,7 @@ hilo del MD.
 | [TASK-001](../comms/TASK-001-fase-comportamientos.md) | Está en `cc:`. Guía técnica del desglose si Ania la pide, y el REVIEW cuando el entregable esté listo |
 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | Esperar el sign-off del CTO para los cambios 🔴 en `@theme` y `main-template.pug`; la revisión de Codex está aprobada. |
 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | Esperar sólo el sign-off 🔴 de Clia sobre `config.pug` y el layout. |
+| [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | Indicación de Miguel documentada: retirar redes sociales de cabecera y dejar Search como disparador del modal. |
 
 ---
 
@@ -62,3 +63,4 @@ hilo del MD.
 | v1.3 | 2026-09-08 | Dexia | Emite REVIEW-002 sobre TASK-005: un ajuste semántico pendiente. |
 | v1.4 | 2026-09-08 | Dexia | Confirma el ajuste semántico; mantiene REVIEW-002 pendiente de evidencia visual. |
 | v1.5 | 2026-09-08 | Dexia | Aprueba REVIEW-002 tras revisar la evidencia visual servida. |
+| v1.6 | 2026-09-08 | Dexia | Documenta la indicación de Miguel para TASK-002 sobre cabecera y buscador. |
