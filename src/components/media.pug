@@ -6,8 +6,8 @@ mixin pendingImage(label, classes = '')
 mixin heading(text, level = 'h2', classes = '')
     #{level}(class='text-h2 font-normal uppercase tracking-heading text-ink ' + classes)= text
 
-mixin textLink(text)
-    a(class='inline-flex border-b border-brand pb-2 text-sm font-medium uppercase tracking-heading text-brand', href='#')= text
+mixin textLink(text, href = '#')
+    a(class='inline-flex border-b border-brand pb-2 text-sm font-medium uppercase tracking-heading text-brand', href=href)= text
 
 //- Botón de tienda. `as: 'button'` lo convierte en botón; `href` sólo aplica al
 //- enlace y por defecto sigue siendo `#`, que es lo que traía el origen.

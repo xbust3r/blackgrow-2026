@@ -243,6 +243,57 @@
     animation: jump 3s ease-in-out infinite;
 }
 
+@keyframes nav-underline-slide {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+/* Subrayado animado de navegación del origen.
+   En reposo la banda de 5px existe con opacidad 0 y animación pausada.
+   En hover, focus-visible o página activa (aria-current/is-active),
+   se visibiliza y reanuda la animación sin saltos. */
+/* stylelint-disable nesting-selector-no-missing-scoping-root */
+@utility nav-link {
+    display: inline-block;
+    position: relative;
+    padding-block: 0.25rem;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        inset-block-end: 0;
+        block-size: 5px;
+        background-image: linear-gradient(
+            to right,
+            var(--color-brand) 25%,
+            transparent 50%,
+            var(--color-brand) 75%
+        );
+        background-size: 300% 100%;
+        background-repeat: repeat;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+        animation: nav-underline-slide 1.5s linear infinite;
+        animation-play-state: paused;
+        pointer-events: none;
+    }
+
+    &:hover::after,
+    &:focus-visible::after,
+    &[aria-current='page']::after,
+    &.is-active::after {
+        opacity: 1;
+        animation-play-state: running;
+    }
+}
+/* stylelint-enable nesting-selector-no-missing-scoping-root */
+
 /* ══════════════════════════════════════════════════════════════════════════
    SCOPE
    Contenido que llega ya escrito —de un CMS, de un texto legal— y al que no se

@@ -6,10 +6,10 @@ mixin productCard(product, shop = false)
             img(class='mb-2.5 aspect-product w-full object-cover', src=product.image.src, alt='', width=product.image.width, height=product.image.height, loading='lazy')
         else
             +pendingImage(product.name, 'mb-2.5 aspect-product w-full')
-        a(class='text-xs uppercase tracking-heading text-ink-soft hover:text-brand', href='#')= product.category
+        a(class='text-xs uppercase tracking-heading text-ink-soft hover:text-brand', href='./cart.html')= product.category
         h3(class='mt-1.5 text-h4 font-normal text-ink')
-            a(class='hover:text-brand', href='#')= product.name
+            a(class='hover:text-brand', href='./cart-index.html')= product.name
         p(class='mt-1.5 text-base text-ink-soft')
-            a(class='hover:text-brand', href='#')= product.price
+            a(class='hover:text-brand', href='./cart-index.html')= product.price
         if shop
-            a(class='mt-3 inline-flex text-brand', href='#') Add to cart
+            a(class='mt-3 inline-flex text-brand', href='./cart-page.html') Add to cart

@@ -3,6 +3,8 @@ extends ../layouts/main-template
 block vars
     - const header = true;
     - const footer = true;
+    - var currentUrl = 'cart-page.html';
+    - var crumb = 'Cart';
 
 block title
     title Cart — Blackgrow
@@ -24,7 +26,6 @@ block content
             { name: 'Wooden Photo Camera', price: '$60.00', quantity: 2, subtotal: '$120.00', image: cartImage }
         ];
         const cartRows = [{ label: 'Subtotal', value: '$610.00' }];
-        const crumb = 'Cart';
 
     include ../components/breadcrumb
 

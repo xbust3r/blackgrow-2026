@@ -9,9 +9,15 @@ header
         a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
         nav(aria-label='Sticky navigation')
             ul(class='flex flex-wrap gap-8')
-                each label in ['Home', 'About', 'Contact']
+                each group in siteNavigation
+                    - var isExact = currentUrl === group.file;
+                    - var isSection = group.items && group.items.some(function(item) { return item.file === currentUrl; });
                     li
-                        a(class='text-sm uppercase tracking-heading hover:text-brand', href='#')= label
+                        a(
+                            class=['nav-link text-sm uppercase tracking-heading hover:text-brand', (isExact || isSection) ? 'is-active' : ''],
+                            href=group.url,
+                            aria-current=(isExact ? 'page' : false)
+                        )= group.title
         div(class='flex items-center gap-1')
             +cartSideAreaOpener(cartCount)
     div(class='hidden min-h-17 items-center justify-between gap-5 bg-surface-alt px-5 text-ink tablet:flex')
@@ -20,9 +26,15 @@ header
             | Newsletter
         nav(aria-label='Main navigation')
             ul(class='flex flex-wrap gap-8 wide:gap-16')
-                each label in ['Home', 'About', 'Contact']
+                each group in siteNavigation
+                    - var isExact = currentUrl === group.file;
+                    - var isSection = group.items && group.items.some(function(item) { return item.file === currentUrl; });
                     li
-                        a(class='text-sm uppercase tracking-heading hover:text-brand', href='#')= label
+                        a(
+                            class=['nav-link text-sm uppercase tracking-heading hover:text-brand', (isExact || isSection) ? 'is-active' : ''],
+                            href=group.url,
+                            aria-current=(isExact ? 'page' : false)
+                        )= group.title
         div(class='flex items-center gap-1')
             span(class='hidden items-center gap-2 text-sm uppercase tracking-heading desktop:flex')
                 +svgIcon('search', 'size-4 text-brand')
@@ -43,9 +55,18 @@ header
             | Close menu
         nav(aria-label='Mobile navigation')
             ul(class='space-y-6')
-                each label in ['Home', 'About', 'Info', 'Contact']
-                    li
-                        a(class='text-h2 uppercase tracking-heading text-ink hover:text-brand', href='#')= label
+                each group in siteNavigation
+                    li(class='space-y-3')
+                        p(class='text-xs font-semibold uppercase tracking-wider text-ink-soft')= group.title
+                        ul(class='space-y-2')
+                            each item in group.items
+                                - var isCurrent = currentUrl === item.file;
+                                li
+                                    a(
+                                        class=['nav-link text-lg uppercase tracking-heading text-ink hover:text-brand', isCurrent ? 'is-active' : ''],
+                                        href=item.url,
+                                        aria-current=(isCurrent ? 'page' : false)
+                                    )= item.label
 
 //- El panel del carrito vive fuera de la cabecera visible: es un diálogo a
 //- pantalla completa por la derecha, y anidarlo dentro de la barra lo ataría al

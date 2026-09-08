@@ -12,7 +12,7 @@ section(class='js-link-showcase py-12 tablet:py-20', aria-label='Category Showca
         ul(class='space-y-4')
             each cat, index in showcaseCategories
                 li
-                    a(class='group flex items-baseline justify-between border-b border-line pb-4 transition-colors hover:border-brand', href='#', data-showcase-index=index)
+                    a(class='group flex items-baseline justify-between border-b border-line pb-4 transition-colors hover:border-brand', href='./cart.html', data-showcase-index=index)
                         span(class='text-h2 font-medium text-ink transition-colors group-hover:text-brand')= cat.label
                         span(class='text-sm text-ink-soft')= cat.count
         div(class='relative aspect-square overflow-hidden rounded-card border border-line bg-surface-alt')

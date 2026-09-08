@@ -1,18 +1,17 @@
-mixin footerColumn(column)
-    div
-        h2(class='my-5 text-base font-normal uppercase tracking-heading text-ink') Title
-        ul(class='space-y-1')
-            li
-                if column === 3
-                    span Monday to Friday 9 a.m. - 5 p.m.
-                else
-                    a(class='hover:text-brand', href='#') item 1
-            li
-                a(class='hover:text-brand', href='#') item 1
 footer(class='border-t border-line')
     div(class='wrapper grid gap-6 py-5 tablet:grid-cols-4')
-        each column in [0, 1, 2, 3]
-            +footerColumn(column)
+        each group in siteNavigation
+            div
+                h2(class='my-5 text-base font-normal uppercase tracking-heading text-ink')= group.title
+                ul(class='space-y-2')
+                    each item in group.items
+                        - var isCurrent = currentUrl === item.file;
+                        li
+                            a(
+                                class=['nav-link text-sm text-ink-soft hover:text-brand', isCurrent ? 'is-active' : ''],
+                                href=item.url,
+                                aria-current=(isCurrent ? 'page' : false)
+                            )= item.label
     div(class='wrapper py-5')
         p= '© ' + brand.legalName
 

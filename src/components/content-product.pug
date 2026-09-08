@@ -44,7 +44,7 @@ mixin productDetails(level = 'h1')
                 +quantityField('product-qty', 'Wooden baby cribe', 1)
                 +shopButton('Add to cart', 'button')
             p(class='my-5') Category:
-                a(class='ms-2 text-ink-soft hover:text-brand', href='#') Crubs
+                a(class='ms-2 text-ink-soft hover:text-brand', href='./cart.html') Crubs
             p(class='my-5') Tags:
-                a(class='ms-2 border border-line px-2 py-1 text-xs uppercase tracking-heading text-ink-soft', href='#') Baby
+                a(class='ms-2 border border-line px-2 py-1 text-xs uppercase tracking-heading text-ink-soft', href='./cart.html') Baby
 +productDetails(typeof productHeading === 'undefined' ? 'h1' : productHeading)

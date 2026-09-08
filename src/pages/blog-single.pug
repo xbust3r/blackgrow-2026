@@ -3,6 +3,7 @@ extends ../layouts/main-template
 block vars
     - const header = true;
     - const footer = true;
+    - var currentUrl = 'blog-single.html';
 
 block title
     title A guide to packing travel clothes and necesetys for a family vacation — Blackgrow Blog
@@ -15,7 +16,7 @@ block content
         div(class='wrapper max-w-4xl')
             header(class='mb-8 text-center')
                 div(class='mb-3 flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-heading text-ink-soft')
-                    a(class='text-brand hover:underline', href='/blog') Care
+                    a(class='text-brand hover:underline', href='./blog.html') Care
                     span(aria-hidden='true') •
                     time(datetime='2026-05-12') May 12, 2026
                     span(aria-hidden='true') •
@@ -40,9 +41,9 @@ block content
             div(class='mt-10 flex flex-wrap items-center justify-between gap-4 border-y border-line py-4 text-xs uppercase tracking-heading text-ink-soft')
                 div(class='flex items-center gap-2')
                     span Tags:
-                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='#') Care
-                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='#') Nursery
-                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='#') Nurturing
+                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='./blog.html') Care
+                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='./blog.html') Nursery
+                    a(class='rounded bg-surface-alt px-2.5 py-1 text-ink hover:text-brand', href='./blog.html') Nurturing
                 div(class='flex items-center gap-3')
                     span Share:
                     a(class='text-ink hover:text-brand', href='#', aria-label='Share on Facebook') FB

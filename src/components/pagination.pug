@@ -1,8 +1,8 @@
-mixin pagination(current = 1, total = 3)
+mixin pagination(current = 1, total = 3, baseUrl = './blog.html')
     nav(class='flex items-center justify-center gap-2 py-8', aria-label='Blog Pagination')
         a(
             class='flex size-10 items-center justify-center rounded-field border border-line text-sm font-medium transition-colors hover:border-brand hover:text-brand disabled:pointer-events-none disabled:opacity-40',
-            href='#',
+            href=baseUrl,
             aria-label='Previous page'
         )
             span(aria-hidden='true') ←
@@ -15,12 +15,12 @@ mixin pagination(current = 1, total = 3)
             else
                 a(
                     class='flex size-10 items-center justify-center rounded-field border border-line text-sm font-medium text-ink transition-colors hover:border-brand hover:text-brand',
-                    href='#',
+                    href=baseUrl,
                     aria-label='Page ' + pageNum
                 )= pageNum
         a(
             class='flex size-10 items-center justify-center rounded-field border border-line text-sm font-medium transition-colors hover:border-brand hover:text-brand',
-            href='#',
+            href=baseUrl,
             aria-label='Next page'
         )
             span(aria-hidden='true') →

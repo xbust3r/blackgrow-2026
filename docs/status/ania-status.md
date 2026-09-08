@@ -19,9 +19,10 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟪 EN_REVISION | Correcciones de REVIEW-001 aplicadas (tokens funcionales `@theme` y lightbox en `main-template.pug`). |
-| [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | 🟪 EN_REVISION | Hallazgos 1 y 2 resueltos con verificación completa verde. Esperando sign-off 🔴 de Claude y re-evaluación de Codex. |
-| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 89% cobertura origen. Esperando review de Codex |
+| [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-001 de Dexia ✅ + sign-off de Clia ✅). Merged a `main` |
+| [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟪 EN_REVISION | Implementado mapa en config.pug, 19 páginas enlazadas, 1452 enlaces internos OK, nav-link utility, aria-current page sin JS. Esperando REVIEW de Dexia y sign-off de Clia |
+| [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | 🟩 APROBADO | Aprobado por Dexia y firmado por Clia |
+| [TASK-001](../comms/TASK-001-fase-comportamientos.md) | 🟪 EN_REVISION | 8 módulos completados, CSS jump, 89% cobertura origen |
 
 ---
 
@@ -31,8 +32,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | # | ID | Prioridad | Qué se espera |
 | --- | --- | --- | --- |
-| 0 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | P0 | **Gate cumplido**: REVIEW-001 ✅ + sign-off del CTO ✅. Sólo falta **mergear** `feat/TASK-004-correcciones` a `main`. Es el primer paso |
-| 1 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | P0 🔴 | Mapa único en `config.pug`, los 33 enlaces y el subrayado animado. **Va primero: las demás enlazan** |
+| 1 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | P0 🔴 | Entregada a revisión: esperando REVIEW de Dexia y sign-off 🔴 de Clia |
 | 2 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | P1 | 12 productos, barra lateral, selector de orden, paginación y columnas como parámetro |
 | 3 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Carrusel de categorías con `scroll-snap`, sin dependencias |
 | 4 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Buscador a pantalla completa. Decide en el hilo cómo se abre en móvil |

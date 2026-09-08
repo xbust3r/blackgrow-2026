@@ -49,7 +49,7 @@ mixin photoHero(kind, level = 'h2')
                         p(class='mb-3 text-xs uppercase tracking-heading text-ink-soft') Find Everything for your baby
                         #{level}(class='mb-5 text-h1 font-normal uppercase tracking-heading text-ink') The magic place of fun &amp; Game
                         if kind === 'photo_hero_2_button'
-                            +shopButton('Shop Now')
+                            +shopButton('Shop Now', 'a', './cart.html')
 
 mixin framedHero(kind, level = 'h2')
     section(class='wrapper py-5 tablet:pt-10')
@@ -67,7 +67,7 @@ mixin framedHero(kind, level = 'h2')
                             img(class='absolute -start-10 -top-10 hidden w-28 tablet:block', src='/src/assets/images/heros/default/figure.webp', alt='', width='531', height='434', loading='lazy', aria-hidden='true')
                         +heading('prueba de titulo', level, 'mb-3 text-xl tablet:text-h2')
                         p(class=kind === 'default' ? 'mb-3 hidden text-lg tablet:block' : 'mb-3 text-base tablet:text-lg') prueba de parrafo un poco mas largo donde se puede ver que pasa con el texto
-                        +textLink('Shop Now')
+                        +textLink('Shop Now', './cart.html')
 
 mixin featuredHero(level = 'h2')
     section(class='mt-5 grid items-center bg-surface-alt tablet:grid-cols-2')
@@ -76,4 +76,4 @@ mixin featuredHero(level = 'h2')
             img(class='mx-auto w-40', src='/src/assets/images/elements/arco-iris.svg', alt='', width='170', height='90', loading='lazy')
             +heading('FIND THE BEST WAY TO OUR FINE STYILISH KIDS SHOPS', level, 'my-6')
             p(class='my-5') Cursus mattis molestie a iaculis at erat pellentesque adipiscing isu faucibus vitae aliquet nec ullamcorper sit. Tempus quam pellentesque nec nam aliquam sem et tortor. Rutrum quisque non tellus orci ac auctor augue. Habitasseno platea dictumstono vestibum rho.
-            +shopButton('Read More')
+            +shopButton('Read More', 'a', './blog.html')

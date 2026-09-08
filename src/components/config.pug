@@ -10,6 +10,58 @@
 
 - var pageTitle = 'Blackgrow';
 - var pageDescription = '';
+- var currentUrl = typeof currentUrl !== 'undefined' && currentUrl ? currentUrl : '';
+
+-
+    var siteNavigation = [
+        {
+            title: 'Home',
+            url: './index.html',
+            file: 'index.html',
+            items: [
+                { label: 'Main Home', url: './index.html', file: 'index.html' },
+                { label: 'Kids Store', url: './kids-store.html', file: 'kids-store.html' },
+                { label: 'Baby Shop', url: './baby-shop.html', file: 'baby-shop.html' },
+                { label: 'Shop Grid', url: './shop-grid.html', file: 'shop-grid.html' },
+                { label: 'Landing', url: './landing.html', file: 'landing.html' }
+            ]
+        },
+        {
+            title: 'Pages',
+            url: './page.html',
+            file: 'page.html',
+            items: [
+                { label: 'About Us', url: './page.html', file: 'page.html' },
+                { label: 'FAQ Page', url: './faq.html', file: 'faq.html' },
+                { label: 'Contact Us', url: './contact.html', file: 'contact.html' }
+            ]
+        },
+        {
+            title: 'Shop',
+            url: './cart.html',
+            file: 'cart.html',
+            items: [
+                { label: 'Shop List', url: './cart.html', file: 'cart.html' },
+                { label: 'Shop Single', url: './cart-index.html', file: 'cart-index.html' },
+                { label: 'My Account', url: './my-account.html', file: 'my-account.html' },
+                { label: 'Wishlist', url: './wishlist.html', file: 'wishlist.html' },
+                { label: 'Cart', url: './cart-page.html', file: 'cart-page.html' },
+                { label: 'Checkout', url: './checkout.html', file: 'checkout.html' }
+            ]
+        },
+        {
+            title: 'Blog',
+            url: './blog.html',
+            file: 'blog.html',
+            items: [
+                { label: 'Right Sidebar', url: './blog.html', file: 'blog.html' },
+                { label: 'Left Sidebar', url: './blog-left-sidebar.html', file: 'blog-left-sidebar.html' },
+                { label: 'No Sidebar', url: './blog-no-sidebar.html', file: 'blog-no-sidebar.html' },
+                { label: 'Masonry List', url: './blog-masonry.html', file: 'blog-masonry.html' },
+                { label: 'Standard Post', url: './blog-single.html', file: 'blog-single.html' }
+            ]
+        }
+    ]
 
 //- Destino real del formulario. Hasta que exista, se deja vacío y el envío no
 //- se simula: un `action` inventado parece implementado y no lo está.

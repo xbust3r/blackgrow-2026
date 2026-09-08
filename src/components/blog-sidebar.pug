@@ -6,7 +6,7 @@ mixin blogCategories()
         ul(class='space-y-2.5 text-sm')
             each cat in [{ name: 'Care', count: 3 }, { name: 'Nursery', count: 5 }, { name: 'Nurturing', count: 4 }, { name: 'Play', count: 6 }, { name: 'Toys', count: 8 }]
                 li
-                    a(class='flex items-center justify-between text-ink-soft transition-colors hover:text-brand', href='#')
+                    a(class='flex items-center justify-between text-ink-soft transition-colors hover:text-brand', href='./blog.html')
                         span= cat.name
                         span(class='rounded-full bg-surface-alt px-2 py-0.5 text-xs text-ink')= cat.count
 
@@ -16,7 +16,7 @@ mixin blogRecentPosts()
         ul(class='space-y-4 text-sm')
             each post in [{ title: 'A guide to packing travel clothes and necesetys for a family vacation', date: 'May 12, 2026' }, { title: 'Must have toys to carry with you to the seaside for a successful creative playtime', date: 'May 09, 2026' }, { title: 'Create a safe space environment for your children to play in and be fulfilled inside', date: 'May 05, 2026' }]
                 li
-                    a(class='group block', href='/blog-single')
+                    a(class='group block', href='./blog-single.html')
                         h4(class='font-medium text-ink transition-colors group-hover:text-brand')= post.title
                         time(class='mt-1 block text-xs text-ink-soft')= post.date
 
