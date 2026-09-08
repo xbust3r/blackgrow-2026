@@ -157,8 +157,8 @@
         "hook": "js-carousel",
         "archivo": "src/scripts/components/carousel.js"
       },
-      "estado": "pendiente",
-      "nota": "Estuvo `descartado` («no se quieren carruseles»). **DECISION-002 lo revierte, sólo para el carrusel de categorías**, a petición de Miguel. Se implementa con `scroll-snap` nativo y botones propios: sin Swiper ni ninguna dependencia. La rejilla de `categories.pug` se conserva como variante. Ver TASK-003."
+      "estado": "mejorado",
+      "nota": "Implementado con scroll-snap nativo accesible (sin Swiper ni dependencias externas), variante rejilla mantenida en categories.pug, soporte para prefers-reduced-motion y botones accesibles con estado disabled en límites de scroll. Ver TASK-003."
     },
     {
       "id": "gallery-lightbox",
@@ -412,8 +412,8 @@
         "hook": null,
         "archivo": null
       },
-      "estado": "pendiente",
-      "nota": "CSS puro. Corrige lo que TASK-003 daba por estático: el anillo del origen gira. Va en TASK-003."
+      "estado": "hecho",
+      "nota": "CSS puro en styles.css con @keyframes category-ring-rotation a 5s lineales infinitas. Anillo con stroke en --color-line y opacidad 1 permanente. Respeta prefers-reduced-motion congelando el giro sin ocultar el anillo. Ver TASK-003."
     }
   ]
 }

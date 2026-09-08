@@ -338,6 +338,48 @@
     opacity: 1;
 }
 
+@keyframes category-ring-rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Anillo punteado giratorio de las categorías del origen.
+   A diferencia del borde de la tarjeta, el anillo tiene opacidad 1 permanente
+   (se ve y gira siempre sobre su centro, sin depender de hover).
+   El trazo corre a 5s lineales infinitas. Bajo prefers-reduced-motion,
+   la animación se detiene inmediatamente y el anillo permanece visible. */
+/* stylelint-disable nesting-selector-no-missing-scoping-root */
+@utility category-ring {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    pointer-events: none;
+    opacity: 1;
+
+    rect {
+        fill: none;
+        stroke: var(--color-line);
+        stroke-width: 4;
+        stroke-dasharray: 10;
+        stroke-linecap: square;
+        rx: 50%;
+        ry: 50%;
+        inline-size: 100%;
+        block-size: 100%;
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: category-ring-rotation 5s linear infinite;
+    }
+}
+/* stylelint-enable nesting-selector-no-missing-scoping-root */
+
+
 /* ══════════════════════════════════════════════════════════════════════════
    SCOPE
    Contenido que llega ya escrito —de un CMS, de un texto legal— y al que no se

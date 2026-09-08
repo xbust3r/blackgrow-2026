@@ -49,8 +49,11 @@ block content
         h2(class='sr-only') products-cards-4
         include ../components/products-cards-4
     div(class='border-t border-line py-5')
-        p(class='wrapper mb-5 text-base text-ink') categories
+        p(class='wrapper mb-5 text-base text-ink') categories (carrusel)
         include ../components/categories
+        +categories('carousel')
+        p(class='wrapper my-5 text-base text-ink') categories (rejilla)
+        +categories('grid')
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') 2-collections
         include ../components/2-collections

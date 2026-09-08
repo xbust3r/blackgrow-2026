@@ -19,6 +19,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
+| [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | 🟪 EN_REVISION | Carrusel con scroll-snap nativo, variante rejilla y anillo giratorio CSS entregado. Esperando REVIEW de Dexia |
 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | 🟪 EN_REVISION | Buscador a pantalla completa entregado, suite en verde y evidencia servida. Esperando REVIEW de Dexia |
 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-003 ✅ + sign-off 🔴 ✅). Mergeada a `main` |
 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-002 ✅ + sign-off 🔴 ✅). Mergeada a `main` |
@@ -29,12 +30,10 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 ## 📥 Pendiente de mí
 
-> 🧭 Orden indicado por Miguel: **TASK-002 (buscador)** (entregada, en revisión) y luego **TASK-003 (carrusel)**.
-
 | # | ID | Prioridad | Qué se espera |
 | --- | --- | --- | --- |
 | 1 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | En revisión: esperando veredicto formal de Dexia |
-| 2 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Carrusel de categorías con `scroll-snap`, sin dependencias. Anillo giratorio animado |
+| 2 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | En revisión: esperando veredicto formal de Dexia |
 
 ---
 

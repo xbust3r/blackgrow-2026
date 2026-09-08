@@ -1,10 +1,62 @@
 include media
+include ui
 
-mixin categoryCard(index)
-    a(class='block text-center text-ink', href='./cart.html')
-        img(class='mx-auto mb-4 aspect-square w-full max-w-40 rounded-full object-cover', src='/src/assets/images/categories/category.webp', alt='', width='92', height='92', loading='lazy')
-        span Category 1
+-
+    const categoriesData = [
+        { name: 'Cribs', href: './cart.html', image: '/src/assets/images/categories/category.webp' },
+        { name: 'Beds', href: './cart.html', image: '/src/assets/images/categories/category.webp' },
+        { name: 'Toys', href: './cart.html', image: '/src/assets/images/categories/category.webp' },
+        { name: 'Other', href: './cart.html', image: '/src/assets/images/categories/category.webp' },
+        { name: 'Specials', href: './cart.html', image: '/src/assets/images/categories/category.webp' },
+        { name: 'Carriage', href: './cart.html', image: '/src/assets/images/categories/category.webp' },
+        { name: 'New', href: './cart.html', image: '/src/assets/images/categories/category.webp' },
+        { name: 'Bottles', href: './cart.html', image: '/src/assets/images/categories/category.webp' }
+    ];
 
-section(class='wrapper grid grid-cols-1 gap-6 py-10 tablet:grid-cols-6', aria-label='Categories')
-    each index in [1, 2, 3, 4, 5, 6]
-        +categoryCard(index)
+mixin categoryCard(cat)
+    a(class='group flex flex-col items-center justify-center text-center text-ink', href=cat.href)
+        span(class='relative inline-flex size-23 items-center justify-center')
+            svg(class='category-ring', aria-hidden='true', width='100%', height='100%')
+                rect(width='100%', height='100%')
+            img(
+                class='relative z-1 size-23 rounded-full border border-line object-cover transition-transform duration-300 ease-out group-hover:scale-90 group-focus-visible:scale-90',
+                src=cat.image,
+                alt='',
+                width='92',
+                height='92',
+                loading='lazy'
+            )
+        p(class='mt-2.5 font-normal text-ink')= cat.name
+
+mixin categories(variant = 'carousel')
+    if variant === 'grid'
+        section(class='wrapper py-10', aria-label='Categories')
+            div(class='grid grid-cols-2 gap-6 tablet:grid-cols-4 desktop:grid-cols-8')
+                each cat in categoriesData
+                    +categoryCard(cat)
+    else
+        section(class='wrapper py-10', aria-label='Categories')
+            div(class='js-carousel relative')
+                button(
+                    type='button',
+                    class='js-carousel-prev absolute start-1 top-1/2 z-10 -translate-y-1/2 flex size-9 items-center justify-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-brand hover:text-brand focus-visible:border-brand disabled:pointer-events-none disabled:opacity-20 tablet:start-0 tablet:size-10',
+                    aria-label='Previous categories'
+                )
+                    +svgIcon('chevron-left', 'size-4 tablet:size-5')
+
+                div(
+                    class='js-carousel-track flex gap-4 overflow-x-auto px-12 py-4 snap-x snap-mandatory scroll-smooth scroll-px-12 tablet:gap-6 tablet:px-14 tablet:scroll-px-14 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+                    tabindex='0',
+                    role='region',
+                    aria-label='Categories list'
+                )
+                    each cat in categoriesData
+                        div(class='shrink-0 snap-start w-32 tablet:w-44 desktop:w-48')
+                            +categoryCard(cat)
+
+                button(
+                    type='button',
+                    class='js-carousel-next absolute end-1 top-1/2 z-10 -translate-y-1/2 flex size-9 items-center justify-center rounded-full border border-line bg-white text-ink shadow-sm transition hover:border-brand hover:text-brand focus-visible:border-brand disabled:pointer-events-none disabled:opacity-20 tablet:end-0 tablet:size-10',
+                    aria-label='Next categories'
+                )
+                    +svgIcon('chevron-right', 'size-4 tablet:size-5')

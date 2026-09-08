@@ -13,7 +13,7 @@
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania, dexia | P1 | 🟪 EN_REVISION — Entregada en rama `feat/TASK-002-buscador-pantalla-completa`. Esperando REVIEW de Dexia | 2026-09-08 |
-| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania | P1 | 🟦 ABIERTA — sale de DECISION-002. **Corregida: el anillo gira**, no es estático | 2026-09-08 |
+| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania, dexia | P1 | 🟪 EN_REVISION — Entregada en rama `feat/TASK-003-carrusel-de-categorias`. Esperando REVIEW de Dexia | 2026-09-08 |
 
 ---
 

@@ -140,9 +140,9 @@
     "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
   },
   {
-    "component": "components/ecommerce/categories.pug",
-    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/Product-Category-Img-07.png",
-    "status": "copied as temporary dev placeholder from origin demo — not licensed for production, replace before shipping"
+    "component": "src/components/categories.pug",
+    "original": "https://playgrow.qodeinteractive.com/wp-content/uploads/2022/12/product-category-01.png a 08.png",
+    "status": "category.webp repetida temporalmente para las 8 categorías (Cribs, Beds, Toys, Other, Specials, Carriage, New, Bottles) — requiere exportar los 8 assets de producción definitivos"
   },
   {
     "component": "components/content/text-with-image.pug",
