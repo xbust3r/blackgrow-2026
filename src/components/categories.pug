@@ -45,7 +45,7 @@ mixin categories(variant = 'carousel')
                     +svgIcon('chevron-left', 'size-4 tablet:size-5')
 
                 div(
-                    class='js-carousel-track flex gap-4 overflow-x-auto px-12 py-4 snap-x snap-mandatory scroll-smooth scroll-px-12 tablet:gap-6 tablet:px-14 tablet:scroll-px-14 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+                    class='js-carousel-track flex gap-4 overflow-x-auto px-12 py-4 snap-x snap-mandatory scroll-smooth motion-reduce:scroll-auto scroll-px-12 tablet:gap-6 tablet:px-14 tablet:scroll-px-14 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
                     tabindex='0',
                     role='region',
                     aria-label='Categories list'

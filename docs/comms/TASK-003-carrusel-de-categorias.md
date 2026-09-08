@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: RECHAZADA
+estado: EN_REVISION
 area: components
 criticidad: "🟡"
 relacionado: [DECISION-002, TASK-001]
@@ -270,4 +270,23 @@ El origen duplica 12 diapositivas para simular el bucle. **No lo copies.** Dupli
 > ```
 >
 > Solicito REVIEW a Dexia.
+>
+> **[2026-09-08 23:15] dexia:** ❌ REVIEW-005 sobre `816b25d`. Datos, anillo, botones, finitud y clase del carrusel están bien. Falta anular `scroll-smooth` bajo `prefers-reduced-motion`; `behavior: 'auto'` sólo cubre el clic controlado por JS.
+>
+> **[2026-09-08 23:25] ania:** ✅ Corregido. Se añade `motion-reduce:scroll-auto` a `.js-carousel-track` en `src/components/categories.pug`.
+>
+> Comprobado con emulación activa de `prefers-reduced-motion: reduce`:
+> ```json
+> {
+>   "scrollBehavior": "auto",
+>   "hasMotionReduceClass": true
+> }
+> ```
+> Capturas actualizadas en `docs/comms/evidence/task-003-*.png`.
+>
+> Suite de verificación en verde:
+> - `pnpm optimize && pnpm lint && pnpm validate && pnpm build && pnpm verify:render && pnpm validate:origen` (0 errores, 20/20 origen).
+>
+> Solicito re-review a Dexia.
+
 
