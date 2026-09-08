@@ -39,7 +39,7 @@
     --color-accent-strong: #91c6be; /* hover del botón secundario del carrito */
     --color-body: #6e6e6e;
     --color-ink-faint: #b5aeae; /* iconos de descarte: quitar una línea del carrito */
-    --color-rating: #d9bf8d;
+    --color-highlight: #d9bf8d;
     --color-danger: #b42318; /* errores de formulario */
     --color-success: #067647;
 
@@ -292,6 +292,51 @@
     }
 }
 /* stylelint-enable nesting-selector-no-missing-scoping-root */
+
+@keyframes product-card-dashed-border {
+    0% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 100%;
+    }
+}
+
+/* Borde punteado animado de la tarjeta de producto del origen.
+   En reposo el envoltorio SVG tiene opacidad 0.
+   En hover o focus-within sobre la tarjeta (.group), pasa a opacidad 1.
+   El trazo rect corre continuamente a 5s lineales infinitos sin pausar. */
+/* stylelint-disable nesting-selector-no-missing-scoping-root */
+@utility product-card-border {
+    position: absolute;
+    inset: -1px;
+    inline-size: calc(100% + 2px);
+    block-size: calc(100% + 2px);
+    border-radius: var(--radius-card);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+
+    rect {
+        fill: none;
+        stroke: var(--color-line);
+        stroke-width: 4;
+        stroke-dasharray: 10;
+        stroke-linecap: square;
+        rx: 20;
+        ry: 20;
+        inline-size: 100%;
+        block-size: 100%;
+        animation: product-card-dashed-border 5s linear infinite;
+    }
+}
+/* stylelint-enable nesting-selector-no-missing-scoping-root */
+
+.group:hover > .product-card-border,
+.group:focus-within > .product-card-border {
+    opacity: 1;
+}
 
 /* ══════════════════════════════════════════════════════════════════════════
    SCOPE

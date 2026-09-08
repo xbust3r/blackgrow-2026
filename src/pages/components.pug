@@ -59,8 +59,28 @@ block content
         - var productHeading = 'h2';
         include ../components/content-product
     div(class='border-t border-line py-5')
-        p(class='wrapper mb-5 text-base text-ink') shop-list
+        p(class='wrapper mb-5 text-base text-ink') product-card (badges &amp; dashed border)
+        include ../components/product-card
+        - var sampleImg = { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 };
+        div(class='wrapper grid gap-5 tablet:grid-cols-2 desktop:grid-cols-5')
+            +productCard({ name: 'Wooden Photo Camera', category: 'TOYS', price: '$60.00', oldPrice: '$70.00', badge: 'Sale', image: sampleImg }, true)
+            +productCard({ name: 'Grey Teddy Bear Toy', category: 'TOYS', price: '$90.00', badge: 'New', image: sampleImg }, true)
+            +productCard({ name: 'Popular Wooden Toy', category: 'TOYS', price: '$85.00', badge: 'HOT', image: sampleImg }, true)
+            +productCard({ name: 'Featured Discount Item', category: 'TOYS', price: '$55.00', oldPrice: '$65.00', badges: ['Sale', 'HOT'], image: sampleImg }, true)
+            +productCard({ name: 'New Arrival Priority', category: 'TOYS', price: '$95.00', badges: ['New', 'HOT'], image: sampleImg }, true)
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') shop-list (3 columns with sidebar — default)
         include ../components/shop-list
+        +shopList(3, true)
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') shop-list (4 columns)
+        +shopList(4, false)
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') shop-list (5 columns)
+        +shopList(5, false)
+    div(class='border-t border-line py-5')
+        p(class='wrapper mb-5 text-base text-ink') shop-list (6 columns)
+        +shopList(6, false)
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') box-description
         include ../components/box-description

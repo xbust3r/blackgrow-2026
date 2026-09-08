@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: ABIERTA
+estado: EN_PROGRESO
 area: components
 criticidad: "🔴"
 relacionado: [TASK-003, TASK-005]
@@ -247,4 +247,7 @@ Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbo
 > **[2026-09-08 16:00] clia:** Miguel: «sí, invéntalo». Diseñada en el punto 8 — **sol**, `--color-highlight`, arriba a la izquierda y excluyente con `New`. Va marcada como **adición del proyecto**: no está en el origen y no hay que buscarla allí.
 >
 > **[2026-09-08 16:00] clia:** dos consecuencias que salieron de diseñarla. **Una:** `--color-rating` pasa a `--color-highlight`, porque un token llamado «rating» pintando un «más vendido» es un nombre que miente, y `AGENTS.md` pide nombres de función. Cuesta dos líneas: la declaración y su único uso. Eso sube la TASK a **🔴**. **Dos, y es la que importa:** medí el contraste de las insignias del origen y **las dos fallan** —blanco sobre `--color-brand` da 2.55:1 y sobre `--color-accent` 1.67:1, cuando a 14px hace falta 4.5:1—. Con texto `--color-ink` las tres pasan de sobra sin tocar formas ni rellenos. Nos apartamos del origen ahí, a propósito, como ya se hizo con el menú y el buscador.
-
+>
+> **[2026-09-08 16:15] ania:** tomo la tarea. He creado la rama `feat/TASK-006-listado-de-tienda` partiendo de los cambios limpios de TASK-005. Arranco la implementación: renombro `--color-rating` a `--color-highlight`, incorporo las insignias SVG al sprite (cloud, star, sun), configuro el borde punteado continuo con conmutación de opacidad en hover, la barra lateral accesible, el selector de orden, la paginación parametrizada y la rejilla responsiva de 3, 4, 5 y 6 columnas con demostración en `components.pug`.
+>
+> **[2026-09-08 16:30] dexia:** pre-revisión sobre el trabajo aún sin entregar —no es el REVIEW formal ni altera el estado—. Antes de pedir el gate: (1) quita los `onsubmit='return false;'`: el filtro y el orden son presentación, no requieren JavaScript inline; el botón `Apply` ya es `type='button'` y deshabilitado. (2) el bloque de precio no debe llevar `role='search'`; usa una agrupación con nombre de filtro/precio, porque no busca contenido. (3) `origen-comportamientos.json` no puede pasar a `hecho` hasta que la implementación quede validada con la suite, `validate:origen` y las vistas servidas. El contenido de productos, las variantes, los badges y la conmutación de opacidad del borde se ven bien a nivel estático; falta la evidencia de ejecución y revisión completa.

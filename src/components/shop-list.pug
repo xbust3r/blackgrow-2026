@@ -1,17 +1,109 @@
 include product-card
+include pagination
 
-//- Los tres productos del origen usan la misma foto: se preserva esa repetición.
-- var shopImage = { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 };
+//- Las 12 tarjetas de tienda usan el marcador de producto para desarrollo:
+//- los assets definitivos constan en inventario y figma-assets.json.
+-
+    var shopImage = { src: '/src/assets/images/shop/product.webp', width: 600, height: 450 };
+    var shopProducts = [
+        { name: 'Wooden Baby Cribe', category: 'CRIBS', price: '$490.00', image: shopImage },
+        { name: 'Wooden Photo Camera', category: 'TOYS', price: '$60.00', oldPrice: '$70.00', badge: 'Sale', image: shopImage },
+        { name: 'The Candy Baby Carriage', category: 'CRIBS', price: '$320.00', image: shopImage },
+        { name: 'Grey Teddy Bear Toy', category: 'TOYS', price: '$90.00', badge: 'New', image: shopImage },
+        { name: 'Baby Bib Pink', category: 'TOYS', price: '$40.00', image: shopImage },
+        { name: 'Baby Wooden Bed', category: 'CRIBS', price: '$500.00', image: shopImage },
+        { name: 'Wooden Baby Chair', category: 'CRIBS', price: '$240.00', image: shopImage },
+        { name: 'Big Baby Carriage', category: 'CRIBS', price: '$370.00', image: shopImage },
+        { name: 'Wool Teady Bear Toy', category: 'TOYS', price: '$100.00', image: shopImage },
+        { name: 'Wool Shark Toy', category: 'TOYS', price: '$80.00', image: shopImage },
+        { name: 'Baby Bottle', category: 'TOYS', price: '$50.00', image: shopImage },
+        { name: 'Baby Small Cribe', category: 'CRIBS', price: '$300.00', image: shopImage }
+    ];
+    var shopCategories = [
+        { name: 'Cribs', count: 7 },
+        { name: 'Accessorize', count: 2 },
+        { name: 'Baby Equipment', count: 12 },
+        { name: 'Beds', count: 4 },
+        { name: 'Bottles', count: 2 },
+        { name: 'Carriage', count: 4 },
+        { name: 'Equipment', count: 2 },
+        { name: 'New', count: 6 },
+        { name: 'Other', count: 3 },
+        { name: 'Soft Toys', count: 2 },
+        { name: 'Specials', count: 6 },
+        { name: 'Toys', count: 8 },
+        { name: 'Toys & Books', count: 4 }
+    ];
+    var popularProducts = [
+        { name: 'Baby Milk Cup', price: '$20.00', image: shopImage },
+        { name: 'Small Carriage', price: '$330.00', image: shopImage },
+        { name: 'Orange Teady Bear', price: '$100.00', image: shopImage }
+    ];
 
-section(class='wrapper grid gap-10 py-10 desktop:grid-cols-4')
-    aside
-        h2(class='my-6 text-h3 font-normal text-ink') Categories
-        ul(class='space-y-3 text-lg')
-            each item in [1, 2]
-                li
-                    a(class='hover:text-ink', href='./cart.html') item
-    div(class='min-w-0 desktop:col-span-3')
-        p(class='my-6') Showing 1–12 of 50 results
-        div(class='grid gap-5 tablet:grid-cols-2 desktop:grid-cols-3')
-            each product in [{category: 'Product Category', name: 'Product Title Here', price: '$200.00', image: shopImage}, {category: 'Product Category', name: 'Product Title Here', price: '$200.00', image: shopImage}, {category: 'Product Category', name: 'Product Title Here', price: '$200.00', image: shopImage}]
-                +productCard(product, true)
+mixin shopList(cols = 3, showSidebar = (cols === 3))
+    -
+        var colMap = {
+            3: 'desktop:grid-cols-3',
+            4: 'desktop:grid-cols-4',
+            5: 'desktop:grid-cols-5',
+            6: 'desktop:grid-cols-6'
+        };
+        var colClass = colMap[cols] || 'desktop:grid-cols-3';
+
+    section(class='wrapper py-10' + (showSidebar ? ' grid gap-10 desktop:grid-cols-4' : ''))
+        if showSidebar
+            aside(class='min-w-0 space-y-10', aria-label='Shop Sidebar')
+                div
+                    h2(class='mb-6 text-h3 font-normal text-ink') Categories
+                    ul(class='space-y-3 text-base')
+                        each cat in shopCategories
+                            li
+                                a(class='flex items-center justify-between text-ink hover:text-brand', href='./cart.html')
+                                    span= cat.name
+                                    span(class='text-ink-soft')
+                                        span(aria-hidden='true')= cat.count
+                                        span(class='sr-only')= ' ' + cat.count + ' products'
+
+                div
+                    h2(class='mb-6 text-h3 font-normal text-ink') Popular products
+                    ul(class='space-y-4')
+                        each pop in popularProducts
+                            li(class='flex items-center gap-4')
+                                a(class='shrink-0', href='./cart-index.html')
+                                    img(class='size-16 rounded-field object-cover', src=pop.image.src, alt='', width=pop.image.width, height=pop.image.height, loading='lazy')
+                                div(class='min-w-0')
+                                    h3(class='text-base font-normal text-ink')
+                                        a(class='hover:text-brand', href='./cart-index.html')= pop.name
+                                    p(class='mt-1 text-sm text-ink-soft')= pop.price
+
+                div
+                    h2(class='mb-6 text-h3 font-normal text-ink') Filter by price
+                    form(class='space-y-4', onsubmit='return false;', role='search', aria-label='Filter by price')
+                        div(class='relative h-1.5 w-full rounded-full bg-line')
+                            div(class='absolute inset-y-0 start-0 w-full rounded-full bg-brand')
+                        div(class='flex items-center justify-between text-sm')
+                            span(class='text-ink-soft') Price: 
+                                span(class='font-medium text-ink') $20.00
+                                |  — 
+                                span(class='font-medium text-ink') $500.00
+                            button(class='inline-flex items-center justify-center rounded-field bg-brand px-4 py-1.5 text-xs font-medium uppercase tracking-heading text-white transition-colors hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-60', type='button', disabled, title='Presentation only') Apply
+
+        div(class='min-w-0' + (showSidebar ? ' desktop:col-span-3' : ''))
+            div(class='mb-8 flex flex-col gap-4 tablet:flex-row tablet:items-center tablet:justify-between')
+                p(class='text-base text-ink-soft') Showing 1–12 of 50 results
+                form(class='flex items-center gap-2', onsubmit='return false;')
+                    label(class='sr-only', for='shop-order-' + cols) Shop order
+                    select(id='shop-order-' + cols, name='orderby', class='rounded-field border border-line bg-surface px-3 py-2 text-sm text-ink focus-visible:border-brand', aria-label='Shop order')
+                        option(value='menu_order', selected) Default sorting
+                        option(value='popularity') Sort by popularity
+                        option(value='rating') Sort by average rating
+                        option(value='date') Sort by latest
+                        option(value='price') Sort by price: low to high
+                        option(value='price-desc') Sort by price: high to low
+
+            div(class='grid gap-5 tablet:grid-cols-2 ' + colClass)
+                each product in shopProducts
+                    +productCard(product, true)
+
+            div(class='mt-8')
+                +pagination(1, 5, './cart.html', 'Shop Pagination')

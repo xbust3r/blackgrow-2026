@@ -1,15 +1,53 @@
 include media
+include ui
 
 mixin productCard(product, shop = false)
-    article(class='rounded-card border border-line p-4 text-center transition-colors hover:border-brand')
+    - const hasSale = Boolean(product.sale || product.badge === 'Sale' || (Array.isArray(product.badges) && product.badges.includes('Sale')));
+    - const hasNew = Boolean(product.new || product.badge === 'New' || (Array.isArray(product.badges) && product.badges.includes('New')));
+    - const hasHot = !hasNew && Boolean(product.hot || product.badge === 'HOT' || (Array.isArray(product.badges) && product.badges.includes('HOT')));
+
+    article(class='group relative rounded-card border border-line p-4 text-center')
+        svg(class='product-card-border', aria-hidden='true', width='100%', height='100%')
+            rect(width='100%', height='100%')
+
+        if hasNew
+            span(class='pointer-events-none absolute start-0 top-0 z-5 flex size-14 items-center justify-center text-brand')
+                +svgIcon('badge-star', 'absolute inset-0 size-full fill-current')
+                span(class='relative z-1 text-sm font-normal leading-none text-ink') New
+        else if hasHot
+            span(class='pointer-events-none absolute start-0 top-0 z-5 flex size-14 items-center justify-center text-highlight')
+                +svgIcon('badge-sun', 'absolute inset-0 size-full fill-current')
+                span(class='relative z-1 text-sm font-normal leading-none text-ink') HOT
+
+        if hasSale
+            span(class='pointer-events-none absolute end-0 top-0 z-5 flex h-8 w-14 items-center justify-center text-accent')
+                +svgIcon('badge-cloud', 'absolute inset-0 size-full fill-current')
+                span(class='relative z-1 pt-1 text-sm font-normal leading-none text-ink') Sale
+
         if product.image
             img(class='mb-2.5 aspect-product w-full object-cover', src=product.image.src, alt='', width=product.image.width, height=product.image.height, loading='lazy')
         else
             +pendingImage(product.name, 'mb-2.5 aspect-product w-full')
+
         a(class='text-xs uppercase tracking-heading text-ink-soft hover:text-brand', href='./cart.html')= product.category
+
         h3(class='mt-1.5 text-h4 font-normal text-ink')
-            a(class='hover:text-brand', href='./cart-index.html')= product.name
+            a(class='hover:text-brand', href='./cart-index.html')
+                if hasNew
+                    span(class='sr-only') New, 
+                else if hasHot
+                    span(class='sr-only') Hot, 
+                if hasSale
+                    span(class='sr-only') Sale, 
+                = product.name
+
         p(class='mt-1.5 text-base text-ink-soft')
-            a(class='hover:text-brand', href='./cart-index.html')= product.price
+            a(class='hover:text-brand', href='./cart-index.html')
+                if product.oldPrice
+                    s(class='me-1.5 text-ink-soft')= product.oldPrice
+                    span(class='text-ink')= product.price
+                else
+                    = product.price
+
         if shop
-            a(class='mt-3 inline-flex text-brand', href='./cart-page.html') Add to cart
+            a(class='mt-3 inline-flex text-brand', href='./cart-page.html', aria-label='Add ' + product.name + ' to cart') Add to cart

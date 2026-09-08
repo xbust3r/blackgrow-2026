@@ -397,7 +397,7 @@
         "hook": null,
         "archivo": null
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "nota": "CSS puro: @keyframes en styles.css y un <rect> en el marcado, sin JavaScript. #EAE3DE es --color-line. Ojo: **no** sigue el patrón del subrayado de navegación —allí la animación se pausa y se reanuda—; aquí corre siempre y sólo se conmuta la opacidad. Va en TASK-006."
     },
     {
