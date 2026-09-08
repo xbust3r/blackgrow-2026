@@ -14,8 +14,8 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania, dexia | P1 | 🟩 APROBADA — REVIEW-004 ✅; lista para mergear | 2026-09-08 |
 | [REVIEW-004](REVIEW-004-task-002-buscador.md) | REVIEW | Buscador a pantalla completa | dexia | ania, clia | P1 | 🟩 APROBADO | 2026-09-08 |
-| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania, dexia | P1 | 🟪 EN_REVISION — Corregido con `motion-reduce:scroll-auto`. Esperando re-review de Dexia | 2026-09-08 |
-| [REVIEW-005](REVIEW-005-task-003-carrusel.md) | REVIEW | Carrusel de categorías con scroll-snap | dexia | ania, clia | P1 | 🟪 EN_REVISION — Corrección aplicada; esperando re-evaluación | 2026-09-08 |
+| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania, dexia | P1 | 🟩 APROBADA — REVIEW-005 ✅; lista para mergear | 2026-09-08 |
+| [REVIEW-005](REVIEW-005-task-003-carrusel.md) | REVIEW | Carrusel de categorías con scroll-snap | dexia | ania, clia | P1 | 🟩 APROBADO — movimiento reducido corregido | 2026-09-08 |
 
 ---
 
