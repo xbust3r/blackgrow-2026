@@ -8,7 +8,7 @@ cc: [dexia]
 prioridad: P1
 estado: ABIERTA
 area: components
-criticidad: "🟡"
+criticidad: "🔴"
 relacionado: [TASK-003, TASK-005]
 creado: 2026-09-08
 actualizado: 2026-09-08
@@ -154,11 +154,52 @@ Los guiones **desfilan por el perímetro** de la tarjeta.
 - Es CSS puro y un `<rect>` en el marcado. **Sin JavaScript.**
 - En el origen el borde no aparece en la variante alineada a la izquierda (`.qodef-align-left`). Si nuestra tarjeta tiene esa variante, respétalo; si no, ignóralo.
 
-### 8 · ⏸️ `HOT` no existe en el origen
+### 8 · La insignia `HOT` — adición del proyecto
 
-Miguel mencionó tres insignias —**HOT**, NEW y SALE—. Busqué en el origen servido y **sólo hay dos**: `qodef-woo-onsale` y `qodef-new`. No hay ninguna clase `hot` ni ningún texto «Hot» en el DOM ni en su CSS.
+`HOT` **no existe en el origen**: busqué en su DOM y en su CSS y sólo hay `Sale` y `New`. Miguel la quiere igualmente y me pidió diseñarla, así que **esto no es una migración, es una adición nuestra**. Queda dicho aquí para que nadie la «corrija» mañana contra el origen y para que no se busque en él: no está.
 
-**No la inventes.** Pregunta en el hilo antes de maquetarla. Si Miguel la quiere, es una adición del proyecto —no una migración—, y hay que decidir su forma, su color y qué la dispara. Las otras dos no dependen de esa respuesta: hazlas y sigue.
+| | Valor | Por qué |
+| --- | --- | --- |
+| Forma | **sol**, 56 × 56 | Nube y estrella son motivos de cielo, de móvil de cuna. El sol es el tercero de esa familia y lee «caliente» sin la agresividad de una llama, que en una tienda de bebés desentona. |
+| Relleno | **`--color-highlight`** (`#d9bf8d`) | Ver abajo: es el token que hoy se llama `--color-rating`. |
+| Posición | `top: 0` · `left: 0` | La misma ranura que `New`. |
+| Significado | **Más vendido / destacado** | Es el tercer eje que no solapa: `Sale` habla de precio, `New` de antigüedad, `HOT` de popularidad. |
+
+**Regla de convivencia**, porque las tres pueden coincidir en un producto:
+
+- `HOT` y `New` comparten esquina, así que son **mutuamente excluyentes**: un producto enseña una u otra, nunca las dos. Si le tocan ambas, gana `New`.
+- `Sale` va en la otra esquina y **puede convivir** con cualquiera de las dos.
+
+Esto es una decisión de producto, no una preferencia de maquetación: si Miguel prefiere que `HOT` gane a `New`, o que las tres puedan verse a la vez apiladas, se dice en el hilo y se cambia.
+
+#### El token: `--color-rating` pasa a `--color-highlight`
+
+`#d9bf8d` es el sand cálido que ya está en la paleta, y es el tercer tono que se distingue a la vez de `--color-brand` y de `--color-accent` sin añadir color nuevo.
+
+El problema es el **nombre**. `AGENTS.md` es explícito: *«Los nombres son de función, no de color»*. Un token llamado `rating` pintando una insignia de «más vendido» es un nombre que miente, y ése es justo el mecanismo que mantiene el diseño en un sitio.
+
+`--color-highlight` cubre honestamente los dos usos —las estrellas de valoración y la insignia de destacado—, y **el cambio cuesta dos líneas**: la declaración en `@theme` y su único uso actual, `customers-reviews.pug:5`.
+
+> ⚠️ Esto convierte la TASK en **🔴**: toca `@theme`. Necesita REVIEW de Dexia **y** sign-off del CTO. Ya lo he decidido yo, así que la firma no será un debate; lo que sí quiero ver es que no quede ningún `rating` suelto.
+
+#### 🚨 Las tres insignias llevan texto `--color-ink`, no blanco
+
+Aquí **me aparto del origen a propósito**, y no por gusto. Medí el contraste de sus insignias:
+
+| Insignia | Origen | Ratio | ¿AA a 14px? |
+| --- | --- | --- | --- |
+| `New` | blanco sobre `#db915e` | **2.55:1** | ❌ (pide 4.5:1) |
+| `Sale` | blanco sobre `#b1ceca` | **1.67:1** | ❌ |
+
+Las dos fallan, y la de `Sale` no se queda cerca. Con texto `--color-ink` en vez de blanco, las tres pasan de sobra y **sin tocar las formas ni los rellenos**:
+
+| Insignia | Relleno | Texto `--color-ink` |
+| --- | --- | --- |
+| `Sale` | `--color-accent` | **12.55:1** ✅ |
+| `New` | `--color-brand` | **8.22:1** ✅ |
+| `HOT` | `--color-highlight` | **11.79:1** ✅ |
+
+Es el mismo criterio que ya se aplicó al menú móvil, al buscador y al lightbox: se copia el origen salvo donde el origen está mal. Cambia el aspecto respecto a la demo —el texto pasa de blanco a negro— y es intencionado.
 
 ## Fuera de alcance
 
@@ -175,7 +216,10 @@ Miguel mencionó tres insignias —**HOT**, NEW y SALE—. Busqué en el origen 
 - [ ] Borde punteado animado en hover, en CSS puro, con el `@keyframes` en `styles.css`
 - [ ] La animación del borde **corre siempre**; el hover sólo conmuta la opacidad
 - [ ] Con `prefers-reduced-motion` el desfile para **y el borde se sigue viendo**
-- [ ] `HOT` **no se maqueta** sin respuesta de Miguel en el hilo
+- [ ] Insignia `HOT`: sol, `--color-highlight`, arriba a la izquierda, excluyente con `New`
+- [ ] `--color-rating` renombrado a `--color-highlight`; ni un `rating` suelto en el proyecto
+- [ ] Las tres insignias con texto `--color-ink`, no blanco
+- [ ] Comprobado el contraste real de las tres sobre su relleno
 - [ ] Barra lateral con categorías y recuento, populares y filtro de precio
 - [ ] Selector de orden con sus seis opciones y su etiqueta
 - [ ] `pagination.pug` reutilizado, no reescrito
@@ -188,7 +232,7 @@ Miguel mencionó tres insignias —**HOT**, NEW y SALE—. Busqué en el origen 
 - [ ] Comprobado servido a 375px y en escritorio
 - [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [ ] `pnpm validate:origen` sin regresiones
-- [ ] REVIEW de Dexia ✅
+- [ ] REVIEW de Dexia ✅ **+ sign-off 🔴 del CTO** (toca `@theme`)
 
 ## 💬 Hilo
 
@@ -199,4 +243,8 @@ Miguel mencionó tres insignias —**HOT**, NEW y SALE—. Busqué en el origen 
 > **[2026-09-08 15:30] clia:** Miguel pide dos cosas más y las mido en el origen: el **borde punteado animado** de la tarjeta (punto 7) y las **insignias** (punto 6). Ambas quedan registradas en `origen-comportamientos.json` como `product-card-dashed-border`, para que `validate:origen` las vigile.
 >
 > **[2026-09-08 15:30] clia:** dos avisos. **Uno:** corrijo mi propia TASK — dije que las insignias eran «texto, no una imagen» y es falso: son texto sobre una forma orgánica en SVG, nube y estrella. Los dos rellenos ya son tokens (`--color-accent` y `--color-brand`), así que las formas van al sprite y no como data URI con el hex dentro. **Dos:** `HOT` no existe en el origen —sólo Sale y New—; no se maqueta hasta que Miguel conteste.
+>
+> **[2026-09-08 16:00] clia:** Miguel: «sí, invéntalo». Diseñada en el punto 8 — **sol**, `--color-highlight`, arriba a la izquierda y excluyente con `New`. Va marcada como **adición del proyecto**: no está en el origen y no hay que buscarla allí.
+>
+> **[2026-09-08 16:00] clia:** dos consecuencias que salieron de diseñarla. **Una:** `--color-rating` pasa a `--color-highlight`, porque un token llamado «rating» pintando un «más vendido» es un nombre que miente, y `AGENTS.md` pide nombres de función. Cuesta dos líneas: la declaración y su único uso. Eso sube la TASK a **🔴**. **Dos, y es la que importa:** medí el contraste de las insignias del origen y **las dos fallan** —blanco sobre `--color-brand` da 2.55:1 y sobre `--color-accent` 1.67:1, cuando a 14px hace falta 4.5:1—. Con texto `--color-ink` las tres pasan de sobra sin tocar formas ni rellenos. Nos apartamos del origen ahí, a propósito, como ya se hizo con el menú y el buscador.
 

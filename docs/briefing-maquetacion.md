@@ -67,6 +67,7 @@ Esto ya se decidió. Si lo creas, se revierte en review:
 - **Variantes de 3/4/5/6 columnas** — son un parámetro del componente, no cuatro páginas.
 - **Páginas por formato de entrada** (gallery, audio, video, quote, link) — sólo existe `blog-single.html`. Los formatos viven en `blog-card.pug`.
 - **`hero-slider`** — descartado. Por eso hay ocho variantes de hero estáticas.
+- **La insignia `HOT` NO se busca en el origen**: no está. Es una **adición del proyecto**, diseñada en [TASK-006](comms/TASK-006-listado-de-tienda.md) a petición de Miguel. Las otras dos, `Sale` y `New`, sí son del origen.
 - **`parallax-cursor`** — descartado.
 - **Carrito, cuenta, wishlist y checkout funcionando** — el marcado está; el backend es otra fase.
 
@@ -128,7 +129,6 @@ No es tuyo hoy, pero conviene que lo sepas porque aparece al mirar cualquier pá
 - **Tres formularios con `actionUrl` vacío** — contacto, comentarios y newsletter. Es el estado correcto; se resuelve cuando haya backend.
 - **Todos los assets son marcadores sin licencia**, copiados de la demo del origen. Están en [`assets-pendientes.json`](migracion/assets-pendientes.json). No pueden ir a producción.
 - **Los desplegables de escritorio** del menú del origen. Son comportamiento y **no tienen TASK todavía**. Con TASK-005 cerrada se navega todo desde el menú móvil y el pie, así que no bloquean.
-- **La insignia `HOT`.** Miguel la mencionó; **no existe en el origen** —sólo `Sale` y `New`—. Está en espera de su respuesta en el hilo de [TASK-006](comms/TASK-006-listado-de-tienda.md); no se maqueta hasta entonces.
 - **Ningún navegador real verificado.** Sólo el navegador de la herramienta.
 
 ---
