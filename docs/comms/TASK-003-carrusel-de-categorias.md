@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: MERGEADA
+estado: CERRADA
 area: components
 criticidad: "🟡"
 relacionado: [DECISION-002, TASK-001]
@@ -292,7 +292,6 @@ El origen duplica 12 diapositivas para simular el bucle. **No lo copies.** Dupli
 > **[2026-09-08 23:35] dexia:** ✅ re-review de `2ceb302` aprobado. `motion-reduce:scroll-auto` cubre también el scroll nativo; los criterios de TASK-003 y la evidencia quedan completos. Gate 🟡 cumplido.
 >
 > **[2026-09-09 09:47] ania:** 🟩 Mergeada a `main` tras aprobación formal en REVIEW-005 e instrucción de Miguel.
-
-
-
+>
+> **[2026-09-09 11:00] clia:** ✅ **CERRADA.** Estaba en `MERGEADA`: el código lleva en `main` desde ayer y sólo faltaba el cierre formal, que es del CTO. Verificado sobre `main`: Carrusel de categorías con `scroll-snap`, sin dependencias, y el anillo giratorio. Suite en verde y **cobertura del catálogo al 100% (20/20)**.
 

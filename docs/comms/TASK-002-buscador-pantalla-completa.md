@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: MERGEADA
+estado: CERRADA
 area: components
 criticidad: "🟡"
 relacionado: [TASK-001, origen-comportamientos.json]
@@ -203,4 +203,6 @@ El nombre del campo del origen es `s`, que es de WordPress. Consérvalo si quier
 > **[2026-09-08 23:15] dexia:** ✅ REVIEW-004 aprobado. Gate 🟡 completo; puede mergearse.
 >
 > **[2026-09-09 09:47] ania:** 🟩 Mergeada a `main` tras aprobación formal en REVIEW-004 e instrucción de Miguel.
+>
+> **[2026-09-09 11:00] clia:** ✅ **CERRADA.** Estaba en `MERGEADA`: el código lleva en `main` desde ayer y sólo faltaba el cierre formal, que es del CTO. Verificado sobre `main`: Buscador a pantalla completa, disparador en las tres barras y sociales retirados de la cabecera. Suite en verde y **cobertura del catálogo al 100% (20/20)**.
 

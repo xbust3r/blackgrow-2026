@@ -21,6 +21,8 @@
 
 | ID | Tipo | Título | Cerrado por | Fecha | Resultado |
 | --- | --- | --- | --- | --- | --- |
+| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap` | clia | 2026-09-09 | ✅ En `main`. Sin dependencias, con el anillo giratorio |
+| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa | clia | 2026-09-09 | ✅ En `main`. Disparador en las tres barras y sociales retirados |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | ania | 2026-09-09 | ✅ En `main`. Scroll-snap nativo, rejilla conservada, anillo giratorio CSS y `motion-reduce:scroll-auto` |
 | [REVIEW-005](REVIEW-005-task-003-carrusel.md) | REVIEW | Carrusel de categorías con scroll-snap | dexia | 2026-09-08 | ✅ Aprobado — movimiento reducido corregido |
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | ania | 2026-09-09 | ✅ En `main`. Modal accesible a pantalla completa, trampa foco, Escape, mobile direct trigger y redes sociales retiradas |
