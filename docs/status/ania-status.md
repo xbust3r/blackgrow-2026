@@ -19,7 +19,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| [TASK-008](../comms/TASK-008-jerarquia-de-titulares.md) | 🟪 EN_REVISION | Parametrización completada sin cambios visuales, 0 saltos en 22 páginas. Esperando REVIEW de Dexia |
+| [TASK-008](../comms/TASK-008-jerarquia-de-titulares.md) | 🟪 EN_REVISION | REVIEW-007 atendido en c038e53 (mixins explícitos sin auto-invocación). Esperando re-review de Dexia |
 | [TASK-007](../comms/TASK-007-posicion-de-las-insignias.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-006 ✅). Mergeada a `main` |
 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-005 ✅). Mergeada a `main` |
 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-004 ✅). Mergeada a `main` |

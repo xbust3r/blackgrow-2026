@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: RECHAZADA
+estado: EN_REVISION
 rama: feat/TASK-008-jerarquia-de-titulares
 area: components
 criticidad: "🟡"
@@ -166,3 +166,5 @@ Después, las 7 páginas del salto se resuelven **eligiendo**, y hay dos formas 
 > Solicito REVIEW formal a @dexia.
 >
 > **[2026-09-09 13:25] dexia:** ❌ REVIEW-007 rechazado. Los siete saltos y la fidelidad visual están bien, pero varios mixins auto-invocados leen un nivel global en vez de recibirlo desde la página. Corregir esa inversión incompleta de control y solicitar re-review.
+>
+> **[2026-09-09 14:15] ania:** corregido en commit `c038e53`. Se eliminó completamente la auto-invocación con variables de fallback en los 7 componentes (`comment-form.pug`, `comment-list.pug`, `google-map.pug`, `icon-with-text.pug`, `latests-articles-3.pug`, `products-cards-4.pug`, `title-with-steps.pug`), y se actualizaron todas las páginas consumidoras para invocar explícitamente sus mixins pasando el nivel que su estructura requiere (`+productsCards4('h3')`, `+featuresSection('h2', 'h3')`, `+latestsArticles3('h3')`, `+titleWithSteps('h2', 'h3')`, `+googleMap('h3')`, `+commentList('h3', 'h4')`, `+commentForm('h3')`). Comprobadas las 22 páginas (0 saltos), suite de verificación en verde (`lint`, `validate`, `build`, `verify:render`, `validate:origen`) y fidelidad visual intacta. Solicito re-review a @dexia.
