@@ -1,26 +1,29 @@
-section(class='mt-12 rounded-card border border-line bg-white p-6 tablet:p-10', aria-label='Comments')
-    h3(class='mb-6 border-b border-line pb-4 text-h3 font-medium text-ink') Comments (2)
-    ol(class='space-y-6')
-        li(class='border-b border-line pb-6')
-            div(class='flex gap-4')
-                div(class='flex size-12 shrink-0 items-center justify-center rounded-full bg-surface-alt font-semibold text-brand')
-                    span(aria-hidden='true') EM
-                div(class='flex-1')
-                    div(class='flex items-center justify-between gap-2')
-                        h4(class='text-base font-semibold text-ink') Emily Miller
-                        a(class='text-xs font-medium uppercase tracking-heading text-brand hover:underline', href='#') Reply
-                    time(class='text-xs text-ink-soft', datetime='2026-05-14T10:30') May 14, 2026 at 10:30 AM
-                    p(class='mt-2 text-sm text-ink-soft') Such a helpful guide! We just transformed our nursery using natural materials and the difference in atmosphere is incredible.
+mixin commentList(level = 'h3', authorLevel = 'h4')
+    section(class='mt-12 rounded-card border border-line bg-white p-6 tablet:p-10', aria-label='Comments')
+        #{level}(class='mb-6 border-b border-line pb-4 text-h3 font-medium text-ink') Comments (2)
+        ol(class='space-y-6')
+            li(class='border-b border-line pb-6')
+                div(class='flex gap-4')
+                    div(class='flex size-12 shrink-0 items-center justify-center rounded-full bg-surface-alt font-semibold text-brand')
+                        span(aria-hidden='true') EM
+                    div(class='flex-1')
+                        div(class='flex items-center justify-between gap-2')
+                            #{authorLevel}(class='text-base font-semibold text-ink') Emily Miller
+                            a(class='text-xs font-medium uppercase tracking-heading text-brand hover:underline', href='#') Reply
+                        time(class='text-xs text-ink-soft', datetime='2026-05-14T10:30') May 14, 2026 at 10:30 AM
+                        p(class='mt-2 text-sm text-ink-soft') Such a helpful guide! We just transformed our nursery using natural materials and the difference in atmosphere is incredible.
 
-            //- Comentario anidado como respuesta
-            ol(class='mt-4 ps-8 tablet:ps-16')
-                li(class='rounded-card bg-surface-alt p-4')
-                    div(class='flex gap-3')
-                        div(class='flex size-10 shrink-0 items-center justify-center rounded-full bg-white font-semibold text-brand')
-                            span(aria-hidden='true') BG
-                        div(class='flex-1')
-                            div(class='flex items-center justify-between gap-2')
-                                h4(class='text-sm font-semibold text-ink') Blackgrow Team
-                                span(class='rounded bg-brand/10 px-2 py-0.5 text-xs text-brand') Author
-                            time(class='text-xs text-ink-soft', datetime='2026-05-14T11:15') May 14, 2026 at 11:15 AM
-                            p(class='mt-2 text-xs text-ink-soft') Thank you Emily! Creating soothing spaces for little ones is exactly why we love what we do.
+                //- Comentario anidado como respuesta
+                ol(class='mt-4 ps-8 tablet:ps-16')
+                    li(class='rounded-card bg-surface-alt p-4')
+                        div(class='flex gap-3')
+                            div(class='flex size-10 shrink-0 items-center justify-center rounded-full bg-white font-semibold text-brand')
+                                span(aria-hidden='true') BG
+                            div(class='flex-1')
+                                div(class='flex items-center justify-between gap-2')
+                                    #{authorLevel}(class='text-sm font-semibold text-ink') Blackgrow Team
+                                    span(class='rounded bg-brand/10 px-2 py-0.5 text-xs text-brand') Author
+                                time(class='text-xs text-ink-soft', datetime='2026-05-14T11:15') May 14, 2026 at 11:15 AM
+                                p(class='mt-2 text-xs text-ink-soft') Thank you Emily! Creating soothing spaces for little ones is exactly why we love what we do.
+
++commentList(commentListLevel || 'h3', commentAuthorLevel || 'h4')

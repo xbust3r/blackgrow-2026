@@ -8,15 +8,18 @@ include media
         { src: 'step-4', width: 146, height: 112 },
     ];
 
-mixin stepCard(title, index)
+mixin stepCard(title, index, level = 'h3')
     li(class='text-center')
         - var img = stepImages[index];
         img(class='mx-auto size-28 rounded-full object-cover', src='/src/assets/images/title-with-steps/' + img.src + '.webp', alt='', width=img.width, height=img.height, loading='lazy')
-        h3(class='mx-auto my-6 max-w-xs text-h3 font-normal text-ink')= title
+        #{level}(class='mx-auto my-6 max-w-xs text-h3 font-normal text-ink')= title
         p(class='mx-auto max-w-60') Risus quis varius quam quisque diam a sed veliti dignissim sodales ut eu gravida quise.
 
-section(class='wrapper py-10')
-    +heading('How it works', 'h2', 'mb-10 text-center')
-    ol(class='grid gap-8 tablet:grid-cols-2 desktop:grid-cols-4')
-        each title, index in ['See and explore with layerd details', 'Start browsing and go be inspired', 'Fully responsive and mobile ready', 'Purchase and your fully equipped']
-            +stepCard(title, index)
+mixin titleWithSteps(headingLevel = 'h2', itemLevel = 'h3')
+    section(class='wrapper py-10')
+        +heading('How it works', headingLevel, 'mb-10 text-center')
+        ol(class='grid gap-8 tablet:grid-cols-2 desktop:grid-cols-4')
+            each title, index in ['See and explore with layerd details', 'Start browsing and go be inspired', 'Fully responsive and mobile ready', 'Purchase and your fully equipped']
+                +stepCard(title, index, itemLevel)
+
++titleWithSteps(stepsHeadingLevel || 'h2', stepsItemLevel || 'h3')

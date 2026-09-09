@@ -40,7 +40,7 @@ include pagination
         { name: 'Orange Teady Bear', price: '$100.00', image: shopImage }
     ];
 
-mixin shopList(cols = 3, showSidebar = (cols === 3))
+mixin shopList(cols = 3, showSidebar = (cols === 3), productLevel = 'h3')
     -
         var colMap = {
             3: 'desktop:grid-cols-3',
@@ -102,7 +102,7 @@ mixin shopList(cols = 3, showSidebar = (cols === 3))
 
             div(class='grid gap-5 tablet:grid-cols-2 ' + colClass)
                 each product in shopProducts
-                    +productCard(product, true)
+                    +productCard(product, true, productLevel)
 
             div(class='mt-8')
                 +pagination(1, 5, './cart.html', 'Shop Pagination')

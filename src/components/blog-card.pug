@@ -1,6 +1,6 @@
 include ui
 
-mixin blogCard(post = {})
+mixin blogCard(post = {}, level = 'h3')
     -
         const format = post.format || 'standard';
         const title = post.title || 'A guide to packing travel clothes and necesetys for a family vacation';
@@ -20,7 +20,7 @@ mixin blogCard(post = {})
         else if format === 'link'
             div(class='bg-surface-alt p-6 tablet:p-8')
                 p(class='text-xs uppercase tracking-heading text-brand') External Link
-                h4(class='mt-2 text-h3 font-medium text-ink')
+                #{level}(class='mt-2 text-h3 font-medium text-ink')
                     a(class='hover:text-brand', href=post.linkUrl || '#', target='_blank', rel='noopener')= post.linkText || title
         else if format === 'gallery'
             div(class='grid grid-cols-2 gap-1 bg-surface-alt')
@@ -50,7 +50,7 @@ mixin blogCard(post = {})
                 span(aria-hidden='true') •
                 span= author.startsWith('by ') ? author : 'by ' + author
 
-            h3(class='text-h3 font-medium text-ink')
+            #{level}(class='text-h3 font-medium text-ink')
                 a(class='hover:text-brand', href=href)= title
 
             p(class='mt-3 text-base text-ink-soft')= excerpt

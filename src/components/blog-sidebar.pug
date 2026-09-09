@@ -1,8 +1,8 @@
 include ui
 
-mixin blogCategories()
+mixin blogCategories(level = 'h2')
     div(class='rounded-card border border-line bg-white p-6')
-        h3(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Categories
+        #{level}(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Categories
         ul(class='space-y-2.5 text-sm')
             each cat in [{ name: 'Care', count: 3 }, { name: 'Nursery', count: 5 }, { name: 'Nurturing', count: 4 }, { name: 'Play', count: 6 }, { name: 'Toys', count: 8 }]
                 li
@@ -10,26 +10,26 @@ mixin blogCategories()
                         span= cat.name
                         span(class='rounded-full bg-surface-alt px-2 py-0.5 text-xs text-ink')= cat.count
 
-mixin blogRecentPosts()
+mixin blogRecentPosts(level = 'h2', postLevel = 'h3')
     div(class='rounded-card border border-line bg-white p-6')
-        h3(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Recent Posts
+        #{level}(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Recent Posts
         ul(class='space-y-4 text-sm')
             each post in [{ title: 'A guide to packing travel clothes and necesetys for a family vacation', date: 'May 12, 2026' }, { title: 'Must have toys to carry with you to the seaside for a successful creative playtime', date: 'May 09, 2026' }, { title: 'Create a safe space environment for your children to play in and be fulfilled inside', date: 'May 05, 2026' }]
                 li
                     a(class='group block', href='./blog-single.html')
-                        h4(class='font-medium text-ink transition-colors group-hover:text-brand')= post.title
+                        #{postLevel}(class='font-medium text-ink transition-colors group-hover:text-brand')= post.title
                         time(class='mt-1 block text-xs text-ink-soft')= post.date
 
-mixin blogSocial()
+mixin blogSocial(level = 'h2')
     div(class='rounded-card border border-line bg-white p-6')
-        h3(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Follow Us
+        #{level}(class='mb-4 border-b border-line pb-3 text-h4 font-medium text-ink') Follow Us
         div(class='flex gap-3 text-ink')
             each social in [{ icon: 'facebook', label: 'Facebook' }, { icon: 'instagram', label: 'Instagram' }, { icon: 'tiktok', label: 'TikTok' }, { icon: 'pinterest', label: 'Pinterest' }]
                 a(class='flex size-10 items-center justify-center rounded-full border border-line bg-surface-alt text-ink transition-colors hover:border-brand hover:text-brand', href='#', aria-label=social.label)
                     +svgIcon(social.icon, 'size-5')
 
-mixin blogSidebar()
+mixin blogSidebar(level = 'h2', postLevel = 'h3')
     aside(class='space-y-8', aria-label='Blog Sidebar')
-        +blogCategories()
-        +blogRecentPosts()
-        +blogSocial()
+        +blogCategories(level)
+        +blogRecentPosts(level, postLevel)
+        +blogSocial(level)

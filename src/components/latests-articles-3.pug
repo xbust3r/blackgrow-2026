@@ -9,7 +9,7 @@ include media
         { src: 'article-a', width: 1300, height: 1007 },
     ];
 
-mixin articleCard(index)
+mixin articleCard(index, level = 'h3')
     article(class='p-2.5')
         - var img = articleImages[index - 1];
         div(class='relative')
@@ -17,11 +17,14 @@ mixin articleCard(index)
             div(class='absolute start-4 top-4 rounded-xl border border-line bg-white px-4 py-2.5 text-center')
                 span(class='block text-xl text-brand') 12
                 span(class='uppercase text-ink') may
-        h3(class='mt-5 text-h3 font-normal text-ink')
+        #{level}(class='mt-5 text-h3 font-normal text-ink')
             a(class='hover:text-brand', href='./blog-single.html') Article
         p(class='my-4 text-justify') this is a example of article text, i need write some text to try this this is a example of article text, i need write some text to try thisthis is a example of article text, i need write some text to try this
         a(class='uppercase hover:text-brand', href='./blog.html') View More
 
-section(class='wrapper grid gap-5 py-5 tablet:grid-cols-2 desktop:grid-cols-3', aria-label='Articles')
-    each item in [1, 2, 3]
-        +articleCard(item)
+mixin latestsArticles3(level = 'h3')
+    section(class='wrapper grid gap-5 py-5 tablet:grid-cols-2 desktop:grid-cols-3', aria-label='Articles')
+        each item in [1, 2, 3]
+            +articleCard(item, level)
+
++latestsArticles3(articleCardLevel || 'h3')

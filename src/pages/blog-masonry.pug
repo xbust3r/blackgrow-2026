@@ -33,6 +33,6 @@ block content
             div(class='columns-1 gap-6 tablet:columns-2 desktop:columns-3')
                 each post in masonryPosts
                     div(class='mb-6 break-inside-avoid')
-                        +blogCard(post)
+                        +blogCard(post, 'h2')
 
             +pagination(1, 3)

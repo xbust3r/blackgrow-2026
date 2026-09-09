@@ -2,7 +2,7 @@ include blog-card
 include blog-sidebar
 include pagination
 
-mixin blogListTemplate(sidebar = 'right')
+mixin blogListTemplate(sidebar = 'right', cardLevel = 'h2', sidebarLevel = 'h2', sidebarPostLevel = 'h3')
     -
         const defaultBlogPosts = [
             { format: 'standard', title: 'A guide to packing travel clothes and necesetys for a family vacation', date: 'May 12, 2026', dateIso: '2026-05-12', author: 'by Saira Bishon', category: 'Care', image: '/src/assets/images/blog/article-a.webp', excerpt: 'Pretium fusce id velit ut tortor. Euismod quis viverra nibh cras pulvinar mattis nunc. Arc…' },
@@ -22,20 +22,20 @@ mixin blogListTemplate(sidebar = 'right')
                 div(class='grid gap-10 desktop:grid-cols-[1fr_320px]')
                     div(class='space-y-8')
                         each post in defaultBlogPosts
-                            +blogCard(post)
+                            +blogCard(post, cardLevel)
                         +pagination(1, 3)
                     div
-                        +blogSidebar()
+                        +blogSidebar(sidebarLevel, sidebarPostLevel)
             else if sidebar === 'left'
                 div(class='grid gap-10 desktop:grid-cols-[320px_1fr]')
                     div(class='order-2 desktop:order-1')
-                        +blogSidebar()
+                        +blogSidebar(sidebarLevel, sidebarPostLevel)
                     div(class='order-1 space-y-8 desktop:order-2')
                         each post in defaultBlogPosts
-                            +blogCard(post)
+                            +blogCard(post, cardLevel)
                         +pagination(1, 3)
             else
                 div(class='mx-auto max-w-4xl space-y-8')
                     each post in defaultBlogPosts
-                        +blogCard(post)
+                        +blogCard(post, cardLevel)
                     +pagination(1, 3)

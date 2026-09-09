@@ -1,8 +1,11 @@
 include ui
 
-section(class='relative aspect-16/9 w-full overflow-hidden rounded-card border border-line bg-surface-alt tablet:aspect-21/9', aria-label='Store Map Location')
-    div(class='absolute inset-0 flex flex-col items-center justify-center p-6 text-center')
-        div(class='mb-3 flex size-14 items-center justify-center rounded-full bg-white text-brand shadow-card')
-            +svgIcon('star', 'size-7')
-        h3(class='text-h4 font-medium uppercase tracking-heading text-ink') Store Location
-        p(class='mt-2 text-xs uppercase tracking-heading text-ink-soft') Map integration pending API credentials
+mixin googleMap(level = 'h3')
+    section(class='relative aspect-16/9 w-full overflow-hidden rounded-card border border-line bg-surface-alt tablet:aspect-21/9', aria-label='Store Map Location')
+        div(class='absolute inset-0 flex flex-col items-center justify-center p-6 text-center')
+            div(class='mb-3 flex size-14 items-center justify-center rounded-full bg-white text-brand shadow-card')
+                +svgIcon('star', 'size-7')
+            #{level}(class='text-h4 font-medium uppercase tracking-heading text-ink') Store Location
+            p(class='mt-2 text-xs uppercase tracking-heading text-ink-soft') Map integration pending API credentials
+
++googleMap(mapLevel || 'h3')

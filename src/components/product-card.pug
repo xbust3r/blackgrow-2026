@@ -1,7 +1,7 @@
 include media
 include ui
 
-mixin productCard(product, shop = false)
+mixin productCard(product, shop = false, level = 'h3')
     - const hasSale = Boolean(product.sale || product.badge === 'Sale' || (Array.isArray(product.badges) && product.badges.includes('Sale')));
     - const hasNew = Boolean(product.new || product.badge === 'New' || (Array.isArray(product.badges) && product.badges.includes('New')));
     - const hasHot = !hasNew && Boolean(product.hot || product.badge === 'HOT' || (Array.isArray(product.badges) && product.badges.includes('HOT')));
@@ -32,7 +32,7 @@ mixin productCard(product, shop = false)
 
         a(class='text-xs uppercase tracking-heading text-ink-soft hover:text-brand', href='./cart.html')= product.category
 
-        h3(class='mt-1.5 text-h4 font-normal text-ink')
+        #{level}(class='mt-1.5 text-h4 font-normal text-ink')
             a(class='hover:text-brand', href='./cart-index.html')
                 if hasNew
                     span(class='sr-only') New, 
