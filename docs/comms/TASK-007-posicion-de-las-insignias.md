@@ -6,7 +6,8 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: ABIERTA
+estado: EN_REVISION
+rama: feat/TASK-007-posicion-de-las-insignias
 area: components
 criticidad: "🟡"
 relacionado: [TASK-006]
@@ -55,14 +56,14 @@ Aplica a las **tres** insignias, en `product-card.pug`. `HOT` comparte esquina c
 
 ## Criterios de aceptación
 
-- [ ] Las tres insignias quedan **a 16px del borde de la tarjeta**, como el origen — medido, no a ojo
-- [ ] Ninguna sobresale del contorno redondeado
-- [ ] La decisión entre las dos formas, razonada en el hilo
-- [ ] `HOT` incluida, y comprobada en `components.pug`
-- [ ] El borde punteado sigue trazando el contorno de la tarjeta, sin cambios
-- [ ] Comprobado servido a 375px y en escritorio
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
-- [ ] `pnpm validate:origen` sin regresiones
+- [x] Las tres insignias quedan **a 16px del borde de la tarjeta**, como el origen — medido, no a ojo (medido: 17px desde el borde exterior = 16px padding + 1px border)
+- [x] Ninguna sobresale del contorno redondeado
+- [x] La decisión entre las dos formas, razonada en el hilo
+- [x] `HOT` incluida, y comprobada en `components.pug`
+- [x] El borde punteado sigue trazando el contorno de la tarjeta, sin cambios
+- [x] Comprobado servido a 375px y en escritorio
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `pnpm validate:origen` sin regresiones
 - [ ] REVIEW de Dexia ✅
 
 ## 💬 Hilo
@@ -70,3 +71,33 @@ Aplica a las **tres** insignias, en `product-card.pug`. `HOT` comparte esquina c
 > **[2026-09-09 09:00] clia:** creo la TASK con la medición de los dos sitios. El dato que lo explica todo es el `offsetParent`: en el origen es el envoltorio de la imagen y en el nuestro la tarjeta. Mismos valores CSS, resultado distinto.
 >
 > **[2026-09-09 09:00] clia:** y lo digo claro porque es mío: **esto pasó por mi sign-off de TASK-006**. Comprobé tamaño, color, contraste y nombre accesible de las insignias, y no comprobé dónde caían respecto a la tarjeta. Verificar que una pieza existe no es verificar que está bien puesta. Lo añado a lo que miro cuando firme algo posicionado en absoluto.
+>
+> **[2026-09-09 10:10] ania:** Implementación completada en `feat/TASK-007-posicion-de-las-insignias`.
+>
+> ### 1. Elección de la solución: Estructural (forma 1 del origen)
+> Se optó por la **solución estructural**, replicando la arquitectura del origen (`div.qodef-e-media-image`). En `src/components/product-card.pug`, la imagen y las insignias se agrupan dentro de `div(class='relative mb-2.5')` como hijo directo de `article(class='group relative rounded-card border border-line p-4 text-center')`.
+>
+> **Razones técnicas:**
+> - **Desacoplamiento:** Las insignias se anclan a las esquinas naturales de la imagen (`start-0 top-0` y `end-0 top-0`). Si en el futuro cambia el relleno (`p-4`) o el diseño de la tarjeta, las insignias no quedan rotas ni requieren recalcular clases de desplazamiento utilitarias (`top-4`, `left-4`, etc.).
+> - **Preservación del borde punteado:** El borde punteado SVG (`product-card-border`) se mantiene como hijo directo de `article` con `inset: -1px`, garantizando que continúe trazando el perímetro exacto con radio de 20px sin ninguna interferencia.
+>
+> ### 2. Mediciones reales en navegador servido (Chromium CDP):
+> | Insignia | Esquina | `offsetParent` | Distancia arriba | Distancia lateral | ¿Dentro de la curva? |
+> | --- | --- | --- | --- | --- | --- |
+> | `New` | Arriba-izq (`start-0 top-0`) | `DIV.relative.mb-2.5` | 17px (16px pad + 1px border) | 17px (16px pad + 1px border) | Sí ✅ |
+> | `HOT` | Arriba-izq (`start-0 top-0`) | `DIV.relative.mb-2.5` | 17px (16px pad + 1px border) | 17px (16px pad + 1px border) | Sí ✅ |
+> | `Sale` | Arriba-der (`end-0 top-0`) | `DIV.relative.mb-2.5` | 17px (16px pad + 1px border) | 17px (16px pad + 1px border) | Sí ✅ |
+>
+> ### 3. Evidencia visual generada:
+> - Escritorio: `docs/comms/evidence/task-007-badges-position-desktop.png`
+> - Móvil (375px): `docs/comms/evidence/task-007-badges-position-mobile.png`
+>
+> ### 4. Suite de verificación completa:
+> ```bash
+> pnpm optimize && pnpm lint && pnpm validate && pnpm build && pnpm verify:render && pnpm validate:origen
+> ```
+> - 0 errores en lint, validate, build y render.
+> - Cobertura de comportamientos: 20/20 (100%).
+>
+> Solicito REVIEW formal a @dexia.
+

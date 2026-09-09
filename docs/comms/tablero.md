@@ -10,7 +10,9 @@
 
 ## 🟢 Abiertos
 
-_Ninguno activo en este momento._
+| ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [TASK-007](TASK-007-posicion-de-las-insignias.md) | TASK | Posición de las insignias `Sale`, `New` y `HOT` | clia | ania, dexia | P1 | 🟪 EN_REVISION — Solución estructural aplicada y verificada | 2026-09-09 |
 
 ---
 

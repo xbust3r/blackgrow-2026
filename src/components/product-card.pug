@@ -10,24 +10,25 @@ mixin productCard(product, shop = false)
         svg(class='product-card-border', aria-hidden='true', width='100%', height='100%')
             rect(width='100%', height='100%')
 
-        if hasNew
-            span(class='pointer-events-none absolute start-0 top-0 z-5 flex size-14 items-center justify-center text-brand')
-                +svgIcon('badge-star', 'absolute inset-0 size-full fill-current')
-                span(class='relative z-1 text-sm font-normal leading-none text-ink') New
-        else if hasHot
-            span(class='pointer-events-none absolute start-0 top-0 z-5 flex size-14 items-center justify-center text-highlight')
-                +svgIcon('badge-sun', 'absolute inset-0 size-full fill-current')
-                span(class='relative z-1 text-sm font-normal leading-none text-ink') HOT
+        div(class='relative mb-2.5')
+            if hasNew
+                span(class='pointer-events-none absolute start-0 top-0 z-5 flex size-14 items-center justify-center text-brand')
+                    +svgIcon('badge-star', 'absolute inset-0 size-full fill-current')
+                    span(class='relative z-1 text-sm font-normal leading-none text-ink') New
+            else if hasHot
+                span(class='pointer-events-none absolute start-0 top-0 z-5 flex size-14 items-center justify-center text-highlight')
+                    +svgIcon('badge-sun', 'absolute inset-0 size-full fill-current')
+                    span(class='relative z-1 text-sm font-normal leading-none text-ink') HOT
 
-        if hasSale
-            span(class='pointer-events-none absolute end-0 top-0 z-5 flex h-8 w-14 items-center justify-center text-accent')
-                +svgIcon('badge-cloud', 'absolute inset-0 size-full fill-current')
-                span(class='relative z-1 pt-1 text-sm font-normal leading-none text-ink') Sale
+            if hasSale
+                span(class='pointer-events-none absolute end-0 top-0 z-5 flex h-8 w-14 items-center justify-center text-accent')
+                    +svgIcon('badge-cloud', 'absolute inset-0 size-full fill-current')
+                    span(class='relative z-1 pt-1 text-sm font-normal leading-none text-ink') Sale
 
-        if product.image
-            img(class='mb-2.5 aspect-product w-full object-cover', src=product.image.src, alt='', width=product.image.width, height=product.image.height, loading='lazy')
-        else
-            +pendingImage(product.name, 'mb-2.5 aspect-product w-full')
+            if product.image
+                img(class='aspect-product w-full object-cover', src=product.image.src, alt='', width=product.image.width, height=product.image.height, loading='lazy')
+            else
+                +pendingImage(product.name, 'aspect-product w-full')
 
         a(class='text-xs uppercase tracking-heading text-ink-soft hover:text-brand', href='./cart.html')= product.category
 

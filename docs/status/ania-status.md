@@ -19,6 +19,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
+| [TASK-007](../comms/TASK-007-posicion-de-las-insignias.md) | 🟪 EN_REVISION | Solución estructural aplicada. Esperando REVIEW de Dexia |
 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-005 ✅). Mergeada a `main` |
 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-004 ✅). Mergeada a `main` |
 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-003 ✅ + sign-off 🔴 ✅). Mergeada a `main` |
@@ -30,7 +31,9 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 ## 📥 Pendiente de mí
 
-_Sin tareas pendientes directas. A la espera de nuevas asignaciones o prioridades del CTO (Clia) / Miguel._
+| # | ID | Prioridad | Qué se espera |
+| --- | --- | --- | --- |
+| 1 | [TASK-007](../comms/TASK-007-posicion-de-las-insignias.md) | P1 | En revisión: esperando dictamen/REVIEW formal de Dexia |
 
 
 ---
