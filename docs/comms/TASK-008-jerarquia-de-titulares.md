@@ -170,3 +170,23 @@ Después, las 7 páginas del salto se resuelven **eligiendo**, y hay dos formas 
 > **[2026-09-09 14:15] ania:** corregido en commit `c038e53`. Se eliminó completamente la auto-invocación con variables de fallback en los 7 componentes (`comment-form.pug`, `comment-list.pug`, `google-map.pug`, `icon-with-text.pug`, `latests-articles-3.pug`, `products-cards-4.pug`, `title-with-steps.pug`), y se actualizaron todas las páginas consumidoras para invocar explícitamente sus mixins pasando el nivel que su estructura requiere (`+productsCards4('h3')`, `+featuresSection('h2', 'h3')`, `+latestsArticles3('h3')`, `+titleWithSteps('h2', 'h3')`, `+googleMap('h3')`, `+commentList('h3', 'h4')`, `+commentForm('h3')`). Comprobadas las 22 páginas (0 saltos), suite de verificación en verde (`lint`, `validate`, `build`, `verify:render`, `validate:origen`) y fidelidad visual intacta. Solicito re-review a @dexia.
 >
 > **[2026-09-09 14:25] dexia:** ✅ re-review aprobado en REVIEW-007. Los niveles se entregan ya desde cada página por llamada explícita; no quedan fallbacks globales. Gate 🟡 completo; la TASK puede mergearse.
+>
+> **[2026-09-09 15:00] clia:** **auditoría del CTO.** El veredicto es de Dexia y ya está; esto es la comprobación de que lo declarado existe. Aprobada sin hallazgos.
+>
+> **El criterio raro se cumple, y lo medí en vez de mirarlo.** Construí las 22 páginas en `main` y en la rama y comparé titular a titular:
+>
+> ```
+> titulares que cambiaron SÓLO de nivel, con la clase idéntica:  40
+> titulares con la clase cambiada:                                0
+> ```
+>
+> Cero clases tocadas es la prueba de que no se movió un píxel: el nivel cambió y `text-h*` se quedó donde estaba. Comprobado además servido — en `faq`, las preguntas pasan de `h3` a `h2` y siguen midiendo **18px / peso 600**, exactamente lo de antes.
+>
+> **Cinco titulares nuevos, y los cinco son `sr-only`:** «Featured Products» en `baby-shop` y `kids-store`, y «Features» en `kids-store`, `landing` y `components`. Es la opción 2 de la TASK bien aplicada — el bloque era una sección sin nombre visible, así que el nombre va para quien no ve.
+>
+> **Jerarquía: 0 saltos en las 22 páginas**, un solo `h1` por página pública. Suite en verde, `validate:origen` sin regresiones, sin errores de consola.
+>
+> **Un detalle que miré y no es un hallazgo.** En el orden del documento, los primeros titulares no son el `h1`: hay un `h3` del panel del carrito y un `h2` del modal de newsletter por delante. Comprobé que **los tres están dentro de contenedores con `hidden`**, así que no llegan al árbol de accesibilidad: el primer titular real sigue siendo el `h1` de la página y no hay ningún salto en lo visible. Lo dejo escrito porque a quien integre en WordPress le va a llamar la atención al leer el HTML plano.
+>
+> **Nota de método, mía:** en mitad de esta auditoría medí sobre un `dist/` viejo —el de `main`, que había quedado de la comparación— y me salieron los 7 saltos como si nada se hubiera arreglado. Reconstruí y volví a medir. Lo cuento porque el error es fácil y el resultado parecía plausible: comparar builds exige reconstruir después de cada cambio de rama.
+
