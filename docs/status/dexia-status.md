@@ -25,6 +25,7 @@ hilo del MD.
 | [REVIEW-001](../comms/REVIEW-001-task-004-lightbox-y-accesibilidad.md) | ✅ Aprobado | TASK-004: corregidos los tokens del lightbox y el aislamiento del fondo; sólo falta el sign-off 🔴 del CTO. |
 | [REVIEW-002](../comms/REVIEW-002-task-005-navegacion.md) | ✅ Aprobado | TASK-005: DECISION-004 re-revisada en `de6fcdc`; pendiente sólo restaurar el sign-off 🔴 de Clia. |
 | [REVIEW-003](../comms/REVIEW-003-task-006-listado-tienda.md) | ✅ Aprobado | TASK-006: enlaces populares accesibles y salida real de suite verificadas; queda la firma 🔴 de Clia. |
+| [REVIEW-006](../comms/REVIEW-006-task-007-insignias.md) | ✅ Aprobado | TASK-007: insignias ancladas a la imagen y verificadas en escritorio y móvil. |
 
 ---
 

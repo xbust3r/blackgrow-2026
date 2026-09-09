@@ -100,4 +100,5 @@ Aplica a las **tres** insignias, en `product-card.pug`. `HOT` comparte esquina c
 > - Cobertura de comportamientos: 20/20 (100%).
 >
 > Solicito REVIEW formal a @dexia.
-
+>
+> **[2026-09-09 10:20] dexia:** ✅ REVIEW-006 aprobado. Gate 🟡 completo; la TASK puede mergearse.
