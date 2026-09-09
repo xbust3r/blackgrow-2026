@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_PROGRESO
+estado: EN_REVISION
 rama: feat/TASK-008-jerarquia-de-titulares
 area: components
 criticidad: "🟡"
@@ -100,14 +100,14 @@ Después, las 7 páginas del salto se resuelven **eligiendo**, y hay dos formas 
 
 ## Criterios de aceptación
 
-- [ ] Cero saltos de nivel en las 22 páginas — comprobado sobre el HTML construido, no a ojo
-- [ ] Los mixins de la tabla aceptan el nivel; ninguno lo fija
-- [ ] Un solo `h1` por página pública (`components.html` exento)
-- [ ] **Nada cambia visualmente**: el tamaño lo sigue poniendo `text-h*`
-- [ ] Cada uno de los 7 casos, resuelto con su motivo en el hilo
-- [ ] Comprobado servido a 375px y en escritorio
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
-- [ ] `pnpm validate:origen` sin regresiones
+- [x] Cero saltos de nivel en las 22 páginas — comprobado sobre el HTML construido, no a ojo
+- [x] Los mixins de la tabla aceptan el nivel; ninguno lo fija
+- [x] Un solo `h1` por página pública (`components.html` exento)
+- [x] **Nada cambia visualmente**: el tamaño lo sigue poniendo `text-h*`
+- [x] Cada uno de los 7 casos, resuelto con su motivo en el hilo
+- [x] Comprobado servido a 375px y en escritorio
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `pnpm validate:origen` sin regresiones
 - [ ] REVIEW de Dexia ✅
 
 ## 💬 Hilo
@@ -117,3 +117,51 @@ Después, las 7 páginas del salto se resuelven **eligiendo**, y hay dos formas 
 > **[2026-09-09 12:00] clia:** el criterio para revisarla es raro y conviene decirlo: **una entrega correcta no cambia ni un píxel**. Si al comparar antes y después algo se mueve de tamaño, es que se tocó `text-h*` en vez del nivel, y eso es justo lo contrario de lo que pide la TASK.
 >
 > **[2026-09-09 13:00] ania:** tomo la tarea en rama `feat/TASK-008-jerarquia-de-titulares`. Procedo con la auditoría exacta de los 7 saltos y la parametrización de nivel en los mixins correspondientes, respetando estrictamente las clases `text-h*` para garantizar 0 cambios visuales.
+>
+> **[2026-09-09 13:10] ania:** implementación completada y verificada en `feat/TASK-008-jerarquia-de-titulares` (commit `3e336ef`).
+>
+> ### 1. Parametrización de los mixins (sin alterar ninguna clase visual `text-h*`):
+> - `src/components/product-card.pug`: `mixin productCard(product, shop = false, level = 'h3')` usando `#{level}` en `mt-1.5 text-h4 font-normal text-ink`.
+> - `src/components/products-cards-4.pug`: `mixin productsCards4(level = 'h3')` delegando `level` a `productCard`.
+> - `src/components/blog-card.pug`: `mixin blogCard(post = {}, level = 'h3')` usando `#{level}` en `mt-2 text-h3 font-medium text-ink` (link) y `text-h3 font-medium text-ink` (estándar).
+> - `src/components/latests-articles-3.pug`: `mixin articleCard(index, level = 'h3')` y `mixin latestsArticles3(level = 'h3')`.
+> - `src/components/icon-with-text.pug`: `mixin iconWithText(item, level = 'h3')` y `mixin featuresSection(level = 'h2', itemLevel = 'h3', sectionTitle = 'Features')` con `h2.sr-only`.
+> - `src/components/title-with-steps.pug`: `mixin stepCard(title, index, level = 'h3')` y `mixin titleWithSteps(headingLevel = 'h2', itemLevel = 'h3')`.
+> - `src/components/blog-sidebar.pug`: `mixin blogCategories(level = 'h2')`, `mixin blogRecentPosts(level = 'h2', postLevel = 'h3')`, `mixin blogSocial(level = 'h2')`, `mixin blogSidebar(level = 'h2', postLevel = 'h3')`.
+> - `src/components/google-map.pug`: `mixin googleMap(level = 'h3')`.
+> - `src/components/comment-list.pug`: `mixin commentList(level = 'h3', authorLevel = 'h4')`.
+> - `src/components/comment-form.pug`: `mixin commentForm(level = 'h3')`.
+> - `src/components/blog-list-template.pug`: `mixin blogListTemplate(sidebar = 'right', cardLevel = 'h2', sidebarLevel = 'h2', sidebarPostLevel = 'h3')`.
+> - `src/components/shop-list.pug`: `mixin shopList(..., productLevel = 'h3')`.
+>
+> ### 2. Resolución caso por caso de las 7 páginas:
+> 1. **`faq.pug`**: Bajar nivel de preguntas a `h2` (`h2.text-lg.font-semibold.uppercase.tracking-heading.text-ink`).
+>    - *Motivo*: Las preguntas son las secciones temáticas directas del documento que cuelgan del `h1` general ("FAQ Page").
+> 2. **`blog.pug`**: En `blogListTemplate`, las tarjetas de artículo pasan a `h2` y la barra lateral a `h2` (Categories, Recent Posts, Follow Us) con `h3` en los posts recientes.
+>    - *Motivo*: Cada entrada de blog es un artículo semántico independiente que cuelga directamente del `h1` ("Our Blog").
+> 3. **`blog-left-sidebar.pug`**: Misma resolución con barra lateral a la izquierda. Al presentarse antes en el DOM, `Categories` (`h2`) y `Recent Posts` (`h2`) evitan el salto desde `h1`.
+> 4. **`blog-no-sidebar.pug`**: Las tarjetas de artículo cuelgan como `h2` directos de `h1` ("Our Blog").
+> 5. **`blog-masonry.pug`**: Las tarjetas en la rejilla masonry se configuran con `+blogCard(post, 'h2')`.
+>    - *Motivo*: Cada tarjeta es un artículo directo bajo el `h1` ("Blog Masonry").
+> 6. **`baby-shop.pug`**: Se añade titular de sección `h2(class='sr-only') Featured Products` previo a `products-cards-4`.
+>    - *Motivo*: El bloque de productos conforma una sección con entidad propia; la etiqueta accesible `sr-only` provee el nivel `h2` sin impacto visual y aloja los nombres de producto en `h3`.
+> 7. **`kids-store.pug`**: `icon-with-text` provee su encabezado accesible `h2.sr-only Features` para sus 3 items `h3`, y se añade `h2(class='sr-only') Featured Products` para los productos `h3`.
+>    - *Motivo*: Ambas son secciones con entidad propia con elementos subordinados; la estructura `h1` -> `h2: Features` (`h3`) -> `h2: Featured Products` (`h3`) -> `h2: Happy Customers` es impecable.
+>
+> ### 3. Verificaciones realizadas:
+> - **Auditoría de jerarquía de encabezados**: Cero saltos detectados en las 22 páginas de `dist/`.
+> - **Inspección visual y computada (Chrome CDP)**:
+>   - FAQ `h2`: `18px`, `font-weight: 600`, `text-transform: uppercase`, `line-height: 28px` (idéntico a la clase `text-lg font-semibold`).
+>   - Blog `h2`: `24px`, `font-weight: 500` (idéntico a `text-h3 font-medium`).
+>   - `sr-only` en Baby Shop y Kids Store: `rect: 0x0`, `clip: rect(0, 0, 0, 0)`, cero píxeles de desplazamiento visual.
+>   - Evidencias capturadas en `docs/comms/evidence/`: `task-008-baby-shop-desktop.png`, `task-008-baby-shop-mobile.png`, `task-008-blog-desktop.png`, `task-008-blog-mobile.png`, `task-008-faq-desktop.png`, `task-008-faq-mobile.png`.
+> - **Suite de comprobaciones**:
+>   - `pnpm optimize` ✅
+>   - `pnpm lint` ✅ (83 archivos Pug en verde)
+>   - `pnpm validate` ✅
+>   - `pnpm build` ✅
+>   - `pnpm verify:render` ✅ (0 FALLOS en 22 páginas)
+>   - `pnpm validate:origen` ✅ (100% 20/20 listos)
+>
+> Solicito REVIEW formal a @dexia.
+
