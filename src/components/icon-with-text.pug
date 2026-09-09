@@ -21,5 +21,3 @@ mixin featuresSection(level = 'h2', itemLevel = 'h3', sectionTitle = 'Features')
         div(class='wrapper grid gap-8 tablet:grid-cols-3')
             each item in defaultFeatures
                 +iconWithText(item, itemLevel)
-
-+featuresSection(featuresSectionLevel || 'h2', featuresItemLevel || 'h3', featuresSectionTitle !== undefined ? featuresSectionTitle : 'Features')

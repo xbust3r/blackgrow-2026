@@ -21,5 +21,3 @@ mixin titleWithSteps(headingLevel = 'h2', itemLevel = 'h3')
         ol(class='grid gap-8 tablet:grid-cols-2 desktop:grid-cols-4')
             each title, index in ['See and explore with layerd details', 'Start browsing and go be inspired', 'Fully responsive and mobile ready', 'Purchase and your fully equipped']
                 +stepCard(title, index, itemLevel)
-
-+titleWithSteps(stepsHeadingLevel || 'h2', stepsItemLevel || 'h3')

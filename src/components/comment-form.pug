@@ -17,5 +17,3 @@ mixin commentForm(level = 'h3')
                 label(class='text-xs text-ink-soft', for='comment-consent') Save my name, email, and website in this browser for the next time I comment.
             div(class='pt-2')
                 +button('Post Comment', { type: 'submit', class: 'w-full tablet:w-auto' })
-
-+commentForm(commentFormLevel || 'h3')

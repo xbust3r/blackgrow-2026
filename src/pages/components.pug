@@ -28,6 +28,7 @@ block content
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') title-with-steps
         include ../components/title-with-steps
+        +titleWithSteps('h2', 'h3')
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') breadcrumb
         include ../components/breadcrumb
@@ -41,6 +42,7 @@ block content
         p(class='wrapper mb-5 text-base text-ink') latests-articles-3
         h2(class='sr-only') latests-articles-3
         include ../components/latests-articles-3
+        +latestsArticles3('h3')
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') newsletter-register
         include ../components/newsletter-register
@@ -48,6 +50,7 @@ block content
         p(class='wrapper mb-5 text-base text-ink') products-cards-4
         h2(class='sr-only') products-cards-4
         include ../components/products-cards-4
+        +productsCards4('h3')
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') categories (carrusel)
         include ../components/categories
@@ -90,6 +93,7 @@ block content
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') icon-with-text
         include ../components/icon-with-text
+        +featuresSection('h2', 'h3')
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') text-marquee
         include ../components/text-marquee
@@ -104,6 +108,7 @@ block content
         p(class='wrapper mb-5 text-base text-ink') google-map
         div(class='wrapper')
             include ../components/google-map
+            +googleMap('h3')
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') blog-card (formats)
         include ../components/blog-card
@@ -127,10 +132,12 @@ block content
         p(class='wrapper mb-5 text-base text-ink') comment-list
         div(class='wrapper max-w-3xl')
             include ../components/comment-list
+            +commentList('h3', 'h4')
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') comment-form
         div(class='wrapper max-w-3xl')
             include ../components/comment-form
+            +commentForm('h3')
 
     div(class='border-t border-line py-5')
         p(class='wrapper mb-5 text-base text-ink') cart-empty

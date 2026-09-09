@@ -7,5 +7,3 @@ mixin productsCards4(level = 'h3')
     section(class='wrapper grid gap-5 py-5 desktop:grid-cols-4', aria-label='Products')
         each product in [{category: 'Crib', name: 'product name', price: '$ 99.00', image: cardImage}, {category: 'Crib', name: 'product name', price: '$ 99.00', image: cardImage}, {category: 'Crib', name: 'product name', price: '$ 99.00', image: cardImage}, {category: 'Crib', name: 'product name', price: '$ 99.00', image: cardImage}]
             +productCard(product, false, level)
-
-+productsCards4(productCardLevel || 'h3')
