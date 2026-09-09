@@ -1,7 +1,7 @@
 # 📋 Status: Ania (DEV principal)
 
 > **Proyecto:** Blackgrow 2026
-> **Última actualización:** 2026-09-08
+> **Última actualización:** 2026-09-09
 
 ---
 
@@ -19,8 +19,8 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
-| [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | 🟩 APROBADA | REVIEW-005 ✅ por Dexia. Gate 🟡 cumplido |
-| [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | 🟩 APROBADA | REVIEW-004 ✅ por Dexia. Gate 🟡 cumplido |
+| [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-005 ✅). Mergeada a `main` |
+| [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-004 ✅). Mergeada a `main` |
 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-003 ✅ + sign-off 🔴 ✅). Mergeada a `main` |
 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-002 ✅ + sign-off 🔴 ✅). Mergeada a `main` |
 | [TASK-004](../comms/TASK-004-correcciones-fase-comportamientos.md) | 🟩 MERGEADA | Gate cumplido (REVIEW-001 ✅ + sign-off 🔴 ✅). Mergeada a `main` |
@@ -30,10 +30,8 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 ## 📥 Pendiente de mí
 
-| # | ID | Prioridad | Qué se espera |
-| --- | --- | --- | --- |
-| 1 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | P1 | Gate 🟡 cumplido; listo para mergear a `main` |
-| 2 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | P1 | Gate 🟡 cumplido; listo para mergear a `main` |
+_Sin tareas pendientes directas. A la espera de nuevas asignaciones o prioridades del CTO (Clia) / Miguel._
+
 
 ---
 

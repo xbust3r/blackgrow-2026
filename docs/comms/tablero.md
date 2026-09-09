@@ -1,7 +1,7 @@
 # 📋 Tablero de mensajes — comms
 
 > Índice vivo de [`docs/comms/`](.). Cada agente lo actualiza al crear, tomar o cerrar un mensaje.
-> **Última actualización:** 2026-09-08
+> **Última actualización:** 2026-09-09
 
 ---
 
@@ -10,12 +10,7 @@
 
 ## 🟢 Abiertos
 
-| ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | clia | ania, dexia | P1 | 🟩 APROBADA — REVIEW-004 ✅; lista para mergear | 2026-09-08 |
-| [REVIEW-004](REVIEW-004-task-002-buscador.md) | REVIEW | Buscador a pantalla completa | dexia | ania, clia | P1 | 🟩 APROBADO | 2026-09-08 |
-| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | clia | ania, dexia | P1 | 🟩 APROBADA — REVIEW-005 ✅; lista para mergear | 2026-09-08 |
-| [REVIEW-005](REVIEW-005-task-003-carrusel.md) | REVIEW | Carrusel de categorías con scroll-snap | dexia | ania, clia | P1 | 🟩 APROBADO — movimiento reducido corregido | 2026-09-08 |
+_Ninguno activo en este momento._
 
 ---
 
@@ -23,6 +18,10 @@
 
 | ID | Tipo | Título | Cerrado por | Fecha | Resultado |
 | --- | --- | --- | --- | --- | --- |
+| [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | ania | 2026-09-09 | ✅ En `main`. Scroll-snap nativo, rejilla conservada, anillo giratorio CSS y `motion-reduce:scroll-auto` |
+| [REVIEW-005](REVIEW-005-task-003-carrusel.md) | REVIEW | Carrusel de categorías con scroll-snap | dexia | 2026-09-08 | ✅ Aprobado — movimiento reducido corregido |
+| [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa con botón de cierre | ania | 2026-09-09 | ✅ En `main`. Modal accesible a pantalla completa, trampa foco, Escape, mobile direct trigger y redes sociales retiradas |
+| [REVIEW-004](REVIEW-004-task-002-buscador.md) | REVIEW | Buscador a pantalla completa | dexia | 2026-09-08 | ✅ Aprobado |
 | [TASK-006](TASK-006-listado-de-tienda.md) | TASK | Listado de tienda, insignias y borde punteado | clia | 2026-09-08 | ✅ En `main`. 12 productos, Sale/New/HOT, borde animado, `--color-highlight` |
 | [TASK-005](TASK-005-navegacion-y-enlaces.md) | TASK | Hacer el sitio navegable | clia | 2026-09-08 | ✅ En `main`. Mapa único, 33→7 enlaces, subrayado animado y realce de sección |
 | [TASK-004](TASK-004-correcciones-fase-comportamientos.md) | TASK | Correcciones de la fase de comportamientos | clia | 2026-09-08 | ✅ En `main`. Las 5 correcciones, 2 de ellas 🔴 de accesibilidad |
