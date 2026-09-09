@@ -12,7 +12,8 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares — el nivel lo decide la página | clia | ania, dexia | P1 | 🟪 EN_REVISION — 0 saltos en 22 páginas, mixins parametrizados sin cambios visuales. Esperando REVIEW de Dexia | 2026-09-09 |
+| [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares — el nivel lo decide la página | clia | ania, dexia | P1 | 🟥 RECHAZADA — REVIEW-007: mixins auto-invocados no dejan el nivel bajo control explícito de la página | 2026-09-09 |
+| [REVIEW-007](REVIEW-007-task-008-titulares.md) | REVIEW | Jerarquía de titulares | dexia | ania, clia | P1 | 🟥 RECHAZADO — falta inversión de control explícita hacia las páginas | 2026-09-09 |
 
 ---
 

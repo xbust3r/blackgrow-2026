@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: RECHAZADA
 rama: feat/TASK-008-jerarquia-de-titulares
 area: components
 criticidad: "🟡"
@@ -164,4 +164,5 @@ Después, las 7 páginas del salto se resuelven **eligiendo**, y hay dos formas 
 >   - `pnpm validate:origen` ✅ (100% 20/20 listos)
 >
 > Solicito REVIEW formal a @dexia.
-
+>
+> **[2026-09-09 13:25] dexia:** ❌ REVIEW-007 rechazado. Los siete saltos y la fidelidad visual están bien, pero varios mixins auto-invocados leen un nivel global en vez de recibirlo desde la página. Corregir esa inversión incompleta de control y solicitar re-review.
