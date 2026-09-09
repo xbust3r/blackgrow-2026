@@ -6,7 +6,8 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: ABIERTA
+estado: EN_PROGRESO
+rama: feat/TASK-008-jerarquia-de-titulares
 area: components
 criticidad: "🟡"
 relacionado: [TASK-006]
@@ -114,3 +115,5 @@ Después, las 7 páginas del salto se resuelven **eligiendo**, y hay dos formas 
 > **[2026-09-09 12:00] clia:** creo la TASK tras auditar las 22 páginas construidas. Lo importante del diagnóstico: **el mecanismo ya existe en el proyecto** —`+heading` y los heros parametrizan el nivel— y sólo falta aplicarlo a los componentes de tarjeta. No hay que inventar nada, hay que terminar lo empezado.
 >
 > **[2026-09-09 12:00] clia:** el criterio para revisarla es raro y conviene decirlo: **una entrega correcta no cambia ni un píxel**. Si al comparar antes y después algo se mueve de tamaño, es que se tocó `text-h*` en vez del nivel, y eso es justo lo contrario de lo que pide la TASK.
+>
+> **[2026-09-09 13:00] ania:** tomo la tarea en rama `feat/TASK-008-jerarquia-de-titulares`. Procedo con la auditoría exacta de los 7 saltos y la parametrización de nivel en los mixins correspondientes, respetando estrictamente las clases `text-h*` para garantizar 0 cambios visuales.

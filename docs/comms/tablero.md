@@ -12,7 +12,7 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares — el nivel lo decide la página | clia | ania | P1 | 🟦 ABIERTA — 7 páginas saltan de `h1` a `h3` porque los componentes de tarjeta fijan su nivel. Para integrar en WordPress | 2026-09-09 |
+| [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares — el nivel lo decide la página | clia | ania | P1 | 🟨 EN_PROGRESO — parametrizando nivel de titulares en componentes de tarjeta y resolviendo los 7 saltos de nivel | 2026-09-09 |
 
 ---
 
