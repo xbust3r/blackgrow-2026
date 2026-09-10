@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_PROGRESO
+estado: EN_REVISION
 rama: feat/TASK-009-fila-de-iconos-del-header
 area: components
 criticidad: "🟡"
@@ -90,18 +90,18 @@ Al traer `logo-img-1.png` aparece la pregunta de si las tres barras del header d
 
 ## Criterios de aceptación
 
-- [ ] La fila existe como componente propio en `src/components/` y se incluye desde el header
-- [ ] Las cinco piezas, con sus enlaces reales del mapa de `config.pug` — no `href="#"`
-- [ ] Iconos a 70px de alto, con `width`/`height` reales de cada archivo
-- [ ] Oculta en móvil, como en el origen
-- [ ] El logotipo es un enlace a la home con nombre accesible
-- [ ] Los 5 assets descargados y declarados en `assets-pendientes.json`
-- [ ] Registrada en `src/pages/components.pug`
-- [ ] Sin colores ni medidas de marca en el marcado
-- [ ] Comprobado servido a 375px y en escritorio
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
-- [ ] `pnpm validate:origen` sin regresiones
-- [ ] Pendientes declarados, no resueltos inventando
+- [x] La fila existe como componente propio en `src/components/` y se incluye desde el header
+- [x] Las cinco piezas, con sus enlaces reales del mapa de `config.pug` — no `href="#"`
+- [x] Iconos a 70px de alto, con `width`/`height` reales de cada archivo
+- [x] Oculta en móvil, como en el origen
+- [x] El logotipo es un enlace a la home con nombre accesible
+- [x] Los 5 assets descargados y declarados en `assets-pendientes.json`
+- [x] Registrada en `src/pages/components.pug`
+- [x] Sin colores ni medidas de marca en el marcado
+- [x] Comprobado servido a 375px y en escritorio
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `pnpm validate:origen` sin regresiones
+- [x] Pendientes declarados, no resueltos inventando
 - [ ] REVIEW de Dexia ✅
 
 ## 💬 Hilo
@@ -115,4 +115,29 @@ Al traer `logo-img-1.png` aparece la pregunta de si las tres barras del header d
 > **Pendiente que me llevo yo:** revisar el resto de `bk.pug` por si descarté algo más con el mismo criterio equivocado. Si aparece, será otra TASK.
 >
 > **[2026-09-10] ania:** tomo la tarea en rama `feat/TASK-009-fila-de-iconos-del-header`. Procedo a descargar los 5 assets desde el origen (`rainbow.png`, `star.png`, `logo-img-1.png`, `hearth.png`, `cart-empty-large.png`), optimizarlos a WebP, registrarlos en `assets-pendientes.json` y maquetar la fila como componente `src/components/header-icons-row.pug` con reparto centrado e inclusión en el header desktop para la home.
-
+>
+> **[2026-09-10] ania:** implementación completada y verificada en `feat/TASK-009-fila-de-iconos-del-header` (commit `da7682c`).
+>
+> ### 1. Decisiones técnicas y de diseño
+> - **Reparto**: He optado por una distribución **Flex con 3 grupos** (`.wrapper.flex.items-center.justify-between` con dos bloques laterales a `gap-12 wide:gap-20` y el logotipo centrado) en lugar de una rejilla de 5 columnas.
+>   - *Motivo*: Replica exactamente la arquitectura del origen (`.qodef-widget-holder.qodef--left`, `.qodef-header-logo-link`, `.qodef-widget-holder.qodef--right`). Permite que el logotipo (231px de ancho servido) mantenga su centralidad exacta y que los iconos de ancho variable (56px a 98px) no sufran distorsiones de espaciado o desequilibrios visuales.
+> - **Inclusión**: El componente `src/components/header-icons-row.pug` (`+headerIconsRow()`) se incluye en `src/components/header.pug` condicionalmente para la home (`if currentUrl === 'index.html' || isHome || headerIcons`), manteniéndose oculto en móvil (`hidden desktop:block`) tal como ocurre en el sitio de origen (donde las páginas secundarias y el viewport móvil no presentan esta fila).
+> - **Interacción y accesibilidad**:
+>   - Efecto hover: elevación sutil del icono (`group-hover:-translate-y-1`) y cambio a color de marca en la etiqueta (`group-hover:text-brand`) con respeto a `motion-reduce:transform-none`.
+>   - Logo con `aria-label=brand.name`.
+>   - Enlaces conectados al mapa de `config.pug`: New In (`./cart.html`), About Us (`./page.html`), Logo (`./index.html`), Wishlist (`./wishlist.html`), Cart (`./cart-page.html`).
+>   - Badge del carrito `0` posicionado en la esquina superior de la cesta con tokens de diseño (`border-surface bg-surface-alt text-ink`).
+> - **Catálogo visual**: Registrado el componente en `src/pages/components.pug`.
+>
+> ### 2. Evidencia de las verificaciones
+> - **`pnpm optimize`**: 5 assets procesados a `.webp` en `src/assets/images/header/`.
+> - **`pnpm lint`**: 0 errores en Markuplint (83 plantillas Pug), Stylelint y ESLint.
+> - **`pnpm validate`**: `✔ Todos los assets existen. Procediendo...`
+> - **Auditoría Anti-Qode**: `limpio` (0 restos en `src/`).
+> - **`pnpm build`**: 22 páginas construidas, `verify:render` con **0 FALLOS** (dimensiones y ratios exactos medidos en 35 assets).
+> - **`pnpm validate:origen`**: `20 listos · 0 pendientes · 5 en otra fase · 2 descartados · 100% (20/20)`.
+> - **Comprobación servida (`pnpm preview` en puerto 5274)**:
+>   - Móvil (375px): Fila con `display: none` (alto 0px), cabecera móvil intacta.
+>   - Escritorio (1280px): Fila visible con alto ~98px, iconos a 70px, logo centrado, enlaces funcionales.
+>
+> Solicito REVIEW a @dexia.
