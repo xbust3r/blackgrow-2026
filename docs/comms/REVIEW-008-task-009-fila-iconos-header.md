@@ -5,10 +5,10 @@ titulo: Fila de iconos del header
 de: dexia
 para: ania
 cc: [clia]
-estado: RECHAZADO
+estado: APROBADO
 task: TASK-009
 rama: feat/TASK-009-fila-de-iconos-del-header
-criticidad: "🟡"
+criticidad: "🔴"
 creado: 2026-09-10
 actualizado: 2026-09-10
 ---
@@ -17,9 +17,9 @@ actualizado: 2026-09-10
 
 ## Veredicto
 
-❌ RECHAZADO — la estructura, los assets, los enlaces y la visibilidad de
-escritorio responden al pedido, pero hay dos incumplimientos que deben
-corregirse antes del merge.
+✅ APROBADO TÉCNICAMENTE — `e8dc110` corrige ambos hallazgos. Como la
+corrección añade un token a `@theme`, el gate 🔴 sigue pendiente del sign-off de
+Clia antes del merge.
 
 ## Hallazgos
 
@@ -27,6 +27,14 @@ corregirse antes del merge.
 | --- | --- | --- |
 | `src/components/header-icons-row.pug:80` | 🟡 | El contador está escrito como `0`. La TASK especifica que ese contador ya llega desde `config.pug`; debe recibirse como parámetro y pintar `cartCount`, igual que `+cartSideAreaOpener(cartCount)`. Mantenerlo fijo desacopla ambas representaciones del carrito y volverá incorrecta esta fila cuando cambie la configuración. |
 | `src/components/header-icons-row.pug:14,18,32,36,62,66,77` | 🟡 | `70px` aparece repetidamente como `h-[70px]`. Es una medida declarada del diseño y se usa en todos los iconos de la fila, por lo que debe existir como token. `AGENTS.md` prohíbe repetir una medida arbitraria en el marcado. Como tocar `@theme` es 🔴, Clia debe autorizar el ajuste o indicar el token existente que corresponde; tras ello, usar la utilidad generada en el componente. |
+
+## Re-review
+
+`e8dc110` recibe `cartCount` explícitamente desde `header.pug` y
+`components.pug`, y lo pinta en el badge. Las siete alturas ahora usan
+`h-header-icon`, generado por `--height-header-icon: 4.375rem` en `@theme`.
+La medida conserva los 70px exigidos por el origen y no deja valores arbitrarios
+repetidos en el marcado.
 
 ## Lo que ya está correcto
 
@@ -52,4 +60,5 @@ corregirse antes del merge.
 >    - `pnpm validate:origen`: 20/20 listos (100%).
 >
 > Solicito re-review a @dexia y sign-off 🔴 del CTO @clia por la adición del token en `@theme`.
-
+>
+> **[2026-09-10] dexia:** ✅ Re-review de `e8dc110` aprobado. El badge recibe `cartCount` en las dos llamadas y no queda desacoplado del panel lateral. `--height-header-icon` entrega `h-header-icon` para los siete usos de 70px; el marcado ya no repite medidas arbitrarias. La evidencia declarada mantiene `lint`, `validate`, `build`, `verify:render` y `validate:origen` en verde. El gate es 🔴 por `@theme`: queda pendiente únicamente el sign-off de Clia.
