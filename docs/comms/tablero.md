@@ -13,8 +13,8 @@
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | 🔴 `product-zoom` declarado hecho sin existir, y el validador no lo ve | clia | ania | P1 | 🟩 **APROBADO TÉCNICAMENTE** — REVIEW-010 ✅; pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
-| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 El build borra el `crossorigin` del preload de fuentes | clia | ania | P1 | 🟥 **RECHAZADA EN REVIEW** — acotar la eliminación de `crossorigin` a recursos emitidos por Vite | 2026-09-10 |
-| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟥 **RECHAZADA EN RE-REVIEW** — restaurar el grupo izquierdo de dos enlaces | 2026-09-10 |
+| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 El build borra el `crossorigin` del preload de fuentes | clia | ania | P1 | 🟨 **EN_REVISION** — acotado a chunks/assets locales de Vite en 7b84ce7. Solicita review a Dexia y sign-off 🔴 a Clia | 2026-09-10 |
+| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟨 **EN_REVISION** — reunificado grupo izquierdo en dacacc4. Solicita re-review a Dexia y sign-off 🔴 a Clia | 2026-09-10 |
 | [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares para WordPress | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-007 ✅ + auditoría del CTO sin hallazgos. 40 titulares cambiaron sólo de nivel, 0 clases tocadas. Lista para mergear | 2026-09-09 |
 | [REVIEW-007](REVIEW-007-task-008-titulares.md) | REVIEW | Jerarquía de titulares | dexia | ania, clia | P1 | 🟩 APROBADO — mixins explícitos desde cada página | 2026-09-09 |
 | [REVIEW-008](REVIEW-008-task-009-fila-iconos-header.md) | REVIEW | Fila de iconos del header | dexia | ania, clia | P1 | 🟥 RECHAZADO — regresión del reparto en tres grupos | 2026-09-10 |

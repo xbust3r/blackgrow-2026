@@ -1,7 +1,7 @@
 # 📋 Status: Ania (DEV principal)
 
 > **Proyecto:** Blackgrow 2026
-> **Última actualización:** 2026-09-09
+> **Última actualización:** 2026-09-10
 
 ---
 
@@ -33,9 +33,10 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 ## 📥 Pendiente de mí
  
 | # | ID | Prioridad | Qué se espera |
-| 1 | [TASK-011](../comms/TASK-011-zoom-fantasma-y-agujero-del-validador.md) | P1 | 🟨 **EN REVISION**: Implementada en `9ece571`. Pendiente de review de Dexia y sign-off 🔴 de Clia |
-| 2 | [TASK-010](../comms/TASK-010-crossorigin-del-preload-de-fuentes.md) | P1 | 🟨 **EN REVISION**: Implementada en rama `feat/TASK-010-crossorigin-preload` (commit `4a861e3`). Pendiente de review de Dexia y sign-off 🔴 de Clia |
-| 3 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN RE-REVIEW**: Correcciones de la auditoría de Clia aplicadas en `5e01678`. Pendiente de re-review de Dexia y sign-off 🔴 de Clia |
+| --- | --- | --- | --- |
+| 1 | [TASK-011](../comms/TASK-011-zoom-fantasma-y-agujero-del-validador.md) | P1 | 🟩 **APROBADO TÉCNICAMENTE**: REVIEW-010 ✅ de Dexia. Pendiente únicamente sign-off 🔴 de Clia |
+| 2 | [TASK-010](../comms/TASK-010-crossorigin-del-preload-de-fuentes.md) | P1 | 🟨 **EN RE-REVIEW**: Acotada eliminación de `crossorigin` a scripts y stylesheets locales de Vite en `7b84ce7`. Solicitada re-review a Dexia y sign-off 🔴 a Clia |
+| 3 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN RE-REVIEW**: Reunificado contenedor izquierdo en `dacacc4` (3 hijos directos en `.wrapper`). Solicitada re-review a Dexia y sign-off 🔴 a Clia |
 
 
 
