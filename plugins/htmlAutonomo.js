@@ -48,12 +48,23 @@ export default function htmlAutonomo(dist = 'dist') {
                 );
             }
 
+            const quitarCrossorigin = (etiqueta) =>
+                etiqueta.replace(/\s+crossorigin(=(["'])[^"']*\2)?/g, '');
+
             const procesar = (archivo) => {
                 const original = fs.readFileSync(archivo, 'utf-8');
 
+                // Sólo se retira `crossorigin` de las hojas de estilo y scripts
+                // emitidos por Vite, donde el atributo bloquea la carga bajo
+                // `file://`. No se retira de preloads de fuentes u otros
+                // recursos donde `crossorigin` es requerido por el navegador.
                 const nuevo = original
-                    .replace(/\s+crossorigin(=(["'])[^"']*\2)?/g, '')
-                    .replace(/<script\s+type="module"/g, '<script defer');
+                    .replace(/<script\b[^>]*>/gi, (match) =>
+                        quitarCrossorigin(match).replace(/<script\s+type="module"/g, '<script defer')
+                    )
+                    .replace(/<link\b(?=[^>]*\brel=["']stylesheet["'])[^>]*>/gi, (match) =>
+                        quitarCrossorigin(match)
+                    );
 
                 if (nuevo !== original) fs.writeFileSync(archivo, nuevo, 'utf-8');
             };
