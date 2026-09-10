@@ -48,23 +48,48 @@ export default function htmlAutonomo(dist = 'dist') {
                 );
             }
 
+            const scriptsVite = new Set(
+                trozos.map((t) => path.posix.basename(t.fileName))
+            );
+            const estilosVite = new Set(
+                Object.values(bundle)
+                    .filter((s) => s.type === 'asset' && s.fileName.endsWith('.css'))
+                    .map((s) => path.posix.basename(s.fileName))
+            );
+
+            const esRecursoLocalVite = (url, nombresArchivos) => {
+                if (!url || /^(https?:)?\/\//i.test(url)) return false;
+                const base = path.posix.basename(url.split('?')[0].split('#')[0]);
+                return nombresArchivos.has(base);
+            };
+
             const quitarCrossorigin = (etiqueta) =>
                 etiqueta.replace(/\s+crossorigin(=(["'])[^"']*\2)?/g, '');
 
             const procesar = (archivo) => {
                 const original = fs.readFileSync(archivo, 'utf-8');
 
-                // Sólo se retira `crossorigin` de las hojas de estilo y scripts
-                // emitidos por Vite, donde el atributo bloquea la carga bajo
-                // `file://`. No se retira de preloads de fuentes u otros
-                // recursos donde `crossorigin` es requerido por el navegador.
+                // Sólo se retira `crossorigin` y se convierte `type="module"` a
+                // `defer` en los scripts y hojas de estilo locales emitidos por Vite,
+                // donde el atributo bloquea la carga bajo `file://`.
+                // No se tocan etiquetas externas ni preloads de fuentes u otros
+                // recursos que puedan requerir CORS.
                 const nuevo = original
-                    .replace(/<script\b[^>]*>/gi, (match) =>
-                        quitarCrossorigin(match).replace(/<script\s+type="module"/g, '<script defer')
-                    )
-                    .replace(/<link\b(?=[^>]*\brel=["']stylesheet["'])[^>]*>/gi, (match) =>
-                        quitarCrossorigin(match)
-                    );
+                    .replace(/<script\b[^>]*>/gi, (tag) => {
+                        const srcMatch = tag.match(/\bsrc=["']([^"']+)["']/i);
+                        if (!srcMatch || !esRecursoLocalVite(srcMatch[1], scriptsVite)) {
+                            return tag;
+                        }
+                        return quitarCrossorigin(tag).replace(/<script\s+type="module"/g, '<script defer');
+                    })
+                    .replace(/<link\b[^>]*>/gi, (tag) => {
+                        if (!/\brel=["']stylesheet["']/i.test(tag)) return tag;
+                        const hrefMatch = tag.match(/\bhref=["']([^"']+)["']/i);
+                        if (!hrefMatch || !esRecursoLocalVite(hrefMatch[1], estilosVite)) {
+                            return tag;
+                        }
+                        return quitarCrossorigin(tag);
+                    });
 
                 if (nuevo !== original) fs.writeFileSync(archivo, nuevo, 'utf-8');
             };
