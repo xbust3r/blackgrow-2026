@@ -1,7 +1,7 @@
 //- Segunda fila del header de la home: iconos ilustrados y logotipo centrado.
 //- Visible exclusivamente en escritorio (hidden tablet:hidden desktop:block), tal como en el origen.
 
-mixin headerIconsRow()
+mixin headerIconsRow(cartItemCount = cartCount)
     div(class='hidden border-b border-line bg-surface py-5 desktop:block')
         div(class='wrapper flex items-center justify-between')
             //- Grupo izquierdo: New In y About Us
@@ -10,9 +10,9 @@ mixin headerIconsRow()
                     class='group flex flex-col items-center justify-center text-center',
                     href='./cart.html'
                 )
-                    div(class='flex h-[70px] items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
+                    div(class='flex h-header-icon items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
                         img(
-                            class='h-[70px] w-auto',
+                            class='h-header-icon w-auto',
                             src='/src/assets/images/header/rainbow.webp',
                             alt='',
                             width='98',
@@ -25,9 +25,9 @@ mixin headerIconsRow()
                     class='group flex flex-col items-center justify-center text-center',
                     href='./page.html'
                 )
-                    div(class='flex h-[70px] items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
+                    div(class='flex h-header-icon items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
                         img(
-                            class='h-[70px] w-auto',
+                            class='h-header-icon w-auto',
                             src='/src/assets/images/header/star.webp',
                             alt='',
                             width='73',
@@ -43,7 +43,7 @@ mixin headerIconsRow()
                 aria-label=brand.name
             )
                 img(
-                    class='h-[70px] w-auto',
+                    class='h-header-icon w-auto',
                     src='/src/assets/images/header/logo-img-1.webp',
                     alt=brand.name,
                     width='461',
@@ -57,9 +57,9 @@ mixin headerIconsRow()
                     class='group flex flex-col items-center justify-center text-center',
                     href='./wishlist.html'
                 )
-                    div(class='flex h-[70px] items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
+                    div(class='flex h-header-icon items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
                         img(
-                            class='h-[70px] w-auto',
+                            class='h-header-icon w-auto',
                             src='/src/assets/images/header/hearth.webp',
                             alt='',
                             width='56',
@@ -72,14 +72,14 @@ mixin headerIconsRow()
                     class='group flex flex-col items-center justify-center text-center',
                     href='./cart-page.html'
                 )
-                    div(class='relative flex h-[70px] items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
+                    div(class='relative flex h-header-icon items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1 motion-reduce:transform-none')
                         img(
-                            class='h-[70px] w-auto',
+                            class='h-header-icon w-auto',
                             src='/src/assets/images/header/cart-empty-large.webp',
                             alt='',
                             width='77',
                             height='70',
                             loading='eager'
                         )
-                        span(class='absolute top-1.5 -right-2 flex size-7 items-center justify-center rounded-full border-2 border-surface bg-surface-alt text-xs font-medium text-ink') 0
+                        span(class='absolute top-1.5 -right-2 flex size-7 items-center justify-center rounded-full border-2 border-surface bg-surface-alt text-xs font-medium text-ink')= cartItemCount
                     span(class='mt-3.5 text-sm font-normal uppercase tracking-[0.1em] text-ink transition-colors group-hover:text-brand') Cart $0.00

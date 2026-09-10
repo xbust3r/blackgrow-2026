@@ -100,6 +100,9 @@
     /* Dimensiones máximas de la imagen del lightbox modal */
     --container-lightbox-image: 85vw;
     --height-lightbox-image: 85vh;
+
+    /* Altura de los iconos ilustrados y logotipo de la segunda fila de la cabecera: 70px en el origen */
+    --height-header-icon: 4.375rem;
 }
 
 /* Medidas del contenedor. Fuera de `@theme` porque no son un token que genere
