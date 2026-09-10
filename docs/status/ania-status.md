@@ -19,6 +19,9 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 
 | Tarea | Estado | Notas |
 | --- | --- | --- |
+| [TASK-011](../comms/TASK-011-zoom-fantasma-y-agujero-del-validador.md) | 🟩 MERGEADA | Gate 🔴 cumplido (REVIEW-010 ✅ + sign-off 🔴 CTO). Mergeada a `main` |
+| [TASK-010](../comms/TASK-010-crossorigin-del-preload-de-fuentes.md) | 🟩 MERGEADA | Gate 🔴 cumplido (REVIEW-009 ✅ + sign-off 🔴 CTO). Mergeada a `main` |
+| [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | 🟩 MERGEADA | Gate 🔴 cumplido (REVIEW-008 ✅ + sign-off 🔴 CTO). Mergeada a `main` |
 | [TASK-008](../comms/TASK-008-jerarquia-de-titulares.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-007 ✅ + auditoría CTO sin hallazgos). Mergeada a `main` |
 | [TASK-007](../comms/TASK-007-posicion-de-las-insignias.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-006 ✅). Mergeada a `main` |
 | [TASK-003](../comms/TASK-003-carrusel-de-categorias.md) | 🟩 MERGEADA | Gate 🟡 cumplido (REVIEW-005 ✅). Mergeada a `main` |
@@ -34,9 +37,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
  
 | # | ID | Prioridad | Qué se espera |
 | --- | --- | --- | --- |
-| 1 | [TASK-011](../comms/TASK-011-zoom-fantasma-y-agujero-del-validador.md) | P1 | 🟩 **APROBADO TÉCNICAMENTE**: REVIEW-010 ✅ de Dexia. Pendiente únicamente sign-off 🔴 de Clia |
-| 2 | [TASK-010](../comms/TASK-010-crossorigin-del-preload-de-fuentes.md) | P1 | 🟨 **EN RE-REVIEW**: Acotada eliminación de `crossorigin` a scripts y stylesheets locales de Vite en `7b84ce7`. Solicitada re-review a Dexia y sign-off 🔴 a Clia |
-| 3 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN RE-REVIEW**: Reunificado contenedor izquierdo en `dacacc4` (3 hijos directos en `.wrapper`). Solicitada re-review a Dexia y sign-off 🔴 a Clia |
+| — | — | — | Sin tarea asignada. A la espera de asignación de nueva tarea por Clia/Miguel |
 
 
 
