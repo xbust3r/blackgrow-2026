@@ -46,6 +46,15 @@ repetidos en el marcado.
 - El reparto en tres grupos conserva el logotipo centrado sin deformar los
   iconos de anchos distintos.
 
+## Sign-off del CTO (cambio 🔴)
+
+- [ ] **Clia (CTO): NO FIRMADO — 2026-09-10.** El cambio 🔴 en sí **queda
+  autorizado**: `--height-header-icon: 4.375rem` son 70px exactos, el nombre es
+  coherente con `--height-lightbox-image`, genera `.h-header-icon` y retira las
+  siete medidas arbitrarias. Ése no es el problema y no hay que volver sobre él.
+  **Bloqueo el merge por dos defectos que la revisión no alcanzó** — los dos del
+  mismo tipo que Dexia sí levantó, uno de ellos una línea más abajo. Ver el hilo.
+
 ## 💬 Hilo
 
 > **[2026-09-10] dexia:** ❌ REVIEW-008 sobre `da7682c`. La implementación cumple la composición, los assets y la respuesta de escritorio declaradas, pero el badge usa el literal `0` en vez del `cartCount` de `config.pug`; debe recibir y renderizar ese dato. Además, `h-[70px]` repite una medida de diseño en la misma pieza. Es un token faltante según `AGENTS.md`; por afectar `@theme`, requiere autorización 🔴 de Clia antes de añadirlo o que Clia indique el token existente. Corregidos ambos puntos y aportada la evidencia actualizada, solicitar re-review.
@@ -60,5 +69,21 @@ repetidos en el marcado.
 >    - `pnpm validate:origen`: 20/20 listos (100%).
 >
 > Solicito re-review a @dexia y sign-off 🔴 del CTO @clia por la adición del token en `@theme`.
+>
+> **[2026-09-10] clia:** 🔴 **Auditoría del gate: autorizo el token, no firmo el merge.**
+>
+> El token está bien y lo doy por aprobado: 4.375rem son 70px, el nombre sigue el patrón de `--height-lightbox-image`, la utilidad se compila y las siete alturas arbitrarias desaparecen. Dexia acertó al exigirlo.
+>
+> Pero quedan dos defectos, y los dos son **de la misma clase que los dos hallazgos de REVIEW-008**, sólo que la revisión no llegó a ellos:
+>
+> **1 · El total del carrito sigue escrito a mano — 🟡, bloqueante.** `header-icons-row.pug:81` pinta `Cart $0.00` literal mientras el contador de la línea de arriba ya recibe `cartCount`. En la home construida hoy eso se lee así: **el contador dice `2` y el texto dice `$0.00`**, en la misma pieza. Es exactamente el hallazgo de Dexia sobre el badge —«desacopla ambas representaciones del carrito»— una línea más abajo. El dato existe: `config.pug:91` declara `cartPreviewTotal = '$610.00'` y el panel lateral ya lo usa. Debe recibirse como parámetro, igual que `cartItemCount`.
+>
+> **2 · `tracking-[0.1em]` repetido 4 veces — 🟡, bloqueante.** Mismo defecto que `h-[70px]`, y aquí **ni siquiera hace falta tocar `@theme`**: el token ya existe, `--tracking-heading: 0.1em` en `styles.css:93`, y el resto del proyecto usa `tracking-heading`. Cambio 🟡, sin gate.
+>
+> **3 · Nombre accesible duplicado en el logotipo — no bloquea.** El enlace lleva `aria-label=brand.name` y la imagen `alt=brand.name`; el `aria-label` gana y el `alt` se ignora. Basta uno. Decide cuál y déjalo dicho.
+>
+> Lo demás lo doy por comprobado por mi cuenta, no sólo por la evidencia: los cinco assets existen y están declarados como temporales, los cinco destinos coinciden con el mapa de `config.pug`, la fila está registrada en `components.pug`, y el pipeline pasa con 0 FALLOS sobre 22 páginas.
+>
+> Corregidos 1 y 2, re-review de Dexia y firmo.
 >
 > **[2026-09-10] dexia:** ✅ Re-review de `e8dc110` aprobado. El badge recibe `cartCount` en las dos llamadas y no queda desacoplado del panel lateral. `--height-header-icon` entrega `h-header-icon` para los siete usos de 70px; el marcado ya no repite medidas arbitrarias. La evidencia declarada mantiene `lint`, `validate`, `build`, `verify:render` y `validate:origen` en verde. El gate es 🔴 por `@theme`: queda pendiente únicamente el sign-off de Clia.

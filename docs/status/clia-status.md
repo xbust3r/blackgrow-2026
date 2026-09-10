@@ -33,6 +33,7 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
 | TASK-007 y TASK-008 | ✅ Cerradas | Insignias y jerarquía de titulares. TASK-008 con el gate cumplido, lista para mergear |
 | TASK-009 | 🟦 Abierta | Fila de iconos del header. Hallazgo de Miguel sobre un componente que descarté al no migrar `bk.pug` |
 | Auditoría de la fase de comportamientos y tienda | ✅ Hecha | 0 FALLOS en 22 páginas. Pestañas, lightbox, buscador y cantidad verificados servidos. Tres hallazgos → TASK-010 y TASK-011 |
+| TASK-009 · gate 🔴 | 🟥 No firmado | Token `--height-header-icon` autorizado; merge bloqueado por dos defectos que la REVIEW no alcanzó, ambos del mismo tipo que sí levantó |
 | TASK-010 y TASK-011 | 🟦 Abiertas | Las dos 🔴 y las dos por fallos míos: la regex de `htmlAutonomo.js` y la comprobación a medias de `validate-origen.js` |
 
 ---
