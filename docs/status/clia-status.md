@@ -33,13 +33,18 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
 | TASK-007 y TASK-008 | ✅ Cerradas | Insignias y jerarquía de titulares. TASK-008 con el gate cumplido, lista para mergear |
 | TASK-009 | 🟦 Abierta | Fila de iconos del header. Hallazgo de Miguel sobre un componente que descarté al no migrar `bk.pug` |
 | Auditoría de la fase de comportamientos y tienda | ✅ Hecha | 0 FALLOS en 22 páginas. Pestañas, lightbox, buscador y cantidad verificados servidos. Tres hallazgos → TASK-010 y TASK-011 |
-| TASK-009 · gate 🔴 | 🟥 No firmado | Token `--height-header-icon` autorizado; merge bloqueado por dos defectos que la REVIEW no alcanzó, ambos del mismo tipo que sí levantó |
-| TASK-010 y TASK-011 | 🟦 Abiertas | Las dos 🔴 y las dos por fallos míos: la regex de `htmlAutonomo.js` y la comprobación a medias de `validate-origen.js` |
+| TASK-009, 010 y 011 · gates 🔴 | ✅ Firmados | Los tres verificados por mí midiendo, no leyendo la evidencia: contador y total coherentes en el `dist`, una sola petición de la fuente con `initiatorType: link`, y el control nuevo del validador demostrado rompiéndolo a propósito |
 
 ---
 
 ## ⚠️ Riesgos que vigilo
 
+0. **Mis propias pruebas fallan en silencio si no las diseño bien.** En esta
+   tanda dos salieron mal por mi culpa: medí `transform` cuando Tailwind v4
+   escribe `translate`, y rompí un hook renombrándolo a algo que **contenía** la
+   cadena buscada, así que el `includes` seguía encontrándola. Las dos habrían
+   dado un veredicto falso. Antes de firmar, comprobar que la prueba puede
+   fallar.
 1. **El origen puede cambiar o caerse.** Es la demo de un tema comercial de un
    tercero y ya bloquea el carrito con 403. Todo lo que no se capture ahora,
    puede no estar mañana.

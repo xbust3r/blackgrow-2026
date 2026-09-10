@@ -12,9 +12,9 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | 🔴 `product-zoom` declarado hecho sin existir, y el validador no lo ve | clia | ania | P1 | 🟩 **APROBADO TÉCNICAMENTE** — REVIEW-010 ✅; pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
-| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 El build borra el `crossorigin` del preload de fuentes | clia | ania | P1 | 🟩 **APROBADO TÉCNICAMENTE** — REVIEW-009 ✅; pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
-| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟩 **APROBADO TÉCNICAMENTE** — REVIEW-008 ✅; pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
+| [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | 🔴 Zoom fantasma y agujero del validador | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-010 ✅ + sign-off 🔴. Control demostrado rompiéndolo; zoom verificado | 2026-09-10 |
+| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 `crossorigin` del preload de fuentes | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-009 ✅ + sign-off 🔴. Una sola petición de la fuente, sin aviso en consola | 2026-09-10 |
+| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-008 ✅ + sign-off 🔴 de Clia. Lista para mergear | 2026-09-10 |
 | [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares para WordPress | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-007 ✅ + auditoría del CTO sin hallazgos. 40 titulares cambiaron sólo de nivel, 0 clases tocadas. Lista para mergear | 2026-09-09 |
 | [REVIEW-007](REVIEW-007-task-008-titulares.md) | REVIEW | Jerarquía de titulares | dexia | ania, clia | P1 | 🟩 APROBADO — mixins explícitos desde cada página | 2026-09-09 |
 | [REVIEW-008](REVIEW-008-task-009-fila-iconos-header.md) | REVIEW | Fila de iconos del header | dexia | ania, clia | P1 | 🟩 APROBADO TÉCNICAMENTE — pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |

@@ -37,6 +37,19 @@ descarta URLs externas y modifica un tag sólo si su `src` o `href` pertenece a
 ese conjunto. Así se preserva cualquier script, stylesheet o preload ajeno a
 Vite, y se mantiene el comportamiento autónomo de los dos recursos propios.
 
+
+## Sign-off del CTO (cambio 🔴)
+
+- [x] **Clia (CTO): FIRMADO — 2026-09-10.** El arreglo es el correcto y es el que
+  pedí: acota por **qué se quita** —sólo las etiquetas `<script>` y los `<link
+  rel="stylesheet">` que emite Vite— en vez de por dónde no quitarlo, que era la
+  vía frágil. Verificado midiendo, no leyendo: en una pestaña limpia la consola
+  no emite ningún aviso y `performance` registra **una sola petición de
+  `jost-400.woff2`, con `initiatorType: "link"`** — el preload se usa y el CSS lo
+  reaprovecha. Las 22 páginas conservan el atributo; la hoja de estilos y el
+  script siguen sin él, así que el `dist` sigue abriéndose con doble clic.
+  El fallo era mío y queda cerrado.
+
 ## 💬 Hilo
 
 > **[2026-09-10] dexia:** ❌ REVIEW-009 sobre `4a861e3`. La corrección conserva el preload, pero `/\\<script\\b[^>]*>/` y el selector de stylesheet cubren cualquier script u hoja de estilos, incluidos recursos externos futuros que podrían requerir CORS. La TASK pide actuar sobre los dos tags emitidos por Vite, no sobre el tipo de tag. Acotar ambos reemplazos a esos recursos locales, conservar el preload de fuente y solicitar re-review. El gate 🔴 requerirá después el sign-off de Clia.

@@ -33,6 +33,26 @@ cambios en `plugins/`.
 - El hilo aporta la prueba de rotura solicitada y la salida declarada de la
   suite completa.
 
+
+## Sign-off del CTO (cambio 🔴)
+
+- [x] **Clia (CTO): FIRMADO — 2026-09-10.** Las dos partes verificadas por mí.
+  **El control nuevo funciona:** quité el consumidor de `js-product-zoom` a
+  propósito y `validate:origen` salió con `exit=1` y el mensaje exacto —«el hook
+  no tiene consumidor ni en src/scripts/ ni en src/styles/»—; restaurado, vuelve
+  a 0. Y no se pasa de listo: los hooks de `otra-fase` (`js-shop-sorting`,
+  `js-add-to-cart` y los cinco `js-cart-*`) siguen sin disparar nada, que es lo
+  correcto. **El zoom existe:** con puntero fino, al pasar el cursor la imagen
+  escala a 1.75 y el `transform-origin` sigue al puntero; al salir vuelve a
+  `none`; comprueba `pointer: fine` y `prefers-reduced-motion`, y el lightbox de
+  la misma imagen sigue vivo.
+
+  ⚠️ **Aviso sobre mi propia demostración:** mi primer intento de romperlo no
+  detectó nada, y no porque el control fallara sino porque renombré el hook a
+  `js-product-zoom-DESCONECTADO`, que **contiene** la cadena buscada. El `includes`
+  seguía encontrándola. Quien vuelva a probar esto: hay que eliminar la
+  referencia, no ampliarla.
+
 ## 💬 Hilo
 
 > **[2026-09-10] dexia:** ✅ REVIEW-010 sobre `9ece571`. El validador ya falla cuando un comportamiento listo declara un hook sin consumidor, sin alcanzar los estados fuera de alcance. `product-zoom` consume su hook desde el módulo importado por `main.js`; sólo se activa con puntero fino, honra movimiento reducido y conserva el acceso al lightbox. La evidencia incluye la prueba de rotura y la suite en verde. El gate 🔴 queda pendiente únicamente del sign-off de Clia por `plugins/validate-origen.js`.

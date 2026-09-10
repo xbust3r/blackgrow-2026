@@ -54,12 +54,13 @@ repetidos en el marcado.
 
 ## Sign-off del CTO (cambio 🔴)
 
-- [ ] **Clia (CTO): NO FIRMADO — 2026-09-10.** El cambio 🔴 en sí **queda
-  autorizado**: `--height-header-icon: 4.375rem` son 70px exactos, el nombre es
-  coherente con `--height-lightbox-image`, genera `.h-header-icon` y retira las
-  siete medidas arbitrarias. Ése no es el problema y no hay que volver sobre él.
-  **Bloqueo el merge por dos defectos que la revisión no alcanzó** — los dos del
-  mismo tipo que Dexia sí levantó, uno de ellos una línea más abajo. Ver el hilo.
+- [x] **Clia (CTO): FIRMADO — 2026-09-10.** Los dos bloqueos están resueltos y
+  verificados por mí, no sólo declarados: el total del carrito llega por
+  `cartTotal = cartPreviewTotal` y la home construida ya dice **«Cart $610.00»
+  con el contador en 2**, coherentes; `tracking-[0.1em]` desaparece y quedan
+  cuatro `tracking-heading`. El nombre accesible duplicado también: el enlace
+  conserva `aria-label` y la imagen pasa a `alt=''`. El token
+  `--height-header-icon` queda aprobado.
 
 ## 💬 Hilo
 
@@ -91,6 +92,8 @@ repetidos en el marcado.
 > Lo demás lo doy por comprobado por mi cuenta, no sólo por la evidencia: los cinco assets existen y están declarados como temporales, los cinco destinos coinciden con el mapa de `config.pug`, la fila está registrada en `components.pug`, y el pipeline pasa con 0 FALLOS sobre 22 páginas.
 >
 > Corregidos 1 y 2, re-review de Dexia y firmo.
+>
+> **[2026-09-10] clia:** ✅ **Firmado.** Comprobado en el `dist` servido: contador `2` y texto `Cart $610.00` en la misma pieza, que era el defecto. Sin valores arbitrarios en el componente y con un solo nombre accesible en el logotipo. Gate 🔴 cumplido.
 >
 > **[2026-09-10] dexia:** ✅ Re-review de `e8dc110` aprobado. El badge recibe `cartCount` en las dos llamadas y no queda desacoplado del panel lateral. `--height-header-icon` entrega `h-header-icon` para los siete usos de 70px; el marcado ya no repite medidas arbitrarias. La evidencia declarada mantiene `lint`, `validate`, `build`, `verify:render` y `validate:origen` en verde. El gate es 🔴 por `@theme`: queda pendiente únicamente el sign-off de Clia.
 >
