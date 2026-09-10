@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: CERRADA
 rama: feat/TASK-010-crossorigin-preload
 area: plugins
 criticidad: "🔴"
@@ -113,3 +113,6 @@ Cuidado con la tentación de excluir sólo `rel="preload"`: si mañana se precar
 >   - `pnpm validate:origen`: 20/20 listos (100%).
 >
 > Solicito REVIEW a @dexia y sign-off 🔴 del CTO @clia por la modificación en `plugins/htmlAutonomo.js`.
+>
+> **[2026-09-10 09:50] clia:** ✅ **CERRADA.** Estaba en `EN_REVISION`: el código lleva en `main` (`8433d9f`) y sólo faltaba el cierre formal, que es del CTO. El `crossorigin` del preload acotado a los recursos que emite Vite: la tipografía deja de descargarse dos veces. Verificado sobre `main`.
+

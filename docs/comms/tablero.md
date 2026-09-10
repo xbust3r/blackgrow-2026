@@ -5,21 +5,16 @@
 
 ---
 
-> 🧭 **Orden de ejecución y contexto:** [`docs/briefing-maquetacion.md`](../briefing-maquetacion.md).
-> Empieza por mergear `feat/TASK-004-correcciones`, que tiene el gate cumplido.
+> 🧭 **Contexto del proyecto:** [`docs/briefing-maquetacion.md`](../briefing-maquetacion.md).
+
+> 🟩 **Nada en curso.** Las 11 TASKs están cerradas y en `main`. Las ramas de trabajo se borraron el 2026-09-10.
+> Lo que queda sin TASK: el módulo del panel lateral del carrito y los desplegables de escritorio.
 
 ## 🟢 Abiertos
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | 🔴 Zoom fantasma y agujero del validador | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-010 ✅ + sign-off 🔴. Control demostrado rompiéndolo; zoom verificado | 2026-09-10 |
-| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 `crossorigin` del preload de fuentes | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-009 ✅ + sign-off 🔴. Una sola petición de la fuente, sin aviso en consola | 2026-09-10 |
-| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-008 ✅ + sign-off 🔴 de Clia. Lista para mergear | 2026-09-10 |
-| [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares para WordPress | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-007 ✅ + auditoría del CTO sin hallazgos. 40 titulares cambiaron sólo de nivel, 0 clases tocadas. Lista para mergear | 2026-09-09 |
-| [REVIEW-007](REVIEW-007-task-008-titulares.md) | REVIEW | Jerarquía de titulares | dexia | ania, clia | P1 | 🟩 APROBADO — mixins explícitos desde cada página | 2026-09-09 |
-| [REVIEW-008](REVIEW-008-task-009-fila-iconos-header.md) | REVIEW | Fila de iconos del header | dexia | ania, clia | P1 | 🟩 APROBADO TÉCNICAMENTE — pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
-| [REVIEW-009](REVIEW-009-task-010-crossorigin-preload.md) | REVIEW | Preload de fuentes | dexia | ania, clia | P1 | 🟩 APROBADO TÉCNICAMENTE — pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
-| [REVIEW-010](REVIEW-010-task-011-zoom-validador.md) | REVIEW | Zoom de producto y validación de hooks | dexia | ania, clia | P1 | 🟩 APROBADO TÉCNICAMENTE — pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
+| — | — | *(vacío)* | — | — | — | — | — |
 
 ---
 
@@ -27,8 +22,11 @@
 
 | ID | Tipo | Título | Cerrado por | Fecha | Resultado |
 | --- | --- | --- | --- | --- | --- |
-| [TASK-007](TASK-007-posicion-de-las-insignias.md) | TASK | Posición de las insignias `Sale`, `New` y `HOT` | ania | 2026-09-09 | ✅ En `main`. Solución estructural contra la imagen, dentro de la curva de 20px |
-| [REVIEW-006](REVIEW-006-task-007-insignias.md) | REVIEW | Posición de las insignias de producto | dexia | 2026-09-09 | ✅ Aprobado |
+| [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | Zoom fantasma y agujero del validador | clia | 2026-09-10 | ✅ En `main`. Un comportamiento contaba como hecho sin existir |
+| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | `crossorigin` del preload de fuentes | clia | 2026-09-10 | ✅ En `main`. La tipografía dejaba de descargarse dos veces |
+| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | 2026-09-10 | ✅ En `main`. Con token `--height-header-icon` y contador conectado |
+| [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares para WordPress | clia | 2026-09-10 | ✅ En `main`. 0 saltos; 40 titulares cambiaron sólo de nivel |
+| [TASK-007](TASK-007-posicion-de-las-insignias.md) | TASK | Posición de las insignias | clia | 2026-09-10 | ✅ En `main`. Ancladas a la imagen, dentro de la curva |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap` | clia | 2026-09-09 | ✅ En `main`. Sin dependencias, con el anillo giratorio |
 | [TASK-002](TASK-002-buscador-pantalla-completa.md) | TASK | Buscador a pantalla completa | clia | 2026-09-09 | ✅ En `main`. Disparador en las tres barras y sociales retirados |
 | [TASK-003](TASK-003-carrusel-de-categorias.md) | TASK | Carrusel de categorías con `scroll-snap`, sin dependencias | ania | 2026-09-09 | ✅ En `main`. Scroll-snap nativo, rejilla conservada, anillo giratorio CSS y `motion-reduce:scroll-auto` |

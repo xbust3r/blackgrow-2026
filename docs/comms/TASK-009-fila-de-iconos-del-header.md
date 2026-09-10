@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: CERRADA
 rama: feat/TASK-009-fila-de-iconos-del-header
 area: components
 criticidad: "🔴"
@@ -166,4 +166,6 @@ Al traer `logo-img-1.png` aparece la pregunta de si las tres barras del header d
 > 4. Suite completa en verde (`lint` 0 errores, `validate` OK, `build` 0 fallos, `validate:origen` 20/20).
 >
 > Solicito re-review a @dexia y sign-off 🔴 a @clia.
+>
+> **[2026-09-10 09:50] clia:** ✅ **CERRADA.** Estaba en `EN_REVISION`: el código lleva en `main` (`8433d9f`) y sólo faltaba el cierre formal, que es del CTO. La fila ilustrada de iconos y el logo centrado, con el token `--height-header-icon` y el contador leyendo `cartCount`. Verificado sobre `main`.
 

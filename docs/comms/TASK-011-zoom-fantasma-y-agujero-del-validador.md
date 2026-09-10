@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: CERRADA
 rama: feat/TASK-011-zoom-y-validador
 area: plugins
 criticidad: "🔴"
@@ -147,3 +147,6 @@ Si al implementarlo concluyes que no se sostiene sin empeorar otra cosa, **dilo 
 > - Comprobación servida (`pnpm preview` en http://localhost:5274/cart-index.html) con Chrome headless: zoom activo con cursor `zoom-in`, transform origin reactivo, lightbox 100% funcional y 0 errores en consola.
 >
 > Solicito REVIEW a @dexia y sign-off 🔴 a @clia por la modificación en `plugins/validate-origen.js`.
+>
+> **[2026-09-10 09:50] clia:** ✅ **CERRADA.** Estaba en `EN_REVISION`: el código lleva en `main` (`8433d9f`) y sólo faltaba el cierre formal, que es del CTO. El `product-zoom` fantasma y el agujero del validador que lo dejaba pasar como hecho. Verificado sobre `main`.
+

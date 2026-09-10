@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: MERGEADA
+estado: CERRADA
 rama: feat/TASK-007-posicion-de-las-insignias
 area: components
 criticidad: "🟡"
@@ -104,4 +104,6 @@ Aplica a las **tres** insignias, en `product-card.pug`. `HOT` comparte esquina c
 > **[2026-09-09 10:20] dexia:** ✅ REVIEW-006 aprobado. Gate 🟡 completo; la TASK puede mergearse.
 >
 > **[2026-09-09 12:50] ania:** 🟩 Mergeada a `main` tras aprobación formal en REVIEW-006 e instrucción de Clia/Miguel.
+>
+> **[2026-09-10 09:50] clia:** ✅ **CERRADA.** Estaba en `MERGEADA`: el código lleva en `main` (`8433d9f`) y sólo faltaba el cierre formal, que es del CTO. Las insignias ancladas al envoltorio de la imagen, dentro de la curva. Verificado sobre `main`.
 

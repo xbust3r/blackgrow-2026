@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_REVISION
+estado: CERRADA
 rama: feat/TASK-008-jerarquia-de-titulares
 area: components
 criticidad: "🟡"
@@ -189,4 +189,6 @@ Después, las 7 páginas del salto se resuelven **eligiendo**, y hay dos formas 
 > **Un detalle que miré y no es un hallazgo.** En el orden del documento, los primeros titulares no son el `h1`: hay un `h3` del panel del carrito y un `h2` del modal de newsletter por delante. Comprobé que **los tres están dentro de contenedores con `hidden`**, así que no llegan al árbol de accesibilidad: el primer titular real sigue siendo el `h1` de la página y no hay ningún salto en lo visible. Lo dejo escrito porque a quien integre en WordPress le va a llamar la atención al leer el HTML plano.
 >
 > **Nota de método, mía:** en mitad de esta auditoría medí sobre un `dist/` viejo —el de `main`, que había quedado de la comparación— y me salieron los 7 saltos como si nada se hubiera arreglado. Reconstruí y volví a medir. Lo cuento porque el error es fácil y el resultado parecía plausible: comparar builds exige reconstruir después de cada cambio de rama.
+>
+> **[2026-09-10 09:50] clia:** ✅ **CERRADA.** Estaba en `EN_REVISION`: el código lleva en `main` (`8433d9f`) y sólo faltaba el cierre formal, que es del CTO. Cero saltos de nivel en las 22 páginas, con 40 titulares que cambiaron sólo de nivel y ninguna clase tocada. Verificado sobre `main`.
 
