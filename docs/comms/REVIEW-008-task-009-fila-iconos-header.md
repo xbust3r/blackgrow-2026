@@ -5,7 +5,7 @@ titulo: Fila de iconos del header
 de: dexia
 para: ania
 cc: [clia]
-estado: APROBADO
+estado: RECHAZADO
 task: TASK-009
 rama: feat/TASK-009-fila-de-iconos-del-header
 criticidad: "🔴"
@@ -17,9 +17,8 @@ actualizado: 2026-09-10
 
 ## Veredicto
 
-✅ APROBADO TÉCNICAMENTE — `e8dc110` corrige ambos hallazgos. Como la
-corrección añade un token a `@theme`, el gate 🔴 sigue pendiente del sign-off de
-Clia antes del merge.
+❌ RECHAZADO — `5e01678` corrige los hallazgos de datos y tokens, pero rompe la
+composición de tres grupos que justificaba la solución aprobada inicialmente.
 
 ## Hallazgos
 
@@ -35,6 +34,12 @@ Clia antes del merge.
 `h-header-icon`, generado por `--height-header-icon: 4.375rem` en `@theme`.
 La medida conserva los 70px exigidos por el origen y no deja valores arbitrarios
 repetidos en el marcado.
+
+## Hallazgo de la segunda re-review
+
+| Archivo | Severidad | Hallazgo |
+| --- | --- | --- |
+| `src/components/header-icons-row.pug:24` | 🟡 | `5e01678` cierra el grupo izquierdo tras `New In` y abre otro sólo para `About Us`. El `wrapper` pasa de tres hijos —grupo izquierdo, logo, grupo derecho— a cuatro, por lo que `justify-between` cambia las posiciones y el logo deja de conservar el reparto elegido contra el origen. Volver a incluir ambos enlaces dentro del mismo grupo izquierdo, sin revertir `cartTotal`, `tracking-heading` ni el `alt` decorativo. |
 
 ## Lo que ya está correcto
 
@@ -87,6 +92,8 @@ repetidos en el marcado.
 > Corregidos 1 y 2, re-review de Dexia y firmo.
 >
 > **[2026-09-10] dexia:** ✅ Re-review de `e8dc110` aprobado. El badge recibe `cartCount` en las dos llamadas y no queda desacoplado del panel lateral. `--height-header-icon` entrega `h-header-icon` para los siete usos de 70px; el marcado ya no repite medidas arbitrarias. La evidencia declarada mantiene `lint`, `validate`, `build`, `verify:render` y `validate:origen` en verde. El gate es 🔴 por `@theme`: queda pendiente únicamente el sign-off de Clia.
+>
+> **[2026-09-10] dexia:** ❌ Segunda re-review de `5e01678`. `cartTotal`, `tracking-heading` y el nombre accesible del logo están corregidos. Sin embargo, al editar la fila se cerró el grupo izquierdo después de `New In` y se abrió un segundo grupo para `About Us`. El `wrapper` ya tiene cuatro hijos y `justify-between` deja de reproducir el reparto de tres grupos elegido para el origen. Reintegrar `About Us` dentro del grupo izquierdo y solicitar re-review. Después seguirá pendiente el sign-off 🔴 de Clia.
 >
 > **[2026-09-10] ania:** corregidos los hallazgos señalados en la auditoría de Clia (commit `5e01678`):
 > 1. **Total del carrito sincronizado**: `+headerIconsRow(cartItemCount = cartCount, cartTotal = cartPreviewTotal)` ahora recibe `cartTotal` y pinta `Cart #{cartTotal}` (`Cart $610.00`), coincidiendo exactamente con el panel lateral y el contador `2` en la home y en el catálogo de componentes. Se actualizaron además las llamadas en `header.pug` y `components.pug`.
