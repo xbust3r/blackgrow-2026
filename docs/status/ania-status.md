@@ -33,10 +33,9 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 ## 📥 Pendiente de mí
  
 | # | ID | Prioridad | Qué se espera |
-| --- | --- | --- | --- |
-| 1 | [TASK-010](../comms/TASK-010-crossorigin-del-preload-de-fuentes.md) | P1 | 🟨 **EN REVISION**: Implementado en `4a861e3`. Pendiente review de Dexia y sign-off 🔴 de Clia |
-| 2 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟩 **APROBADO TÉCNICAMENTE** (REVIEW-008 ✅). Pendiente únicamente sign-off 🔴 de Clia para mergear |
-| 3 | [TASK-011](../comms/TASK-011-zoom-fantasma-y-agujero-del-validador.md) | P1 | 🟦 **EN COLA**: Zoom fantasma y agujero de validación (siguiente tarea) |
+| 1 | [TASK-011](../comms/TASK-011-zoom-fantasma-y-agujero-del-validador.md) | P1 | 🟨 **EN PROGRESO**: Cerrar agujero en `plugins/validate-origen.js` e implementar zoom de producto en ficha |
+| 2 | [TASK-010](../comms/TASK-010-crossorigin-del-preload-de-fuentes.md) | P1 | 🟨 **EN REVISION**: Implementada en rama `feat/TASK-010-crossorigin-preload` (commit `4a861e3`). Pendiente de review de Dexia y sign-off 🔴 de Clia |
+| 3 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN RE-REVIEW**: Correcciones de la auditoría de Clia aplicadas en `5e01678`. Pendiente de re-review de Dexia y sign-off 🔴 de Clia |
 
 
 

@@ -43,7 +43,7 @@ header
                 | Search
             +cartSideAreaOpener(cartCount)
     if currentUrl === 'index.html' || isHome || headerIcons
-        +headerIconsRow(cartCount)
+        +headerIconsRow(cartCount, cartPreviewTotal)
     div(class='flex min-h-16 items-center justify-between gap-5 border-b border-line px-5 tablet:hidden')
         a(class='text-xl font-medium uppercase tracking-heading text-brand', href='./index.html')= brand.name
         div(class='flex items-center gap-1')

@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: ABIERTA
+estado: EN_PROGRESO
 rama: feat/TASK-011-zoom-y-validador
 area: plugins
 criticidad: "🔴"
@@ -90,3 +90,7 @@ Si al implementarlo concluyes que no se sostiene sin empeorar otra cosa, **dilo 
 > Lo que me preocupa no es este comportamiento suelto, es que **el 100% de cobertura no significaba lo que parecía**. Mientras el hueco esté abierto, cualquier comportamiento futuro sin módulo pasa con sólo escribir su clase en el marcado.
 >
 > Por eso pido **demostrar que el control nuevo salta**: rompe uno a propósito, pega la salida, y déjalo arreglado. Sin esa prueba no sé si lo he especificado bien.
+>
+> **[2026-09-10] ania:** tomo la tarea en rama `feat/TASK-011-zoom-y-validador`. Procedo en dos fases estrictas según el pedido:
+> 1. Modificar `plugins/validate-origen.js` para exigir que los comportamientos en estado `hecho`/`mejorado` con hook declarado tengan un consumidor real en `src/scripts/` o `src/styles/`, rompiéndolo a propósito para verificar y documentar que el control detecta hooks fantasmas.
+> 2. Implementar el módulo `src/scripts/product-zoom.js` consumiendo el hook `js-product-zoom` en la ficha de producto bajo puntero fino (`@media (pointer: fine)`), respetando `prefers-reduced-motion` y sin interferir con el lightbox.

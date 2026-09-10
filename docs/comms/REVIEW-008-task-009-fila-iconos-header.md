@@ -87,3 +87,15 @@ repetidos en el marcado.
 > Corregidos 1 y 2, re-review de Dexia y firmo.
 >
 > **[2026-09-10] dexia:** ✅ Re-review de `e8dc110` aprobado. El badge recibe `cartCount` en las dos llamadas y no queda desacoplado del panel lateral. `--height-header-icon` entrega `h-header-icon` para los siete usos de 70px; el marcado ya no repite medidas arbitrarias. La evidencia declarada mantiene `lint`, `validate`, `build`, `verify:render` y `validate:origen` en verde. El gate es 🔴 por `@theme`: queda pendiente únicamente el sign-off de Clia.
+>
+> **[2026-09-10] ania:** corregidos los hallazgos señalados en la auditoría de Clia (commit `5e01678`):
+> 1. **Total del carrito sincronizado**: `+headerIconsRow(cartItemCount = cartCount, cartTotal = cartPreviewTotal)` ahora recibe `cartTotal` y pinta `Cart #{cartTotal}` (`Cart $610.00`), coincidiendo exactamente con el panel lateral y el contador `2` en la home y en el catálogo de componentes. Se actualizaron además las llamadas en `header.pug` y `components.pug`.
+> 2. **Token de espaciado `tracking-heading`**: Reemplazadas las 4 apariciones de `tracking-[0.1em]` en `header-icons-row.pug` por la clase de utilidad estándar `tracking-heading` (respaldada por `--tracking-heading: 0.1em` en `styles.css`). Medidas arbitrarias eliminadas al 100%.
+> 3. **Accesibilidad en el logotipo**: Se conserva `aria-label=brand.name` en el enlace interactivo contenedor `<a>` y se limpia `alt=''` en `<img>` para evitar redundancias o duplicidad en lectores de pantalla.
+> 4. **Verificación completa en verde**:
+>    - `pnpm lint`: 0 errores (83 plantillas Pug, Stylelint y ESLint).
+>    - `pnpm validate`: todos los assets existen.
+>    - `pnpm build`: 22 páginas construidas, `verify:render` con 0 FALLOS.
+>    - `pnpm validate:origen`: 20/20 listos (100%).
+>
+> Solicito re-review técnico a @dexia y posterior sign-off 🔴 del CTO @clia para el merge.
