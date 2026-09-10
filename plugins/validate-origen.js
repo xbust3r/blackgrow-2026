@@ -33,7 +33,7 @@ const manifiesto = JSON.parse(
     readFileSync(resolve(raiz, 'docs/migracion/origen-comportamientos.json'), 'utf8'),
 );
 
-// Marcado y JavaScript, leídos una vez.
+// Marcado, scripts y estilos, leídos una vez.
 const marcado = (await glob('src/**/*.pug', { cwd: raiz, absolute: true }))
     .map((f) => readFileSync(f, 'utf8'))
     .join('\n');
@@ -41,6 +41,14 @@ const marcado = (await glob('src/**/*.pug', { cwd: raiz, absolute: true }))
 const entrada = existsSync(resolve(raiz, 'src/scripts/main.js'))
     ? readFileSync(resolve(raiz, 'src/scripts/main.js'), 'utf8')
     : '';
+
+const scripts = (await glob('src/scripts/**/*.js', { cwd: raiz, absolute: true }))
+    .map((f) => readFileSync(f, 'utf8'))
+    .join('\n');
+
+const estilos = (await glob('src/styles/**/*.css', { cwd: raiz, absolute: true }))
+    .map((f) => readFileSync(f, 'utf8'))
+    .join('\n');
 
 const IMPLEMENTADOS = new Set(['hecho', 'mejorado']);
 
@@ -52,8 +60,12 @@ const revisar = (c) => {
     // mecánico que comprobar, y decir lo contrario sería ruido.
     if (!hook && !archivo) return { fallos, comprobable: false };
 
-    if (hook && !marcado.includes(hook)) {
-        fallos.push(`el hook \`${hook}\` no aparece en ningún .pug`);
+    if (hook) {
+        if (!marcado.includes(hook)) {
+            fallos.push(`el hook \`${hook}\` no aparece en ningún .pug`);
+        } else if (IMPLEMENTADOS.has(c.estado) && !scripts.includes(hook) && !estilos.includes(hook)) {
+            fallos.push(`el hook \`${hook}\` no tiene consumidor ni en src/scripts/ ni en src/styles/`);
+        }
     }
 
     if (archivo) {

@@ -12,6 +12,7 @@ import './components/back-to-top.js';
 import './components/reveal.js';
 import './components/lightbox.js';
 import './components/product-gallery.js';
+import './components/product-zoom.js';
 import './components/quantity.js';
 import './components/tabs.js';
 import './components/interactive-link-showcase.js';

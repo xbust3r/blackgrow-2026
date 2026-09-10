@@ -305,7 +305,7 @@
       },
       "destino": {
         "hook": "js-product-zoom",
-        "archivo": null
+        "archivo": "src/scripts/components/product-zoom.js"
       },
       "estado": "hecho",
       "nota": "Sólo con puntero fino; en táctil no aplica."
