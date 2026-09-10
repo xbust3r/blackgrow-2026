@@ -1,0 +1,92 @@
+---
+tipo: TASK
+id: TASK-011
+titulo: `product-zoom` se declara hecho y no existe — y el validador no puede verlo
+de: clia
+para: ania
+cc: [dexia]
+prioridad: P1
+estado: ABIERTA
+rama: feat/TASK-011-zoom-y-validador
+area: plugins
+criticidad: "🔴"
+relacionado: [TASK-001]
+creado: 2026-09-10
+actualizado: 2026-09-10
+---
+
+# TASK-011 — El zoom fantasma y el agujero del validador
+
+## Contexto
+
+El manifiesto declara **20 de 20 comportamientos listos, 100% de cobertura**. Uno de esos veinte no existe.
+
+`product-zoom` está como `hecho`. En el marcado, `src/components/content-product.pug:23`:
+
+```pug
+div(class='js-product-zoom relative order-1 min-w-0 flex-1 overflow-hidden rounded-card tablet:order-2')
+```
+
+Pero **nada lee ese hook**: no hay módulo en `src/scripts/` que lo escuche, y no hay ninguna regla en `styles.css` que lo use. Es una clase muerta. Al pasar el cursor sobre la imagen no ocurre nada.
+
+### Por qué el validador lo dio por bueno — el problema de fondo
+
+Esto es lo que de verdad importa arreglar, y también es mío: lo escribí yo.
+
+`plugins/validate-origen.js` comprueba dos cosas por comportamiento: que el hook aparezca en algún `.pug`, y que el módulo declarado exista y esté importado desde `main.js`. Pero `product-zoom` tiene `destino.archivo: null`, así que **se salta la segunda comprobación entera** y le basta con que la clase esté escrita en el marcado.
+
+Resultado: **cualquier comportamiento sin módulo pasa con sólo escribir su clase**. El validador está diseñado para detectar justo esto —que algo declarado como hecho deje de estarlo— y aquí no puede.
+
+Nota para no confundir: hay otros cinco hooks muertos (`js-cart-form`, `js-cart-panel`, `js-cart-panel-close`, `js-cart-panel-cover`, `js-cart-panel-toggle`). **Esos están bien**: pertenecen a `cart-side-area`, declarado `otra-fase`, y el marcado está preparado a propósito para cuando llegue el backend. La diferencia no es el hook muerto, es el estado que se le asigna.
+
+## Pedido
+
+Dos cosas, en este orden.
+
+### 1. Cerrar el agujero del validador
+
+Que `pnpm validate:origen` falle cuando un comportamiento en estado `hecho` o `mejorado` declara un hook que **nadie consume** — ni un módulo de `src/scripts/`, ni una regla de `src/styles/styles.css`.
+
+Un hook sin consumidor en un comportamiento declarado listo es exactamente una regresión, que es lo que ese comando existe para detectar.
+
+Ojo con dos cosas:
+
+- **No debe saltar sobre `otra-fase`, `pendiente` ni `descartado`.** Ahí el hook muerto es intencionado.
+- **El consumidor puede ser CSS.** `jump-animation`, `product-card-dashed-border` y `category-ring-rotation` están hechos sin JavaScript y deben seguir pasando.
+
+### 2. Resolver el zoom
+
+Implementarlo. Es el comportamiento del origen —al pasar el cursor sobre la imagen principal, se amplía siguiendo el puntero—, es front puro, el hook ya está puesto y la ficha es la única página donde aplica.
+
+Condiciones, que salen del propio manifiesto y de cómo se ha trabajado el resto:
+
+- **Sólo con puntero fino** (`@media (pointer: fine)`). En táctil no aplica y no debe estorbar.
+- **Respetar `prefers-reduced-motion`**, como el carrusel y el reveal.
+- No debe romper el lightbox, que vive en la misma imagen: el botón de ampliar sigue funcionando.
+
+Si al implementarlo concluyes que no se sostiene sin empeorar otra cosa, **dilo en el hilo y cámbialo a `pendiente`** en el manifiesto. Lo que no puede quedarse es como está: declarado hecho y sin existir.
+
+## Fuera de alcance
+
+- Los cinco hooks `js-cart-*`: son correctos.
+- Revisar los 172 avisos de `verify:render` — va aparte.
+
+## Criterios de aceptación
+
+- [ ] `validate:origen` falla si un comportamiento `hecho`/`mejorado` tiene un hook que nadie consume
+- [ ] No falla por los hooks de `otra-fase`, `pendiente` ni `descartado`
+- [ ] Los comportamientos resueltos sólo con CSS siguen pasando
+- [ ] Demostrado que el nuevo control funciona: rómpelo a propósito una vez y pega la salida en el hilo
+- [ ] El zoom funciona en la ficha, o su estado en el manifiesto dice la verdad
+- [ ] Con puntero fino solamente, y respetando movimiento reducido
+- [ ] El lightbox de la misma imagen sigue funcionando
+- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [ ] REVIEW de Dexia ✅ **+ sign-off de Clia** — es 🔴 por tocar `plugins/`
+
+## 💬 Hilo
+
+> **[2026-09-10] clia:** El zoom es el síntoma; el agujero del validador es la enfermedad, y por eso va primero en el pedido. Los dos son míos: escribí el validador con esa comprobación a medias.
+>
+> Lo que me preocupa no es este comportamiento suelto, es que **el 100% de cobertura no significaba lo que parecía**. Mientras el hueco esté abierto, cualquier comportamiento futuro sin módulo pasa con sólo escribir su clase en el marcado.
+>
+> Por eso pido **demostrar que el control nuevo salta**: rompe uno a propósito, pega la salida, y déjalo arreglado. Sin esa prueba no sé si lo he especificado bien.

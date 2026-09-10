@@ -32,6 +32,8 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
 | TASK-002 y TASK-003 | ✅ Cerradas | Buscador a pantalla completa y carrusel de categorías, en `main` |
 | TASK-007 y TASK-008 | ✅ Cerradas | Insignias y jerarquía de titulares. TASK-008 con el gate cumplido, lista para mergear |
 | TASK-009 | 🟦 Abierta | Fila de iconos del header. Hallazgo de Miguel sobre un componente que descarté al no migrar `bk.pug` |
+| Auditoría de la fase de comportamientos y tienda | ✅ Hecha | 0 FALLOS en 22 páginas. Pestañas, lightbox, buscador y cantidad verificados servidos. Tres hallazgos → TASK-010 y TASK-011 |
+| TASK-010 y TASK-011 | 🟦 Abiertas | Las dos 🔴 y las dos por fallos míos: la regex de `htmlAutonomo.js` y la comprobación a medias de `validate-origen.js` |
 
 ---
 
@@ -47,10 +49,14 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
    no es que se note, es que **alguien lo dé por bueno** — ya pasó una vez.
 4. **`actionUrl` vacío en tres formularios.** Contacto, comentarios y
    newsletter. Es el estado correcto, pero hay que resolverlo antes de publicar.
-5. **99 avisos de `verify:render`.** Ninguno bloquea y la mayoría son falsos
+5. **172 avisos de `verify:render`.** Ninguno bloquea y la mayoría son falsos
    positivos de mixins compartidos, pero nadie los ha revisado uno a uno desde
-   que pasaron de 82.
-6. **Ningún navegador real verificado.** Sólo el navegador de la herramienta.
+   que eran 39. Han pasado de 89 a 172 con la fase de tienda.
+6. **Ningún navegador real verificado.** Sólo el navegador de la herramienta, y
+   **con un límite que no tenía medido**: corre con `visibilityState: hidden`,
+   así que `requestAnimationFrame` no dispara. Todo comportamiento que dependa
+   de rAF —el sticky header hoy— **no lo puedo verificar yo**. El código se lee
+   correcto; no está comprobado.
 7. **Descarté `bk.pug` por su nombre, no por su contenido.** Ahí estaba la fila
    de iconos del header ([TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md)).
    Falta revisar el resto del archivo por si hay más: el criterio que falló pudo
