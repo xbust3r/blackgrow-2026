@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_PROGRESO
+estado: EN_REVISION
 rama: feat/TASK-010-crossorigin-preload
 area: plugins
 criticidad: "🔴"
@@ -67,13 +67,13 @@ Cuidado con la tentación de excluir sólo `rel="preload"`: si mañana se precar
 
 ## Criterios de aceptación
 
-- [ ] `dist/*.html` conserva `crossorigin` en el preload de fuente, en las 22 páginas
-- [ ] La hoja de estilos y el script del `dist` **siguen sin** `crossorigin`
-- [ ] El `dist` sigue abriéndose con doble clic sin perder estilos ni comportamiento
-- [ ] El aviso del navegador sobre «credentials mode does not match» desaparece
-- [ ] Verificado en el `dist` servido, con la consola a la vista
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
-- [ ] `pnpm validate:origen` sin regresiones
+- [x] `dist/*.html` conserva `crossorigin` en el preload de fuente, en las 22 páginas
+- [x] La hoja de estilos y el script del `dist` **siguen sin** `crossorigin`
+- [x] El `dist` sigue abriéndose con doble clic sin perder estilos ni comportamiento
+- [x] El aviso del navegador sobre «credentials mode does not match» desaparece
+- [x] Verificado en el `dist` servido, con la consola a la vista
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `pnpm validate:origen` sin regresiones
 - [ ] REVIEW de Dexia ✅ **+ sign-off de Clia** — es 🔴 por tocar `plugins/`
 
 ## 💬 Hilo
@@ -85,3 +85,31 @@ Cuidado con la tentación de excluir sólo `rel="preload"`: si mañana se precar
 > Es 🔴 porque toca `plugins/`, que es la red de seguridad de todos: necesita el ✅ de Dexia y mi firma.
 >
 > **[2026-09-10] ania:** tomo la tarea en rama `feat/TASK-010-crossorigin-preload`. Procedo a acotar la eliminación de `crossorigin` en `plugins/htmlAutonomo.js` únicamente a las etiquetas de script emitidas (`<script ...>`) y hojas de estilo (`<link ...rel="stylesheet"...>`), conservando intacto el atributo en el preload de fuentes (`<link rel="preload" as="font"...>`). Validaré en `dist` servido y en modo autónomo `file://`.
+>
+> **[2026-09-10] ania:** implementación completada y verificada en `feat/TASK-010-crossorigin-preload` (commit `4a861e3`).
+>
+> ### 1. Decisión técnica (acotación por qué se retira)
+> En lugar de excluir `rel="preload"` (lo cual podría fallar si en el futuro se precargan imágenes LCP con requerimientos CORS distintos), la regla se acotó estrictamente a las dos etiquetas que emite Vite donde `crossorigin` rompe bajo `file://`:
+> - `<script\b[^>]*>`: se extrae `crossorigin` y se convierte `<script type="module"` en `<script defer`.
+> - `<link\b(?=[^>]*\brel=["']stylesheet["'])[^>]*>`: se extrae `crossorigin` únicamente si la etiqueta corresponde a una hoja de estilos (`rel="stylesheet"`).
+>
+> Con esto, `<link rel="preload" as="font" href="./assets/fonts/jost-400.woff2" type="font/woff2" crossorigin>` conserva intacto el atributo `crossorigin` en las 22 páginas de `dist/`, mientras que la hoja de estilos (`./assets/styles/styles.css`) y el script (`./assets/scripts/main.js`) continúan sin `crossorigin`.
+>
+> ### 2. Evidencia de validación
+> - **Verificación estática en las 22 páginas (`dist/*.html`)**:
+>   - 22/22 páginas conservan `crossorigin` en `<link rel="preload" as="font"...>`.
+>   - 0/22 páginas tienen `crossorigin` en `<link rel="stylesheet"...>` ni en `<script defer...>`.
+> - **Verificación servida con consola (`pnpm preview` en http://localhost:5274)**:
+>   - Inspeccionado con Chrome Headless vía DevTools Protocol (CDP) con eventos `Log.enable` y `Runtime.enable`.
+>   - Petición de fuente: `url: 'http://localhost:5274/assets/fonts/jost-400.woff2', initiator: 'parser', type: 'Font'`.
+>   - **Total de advertencias/logs en consola: 0**. El aviso de «credentials mode does not match» desapareció por completo.
+> - **Modo autónomo (`file://`) con doble clic**:
+>   - Verificado con Chrome Headless cargando `file://${dist}/index.html`.
+>   - `document.title`: "Home | Blackgrow", color computado del body: `rgb(110, 110, 110)` (hoja de estilos y script evaluados correctamente sin fallos CORS).
+> - **Suite de calidad**:
+>   - `pnpm lint`: 0 errores (83 plantillas Pug, Stylelint y ESLint).
+>   - `pnpm validate`: todos los assets existen.
+>   - `pnpm build`: 22 páginas construidas, `verify:render` con 0 FALLOS.
+>   - `pnpm validate:origen`: 20/20 listos (100%).
+>
+> Solicito REVIEW a @dexia y sign-off 🔴 del CTO @clia por la modificación en `plugins/htmlAutonomo.js`.
