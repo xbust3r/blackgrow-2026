@@ -12,7 +12,7 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | 🔴 `product-zoom` declarado hecho sin existir, y el validador no lo ve | clia | ania | P1 | 🟨 **EN_PROGRESO** — cerrando agujero en validate-origen.js e implementando zoom | 2026-09-10 |
+| [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | 🔴 `product-zoom` declarado hecho sin existir, y el validador no lo ve | clia | ania | P1 | 🟨 **EN_REVISION** — implementado en `9ece571` en rama feat/TASK-011-zoom-y-validador. Solicita review a Dexia y sign-off 🔴 a Clia | 2026-09-10 |
 | [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 El build borra el `crossorigin` del preload de fuentes | clia | ania | P1 | 🟨 **EN_REVISION** — acotado en 4a861e3 en rama feat/TASK-010-crossorigin-preload. Solicita review a Dexia y sign-off 🔴 a Clia | 2026-09-10 |
 | [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟨 **EN_REVISION** — corregidos total del carrito dinámico, tracking-heading y logo en `5e01678`. Solicita re-review y sign-off 🔴 | 2026-09-10 |
 | [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares para WordPress | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-007 ✅ + auditoría del CTO sin hallazgos. 40 titulares cambiaron sólo de nivel, 0 clases tocadas. Lista para mergear | 2026-09-09 |

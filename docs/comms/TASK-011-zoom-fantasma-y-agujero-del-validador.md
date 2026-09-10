@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: EN_PROGRESO
+estado: EN_REVISION
 rama: feat/TASK-011-zoom-y-validador
 area: plugins
 criticidad: "🔴"
@@ -73,14 +73,14 @@ Si al implementarlo concluyes que no se sostiene sin empeorar otra cosa, **dilo 
 
 ## Criterios de aceptación
 
-- [ ] `validate:origen` falla si un comportamiento `hecho`/`mejorado` tiene un hook que nadie consume
-- [ ] No falla por los hooks de `otra-fase`, `pendiente` ni `descartado`
-- [ ] Los comportamientos resueltos sólo con CSS siguen pasando
-- [ ] Demostrado que el nuevo control funciona: rómpelo a propósito una vez y pega la salida en el hilo
-- [ ] El zoom funciona en la ficha, o su estado en el manifiesto dice la verdad
-- [ ] Con puntero fino solamente, y respetando movimiento reducido
-- [ ] El lightbox de la misma imagen sigue funcionando
-- [ ] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
+- [x] `validate:origen` falla si un comportamiento `hecho`/`mejorado` tiene un hook que nadie consume
+- [x] No falla por los hooks de `otra-fase`, `pendiente` ni `descartado`
+- [x] Los comportamientos resueltos sólo con CSS siguen pasando
+- [x] Demostrado que el nuevo control funciona: rómpelo a propósito una vez y pega la salida en el hilo
+- [x] El zoom funciona en la ficha, o su estado en el manifiesto dice la verdad
+- [x] Con puntero fino solamente, y respetando movimiento reducido
+- [x] El lightbox de la misma imagen sigue funcionando
+- [x] `pnpm lint`, `pnpm validate`, `pnpm build` en verde · `verify:render` sin FALLOS
 - [ ] REVIEW de Dexia ✅ **+ sign-off de Clia** — es 🔴 por tocar `plugins/`
 
 ## 💬 Hilo
@@ -94,3 +94,56 @@ Si al implementarlo concluyes que no se sostiene sin empeorar otra cosa, **dilo 
 > **[2026-09-10] ania:** tomo la tarea en rama `feat/TASK-011-zoom-y-validador`. Procedo en dos fases estrictas según el pedido:
 > 1. Modificar `plugins/validate-origen.js` para exigir que los comportamientos en estado `hecho`/`mejorado` con hook declarado tengan un consumidor real en `src/scripts/` o `src/styles/`, rompiéndolo a propósito para verificar y documentar que el control detecta hooks fantasmas.
 > 2. Implementar el módulo `src/scripts/product-zoom.js` consumiendo el hook `js-product-zoom` en la ficha de producto bajo puntero fino (`@media (pointer: fine)`), respetando `prefers-reduced-motion` y sin interferir con el lightbox.
+>
+> **[2026-09-10] ania:** implementación completada y verificada en `feat/TASK-011-zoom-y-validador` (commit `9ece571`).
+>
+> ### 1. Cierre del agujero del validador (`plugins/validate-origen.js`)
+> - Se indexan todos los scripts de `src/scripts/**/*.js` y estilos de `src/styles/**/*.css`.
+> - Si un comportamiento está en estado `hecho` o `mejorado` y declara un `hook`, el validador exige que el hook aparezca como consumidor en scripts o en CSS (`scripts.includes(hook) || estilos.includes(hook)`).
+> - Los estados `otra-fase` (ej. los 5 hooks `js-cart-*`), `pendiente` y `descartado` se excluyen de esta exigencia.
+> - Los comportamientos resueltos con CSS puro sin hook (`jump-animation`, `product-card-dashed-border`, `category-ring-rotation`) siguen pasando sin falsos positivos.
+>
+> ### 2. Evidencia de que el control nuevo salta (prueba de rotura intencionada)
+> Al activar el control antes de implementar el zoom, `product-zoom` (que tenía `hook: js-product-zoom` y `archivo: null`) falló inmediatamente como regresión con código de salida 1:
+> ```text
+> FICHA-PRODUCTO
+>   ✔ Galería de la ficha · product-gallery
+>   ✘ Zoom de la imagen · product-zoom
+>       regresión: el hook `js-product-zoom` no tiene consumidor ni en src/scripts/ ni en src/styles/
+>       Sólo con puntero fino; en táctil no aplica.
+>   ★ Lightbox de la ficha · product-lightbox
+>   ★ Selector de cantidad · quantity-stepper
+>   ★ Pestañas de la ficha · product-tabs
+>   ✔ Productos relacionados · related-products
+> 
+> ------------------------------------------------
+> 20 listos  ·  0 pendientes  ·  5 en otra fase  ·  2 descartados  ·  27 en total
+> Cobertura dentro del alcance actual: 100% (20/20)
+> 
+> 1 regresión(es): algo declarado como hecho ya no lo está.
+> Corregirlo, o actualizar su `estado` en el manifiesto si el cambio fue intencionado.
+> ```
+>
+> ### 3. Implementación del zoom (`src/scripts/components/product-zoom.js`)
+> - Clase `ProductZoom` que escucha `mouseenter`, `mousemove` y `mouseleave` sobre `.js-product-zoom`.
+> - **Puntero fino y accesibilidad**:
+>   - Se desactiva y retorna temprano si no hay puntero fino (`!window.matchMedia('(pointer: fine)').matches`). En táctil/móvil no interfiere.
+>   - Se desactiva si el usuario prefiere movimiento reducido (`window.matchMedia('(prefers-reduced-motion: reduce)').matches`).
+> - **Comportamiento visual**:
+>   - Al entrar el puntero, cursor pasa a `zoom-in` y la imagen `.js-product-main` escala a `scale(1.75)` con transición suave `0.2s ease-out`.
+>   - Al mover el puntero, se calcula la posición relativa porcentual `(x, y)` dentro del contenedor y se actualiza `transformOrigin = ${x}% ${y}%` sin lag.
+>   - Al salir, se restablecen `transform = ''` y `transformOrigin = ''`.
+> - **Compatibilidad con Lightbox y Galería**:
+>   - En `content-product.pug` se añadió `z-10` a `a.js-lightbox` para asegurar que el botón de ampliar quede por encima de la imagen ampliada.
+>   - Comprobado en Chrome headless que el click en `a.js-lightbox` sigue abriendo el modal a pantalla completa con la imagen activa.
+>   - Al cambiar miniaturas con `ProductGallery`, el zoom opera automáticamente sobre la nueva imagen sin reinicializaciones.
+> - Registrado el módulo en `docs/migracion/origen-comportamientos.json` (`archivo: "src/scripts/components/product-zoom.js"`) e importado en `src/scripts/main.js`.
+>
+> ### 4. Resultados de la suite de calidad
+> - `pnpm lint`: 0 errores (83 plantillas Pug, Stylelint y ESLint).
+> - `pnpm validate`: todos los assets existen.
+> - `pnpm build`: 22 páginas construidas, `verify:render` con 0 FALLOS.
+> - `pnpm validate:origen`: 20/20 listos (100%), 0 regresiones.
+> - Comprobación servida (`pnpm preview` en http://localhost:5274/cart-index.html) con Chrome headless: zoom activo con cursor `zoom-in`, transform origin reactivo, lightbox 100% funcional y 0 errores en consola.
+>
+> Solicito REVIEW a @dexia y sign-off 🔴 a @clia por la modificación en `plugins/validate-origen.js`.
