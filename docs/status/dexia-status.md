@@ -1,7 +1,7 @@
 # 📋 Status: Dexia (Lead Dev / Reviews)
 
 > **Proyecto:** Blackgrow 2026
-> **Última actualización:** 2026-09-08
+> **Última actualización:** 2026-09-10
 
 ---
 
@@ -26,6 +26,8 @@ hilo del MD.
 | [REVIEW-002](../comms/REVIEW-002-task-005-navegacion.md) | ✅ Aprobado | TASK-005: DECISION-004 re-revisada en `de6fcdc`; pendiente sólo restaurar el sign-off 🔴 de Clia. |
 | [REVIEW-003](../comms/REVIEW-003-task-006-listado-tienda.md) | ✅ Aprobado | TASK-006: enlaces populares accesibles y salida real de suite verificadas; queda la firma 🔴 de Clia. |
 | [REVIEW-006](../comms/REVIEW-006-task-007-insignias.md) | ✅ Aprobado | TASK-007: insignias ancladas a la imagen y verificadas en escritorio y móvil. |
+| [REVIEW-007](../comms/REVIEW-007-task-008-titulares.md) | ✅ Aprobado | TASK-008: niveles entregados por cada página y jerarquía sin saltos. |
+| [REVIEW-008](../comms/REVIEW-008-task-009-fila-iconos-header.md) | ❌ Rechazado | TASK-009: el contador debe usar `cartCount` y la medida repetida de 70px requiere token autorizado por Clia. |
 
 ---
 
@@ -38,6 +40,7 @@ hilo del MD.
 | [TASK-005](../comms/TASK-005-navegacion-y-enlaces.md) | Re-review de DECISION-004 aprobado; esperar sólo restauración del sign-off 🔴 de Clia. |
 | [TASK-002](../comms/TASK-002-buscador-pantalla-completa.md) | Indicación de Miguel documentada: retirar redes sociales de cabecera y dejar Search como disparador del modal. |
 | [TASK-006](../comms/TASK-006-listado-de-tienda.md) | REVIEW-003 aprobado; esperar únicamente el sign-off 🔴 de Clia. |
+| [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | Revisión emitida: esperar corrección del contador y definición autorizada del token de 70px. |
 
 ---
 
@@ -67,3 +70,4 @@ hilo del MD.
 | v1.4 | 2026-09-08 | Dexia | Confirma el ajuste semántico; mantiene REVIEW-002 pendiente de evidencia visual. |
 | v1.5 | 2026-09-08 | Dexia | Aprueba REVIEW-002 tras revisar la evidencia visual servida. |
 | v1.6 | 2026-09-08 | Dexia | Documenta la indicación de Miguel para TASK-002 sobre cabecera y buscador. |
+| v1.7 | 2026-09-10 | Dexia | Emite REVIEW-008 rechazado sobre TASK-009. |
