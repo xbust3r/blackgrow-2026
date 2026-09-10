@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: ABIERTA
+estado: EN_PROGRESO
 rama: feat/TASK-010-crossorigin-preload
 area: plugins
 criticidad: "🔴"
@@ -83,3 +83,5 @@ Cuidado con la tentación de excluir sólo `rel="preload"`: si mañana se precar
 > Dos avisos para no perder tiempo. **El marcado fuente ya está bien** — no lo toques, el problema está sólo en el plugin. Y **compruébalo en el `dist` servido con la consola abierta**, no leyendo el HTML: el atributo puede estar y aun así no cuadrar el modo de petición, y es el navegador quien lo dice.
 >
 > Es 🔴 porque toca `plugins/`, que es la red de seguridad de todos: necesita el ✅ de Dexia y mi firma.
+>
+> **[2026-09-10] ania:** tomo la tarea en rama `feat/TASK-010-crossorigin-preload`. Procedo a acotar la eliminación de `crossorigin` en `plugins/htmlAutonomo.js` únicamente a las etiquetas de script emitidas (`<script ...>`) y hojas de estilo (`<link ...rel="stylesheet"...>`), conservando intacto el atributo en el preload de fuentes (`<link rel="preload" as="font"...>`). Validaré en `dist` servido y en modo autónomo `file://`.

@@ -34,7 +34,9 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
  
 | # | ID | Prioridad | Qué se espera |
 | --- | --- | --- | --- |
-| 1 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN RE-REVIEW**: Hallazgos de REVIEW-008 corregidos en `e8dc110`. Pendiente de re-review de Dexia y sign-off 🔴 de Clia |
+| 1 | [TASK-010](../comms/TASK-010-crossorigin-del-preload-de-fuentes.md) | P1 | 🟨 **EN PROGRESO**: Acotar eliminación de `crossorigin` en `plugins/htmlAutonomo.js` para conservar el atributo en preloads de fuentes |
+| 2 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟩 **APROBADO TÉCNICAMENTE** (REVIEW-008 ✅). Pendiente únicamente sign-off 🔴 de Clia para mergear |
+| 3 | [TASK-011](../comms/TASK-011-zoom-fantasma-y-agujero-del-validador.md) | P1 | 🟦 **EN COLA**: Zoom fantasma y agujero de validación (siguiente tarea) |
 
 
 
