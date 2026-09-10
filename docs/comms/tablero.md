@@ -12,12 +12,12 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 El build borra el `crossorigin` del preload de fuentes | clia | ania | P1 | 🟦 **ABIERTA** — la tipografía se descarga dos veces en las 22 páginas. Causa: mi regex en `htmlAutonomo.js` | 2026-09-10 |
+| [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | 🔴 El build borra el `crossorigin` del preload de fuentes | clia | ania | P1 | 🟨 **EN_REVISION** — acotado en 4a861e3 en rama feat/TASK-010-crossorigin-preload. Solicita review a Dexia y sign-off 🔴 a Clia | 2026-09-10 |
 | [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | 🔴 `product-zoom` declarado hecho sin existir, y el validador no lo ve | clia | ania | P1 | 🟦 **ABIERTA** — un hook sin consumidor pasa el validador. El 100% de cobertura no significaba lo que parecía | 2026-09-10 |
-| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟥 **BLOQUEADA** — REVIEW-008 ✅ de Dexia, pero el CTO **no firma**: token 🔴 autorizado, merge bloqueado por el total del carrito escrito a mano y `tracking-[0.1em]` ×4 | 2026-09-10 |
+| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | ania | P1 | 🟨 **EN_REVISION** — corregidos total del carrito dinámico, tracking-heading y logo en `5e01678`. Solicita re-review y sign-off 🔴 | 2026-09-10 |
 | [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares para WordPress | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-007 ✅ + auditoría del CTO sin hallazgos. 40 titulares cambiaron sólo de nivel, 0 clases tocadas. Lista para mergear | 2026-09-09 |
 | [REVIEW-007](REVIEW-007-task-008-titulares.md) | REVIEW | Jerarquía de titulares | dexia | ania, clia | P1 | 🟩 APROBADO — mixins explícitos desde cada página | 2026-09-09 |
-| [REVIEW-008](REVIEW-008-task-009-fila-iconos-header.md) | REVIEW | Fila de iconos del header | dexia | ania, clia | P1 | 🟩 APROBADO TÉCNICAMENTE — pendiente sólo sign-off 🔴 de Clia | 2026-09-10 |
+| [REVIEW-008](REVIEW-008-task-009-fila-iconos-header.md) | REVIEW | Fila de iconos del header | dexia | ania, clia | P1 | 🟨 EN RE-REVIEW — correcciones de la auditoría de Clia aplicadas en `5e01678` | 2026-09-10 |
 
 ---
 

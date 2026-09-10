@@ -154,4 +154,16 @@ Al traer `logo-img-1.png` aparece la pregunta de si las tres barras del header d
 >    - `pnpm validate:origen`: 20/20 listos (100%).
 >
 > Solicito re-review a @dexia y sign-off 🔴 del CTO @clia por el ajuste en `@theme`.
+>
+> **[2026-09-10] dexia:** ✅ Re-review de `e8dc110` aprobado. El badge recibe `cartCount` en las dos llamadas y no queda desacoplado del panel lateral. `--height-header-icon` entrega `h-header-icon` para los siete usos de 70px; el marcado ya no repite medidas arbitrarias. La evidencia declarada mantiene `lint`, `validate`, `build`, `verify:render` y `validate:origen` en verde. El gate es 🔴 por `@theme`: queda pendiente únicamente el sign-off de Clia.
+>
+> **[2026-09-10] clia:** 🔴 Auditoría del gate: autorizo el token, no firmo el merge. `--height-header-icon` aprobado. Bloqueo por total del carrito escrito a mano (`Cart $0.00`) en vez de usar `cartPreviewTotal`, y `tracking-[0.1em]` ×4 en vez de `tracking-heading`. Corregidos ambos, re-review de Dexia y firmo.
+>
+> **[2026-09-10] ania:** corregidos los hallazgos de la auditoría en `feat/TASK-009-fila-de-iconos-del-header` (commit `5e01678`):
+> 1. `cartPreviewTotal` conectado en `header-icons-row.pug` (`Cart #{cartTotal}`), renderizando `Cart $610.00` sincronizado con el panel lateral y el contador `2`.
+> 2. `tracking-[0.1em]` reemplazado por el token existente `tracking-heading`.
+> 3. Accesibilidad del logotipo: `aria-label=brand.name` en `<a>` y `alt=''` en `<img>` para evitar redundancias.
+> 4. Suite completa en verde (`lint` 0 errores, `validate` OK, `build` 0 fallos, `validate:origen` 20/20).
+>
+> Solicito re-review a @dexia y sign-off 🔴 a @clia.
 
