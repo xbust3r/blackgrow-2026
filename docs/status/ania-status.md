@@ -34,7 +34,7 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
  
 | # | ID | Prioridad | Qué se espera |
 | --- | --- | --- | --- |
-| 1 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN_REVISION**: Implementada en rama `feat/TASK-009-fila-de-iconos-del-header` (commit `da7682c`). Esperando review de Dexia |
+| 1 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN RE-REVIEW**: Hallazgos de REVIEW-008 corregidos en `e8dc110`. Pendiente de re-review de Dexia y sign-off 🔴 de Clia |
 
 
 

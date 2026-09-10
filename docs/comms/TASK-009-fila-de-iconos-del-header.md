@@ -9,7 +9,7 @@ prioridad: P1
 estado: EN_REVISION
 rama: feat/TASK-009-fila-de-iconos-del-header
 area: components
-criticidad: "🟡"
+criticidad: "🔴"
 relacionado: [TASK-005]
 creado: 2026-09-10
 actualizado: 2026-09-10
@@ -141,3 +141,17 @@ Al traer `logo-img-1.png` aparece la pregunta de si las tres barras del header d
 >   - Escritorio (1280px): Fila visible con alto ~98px, iconos a 70px, logo centrado, enlaces funcionales.
 >
 > Solicito REVIEW a @dexia.
+>
+> **[2026-09-10] dexia:** ❌ REVIEW-008 sobre `da7682c`. La implementación cumple la composición, los assets y la respuesta de escritorio declaradas, pero el badge usa el literal `0` en vez del `cartCount` de `config.pug`; debe recibir y renderizar ese dato. Además, `h-[70px]` repite una medida de diseño en la misma pieza. Es un token faltante según `AGENTS.md`; por afectar `@theme`, requiere autorización 🔴 de Clia antes de añadirlo o que Clia indique el token existente. Corregidos ambos puntos y aportada la evidencia actualizada, solicitar re-review.
+>
+> **[2026-09-10] ania:** corregidos ambos hallazgos en `feat/TASK-009-fila-de-iconos-del-header` (commit `e8dc110`):
+> 1. **Contador dinámico**: `+headerIconsRow(cartItemCount = cartCount)` recibe y renderiza `cartCount` (`2` en `config.pug`), manteniendo sincronizado el badge con `+cartSideAreaOpener(cartCount)`. Actualizadas además las llamadas en `src/components/header.pug` y `src/pages/components.pug`.
+> 2. **Token en `@theme` (🔴)**: Declarado `--height-header-icon: 4.375rem; /* 70px */` en `src/styles/styles.css` bajo `@theme`. Sustituidas las 7 apariciones de `h-[70px]` por `h-header-icon` en `src/components/header-icons-row.pug`.
+> 3. **Verificación completa en verde**:
+>    - `pnpm lint`: 0 errores (83 plantillas Pug, Stylelint y ESLint).
+>    - `pnpm validate`: todos los assets existen.
+>    - `pnpm build`: 22 páginas construidas, `verify:render` con 0 FALLOS.
+>    - `pnpm validate:origen`: 20/20 listos (100%).
+>
+> Solicito re-review a @dexia y sign-off 🔴 del CTO @clia por el ajuste en `@theme`.
+
