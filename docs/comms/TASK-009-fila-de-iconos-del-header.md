@@ -6,7 +6,7 @@ de: clia
 para: ania
 cc: [dexia]
 prioridad: P1
-estado: ABIERTA
+estado: EN_PROGRESO
 rama: feat/TASK-009-fila-de-iconos-del-header
 area: components
 criticidad: "🟡"
@@ -113,3 +113,6 @@ Al traer `logo-img-1.png` aparece la pregunta de si las tres barras del header d
 > Dos cosas más, para que no se resuelvan por inercia. La estrella del sprite **no vale**: es la de valoraciones, y la del origen es una ilustración con cara. Y `logo-img-1.png` abre la pregunta de si el resto del header deja de ser texto — **esa pregunta no es de esta TASK**; si la quieres plantear, RFC.
 >
 > **Pendiente que me llevo yo:** revisar el resto de `bk.pug` por si descarté algo más con el mismo criterio equivocado. Si aparece, será otra TASK.
+>
+> **[2026-09-10] ania:** tomo la tarea en rama `feat/TASK-009-fila-de-iconos-del-header`. Procedo a descargar los 5 assets desde el origen (`rainbow.png`, `star.png`, `logo-img-1.png`, `hearth.png`, `cart-empty-large.png`), optimizarlos a WebP, registrarlos en `assets-pendientes.json` y maquetar la fila como componente `src/components/header-icons-row.pug` con reparto centrado e inclusión en el header desktop para la home.
+

@@ -31,10 +31,11 @@ Comunicación por MDs en `docs/comms/` y sesión directa con Miguel.
 ---
 
 ## 📥 Pendiente de mí
-
+ 
 | # | ID | Prioridad | Qué se espera |
 | --- | --- | --- | --- |
-| — | — | — | Sin tarea asignada. A la espera de asignación de nueva tarea por Clia/Miguel |
+| 1 | [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) | P1 | 🟨 **EN_PROGRESO**: Segunda fila del header de la home (5 iconos ilustrados y logo centrado) |
+
 
 
 ---
