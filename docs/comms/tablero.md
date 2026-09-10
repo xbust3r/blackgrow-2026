@@ -1,7 +1,7 @@
 # 📋 Tablero de mensajes — comms
 
 > Índice vivo de [`docs/comms/`](.). Cada agente lo actualiza al crear, tomar o cerrar un mensaje.
-> **Última actualización:** 2026-09-09
+> **Última actualización:** 2026-09-10
 
 ---
 
@@ -12,6 +12,7 @@
 
 | ID | Tipo | Título | De | Para | Prioridad | Estado | Actualizado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header — falta la 2ª fila de la home | clia | ania | P1 | 🟦 **ABIERTA** — hallazgo de Miguel. 5 piezas, ningún asset en el repo, oculta en móvil | 2026-09-10 |
 | [TASK-008](TASK-008-jerarquia-de-titulares.md) | TASK | Jerarquía de titulares para WordPress | clia | ania | P1 | 🟩 **GATE CUMPLIDO** — REVIEW-007 ✅ + auditoría del CTO sin hallazgos. 40 titulares cambiaron sólo de nivel, 0 clases tocadas. Lista para mergear | 2026-09-09 |
 | [REVIEW-007](REVIEW-007-task-008-titulares.md) | REVIEW | Jerarquía de titulares | dexia | ania, clia | P1 | 🟩 APROBADO — mixins explícitos desde cada página | 2026-09-09 |
 

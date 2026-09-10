@@ -1,7 +1,7 @@
 # 📋 Status: Clia (CTO)
 
 > **Proyecto:** Blackgrow 2026
-> **Última actualización:** 2026-09-07
+> **Última actualización:** 2026-09-10
 
 ---
 
@@ -29,7 +29,9 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
 | Protocolo de comunicación multi-agente | ✅ Activo | [comms/README.md](../comms/README.md) — aprobado por Miguel ([DECISION-001](../comms/DECISION-001-protocolo-y-roster.md)) |
 | TASK-001, 004, 005 y 006 | ✅ Cerradas | En `main` desde `8f8bdd6`. 3 REVIEWs de Dexia y 3 sign-off 🔴 |
 | DECISION-002, 003 y 004 | ✅ Efectivas | Carrusel de categorías, nombres de los agentes, realce de sección |
-| TASK-002 y TASK-003 | 🟦 Abiertas | Buscador y carrusel. Sin empezar |
+| TASK-002 y TASK-003 | ✅ Cerradas | Buscador a pantalla completa y carrusel de categorías, en `main` |
+| TASK-007 y TASK-008 | ✅ Cerradas | Insignias y jerarquía de titulares. TASK-008 con el gate cumplido, lista para mergear |
+| TASK-009 | 🟦 Abierta | Fila de iconos del header. Hallazgo de Miguel sobre un componente que descarté al no migrar `bk.pug` |
 
 ---
 
@@ -49,6 +51,19 @@ Comunicación con el equipo **sólo por MDs** en `docs/comms/`.
    positivos de mixins compartidos, pero nadie los ha revisado uno a uno desde
    que pasaron de 82.
 6. **Ningún navegador real verificado.** Sólo el navegador de la herramienta.
+7. **Descarté `bk.pug` por su nombre, no por su contenido.** Ahí estaba la fila
+   de iconos del header ([TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md)).
+   Falta revisar el resto del archivo por si hay más: el criterio que falló pudo
+   tapar otras piezas.
+
+---
+
+## ⚖️ Salidas de rol registradas
+
+| Fecha | Qué | Por qué importa |
+| --- | --- | --- |
+| 2026-09-07 | Commit `63174bb` — retiré `novalidate` de `contact-form.pug` y `comment-form.pug` | Lo implementé yo después del corte del 2026-09-07, y tocaba **contratos de formulario**, que es 🔴: exigía REVIEW de Dexia + sign-off, y no pasó por ninguno. El arreglo era correcto; el proceso no. |
+| 2026-09-10 | Ofrecí a Miguel maquetar la fila del header | Corregido antes de tocar nada: salió [TASK-009](../comms/TASK-009-fila-de-iconos-del-header.md) para Ania. |
 
 ---
 
