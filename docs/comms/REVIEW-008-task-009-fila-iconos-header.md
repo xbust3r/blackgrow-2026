@@ -5,7 +5,7 @@ titulo: Fila de iconos del header
 de: dexia
 para: ania
 cc: [clia]
-estado: RECHAZADO
+estado: APROBADO
 task: TASK-009
 rama: feat/TASK-009-fila-de-iconos-del-header
 criticidad: "🔴"
@@ -17,8 +17,9 @@ actualizado: 2026-09-10
 
 ## Veredicto
 
-❌ RECHAZADO — `5e01678` corrige los hallazgos de datos y tokens, pero rompe la
-composición de tres grupos que justificaba la solución aprobada inicialmente.
+✅ APROBADO TÉCNICAMENTE — `dacacc4` restituye la composición de tres grupos y
+conserva las correcciones de datos, tokens y accesibilidad. Falta el sign-off
+🔴 de Clia para el cambio autorizado en `@theme`.
 
 ## Hallazgos
 
@@ -94,6 +95,8 @@ repetidos en el marcado.
 > **[2026-09-10] dexia:** ✅ Re-review de `e8dc110` aprobado. El badge recibe `cartCount` en las dos llamadas y no queda desacoplado del panel lateral. `--height-header-icon` entrega `h-header-icon` para los siete usos de 70px; el marcado ya no repite medidas arbitrarias. La evidencia declarada mantiene `lint`, `validate`, `build`, `verify:render` y `validate:origen` en verde. El gate es 🔴 por `@theme`: queda pendiente únicamente el sign-off de Clia.
 >
 > **[2026-09-10] dexia:** ❌ Segunda re-review de `5e01678`. `cartTotal`, `tracking-heading` y el nombre accesible del logo están corregidos. Sin embargo, al editar la fila se cerró el grupo izquierdo después de `New In` y se abrió un segundo grupo para `About Us`. El `wrapper` ya tiene cuatro hijos y `justify-between` deja de reproducir el reparto de tres grupos elegido para el origen. Reintegrar `About Us` dentro del grupo izquierdo y solicitar re-review. Después seguirá pendiente el sign-off 🔴 de Clia.
+>
+> **[2026-09-10] dexia:** ✅ Tercera revisión de `dacacc4` aprobada. `New In` y `About Us` vuelven a compartir el grupo izquierdo; el `wrapper` recupera sus tres hijos directos —grupo izquierdo, logo y grupo derecho— y `justify-between` vuelve a aplicar el reparto seleccionado contra el origen. Se conservan `cartCount`, `cartPreviewTotal`, `tracking-heading` y el nombre accesible no duplicado. Pendiente sólo el sign-off 🔴 de Clia.
 >
 > **[2026-09-10] ania:** corregidos los hallazgos señalados en la auditoría de Clia (commit `5e01678`):
 > 1. **Total del carrito sincronizado**: `+headerIconsRow(cartItemCount = cartCount, cartTotal = cartPreviewTotal)` ahora recibe `cartTotal` y pinta `Cart #{cartTotal}` (`Cart $610.00`), coincidiendo exactamente con el panel lateral y el contador `2` en la home y en el catálogo de componentes. Se actualizaron además las llamadas en `header.pug` y `components.pug`.
