@@ -6,10 +6,10 @@ componentes a bloques ACF.
 
 Este documento tiene dos partes:
 
-1. **[La arquitectura BEM a la que hay que adaptarse](#1--la-arquitectura-bem-c-section)** —
-   decisión de Miguel, 2026-09-11. Es trabajo pendiente en este repositorio.
+1. **[El estándar BEM del core](#1--el-estándar-bem-c-section)** — referencia, y la base de las
+   **mejoras futuras** de esta maquetación. **No es trabajo pendiente hoy.**
 2. **[El contrato que ya existe](#2--el-contrato-que-ya-existe)** — lo que el tema depende hoy y
-   que se rompe **en silencio** si cambia sin avisar.
+   que se rompe **en silencio** si cambia sin avisar. Esto **sí** aplica ya.
 
 > El tema **copia** el HTML compilado de `dist/components.html` clase por clase, y **no puede
 > escribir CSS ni JavaScript**: consume `dist/assets/styles/styles.css` y
@@ -18,13 +18,25 @@ Este documento tiene dos partes:
 
 ---
 
-## 1 · La arquitectura BEM: `c-section`
+## 1 · El estándar BEM: `c-section`
 
-**Decisión de Miguel (2026-09-11): la maquetación se adapta al estándar `c-section` del core.**
+### Dos familias de tema, y esta maquetación es de la clásica
 
-Los temas del core (`wp-inoconnect.core` y los suyos) usan BEM —bloque, elemento, modificador— con
-un contrato de contenedores explícito. Esta maquetación es Tailwind puro y **no lo cumple
-todavía**.
+Miguel (2026-09-11): el trabajo se reparte entre **dos arquitecturas de front**, y hay que saber
+en cuál se está antes de escribir una clase.
+
+| Familia | Maquetación | Temas | Arquitectura de clases |
+|---|---|---|---|
+| **BEM** | `freeway-3.0-html` | `wp-freewayinsure`, `wp-freewayseguros` | `c-section`, `c-section--*`, `c-section__content`, `o-wrapper`, utilidades `u-*` |
+| **Clásica** | **ésta** (`blackgrow-2026`) | `wp-blackgrow-theme` | Utilidades de Tailwind + tokens en `@theme` |
+
+**Esta maquetación es de la familia clásica y se queda así.** Lo que sigue es el estándar de la
+otra familia, documentado aquí por dos razones: para que nadie mezcle convenciones al saltar entre
+proyectos, y porque **es la base de las mejoras futuras** de este repositorio si algún día se
+decide converger.
+
+> ⚠️ **No hay que renombrar nada hoy.** Si llega esa convergencia será una decisión explícita, con
+> su propia tarea. Mientras no exista, maquetar aquí con utilidades es lo correcto.
 
 ### El estándar
 
@@ -44,34 +56,40 @@ componente envoltorio lleva `c-section` sola. Ejemplo del core:
     <div class="o-wrapper c-section__content u-d-grid u-grid-col-minmax">
 ```
 
-### Equivalencia con lo que hay hoy
+### Equivalencia entre las dos familias
 
-| Papel | Estándar del core | Hoy en esta maquetación |
+| Papel | Familia BEM (freeway 3.0) | Familia clásica (aquí) |
 |---|---|---|
 | Sección — bloque padre | `c-section` | la `<section>` del componente, sin clase semántica |
-| Contenedor de ancho máximo | `o-wrapper` | `.wrapper` |
-| Modificador de sección | `c-section--bg-grey` | `bg-surface-alt`, `py-9`, … suelto en el marcado |
+| Contenedor de ancho máximo | `o-wrapper`, `o-wrapper--sm`, `o-wrapper--large` | `.wrapper` |
+| Modificador de sección | `c-section--bg-light-blue`, `c-section--small-padding` | `bg-surface-alt`, `py-9`, … en el marcado |
 | Contenido de la sección | `c-section__content` | sin clase propia |
+| Cabecera de sección | `c-section-header` | sin clase propia |
 
-### Inventario: en qué estado está cada componente
+Clases verificadas en `freeway-3.0-html`: 66 usos de `c-section` y 57 de `c-section-header`.
 
-Clasificados los 16 componentes que el tema porta como bloques de sección. **Ninguno tiene todavía
-una clase semántica de sección**, y además hay tres formas distintas conviviendo:
+### Inventario: las tres formas que conviven aquí
 
-**Forma A — la `section` lleva el `wrapper` (7).** Al adaptar: `c-section` en la `section` y sacar
-el `wrapper` a un `div` interior con `o-wrapper c-section__content`.
+Esto **sí es útil hoy**, independientemente de BEM: el tema porta la forma que traiga cada
+componente y **cambiar una por otra rompe el diseño**. Clasificados los 16 componentes que el tema
+convierte en bloques de sección.
+
+**Forma A — la `section` lleva el `wrapper` (7).** El componente es la sección y el contenedor a
+la vez. *(En BEM esto sería `c-section` en la `section` y el `wrapper` sacado a un `div` interior
+con `o-wrapper c-section__content`.)*
 
 `title-with-text` · `text-with-image` · `title-with-steps` · `2-collections` ·
 `products-cards-4` · `categories` · `box-description`
 
-**Forma B — `section` a sangre + `div.wrapper` dentro (3).** Es la más cercana al estándar: la
-`section` ya es el padre y hay contenedor interior. Al adaptar: añadir `c-section` y convertir los
-modificadores.
+**Forma B — `section` a sangre + `div.wrapper` dentro (3).** La `section` lleva el fondo o el
+`overflow` y el contenedor va dentro, para que el fondo llegue a los bordes de la pantalla. Es la
+forma **más cercana al estándar BEM**, que separa igual los dos papeles.
 
 `customers-reviews` · `gallery-six` · `interactive-link-showcase`
 
-**Fragmentos — el contenedor lo pone la página (6).** Son los que **más cambian**: hoy no tienen
-sección propia y dependen de que la página los envuelva.
+**Fragmentos — el contenedor lo pone la página (6).** No tienen sección propia y dependen de que
+la página los envuelva. **Son los que más trabajo dan al portar**: un bloque de Gutenberg se
+inserta solo, así que el bloque tiene que aportar su propio contenedor.
 
 | Componente | Empieza en | Quién le pone el `wrapper` hoy |
 |---|---|---|
@@ -86,20 +104,21 @@ sección propia y dependen de que la página los envuelva.
 Al adaptarlo hay que decidir **qué parte de esa composición es del componente** y qué parte es de
 la página.
 
-### Lo que hay que tener en cuenta antes de empezar
+### Si algún día se converge a BEM
 
-Esto **no es un renombrado de clases**. Tres cosas a resolver, y ninguna es cosmética:
+No está decidido y **no se empieza sin una decisión explícita**. Cuando se plantee, tres cosas a
+resolver, y ninguna es cosmética:
 
-1. **Choca con la arquitectura actual del repositorio.** `AGENTS.md` dice que el sistema de diseño
-   vive entero en `@theme` y que se maqueta con utilidades. `c-section` y `c-section--bg-grey` son
-   **clases de componente**, no utilidades: hay que decidir dónde se definen y cómo se relacionan
-   con los tokens. Los modificadores no deberían reintroducir valores en crudo.
+1. **Choca con la arquitectura de este repositorio.** `AGENTS.md` dice que el sistema de diseño
+   vive entero en `@theme` y que se maqueta con utilidades. `c-section` y `c-section--bg-light-blue`
+   son **clases de componente**, no utilidades: habría que decidir dónde se definen y cómo se
+   relacionan con los tokens, sin reintroducir valores en crudo en los modificadores.
 2. **`pnpm verify:render` puede protestar.** Sus dos controles están pensados para cazar valores
-   inventados en el marcado; conviene comprobar cómo reaccionan a clases de componente antes de
-   migrar 16 componentes.
-3. **El tema tiene 25 bloques pendientes de portar y 0 portados.** Es el momento barato: adaptar
-   ahora cuesta reescribir la maquetación; adaptar después cuesta además reescribir los bloques.
-   **Conviene decidir el orden con el equipo del tema antes de que empiece a portar.**
+   inventados en el marcado; habría que comprobar cómo reaccionan a clases de componente antes de
+   tocar 16 componentes.
+3. **Cuanto más tarde, más caro.** Hoy el tema tiene 25 bloques pendientes y 0 portados: converger
+   ahora costaría reescribir la maquetación; converger después cuesta además reescribir los
+   bloques. Es el argumento a favor de decidirlo pronto, en un sentido o en otro.
 
 ---
 
@@ -195,8 +214,10 @@ hay automatismo.
 3. Si el cambio es de comportamiento, actualizar también
    [`docs/migracion/origen-comportamientos.json`](./migracion/origen-comportamientos.json), que es
    la fuente de verdad de los comportamientos.
-4. **La adaptación a BEM afecta a los 16 componentes de sección a la vez.** No se hace por goteo
-   sin avisar: el tema compara clase por clase.
+4. **Si un componente cambia de forma** (A, B o fragmento), se avisa: el tema tiene que reescribir
+   su `index.php`.
+5. **Una eventual convergencia a BEM afectaría a los 16 componentes de sección a la vez.** No se
+   haría por goteo: el tema compara clase por clase.
 
 ---
 
@@ -204,4 +225,4 @@ hay automatismo.
 
 | Versión | Fecha | Autor | Acción |
 | --- | --- | --- | --- |
-| v1.0 | 2026-09-11 | Clia | Contrato con el tema + directiva de adaptación a BEM `c-section` |
+| v1.0 | 2026-09-11 | Clia | Contrato con el tema; el estándar BEM `c-section` como referencia de la otra familia y base de mejoras futuras |

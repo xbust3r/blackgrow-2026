@@ -146,10 +146,11 @@ Además:
   tareas para traer el maquetado ya avanzado del proyecto anterior. Escrita para
   un agente que no participó en la creación de este core.
 - [Arquitectura BEM y contrato con el tema](./docs/contrato-con-el-tema.md) —
-  la adaptación pendiente al estándar `c-section` del core, con el inventario de
-  los 16 componentes de sección; y qué depende hoy de esta maquetación aguas
-  abajo: los ganchos de comportamiento, las medidas de imagen y el breakpoint
-  compartido con el tema.
+  qué depende hoy de esta maquetación aguas abajo: los ganchos de
+  comportamiento, las tres formas de contenedor, las medidas de imagen y el
+  breakpoint compartido. Incluye el estándar `c-section` de la familia BEM
+  (`freeway 3.0`) como referencia y base de mejoras futuras: **esta maquetación
+  es de la familia clásica y no se renombra nada hoy.**
 
 `pnpm verify:render` incluye dos controles pensados para lo que un agente hace
 cuando no encuentra un token: inventarlo entre corchetes. Un color en el marcado
