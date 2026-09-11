@@ -1,26 +1,25 @@
 # Traspaso a Ania — cierre de la maquetación
 
-> **De:** Clia (CTO) · **Para:** Ania · **Fecha:** 2026-09-08
+> **De:** Clia (CTO) · **Para:** Ania y quien integre · **Fecha:** 2026-09-08 · **Actualizado:** 2026-09-11
 > Este documento no sustituye a las TASKs: las **ordena** y da el contexto que ninguna de ellas repite. Lo que hay que hacer está en cada TASK; esto dice en qué orden, por qué, y qué no hacer.
 
 ---
 
 ## 1 · Dónde está el proyecto
 
-**22 páginas construidas, la verificación en verde y el sitio todavía no se puede navegar.** Ese es el resumen honesto.
+**La maquetación está terminada.** 22 páginas, la verificación en verde y las once TASKs cerradas y en `main`.
 
 | Frente | Estado |
 | --- | --- |
-| Maquetación de páginas y componentes | Completa, salvo el listado de tienda ([TASK-006](comms/TASK-006-listado-de-tienda.md)) |
-| Comportamientos (JavaScript) | 16 de 20 dentro de alcance. Faltan buscador, carrusel y las dos animaciones SVG |
-| Navegación | **No existe.** 33 `href='#'` y 6 enlaces internos reales |
-| Contenido | Todo es relleno del origen. Nada definitivo |
-| Assets | Marcadores de la demo del origen, sin licencia |
-| Backend | Nada. Los formularios llevan `action=''` a propósito |
+| Maquetación de páginas y componentes | 🟩 Completa |
+| Comportamientos (JavaScript) | 🟩 20 de 20 dentro de alcance |
+| Navegación | 🟩 Mapa único en `config.pug`, 19 destinos, subrayado animado |
+| Jerarquía semántica | 🟩 0 saltos de titular en las 22 páginas |
+| Contenido | ⏸️ Todo es relleno del origen. Nada definitivo |
+| Assets | ⏸️ 36 marcadores de la demo del origen, **sin licencia** |
+| Backend | ⏸️ Nada. Los formularios llevan `action=''` a propósito |
 
-**Lo primero, antes de escribir una línea:** `feat/TASK-004-correcciones` tiene el gate cumplido —REVIEW de Dexia ✅ y sign-off del CTO ✅— y **sigue sin mergear**. Mergéala a `main` y arranca desde ahí; si no, trabajarás sobre una base vieja.
-
----
+**Lo único de front-end que queda, y no tiene TASK:** el módulo del panel lateral del carrito —el marcado y sus cuatro hooks existen desde TASK-004— y los desplegables de escritorio. Todo lo demás depende de material externo.
 
 ## 2 · Qué es «origen»
 
@@ -32,33 +31,19 @@ Su marcado lleva clases `qodef-*` y `woocommerce-*` de plugins de WordPress. **E
 
 ---
 
-## 3 · Orden de ejecución
+## 3 · Lo que se hizo, y en qué orden
 
-El orden importa: las tres primeras se pisan entre sí si van al revés.
+Se ejecutó en este orden y por este motivo: **la navegación fue primero porque todo lo demás enlaza.** Si el listado de tienda se hubiera hecho antes, sus tarjetas habrían nacido con `href='#'`.
 
-### 1.º — [TASK-005](comms/TASK-005-navegacion-y-enlaces.md) · Navegación 🔴 P0
+| | TASK | Qué dejó |
+| --- | --- | --- |
+| 1.º | TASK-005 🔴 | Mapa único en `config.pug`, 33 enlaces → 7 declarados, subrayado animado |
+| 2.º | TASK-006 🔴 | 12 productos, barra lateral, insignias `Sale`/`New`/`HOT`, borde punteado |
+| 3.º | TASK-003 | Carrusel de categorías con `scroll-snap`, sin dependencias |
+| 4.º | TASK-002 | Buscador a pantalla completa; sociales fuera de la cabecera |
+| — | TASK-007 · 008 · 009 · 010 · 011 | Posición de insignias, jerarquía de titulares, fila de iconos, `crossorigin` del preload y el zoom fantasma |
 
-**Va primero porque las demás enlazan.** Si TASK-006 se hace antes, sus tarjetas quedan con `href='#'` y hay que volver a tocarlas.
-
-Su valor no son los 33 enlaces: es el **mapa único en `config.pug`**. Hoy las etiquetas están escritas en cuatro sitios y ya divergen. Si sales con cuatro listas sincronizadas a mano, la TASK no está hecha aunque todo enlace bien.
-
-Incluye el **subrayado animado** que pidió Miguel, medido en el origen.
-
-> Es 🔴: toca `config.pug` y `main-template.pug`. Necesita REVIEW de Dexia **y** sign-off del CTO.
-
-### 2.º — [TASK-006](comms/TASK-006-listado-de-tienda.md) · Listado de tienda 🟡 P1
-
-Doce productos donde hoy hay tres, la barra lateral, el selector de orden, la paginación y las variantes de columnas como parámetro. Consume los enlaces de TASK-005.
-
-### 3.º — [TASK-003](comms/TASK-003-carrusel-de-categorias.md) · Carrusel de categorías 🟡 P1
-
-Sale de [DECISION-002](comms/DECISION-002-carrusel-de-categorias.md), que revierte «no se quieren carruseles» **sólo para esta pieza**. `scroll-snap` nativo, sin dependencia. La rejilla se conserva como variante.
-
-### 4.º — [TASK-002](comms/TASK-002-buscador-pantalla-completa.md) · Buscador a pantalla completa 🟡 P1
-
-Es independiente de las otras tres; va al final porque es la que menos bloquea. Tiene un punto que **decides tú y explicas en el hilo**: cómo se abre en móvil, donde hoy no hay disparador.
-
----
+Las decisiones que sostienen esto están en `docs/comms/DECISION-00{1,2,3,4}`.
 
 ## 4 · Lo que está declarado y NO se crea
 
@@ -133,21 +118,35 @@ No es tuyo hoy, pero conviene que lo sepas porque aparece al mirar cualquier pá
 
 ---
 
-## 9 · Cómo arrancar
+## 9 · Nomenclatura y contrato con el tema
+
+**La autoridad es [`contrato-con-el-tema.md`](contrato-con-el-tema.md).** Léelo antes de tocar una clase; aquí sólo queda el resumen y el porqué histórico.
+
+**Aquí no hay BEM, y es deliberado.** El core del que salió esto, `lp-core`, usaba Sass por capas + BEM. Al reconstruir sobre Tailwind se retiró —tabla del [`README.md`](../README.md) y entrada del [`CHANGELOG.md`](../CHANGELOG.md)—, y con él la regla `class-naming` de Markuplint, que rechazaba cada `flex` y cada `mt-4`. BEM sigue documentado como el estándar de **la otra familia de proyectos**, no como trabajo pendiente de éste.
+
+**Lo que cambia todo, y hay que saberlo antes de escribir una clase:** esta maquetación tiene un consumidor aguas abajo, el tema `wp-blackgrow-theme`, que **copia el HTML compilado clase por clase** y **no escribe CSS ni JavaScript propios**. Por eso el marcado no es sólo marcado: partes de él son **contrato**.
+
+Las tres que más cuesta recordar:
+
+1. **Los `js-*` y los `data-*` se portan textualmente.** Renombrar uno deja un bloque que se ve perfecto y no hace nada.
+2. **`.snap-start` parece una utilidad de Tailwind y la lee `carousel.js`.** Quitarla no rompe nada visible: el carrusel sigue andando y avanza mal.
+3. **Nunca cuelgues apariencia de un hook `js-*`.** Si además pinta, deja de poder renombrarse o retirarse.
+
+El documento del contrato lleva la lista exacta de los 9 hooks que viajan a bloques editoriales, los 5 de formulario, y los dos valores que el tema **no** copia literales.
+
+## 10 · Cómo arrancar
 
 ```text
-Soy Ania, la DEV de blackgrow-2026.
-
-1. git pull && git checkout main
-2. Mergeo feat/TASK-004-correcciones (gate cumplido: REVIEW-001 ✅ + sign-off CTO ✅)
-3. Leo, en este orden:
+1. git pull && git checkout main      → rama única; las de trabajo se borraron el 2026-09-10
+2. Leo, en este orden:
    - AGENTS.md
    - docs/briefing-maquetacion.md (este documento)
-   - docs/agentes/ania.md (mi ficha y mis límites)
+   - mi ficha en docs/agentes/ y mis límites
    - docs/comms/README.md (protocolo) y docs/comms/tablero.md
    - src/styles/styles.css entero, y docs/tarjeta-de-decision.md a mano mientras escribo
-4. pnpm install && pnpm build  → compruebo que la base está verde ANTES de tocar nada
-5. Tomo TASK-005 en su hilo (estado EN_PROGRESO), rama feat/TASK-005-navegacion
+3. pnpm install && pnpm build         → compruebo que la base está verde ANTES de tocar nada
+4. pnpm dev en http://localhost:5273  → y miro las páginas servidas
+5. Tomo mi TASK en su hilo (estado EN_PROGRESO), rama feat/TASK-XXX-slug
 6. Al terminar: verificación completa, salida pegada en el hilo, EN_REVISION, aviso a Dexia
 ```
 
