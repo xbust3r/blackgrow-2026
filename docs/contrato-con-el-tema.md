@@ -35,8 +35,11 @@ otra familia, documentado aquí por dos razones: para que nadie mezcle convencio
 proyectos, y porque **es la base de las mejoras futuras** de este repositorio si algún día se
 decide converger.
 
-> ⚠️ **No hay que renombrar nada hoy.** Si llega esa convergencia será una decisión explícita, con
-> su propia tarea. Mientras no exista, maquetar aquí con utilidades es lo correcto.
+> ⚠️ **No hay que renombrar nada hoy.** La convergencia está aceptada como fase pendiente y sin fecha
+> en [DECISION-005](./comms/DECISION-005-bem-como-fase-pendiente.md); arrancarla será una TASK explícita.
+> Mientras no exista, maquetar aquí con utilidades es lo correcto. Lo único que cambia desde hoy: **los
+> componentes nuevos se escriben en Forma B**, que separa sección y contenedor igual que BEM, para que la
+> brecha no crezca mientras la fase espera.
 
 ### El estándar
 
@@ -216,8 +219,12 @@ hay automatismo.
    la fuente de verdad de los comportamientos.
 4. **Si un componente cambia de forma** (A, B o fragmento), se avisa: el tema tiene que reescribir
    su `index.php`.
-5. **Una eventual convergencia a BEM afectaría a los 16 componentes de sección a la vez.** No se
-   haría por goteo: el tema compara clase por clase.
+5. **La convergencia a BEM es una fase pendiente aceptada** — ver
+   [DECISION-005](./comms/DECISION-005-bem-como-fase-pendiente.md). Es gradual, pero no en todo: el
+   **esqueleto** (`c-section`, `o-wrapper`, `c-section__content`) afecta a los 16 componentes de
+   sección **a la vez** y no admite goteo, porque el tema compara clase por clase y media docena en
+   BEM y media en utilidades le obliga a cargar dos convenciones. El **interior** de cada componente
+   sí va uno a uno.
 
 ---
 

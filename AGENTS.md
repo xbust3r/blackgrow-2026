@@ -116,6 +116,10 @@ token; no se escribe el hex en el marcado.
 - El estado se guarda en atributos que ya significan algo —`aria-expanded`,
   `hidden`, `aria-invalid`—, no en clases de estado inventadas.
 - Las clases `js-` son hooks de comportamiento y **no llevan apariencia**.
+- **Un componente de sección nuevo se escribe en «Forma B»:** la `<section>` a sangre con el fondo, y
+  un `div.wrapper` dentro. Separa los dos papeles igual que BEM y es lo único que pide hoy la fase
+  pendiente de convergencia — ver [DECISION-005](./docs/comms/DECISION-005-bem-como-fase-pendiente.md)
+  y el [contrato con el tema](./docs/contrato-con-el-tema.md).
 
 ### Estilos
 

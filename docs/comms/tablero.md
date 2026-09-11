@@ -9,6 +9,7 @@
 
 > 🟩 **Nada en curso.** Las 11 TASKs están cerradas y en `main`. Las ramas de trabajo se borraron el 2026-09-10.
 > Lo que queda sin TASK: el módulo del panel lateral del carrito y los desplegables de escritorio.
+> **Fase pendiente sin fecha:** convergencia a BEM ([DECISION-005](DECISION-005-bem-como-fase-pendiente.md)).
 
 ## 🟢 Abiertos
 
@@ -22,6 +23,7 @@
 
 | ID | Tipo | Título | Cerrado por | Fecha | Resultado |
 | --- | --- | --- | --- | --- | --- |
+| [DECISION-005](DECISION-005-bem-como-fase-pendiente.md) | DECISION | BEM como fase pendiente, gradual y sin fecha | miguel | 2026-09-11 | ✅ Efectiva — el esqueleto es atómico, el interior gradual. Fase 0: los componentes nuevos en Forma B |
 | [TASK-011](TASK-011-zoom-fantasma-y-agujero-del-validador.md) | TASK | Zoom fantasma y agujero del validador | clia | 2026-09-10 | ✅ En `main`. Un comportamiento contaba como hecho sin existir |
 | [TASK-010](TASK-010-crossorigin-del-preload-de-fuentes.md) | TASK | `crossorigin` del preload de fuentes | clia | 2026-09-10 | ✅ En `main`. La tipografía dejaba de descargarse dos veces |
 | [TASK-009](TASK-009-fila-de-iconos-del-header.md) | TASK | Fila de iconos del header | clia | 2026-09-10 | ✅ En `main`. Con token `--height-header-icon` y contador conectado |
